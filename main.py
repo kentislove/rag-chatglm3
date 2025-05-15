@@ -3,35 +3,25 @@ import json
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+
 import gradio as gr
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
+from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
+from langchain.llms import HuggingFaceHub
+
 from utils import sync_google_drive_files, load_documents_from_folder
-from langchain_huggingface import HuggingFaceEmbeddings  # 新式導入
-from langchain_community.vectorstores import FAISS
-from langchain_community.document_loaders import TextLoader
-from langchain_community.llms import HuggingFaceHub
-llm = HuggingFaceHub(
-    repo_id="THUDM/chatglm3-6b",
-    task="text-generation",  # 必須明確指定任務類型
-    model_kwargs={
-        "temperature": 0.5,
-        "max_new_tokens": 2048,
-        "top_p": 0.95,
-        "repetition_penalty": 1.2
-    }
-)
+
+# 先對 GOOGLE_CREDENTIALS_JSON 環境變數進行解析，帶入 credentials.json
 creds_content = os.getenv("GOOGLE_CREDENTIALS_JSON")
 if creds_content:
-with open("credentials.json", "w") as f:
-f.write(creds_content)
+    with open("credentials.json", "w") as f:
+        f.write(creds_content)
 
 app = FastAPI()
-import uvicorn
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
 # CORS 設定（允許 iframe 嵌入）
 app.add_middleware(
     CORSMiddleware,
@@ -44,13 +34,14 @@ app.add_middleware(
 # 初始化向量資料庫
 VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
+
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-embedding_model = HuggingFaceEmbeddings(
-    model_name="BAAI/bge-small-zh",
-    model_kwargs={"device": "cpu"},  # 新增必要參數
-    encode_kwargs={"normalize_embeddings": True}
+embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh")
+llm = HuggingFaceHub(
+    repo_id="THUDM/chatglm3-6b",
+    model_kwargs={"temperature": 0.5, "max_length": 2048}
 )
 
 def build_vector_store():
@@ -65,6 +56,7 @@ def build_vector_store():
 def load_vector_store():
     return FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
 
+# 如果沒有已存的向量資料庫，就重新建立
 if not os.path.exists(os.path.join(VECTOR_STORE_PATH, "index.faiss")):
     vectorstore = build_vector_store()
 else:
@@ -80,6 +72,7 @@ def rag_answer(question):
     return qa.run(question)
 
 # Gradio UI
+
 def chat_fn(msg):
     response = rag_answer(msg)
     return response
