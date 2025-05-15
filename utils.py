@@ -2,7 +2,7 @@ import os
 import io
 from typing import List
 from langchain.schema import Document
-from langchain.document_loaders import (
+from langchain_community.document_loaders import (
     TextLoader,
     UnstructuredPDFLoader,
     UnstructuredExcelLoader
