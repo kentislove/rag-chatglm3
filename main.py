@@ -1,37 +1,43 @@
 import os
 import gradio as gr
 import psutil
-
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain.text_splitter import CharacterTextSplitter
+import faiss
+from sentence_transformers import SentenceTransformer
 
 VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
-os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh")
+# 改用極小模型
+MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
+# MODEL_NAME = "all-MiniLM-L6-v2" # 英文用這個，體積最小
 
-def build_vector_store():
-    docs = []
+# 全域變數
+model = None
+index = None
+doc_texts = []
+
+def load_model():
+    global model
+    if model is None:
+        print("[MODEL] 載入中...")
+        model = SentenceTransformer(MODEL_NAME)
+    return model
+
+def build_index():
+    global index, doc_texts
+    doc_texts = []
     for fname in os.listdir(DOCUMENTS_PATH):
         if fname.endswith(".txt"):
             with open(os.path.join(DOCUMENTS_PATH, fname), "r", encoding="utf-8") as f:
-                docs.append(f.read())
-    splitter = CharacterTextSplitter(chunk_size=300, chunk_overlap=50)
-    texts = splitter.create_documents(docs)
-    db = FAISS.from_documents(texts, embedding_model)
-    db.save_local(VECTOR_STORE_PATH)
-    return db
-
-def load_vector_store():
-    return FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
-
-if os.path.exists(os.path.join(VECTOR_STORE_PATH, "index.faiss")):
-    vectorstore = load_vector_store()
-else:
-    vectorstore = build_vector_store()
+                doc_texts.append(f.read())
+    if not doc_texts:
+        index = None
+        return
+    model = load_model()
+    emb = model.encode(doc_texts)
+    index = faiss.IndexFlatL2(emb.shape[1])
+    index.add(emb)
 
 def print_ram_usage():
     process = psutil.Process(os.getpid())
@@ -43,18 +49,23 @@ def print_ram_usage():
             print(f"[RAM 警告] 記憶體已超過 {mark} MB")
 print_ram_usage()
 
+build_index()
+
 def search_answer(query):
-    docs_and_scores = vectorstore.similarity_search_with_score(query, k=2)
-    if not docs_and_scores:
-        return "找不到相關內容"
-    result = "\n---\n".join(
-        f"Score: {score:.2f}\n{doc.page_content}" for doc, score in docs_and_scores
-    )
-    return result
+    if index is None or not doc_texts:
+        return "沒有可搜尋的文件"
+    model = load_model()
+    q_emb = model.encode([query])
+    D, I = index.search(q_emb, k=2)
+    result = []
+    for idx, dist in zip(I[0], D[0]):
+        if idx < 0 or idx >= len(doc_texts): continue
+        result.append(f"Score: {dist:.2f}\n{doc_texts[idx]}")
+    return "\n---\n".join(result) if result else "找不到相關內容"
 
 gr.Interface(
     fn=search_answer,
     inputs=gr.Textbox(lines=2, label="請輸入問題"),
     outputs=gr.Textbox(label="最相關內容片段"),
-    title="知識文件相似搜尋（不含AI自動回答）"
-).launch(server_name="0.0.0.0", server_port=10000)
+    title="最輕量級文件語意搜尋"
+).launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 10000)))
