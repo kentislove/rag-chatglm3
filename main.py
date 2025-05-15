@@ -4,14 +4,13 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 import gradio as gr
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
 from langchain.chains import RetrievalQA
-from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain.llms import HuggingFaceHub
 from utils import sync_google_drive_files, load_documents_from_folder
-
+from langchain_huggingface import HuggingFaceEmbeddings  # 新式導入
+from langchain_community.vectorstores import FAISS
+from langchain_community.document_loaders import TextLoader
+from langchain_community.llms import HuggingFaceHub
 app = FastAPI()
 
 # CORS 設定（允許 iframe 嵌入）
@@ -29,10 +28,10 @@ DOCUMENTS_PATH = "./docs"
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh")
-llm = HuggingFaceHub(
-    repo_id="THUDM/chatglm3-6b",
-    model_kwargs={"temperature": 0.5, "max_new_tokens": 2048}
+embedding_model = HuggingFaceEmbeddings(
+    model_name="BAAI/bge-small-zh",
+    model_kwargs={"device": "cpu"},  # 新增必要參數
+    encode_kwargs={"normalize_embeddings": True}
 )
 
 def build_vector_store():
