@@ -11,8 +11,18 @@ from langchain.chains import RetrievalQA
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.llms import HuggingFaceHub
-
-
+from langchain_huggingface import HuggingFaceEmbeddings
+embedding_model = HuggingFaceEmbeddings(
+    model_name="BAAI/bge-m3",
+    model_kwargs={
+        "trust_remote_code": True,
+        "device": "cpu"  # 新增必要參數
+    },
+    encode_kwargs={
+        "normalize_embeddings": True,
+        "prompt": "為這個句子生成嵌入表示："  # 替代 query_instruction 的功能
+    }
+)
 creds_content = os.getenv("GOOGLE_CREDENTIALS_JSON")
 if creds_content:
     with open("credentials.json", "w") as f:
