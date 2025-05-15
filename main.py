@@ -12,7 +12,11 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import TextLoader
 from langchain_community.llms import HuggingFaceHub
 app = FastAPI()
+import uvicorn
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
 # CORS 設定（允許 iframe 嵌入）
 app.add_middleware(
     CORSMiddleware,
