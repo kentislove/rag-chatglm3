@@ -11,6 +11,16 @@ from langchain_huggingface import HuggingFaceEmbeddings  # 新式導入
 from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import TextLoader
 from langchain_community.llms import HuggingFaceHub
+llm = HuggingFaceHub(
+    repo_id="THUDM/chatglm3-6b",
+    task="text-generation",  # 必須明確指定任務類型
+    model_kwargs={
+        "temperature": 0.5,
+        "max_new_tokens": 2048,
+        "top_p": 0.95,
+        "repetition_penalty": 1.2
+    }
+)
 app = FastAPI()
 import uvicorn
 
