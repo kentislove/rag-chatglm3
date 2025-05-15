@@ -3,15 +3,12 @@ import gradio as gr
 import psutil
 import faiss
 import requests
-import json
+import numpy as np
 
-VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-# 你的 huggingface API key
-HF_API_TOKEN = os.environ.get("hf_aKKyZPjLvSiZvqTNweLrqZcwaRCtPJElvaN", "你的 HuggingFace Token")
-
+HF_API_TOKEN = os.environ.get("HF_API_TOKEN", "你的 HuggingFace Token")
 EMBEDDING_MODEL = "BAAI/bge-small-zh"
 
 doc_texts = []
@@ -24,7 +21,6 @@ def get_embedding(text):
     response = requests.post(api_url, headers=headers, json={"inputs": text, "options": {"wait_for_model": True}})
     if response.status_code == 200:
         result = response.json()
-        # 一維情況要包成二維
         if isinstance(result[0], float):
             return [result]
         return result
@@ -40,12 +36,11 @@ def build_index():
             with open(os.path.join(DOCUMENTS_PATH, fname), "r", encoding="utf-8") as f:
                 doc_texts.append(f.read())
     for text in doc_texts:
-        emb = get_embedding(text)[0]  # 取出第一句向量
+        emb = get_embedding(text)[0]
         doc_vectors.append(emb)
     if doc_vectors:
         dim = len(doc_vectors[0])
         index = faiss.IndexFlatL2(dim)
-        import numpy as np
         index.add(np.array(doc_vectors, dtype="float32"))
     else:
         index = None
@@ -66,7 +61,6 @@ def search_answer(query):
     if not doc_texts or index is None:
         return "沒有可搜尋的文件"
     q_emb = get_embedding(query)[0]
-    import numpy as np
     D, I = index.search(np.array([q_emb], dtype="float32"), k=2)
     result = []
     for idx, dist in zip(I[0], D[0]):
