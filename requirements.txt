@@ -1,11 +1,6 @@
-fastapi
-uvicorn
+gradio
 langchain
 langchain-community
 langchain-huggingface
 faiss-cpu
-gradio
 sentence-transformers
-requests
-openai
-# 其餘如有用到再加
