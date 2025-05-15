@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+gradio
+langchain
+faiss-cpu
+huggingface-hub
+sentence-transformers
+pypdf
+openpyxl
+python-multipart
+google-api-python-client
+google-auth
+google-auth-oauthlib
+python-dotenv
