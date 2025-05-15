@@ -16,6 +16,10 @@ from utils import sync_google_drive_files, load_documents_from_folder
 
 app = FastAPI()
 
+google_creds_str = os.getenv("GOOGLE_CREDENTIALS_JSON")
+with open("credentials.json", "w") as f:
+f.write(google_creds_str)
+
 #CORS 設定（允許 iframe 嵌入）
 app.add_middleware(
 CORSMiddleware,
