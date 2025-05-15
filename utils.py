@@ -1,16 +1,14 @@
 import os
-import json
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.middleware.cors import CORSMiddleware
+import glob
 
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import gradio as gr
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.chains import RetrievalQA
+
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_huggingface import HuggingFaceEmbeddings
 
 embedding_model = HuggingFaceEmbeddings(
     model_name="BAAI/bge-small-zh"
@@ -36,6 +34,64 @@ DOCUMENTS_PATH = "./docs"
 
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
+
+def sync_google_drive_files(folder_path):
+    """
+    同步 Google Drive 指定資料夾內所有檔案到本地 folder_path
+    需設定 GOOGLE_DRIVE_FOLDER_ID（Drive 資料夾ID）
+    需有 credentials.json 憑證檔
+    """
+    from google.oauth2 import service_account
+    from googleapiclient.discovery import build
+    from googleapiclient.http import MediaIoBaseDownload
+    import io
+
+    # 讀取 Google Drive 資料夾 ID（建議設成環境變數）
+    FOLDER_ID = os.getenv("GOOGLE_DRIVE_FOLDER_ID")
+    if not FOLDER_ID:
+        print("請設定 GOOGLE_DRIVE_FOLDER_ID 環境變數")
+        return
+
+    # 用服務帳號憑證登入
+    creds = service_account.Credentials.from_service_account_file(
+        "credentials.json",
+        scopes=["https://www.googleapis.com/auth/drive.readonly"],
+    )
+
+    service = build("drive", "v3", credentials=creds)
+    query = f"'{FOLDER_ID}' in parents and trashed = false"
+    results = service.files().list(q=query, fields="files(id, name)").execute()
+    items = results.get("files", [])
+
+    if not items:
+        print("Google Drive 資料夾內無檔案")
+        return
+
+    for item in items:
+        file_id = item["id"]
+        file_name = item["name"]
+        file_path = os.path.join(folder_path, file_name)
+        if os.path.exists(file_path):
+            print(f"{file_name} 已存在，跳過下載")
+            continue
+
+        request = service.files().get_media(fileId=file_id)
+        with open(file_path, "wb") as f:
+            downloader = MediaIoBaseDownload(f, request)
+            done = False
+            while not done:
+                status, done = downloader.next_chunk()
+            print(f"已下載 {file_name}")
+
+def load_documents_from_folder(folder_path):
+    """
+    讀取指定本地資料夾下所有 .txt 檔（可擴充副檔名）
+    """
+    documents = []
+    for file_path in glob.glob(os.path.join(folder_path, "*.txt")):
+        loader = TextLoader(file_path, encoding="utf-8")
+        documents.extend(loader.load())
+    return documents
 
 def build_vector_store():
     sync_google_drive_files(DOCUMENTS_PATH)
