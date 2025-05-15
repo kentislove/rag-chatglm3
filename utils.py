@@ -12,7 +12,6 @@ from langchain.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.llms import HuggingFaceHub
 
-from utils import sync_google_drive_files, load_documents_from_folder, load_webpage
 
 creds_content = os.getenv("GOOGLE_CREDENTIALS_JSON")
 if creds_content:
