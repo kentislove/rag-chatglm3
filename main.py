@@ -1,77 +1,97 @@
 import os
-import gradio as gr
-import psutil
-import faiss
-import requests
-import numpy as np
+import json
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.middleware.cors import CORSMiddleware
 
+import gradio as gr
+from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.vectorstores import FAISS
+from langchain.chains import RetrievalQA
+from langchain.document_loaders import TextLoader
+from langchain.text_splitter import CharacterTextSplitter
+from langchain.llms import HuggingFaceHub
+
+from utils import sync_google_drive_files, load_documents_from_folder
+
+# 先對 GOOGLE_CREDENTIALS_JSON 環境變數進行解析，帶入 credentials.json
+creds_content = os.getenv("GOOGLE_CREDENTIALS_JSON")
+if creds_content:
+    with open("credentials.json", "w") as f:
+        f.write(creds_content)
+
+app = FastAPI()
+
+# CORS 設定（允許 iframe 嵌入）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# 初始化向量資料庫
+VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
+
+os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-HF_API_TOKEN = os.environ.get("HF_API_TOKEN", "你的 HuggingFace Token")
-EMBEDDING_MODEL = "BAAI/bge-small-zh"
+embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh")
+llm = HuggingFaceHub(
+    repo_id="THUDM/chatglm3-6b",
+    model_kwargs={"temperature": 0.5, "max_length": 2048}
+)
 
-doc_texts = []
-doc_vectors = []
-index = None
+def build_vector_store():
+    sync_google_drive_files(DOCUMENTS_PATH)
+    documents = load_documents_from_folder(DOCUMENTS_PATH)
+    splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+    texts = splitter.split_documents(documents)
+    db = FAISS.from_documents(texts, embedding_model)
+    db.save_local(VECTOR_STORE_PATH)
+    return db
 
-def get_embedding(text):
-    api_url = f"https://api-inference.huggingface.co/pipeline/feature-extraction/{EMBEDDING_MODEL}"
-    headers = {"Authorization": f"Bearer {HF_API_TOKEN}"}
-    response = requests.post(api_url, headers=headers, json={"inputs": text, "options": {"wait_for_model": True}})
-    if response.status_code == 200:
-        result = response.json()
-        if isinstance(result[0], float):
-            return [result]
-        return result
-    else:
-        return [[0.0]*384]  # or raise error
+def load_vector_store():
+    return FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
 
-def build_index():
-    global doc_texts, doc_vectors, index
-    doc_texts = []
-    doc_vectors = []
-    for fname in os.listdir(DOCUMENTS_PATH):
-        if fname.endswith(".txt"):
-            with open(os.path.join(DOCUMENTS_PATH, fname), "r", encoding="utf-8") as f:
-                doc_texts.append(f.read())
-    for text in doc_texts:
-        emb = get_embedding(text)[0]
-        doc_vectors.append(emb)
-    if doc_vectors:
-        dim = len(doc_vectors[0])
-        index = faiss.IndexFlatL2(dim)
-        index.add(np.array(doc_vectors, dtype="float32"))
-    else:
-        index = None
+# 如果沒有已存的向量資料庫，就重新建立
+if not os.path.exists(os.path.join(VECTOR_STORE_PATH, "index.faiss")):
+    vectorstore = None
+else:
+    vectorstore = load_vector_store()
 
-def print_ram_usage():
-    process = psutil.Process(os.getpid())
-    mem_bytes = process.memory_info().rss
-    mem_mb = mem_bytes / 1024 / 1024
-    print(f"[RAM] 啟動時記憶體佔用：{mem_mb:.2f} MB")
-    for mark in range(100, int(mem_mb)+100, 100):
-        if mem_mb > mark:
-            print(f"[RAM 警告] 記憶體已超過 {mark} MB")
-print_ram_usage()
+qa = RetrievalQA.from_chain_type(
+    llm=llm,
+    chain_type="stuff",
+    retriever=vectorstore.as_retriever()
+)
 
-build_index()
+def rag_answer(question):
+    return qa.run(question)
 
-def search_answer(query):
-    if not doc_texts or index is None:
-        return "沒有可搜尋的文件"
-    q_emb = get_embedding(query)[0]
-    D, I = index.search(np.array([q_emb], dtype="float32"), k=2)
-    result = []
-    for idx, dist in zip(I[0], D[0]):
-        if idx < 0 or idx >= len(doc_texts): continue
-        result.append(f"Score: {dist:.2f}\n{doc_texts[idx]}")
-    return "\n---\n".join(result) if result else "找不到相關內容"
+# Gradio UI
 
-port = int(os.environ.get("PORT", 10000))
-gr.Interface(
-    fn=search_answer,
+def chat_fn(msg):
+    response = rag_answer(msg)
+    return response
+
+gradio_app = gr.Interface(
+    fn=chat_fn,
     inputs=gr.Textbox(lines=2, label="請輸入問題"),
-    outputs=gr.Textbox(label="最相關內容片段"),
-    title="雲端Embedding文件語意搜尋（超省RAM）"
-).launch(server_name="0.0.0.0", server_port=port)
+    outputs=gr.Textbox(label="AI 回答"),
+    title="RAG AI 機器人 (ChatGLM3-6B)",
+)
+
+@app.get("/", response_class=HTMLResponse)
+async def index():
+    return gradio_app.launch(share=False, inline=True, prevent_thread_lock=True)
+
+# Webhook 接收範例（LINE/Telegram 可共用）
+@app.post("/webhook")
+async def webhook(request: Request):
+    payload = await request.json()
+    user_message = payload.get("message", "")
+    reply = rag_answer(user_message)
+    return {"reply": reply}
