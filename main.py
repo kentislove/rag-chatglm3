@@ -58,7 +58,7 @@ def load_vector_store():
 
 # 如果沒有已存的向量資料庫，就重新建立
 if not os.path.exists(os.path.join(VECTOR_STORE_PATH, "index.faiss")):
-    vectorstore = build_vector_store()
+    vectorstore = None
 else:
     vectorstore = load_vector_store()
 
