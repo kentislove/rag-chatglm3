@@ -1,4 +1,4 @@
 gradio
 faiss-cpu
-sentence-transformers
+requests
 psutil
