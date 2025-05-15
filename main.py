@@ -21,6 +21,11 @@ llm = HuggingFaceHub(
         "repetition_penalty": 1.2
     }
 )
+creds_content = os.getenv("GOOGLE_CREDENTIALS_JSON")
+if creds_content:
+with open("credentials.json", "w") as f:
+f.write(creds_content)
+
 app = FastAPI()
 import uvicorn
 
