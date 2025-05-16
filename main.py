@@ -7,7 +7,7 @@ from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
-from utils import load_documents_from_folder
+from utils import load_documents_from_folder, crawl_links_from_homepage, fetch_urls_from_sitemap, save_url_list
 import gradio as gr
 from typing import List
 
@@ -167,7 +167,6 @@ def rag_answer(question):
         result = qa.run(question)
     except Exception as e:
         return f"【系統錯誤】{e}"
-    # Fallback：若結果明顯查無內容（可自訂條件）
     if not result or result.strip().lower() in ["", "無相關內容", "no relevant content"]:
         try:
             direct = llm.invoke(question)
@@ -176,6 +175,18 @@ def rag_answer(question):
             return f"RAG查無結果且外部查詢失敗：{e}"
     return result
 
+def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
+    urls = crawl_links_from_homepage(start_url, max_pages=max_pages)
+    file_path = os.path.join(DOCUMENTS_PATH, filename)
+    save_url_list(urls, file_path)
+    return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
+
+def crawl_and_save_urls_sitemap(sitemap_url, filename):
+    urls = fetch_urls_from_sitemap(sitemap_url)
+    file_path = os.path.join(DOCUMENTS_PATH, filename)
+    save_url_list(urls, file_path)
+    return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
+
 with gr.Blocks() as demo:
     gr.Markdown("# Cohere 向量檢索問答機器人")
     with gr.Row():
@@ -183,10 +194,28 @@ with gr.Blocks() as demo:
             question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
             submit_btn = gr.Button("送出")
             update_btn = gr.Button("手動更新向量庫")
+            gr.Markdown("---")
+            homepage_url = gr.Textbox(label="全站首頁網址(含http)")
+            homepage_filename = gr.Textbox(label=".url檔名(如 demo_homepage.url )")
+            homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
+            crawl_btn = gr.Button("用首頁爬子頁並產生 .url")
+            sitemap_url = gr.Textbox(label="sitemap.xml網址")
+            sitemap_filename = gr.Textbox(label=".url檔名(如 demo_sitemap.url )")
+            crawl_sitemap_btn = gr.Button("用sitemap自動產生 .url")
         with gr.Column():
             answer_box = gr.Textbox(label="AI 回答")
     submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
     update_btn.click(fn=manual_update_vector, inputs=None, outputs=None)
+    crawl_btn.click(
+        fn=crawl_and_save_urls_homepage,
+        inputs=[homepage_url, homepage_filename, homepage_maxpages],
+        outputs=None
+    )
+    crawl_sitemap_btn.click(
+        fn=crawl_and_save_urls_sitemap,
+        inputs=[sitemap_url, sitemap_filename],
+        outputs=None
+    )
 
 app = FastAPI()
 app.add_middleware(
