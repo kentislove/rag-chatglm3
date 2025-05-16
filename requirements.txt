@@ -11,3 +11,5 @@ unstructured
 pypdf
 python-docx
 xlrd
+langchain-huggingface
+langchain-openai
