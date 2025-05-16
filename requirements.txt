@@ -13,3 +13,5 @@ python-docx
 xlrd
 langchain-huggingface
 langchain-openai
+langchain-cohere
+cohere
