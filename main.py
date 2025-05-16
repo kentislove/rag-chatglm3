@@ -8,23 +8,20 @@ import gradio as gr
 
 from utils import sync_google_drive_files, load_documents_from_folder
 
-# ----------- HuggingFace Inference API LLM -----------
 from langchain.llms.base import LLM
 
 class HuggingFaceInferenceAPI(LLM):
     def __init__(self, api_url, api_token, **kwargs):
         super().__init__(**kwargs)
-        self._api_url = api_url
+        self._api_url = api_url   # 用變數，不要寫死
         self._api_token = api_token
 
     @property
     def _llm_type(self):
         return "custom_hf_api"
-
     @property
     def api_url(self):
         return self._api_url
-
     @property
     def api_token(self):
         return self._api_token
@@ -50,10 +47,9 @@ class HuggingFaceInferenceAPI(LLM):
         else:
             return str(result)
 
-# ----------- End LLM定義 -----------
-
+# 這裡請改成你想用的 API endpoint，gpt2 一定通，bloomz-560m 也行
+api_url = "https://api-inference.huggingface.co/models/bigscience/bloomz-560m"
 HUGGINGFACE_API_TOKEN = os.getenv("HF_API_TOKEN")
-api_url = "https://api-inference.huggingface.co/models/Qwen/Qwen1.5-0.5B-Chat"
 llm = HuggingFaceInferenceAPI(api_url, HUGGINGFACE_API_TOKEN)
 
 VECTOR_STORE_PATH = "./faiss_index"
@@ -97,7 +93,7 @@ gradio_app = gr.Interface(
     fn=chat_fn,
     inputs=gr.Textbox(lines=2, label="請輸入問題"),
     outputs=gr.Textbox(label="AI 回答"),
-    title="RAG AI 機器人 (Qwen-0.5B-Chat)"
+    title="RAG AI 機器人 (bloomz-560m)"
 )
 
 if __name__ == "__main__":
