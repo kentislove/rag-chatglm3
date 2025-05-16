@@ -175,17 +175,29 @@ def rag_answer(question):
             return f"RAG查無結果且外部查詢失敗：{e}"
     return result
 
+# ----------- 這裡是你要的副檔名自動補全 function -----------
+
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
-    urls = crawl_links_from_homepage(start_url, max_pages=max_pages)
+    if not filename or filename.strip() == "":
+        filename = "homepage_auto.url"
+    if not filename.endswith('.url'):
+        filename = filename + '.url'
     file_path = os.path.join(DOCUMENTS_PATH, filename)
+    urls = crawl_links_from_homepage(start_url, max_pages=max_pages)
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
 
 def crawl_and_save_urls_sitemap(sitemap_url, filename):
-    urls = fetch_urls_from_sitemap(sitemap_url)
+    if not filename or filename.strip() == "":
+        filename = "sitemap_auto.url"
+    if not filename.endswith('.url'):
+        filename = filename + '.url'
     file_path = os.path.join(DOCUMENTS_PATH, filename)
+    urls = fetch_urls_from_sitemap(sitemap_url)
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
+
+# ------------------------------------------------------------
 
 with gr.Blocks() as demo:
     gr.Markdown("# Cohere 向量檢索問答機器人")
