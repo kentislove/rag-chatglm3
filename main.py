@@ -4,11 +4,14 @@ import gradio as gr
 
 # 1. 本地模型路徑
 MODEL_PATH = "models/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
+MODEL_URL = "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
+
+if not os.path.exists("models"):
+    os.makedirs("models")
 if not os.path.exists(MODEL_PATH):
     import urllib.request
     print("Downloading model...")
-    url = "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
-    urllib.request.urlretrieve(url, MODEL_PATH)
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
     print("Model downloaded!")
 # 2. 初始化本地 LLM（TinyLlama 1.1B，超省RAM）
 llm = Llama(
