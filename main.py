@@ -1,18 +1,14 @@
 import os
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.middleware.cors import CORSMiddleware
-import gradio as gr
-
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains import RetrievalQA
+import gradio as gr
 
 from utils import sync_google_drive_files, load_documents_from_folder
 
-# ----------- 新增 HuggingFace Inference API LLM -----------
+# ----------- HuggingFace Inference API LLM -----------
 from langchain.llms.base import LLM
 
 class HuggingFaceInferenceAPI(LLM):
@@ -60,20 +56,6 @@ HUGGINGFACE_API_TOKEN = os.getenv("HF_API_TOKEN")
 api_url = "https://api-inference.huggingface.co/models/Qwen/Qwen1.5-0.5B-Chat"
 llm = HuggingFaceInferenceAPI(api_url, HUGGINGFACE_API_TOKEN)
 
-creds_content = os.getenv("GOOGLE_CREDENTIALS_JSON")
-if creds_content:
-    with open("credentials.json", "w") as f:
-        f.write(creds_content)
-
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
 VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
@@ -118,13 +100,5 @@ gradio_app = gr.Interface(
     title="RAG AI 機器人 (Qwen-0.5B-Chat)"
 )
 
-@app.get("/", response_class=HTMLResponse)
-async def index():
-    return gradio_app.launch(share=False, inline=True, prevent_thread_lock=True)
-
-@app.post("/webhook")
-async def webhook(request: Request):
-    payload = await request.json()
-    user_message = payload.get("message", "")
-    reply = rag_answer(user_message)
-    return {"reply": reply}
+if __name__ == "__main__":
+    gradio_app.launch(server_name="0.0.0.0", server_port=10000)
