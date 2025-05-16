@@ -5,9 +5,9 @@ from langchain_community.document_loaders import (
     TextLoader,
     UnstructuredPDFLoader,
     UnstructuredWordDocumentLoader,
-    UnstructuredExcelLoader
+    UnstructuredExcelLoader,
+    WebBaseLoader
 )
-
 
 def load_documents_from_folder(folder_path: str) -> List[Document]:
     docs = []
@@ -23,6 +23,16 @@ def load_documents_from_folder(folder_path: str) -> List[Document]:
             loader = UnstructuredExcelLoader(filepath)
         elif file.endswith(".csv"):
             docs.extend(parse_csv_file(filepath))
+            continue
+        elif file.endswith(".url"):
+            with open(filepath, "r", encoding="utf-8") as f:
+                urls = [line.strip() for line in f if line.strip()]
+                for url in urls:
+                    try:
+                        web_loader = WebBaseLoader(url)
+                        docs.extend(web_loader.load())
+                    except Exception as e:
+                        print(f"讀取網址失敗 {url}: {e}")
             continue
         else:
             print(f"不支援的格式：{file}")
