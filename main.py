@@ -182,12 +182,35 @@ with gr.Blocks() as demo:
         with gr.Column():
             question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
             submit_btn = gr.Button("送出")
-            update_btn = gr.Button("手動更新向量庫")
+            update_btn = gr.Button("手動更新向量庫")  # 新增手動按鈕
         with gr.Column():
             answer_box = gr.Textbox(label="AI 回答")
     submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
-    update_btn.click(fn=manual_update_vector, inputs=None, outputs=None)
+    update_btn.click(fn=lambda: manual_update_vector(), inputs=None, outputs=None)
 
+def manual_update_vector():
+    global vectorstore, qa
+    vectorstore = build_vector_store(get_current_docs_state())
+    qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=vectorstore.as_retriever()
+    )
+    return "向量資料庫已手動重建完成"
+ def rag_answer(question):
+    ensure_qa()
+    # 嘗試用RAG
+    result = qa.run(question)
+    # 檢查答案太短或沒命中時 fallback
+    if not result or result.strip().lower() in ["", "無相關內容", "no relevant content"]:
+        # 使用 Cohere chat 直接查（有網路知識）
+        try:
+            direct = llm.invoke(question)
+            return f"【外部網路搜尋結果】\n{direct}"
+        except Exception as e:
+            return f"RAG查無結果且外部查詢失敗：{e}"
+    return result
+   
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
