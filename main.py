@@ -3,20 +3,16 @@ import json
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_cohere import CohereEmbeddings, Cohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
-from langchain_openai import ChatOpenAI
 from utils import load_documents_from_folder
 import gradio as gr
-import openai
 from typing import List
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-if not OPENAI_API_KEY:
-    raise RuntimeError("請設定 OPENAI_API_KEY 至環境變數")
-openai.api_key = OPENAI_API_KEY
+# 你的 Cohere API Key，建議實際用時設在環境變數以保安全
+COHERE_API_KEY = "DS1Ess8AcMXnuONkQKdQ56GmHXI7u7tkQekQrZDJ"
 
 VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
@@ -24,14 +20,14 @@ DOCS_STATE_PATH = os.path.join(VECTOR_STORE_PATH, "last_docs.json")
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-embedding_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-zh")
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0.3)
+# 改用 Cohere Embedding + LLM
+embedding_model = CohereEmbeddings(cohere_api_key=COHERE_API_KEY)
+llm = Cohere(cohere_api_key=COHERE_API_KEY, model="command-r-plus", temperature=0.3)  # 你也可以改 model 參數
 
 vectorstore = None
 qa = None
 
 def get_current_docs_state() -> dict:
-    """回傳 /docs 目錄所有檔名+最後修改時間"""
     docs_state = {}
     for f in os.listdir(DOCUMENTS_PATH):
         path = os.path.join(DOCUMENTS_PATH, f)
@@ -50,7 +46,6 @@ def save_docs_state(state: dict):
         json.dump(state, f)
 
 def get_new_or_updated_files(current: dict, last: dict) -> List[str]:
-    """找出新增加或有修改過的檔案"""
     changed = []
     for name, mtime in current.items():
         if name not in last or last[name] < mtime:
@@ -58,10 +53,11 @@ def get_new_or_updated_files(current: dict, last: dict) -> List[str]:
     return changed
 
 def build_vector_store(docs_state: dict = None):
-    """重新建立向量庫，全部文件"""
     documents = load_documents_from_folder(DOCUMENTS_PATH)
     splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     texts = splitter.split_documents(documents)
+    if not texts:
+        raise RuntimeError("docs 資料夾內沒有可用文件，無法建立向量資料庫，請至少放入一份 txt/pdf/docx/xlsx/csv 檔案！")
     db = FAISS.from_documents(texts, embedding_model)
     db.save_local(VECTOR_STORE_PATH)
     if docs_state:
@@ -69,7 +65,6 @@ def build_vector_store(docs_state: dict = None):
     return db
 
 def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
-    """將新檔案加到現有向量庫（增量）"""
     from langchain.schema import Document
     from langchain_community.document_loaders import (
         TextLoader,
@@ -83,7 +78,6 @@ def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
         filepath = os.path.join(DOCUMENTS_PATH, file)
         if os.path.isfile(filepath):
             ext = os.path.splitext(file)[1].lower()
-            # 用 utils.py 的 loader（支援多種格式），單檔案版本
             if ext == ".txt":
                 loader = TextLoader(filepath, autodetect_encoding=True)
                 docs = loader.load()
@@ -124,8 +118,6 @@ def ensure_qa():
             elif len(current_docs_state) != len(last_docs_state):
                 print(f"文件數變動，重新建構向量庫")
                 vectorstore = build_vector_store(current_docs_state)
-            else:
-                pass
         else:
             vectorstore = build_vector_store(current_docs_state)
     else:
@@ -150,7 +142,7 @@ def rag_answer(question):
 
 # Gradio UI
 with gr.Blocks() as demo:
-    gr.Markdown("# GPT-3.5 向量檢索問答機器人")
+    gr.Markdown("# Cohere 向量檢索問答機器人")
     with gr.Row():
         with gr.Column():
             question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
