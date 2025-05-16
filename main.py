@@ -3,8 +3,8 @@ from llama_cpp import Llama
 import gradio as gr
 
 # 1. 本地模型路徑
-MODEL_PATH = "models/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
-MODEL_URL = "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
+MODEL_PATH = "models/TinyLlama-1.1B-Chat-v1.0.Q4_0.gguf"
+MODEL_URL = "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/TinyLlama-1.1B-Chat-v1.0.Q4_0.gguf"
 
 if not os.path.exists("models"):
     os.makedirs("models")
