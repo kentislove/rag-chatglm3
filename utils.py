@@ -53,3 +53,58 @@ def parse_csv_file(filepath: str) -> List[Document]:
             combined = "\n".join(f"{h}: {r}" for h, r in zip(header, row))
             rows.append(Document(page_content=combined, metadata={"source": filepath}))
     return rows
+
+# ★★★ 新增功能：自動爬網站並產生 .url ★★★
+
+def crawl_links_from_homepage(start_url: str, max_pages=100) -> List[str]:
+    import requests
+    from bs4 import BeautifulSoup
+    from urllib.parse import urljoin, urlparse
+
+    visited = set()
+    to_visit = [start_url]
+    domain = urlparse(start_url).netloc
+    urls = []
+
+    while to_visit and len(visited) < max_pages:
+        url = to_visit.pop(0)
+        if url in visited:
+            continue
+        try:
+            r = requests.get(url, timeout=10)
+            if r.status_code != 200:
+                continue
+            soup = BeautifulSoup(r.text, "html.parser")
+            urls.append(url)
+            visited.add(url)
+            for a in soup.find_all('a', href=True):
+                link = urljoin(url, a['href'])
+                if urlparse(link).netloc == domain and link not in visited and link not in to_visit:
+                    if link.startswith('http'):
+                        to_visit.append(link)
+        except Exception as e:
+            print(f"讀取失敗 {url}: {e}")
+    return urls
+
+def fetch_urls_from_sitemap(sitemap_url: str) -> List[str]:
+    import requests
+    from bs4 import BeautifulSoup
+
+    res = requests.get(sitemap_url)
+    res.raise_for_status()
+    soup = BeautifulSoup(res.content, "xml")
+    urls = [loc.text for loc in soup.find_all("loc")]
+    return urls
+
+def save_url_list(urls: List[str], file_path: str):
+    with open(file_path, "w", encoding="utf-8") as f:
+        for u in urls:
+            f.write(u + "\n")
+    print(f"共寫入 {len(urls)} 筆網址到 {file_path}")
+
+# 範例調用（若要自動爬）
+# urls = crawl_links_from_homepage("https://www.example.com", max_pages=100)
+# save_url_list(urls, "./docs/example_homepage.url")
+# 或
+# urls = fetch_urls_from_sitemap("https://www.example.com/sitemap.xml")
+# save_url_list(urls, "./docs/example_sitemap.url")
