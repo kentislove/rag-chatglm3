@@ -71,29 +71,29 @@ def build_vector_store(docs_state: dict = None):
 def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
     """將新檔案加到現有向量庫（增量）"""
     from langchain.schema import Document
+    from langchain_community.document_loaders import (
+        TextLoader,
+        UnstructuredPDFLoader,
+        UnstructuredWordDocumentLoader,
+        UnstructuredExcelLoader
+    )
     splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     new_documents = []
     for file in new_files:
         filepath = os.path.join(DOCUMENTS_PATH, file)
         if os.path.isfile(filepath):
-            # 只處理這些新檔案
             ext = os.path.splitext(file)[1].lower()
-            # 用 utils.py 的 loader（支援多種格式）
-            # 單檔案版本
+            # 用 utils.py 的 loader（支援多種格式），單檔案版本
             if ext == ".txt":
-                from langchain.document_loaders import TextLoader
                 loader = TextLoader(filepath, autodetect_encoding=True)
                 docs = loader.load()
             elif ext == ".pdf":
-                from langchain.document_loaders import UnstructuredPDFLoader
                 loader = UnstructuredPDFLoader(filepath)
                 docs = loader.load()
             elif ext == ".docx":
-                from langchain.document_loaders import UnstructuredWordDocumentLoader
                 loader = UnstructuredWordDocumentLoader(filepath)
                 docs = loader.load()
             elif ext in [".xlsx", ".xls"]:
-                from langchain.document_loaders import UnstructuredExcelLoader
                 loader = UnstructuredExcelLoader(filepath)
                 docs = loader.load()
             elif ext == ".csv":
@@ -115,7 +115,6 @@ def ensure_qa():
     current_docs_state = get_current_docs_state()
     last_docs_state = load_last_docs_state()
     if vectorstore is None:
-        # 有舊index也要比對目錄是否有新/異動
         if os.path.exists(VECTOR_STORE_PATH) and os.listdir(VECTOR_STORE_PATH):
             vectorstore = FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
             new_files = get_new_or_updated_files(current_docs_state, last_docs_state)
@@ -123,16 +122,13 @@ def ensure_qa():
                 print(f"偵測到新文件或文件變動：{new_files}，自動增量加入向量庫！")
                 vectorstore = add_new_files_to_vector_store(vectorstore, new_files, current_docs_state)
             elif len(current_docs_state) != len(last_docs_state):
-                # 例如手動刪了 docs 內的檔案，要重建 index
                 print(f"文件數變動，重新建構向量庫")
                 vectorstore = build_vector_store(current_docs_state)
             else:
-                # 沒變動就啥都不做
                 pass
         else:
             vectorstore = build_vector_store(current_docs_state)
     else:
-        # 在每次問答時自動檢查是否有新檔案進行增量同步
         new_files = get_new_or_updated_files(current_docs_state, last_docs_state)
         if new_files:
             print(f"偵測到新文件或文件變動：{new_files}，自動增量加入向量庫！")
