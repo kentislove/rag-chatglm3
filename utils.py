@@ -38,21 +38,18 @@ os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 def sync_google_drive_files(folder_path):
     """
     同步 Google Drive 指定資料夾內所有檔案到本地 folder_path
-    需設定 GOOGLE_DRIVE_FOLDER_ID（Drive 資料夾ID）
-    需有 credentials.json 憑證檔
+    只下載真正的檔案（略過 Google Docs/Sheets/Slides 原生格式）
     """
     from google.oauth2 import service_account
     from googleapiclient.discovery import build
     from googleapiclient.http import MediaIoBaseDownload
     import io
 
-    # 讀取 Google Drive 資料夾 ID（建議設成環境變數）
     FOLDER_ID = os.getenv("GOOGLE_DRIVE_FOLDER_ID")
     if not FOLDER_ID:
         print("請設定 GOOGLE_DRIVE_FOLDER_ID 環境變數")
         return
 
-    # 用服務帳號憑證登入
     creds = service_account.Credentials.from_service_account_file(
         "credentials.json",
         scopes=["https://www.googleapis.com/auth/drive.readonly"],
@@ -60,7 +57,7 @@ def sync_google_drive_files(folder_path):
 
     service = build("drive", "v3", credentials=creds)
     query = f"'{FOLDER_ID}' in parents and trashed = false"
-    results = service.files().list(q=query, fields="files(id, name)").execute()
+    results = service.files().list(q=query, fields="files(id, name, mimeType)").execute()
     items = results.get("files", [])
 
     if not items:
@@ -70,9 +67,15 @@ def sync_google_drive_files(folder_path):
     for item in items:
         file_id = item["id"]
         file_name = item["name"]
+        mime_type = item.get("mimeType", "")
         file_path = os.path.join(folder_path, file_name)
         if os.path.exists(file_path):
             print(f"{file_name} 已存在，跳過下載")
+            continue
+
+        # 跳過 Google Docs/Sheets/Slides 等原生格式
+        if mime_type.startswith("application/vnd.google-apps."):
+            print(f"{file_name} 是 Google 文件格式（{mime_type}），略過下載")
             continue
 
         request = service.files().get_media(fileId=file_id)
