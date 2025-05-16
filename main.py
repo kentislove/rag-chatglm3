@@ -11,7 +11,6 @@ from utils import load_documents_from_folder
 import gradio as gr
 from typing import List
 
-# 你的 Cohere API Key，建議實際用時設在環境變數以保安全
 COHERE_API_KEY = "DS1Ess8AcMXnuONkQKdQ56GmHXI7u7tkQekQrZDJ"
 
 VECTOR_STORE_PATH = "./faiss_index"
@@ -20,14 +19,13 @@ DOCS_STATE_PATH = os.path.join(VECTOR_STORE_PATH, "last_docs.json")
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
-# 改用 Cohere Embedding + LLM
 embedding_model = CohereEmbeddings(
     cohere_api_key=COHERE_API_KEY,
-    model="embed-multilingual-v3.0"  # 支援中/英/多語檢索
+    model="embed-multilingual-v3.0"
 )
 llm = ChatCohere(
     cohere_api_key=COHERE_API_KEY,
-    model="command-r-plus",           # 你也可以用 command、command-r
+    model="command-r-plus",
     temperature=0.3
 )
 vectorstore = None
@@ -63,7 +61,7 @@ def build_vector_store(docs_state: dict = None):
     splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     texts = splitter.split_documents(documents)
     if not texts:
-        raise RuntimeError("docs 資料夾內沒有可用文件，無法建立向量資料庫，請至少放入一份 txt/pdf/docx/xlsx/csv 檔案！")
+        raise RuntimeError("docs 資料夾內沒有可用文件，無法建立向量資料庫，請至少放入一份 txt/pdf/docx/xlsx/csv/url 檔案！")
     db = FAISS.from_documents(texts, embedding_model)
     db.save_local(VECTOR_STORE_PATH)
     if docs_state:
@@ -76,7 +74,8 @@ def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
         TextLoader,
         UnstructuredPDFLoader,
         UnstructuredWordDocumentLoader,
-        UnstructuredExcelLoader
+        UnstructuredExcelLoader,
+        WebBaseLoader
     )
     splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     new_documents = []
@@ -99,6 +98,17 @@ def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
             elif ext == ".csv":
                 from utils import parse_csv_file
                 docs = parse_csv_file(filepath)
+            elif ext == ".url":
+                with open(filepath, "r", encoding="utf-8") as f:
+                    urls = [line.strip() for line in f if line.strip()]
+                    for url in urls:
+                        try:
+                            web_loader = WebBaseLoader(url)
+                            docs = web_loader.load()
+                            new_documents.extend(docs)
+                        except Exception as e:
+                            print(f"讀取網址失敗 {url}: {e}")
+                continue
             else:
                 print(f"不支援的格式：{file}")
                 continue
@@ -134,7 +144,6 @@ def ensure_qa():
         elif len(current_docs_state) != len(last_docs_state):
             print(f"文件數變動，重新建構向量庫")
             vectorstore = build_vector_store(current_docs_state)
-
     if qa is None:
         qa = RetrievalQA.from_chain_type(
             llm=llm,
@@ -142,39 +151,8 @@ def ensure_qa():
             retriever=vectorstore.as_retriever()
         )
 
-def rag_answer(question):
-    ensure_qa()
-    return qa.run(question)
-
-# Gradio UI
-with gr.Blocks() as demo:
-    gr.Markdown("# Cohere 向量檢索問答機器人")
-    with gr.Row():
-        with gr.Column():
-            question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
-            submit_btn = gr.Button("送出")
-        with gr.Column():
-            answer_box = gr.Textbox(label="AI 回答")
-    submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
-
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-from gradio.routes import mount_gradio_app
-app = mount_gradio_app(app, demo, path="/gradio")
-
-@app.get("/", include_in_schema=False)
-async def root():
-    return RedirectResponse(url="/gradio")
-
-@app.post("/webhook")
-async def webhook(request: Request):
-    payload = await request.json()
-    user_message = payload.get("message", "")
-    reply = rag_answer(user_message)
-    return {"reply": reply}
+def manual_update_vector():
+    global vectorstore, qa
+    vectorstore = build_vector_store(get_current_docs_state())
+    qa = RetrievalQA.from_chain_type(
+        llm=llm
