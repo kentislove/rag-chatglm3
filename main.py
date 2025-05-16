@@ -3,7 +3,7 @@ import json
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
-from langchain_cohere import CohereEmbeddings, Cohere
+from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
@@ -22,7 +22,7 @@ os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
 # 改用 Cohere Embedding + LLM
 embedding_model = CohereEmbeddings(cohere_api_key=COHERE_API_KEY)
-llm = Cohere(cohere_api_key=COHERE_API_KEY, model="command-r-plus", temperature=0.3)  # 你也可以改 model 參數
+llm = ChatCohere(cohere_api_key=COHERE_API_KEY, model="command-r-plus", temperature=0.3) # 你也可以改 model 參數
 
 vectorstore = None
 qa = None
