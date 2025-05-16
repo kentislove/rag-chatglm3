@@ -108,9 +108,12 @@ def safe_rag_answer(question):
 def chat_fn(msg):
     return safe_rag_answer(msg)
 
-gr.Interface(
-    fn=chat_fn,
-    inputs=gr.Textbox(lines=2, label="請輸入問題"),
-    outputs=gr.Textbox(label="AI 回答"),
-    title="RAG + Local TinyLlama-1.1B (記憶體防爆/自動摘要/自動分段)"
-).launch(server_name="0.0.0.0", server_port=10000)
+if __name__ == "__main__":
+    # 最重要！Render 會用 $PORT 指定 web 服務埠號
+    port = int(os.environ.get("PORT", 10000))
+    gr.Interface(
+        fn=chat_fn,
+        inputs=gr.Textbox(lines=2, label="請輸入問題"),
+        outputs=gr.Textbox(label="AI 回答"),
+        title="RAG + Local TinyLlama-1.1B (記憶體防爆/自動摘要/自動分段)"
+    ).launch(server_name="0.0.0.0", server_port=port)
