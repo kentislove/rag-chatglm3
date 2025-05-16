@@ -155,4 +155,57 @@ def manual_update_vector():
     global vectorstore, qa
     vectorstore = build_vector_store(get_current_docs_state())
     qa = RetrievalQA.from_chain_type(
-        llm=llm
+        llm=llm,
+        chain_type="stuff",
+        retriever=vectorstore.as_retriever()
+    )
+    return "向量資料庫已手動重建完成"
+
+def rag_answer(question):
+    ensure_qa()
+    try:
+        result = qa.run(question)
+    except Exception as e:
+        return f"【系統錯誤】{e}"
+    # Fallback：若結果明顯查無內容（可自訂條件）
+    if not result or result.strip().lower() in ["", "無相關內容", "no relevant content"]:
+        try:
+            direct = llm.invoke(question)
+            return f"【外部網路搜尋結果】\n{direct}"
+        except Exception as e:
+            return f"RAG查無結果且外部查詢失敗：{e}"
+    return result
+
+with gr.Blocks() as demo:
+    gr.Markdown("# Cohere 向量檢索問答機器人")
+    with gr.Row():
+        with gr.Column():
+            question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
+            submit_btn = gr.Button("送出")
+            update_btn = gr.Button("手動更新向量庫")
+        with gr.Column():
+            answer_box = gr.Textbox(label="AI 回答")
+    submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
+    update_btn.click(fn=manual_update_vector, inputs=None, outputs=None)
+
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+from gradio.routes import mount_gradio_app
+app = mount_gradio_app(app, demo, path="/gradio")
+
+@app.get("/", include_in_schema=False)
+async def root():
+    return RedirectResponse(url="/gradio")
+
+@app.post("/webhook")
+async def webhook(request: Request):
+    payload = await request.json()
+    user_message = payload.get("message", "")
+    reply = rag_answer(user_message)
+    return {"reply": reply}
