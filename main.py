@@ -21,9 +21,15 @@ os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 
 # 改用 Cohere Embedding + LLM
-embedding_model = CohereEmbeddings(cohere_api_key=COHERE_API_KEY)
-llm = ChatCohere(cohere_api_key=COHERE_API_KEY, model="command-r-plus", temperature=0.3) # 你也可以改 model 參數
-
+embedding_model = CohereEmbeddings(
+    cohere_api_key=COHERE_API_KEY,
+    model="embed-multilingual-v3.0"  # 支援中/英/多語檢索
+)
+llm = ChatCohere(
+    cohere_api_key=COHERE_API_KEY,
+    model="command-r-plus",           # 你也可以用 command、command-r
+    temperature=0.3
+)
 vectorstore = None
 qa = None
 
