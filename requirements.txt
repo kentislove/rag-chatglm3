@@ -15,3 +15,7 @@ langchain-huggingface
 langchain-openai
 langchain-cohere
 cohere
+pdfminer.six
+openpyxl
+beautifulsoup4
+requests
