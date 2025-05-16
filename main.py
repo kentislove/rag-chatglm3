@@ -8,7 +8,7 @@ MODEL_PATH = "models/TinyLlama-1.1B-Chat-v1.0.Q4_K_M.gguf"
 # 2. 初始化本地 LLM（TinyLlama 1.1B，超省RAM）
 llm = Llama(
     model_path=MODEL_PATH,
-    n_ctx=1024,
+    n_ctx=512,
     n_threads=1,
     n_batch=8,    # TinyLlama 超省RAM，這樣設一般2GB夠用
     verbose=True,
