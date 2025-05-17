@@ -14,6 +14,21 @@ from utils import (
     save_url_list
 )
 import gradio as gr
+
+import tiktoken
+MAX_CONTEXT_TOKENS = 12000
+
+def safe_context_chunks(chunks, max_tokens=MAX_CONTEXT_TOKENS):
+    tokenizer = tiktoken.get_encoding("cl100k_base")
+    total = 0
+    output = []
+    for chunk in chunks:
+        n = len(tokenizer.encode(chunk.page_content))
+        if total + n > max_tokens:
+            break
+        total += n
+        output.append(chunk)
+    return output
 from typing import List
 
 COHERE_API_KEY = "DS1Ess8AcMXnuONkQKdQ56GmHXI7u7tkQekQrZDJ"
@@ -153,13 +168,13 @@ def ensure_qa():
         qa = RetrievalQA.from_chain_type(
             llm=llm,
             chain_type="stuff",
-            retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
+            retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
         )
 
 def manual_update_vector():
     global vectorstore, qa
     vectorstore = build_vector_store(get_current_docs_state())
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
     qa = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
@@ -170,7 +185,9 @@ def manual_update_vector():
 def rag_answer(question):
     ensure_qa()
     try:
-        result = qa.run(question)
+        docs = qa.retriever.get_relevant_documents(question)
+        safe_docs = safe_context_chunks(docs)
+        result = qa.combine_documents_chain.run(input_documents=safe_docs, question=question)
     except Exception as e:
         return f"【系統錯誤】{e}"
     if not result or result.strip().lower() in ["", "無相關內容", "no relevant content"]:
