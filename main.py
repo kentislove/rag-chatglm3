@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
@@ -18,6 +19,169 @@ import tiktoken
 from typing import List
 import requests
 
+
+# 多語 LABELS
+LABELS = {
+    "zh-TW": {
+        "lang": "繁體中文",
+        "title": "太盛昌AI助理",
+        "login": "登入",
+        "username": "帳號",
+        "password": "密碼",
+        "login_fail": "帳號或密碼錯誤！",
+        "ai_qa": "AI 問答",
+        "input_question": "請輸入問題",
+        "submit": "送出",
+        "admin_panel": "管理員功能",
+        "upload": "上傳文件（doc, docx, xls, xlsx, pdf, txt）",
+        "update_vector": "手動更新向量庫",
+        "homepage_url": "全站首頁網址(含http)",
+        "sitemap_url": "sitemap.xml網址",
+        "success_upload": "檔案已上傳！",
+        "logout": "登出",
+        "choose_lang": "選擇語言",
+        "user_mode": "使用者模式",
+        "admin_mode": "管理員模式",
+        "homepage_filename": ".url檔名",
+        "sitemap_filename": ".url檔名",
+        "homepage_crawl": "用首頁爬子頁並產生 .url",
+        "sitemap_crawl": "用sitemap自動產生 .url",
+        "uploaded": "已上傳：",
+        "update_notice": "請點「手動更新向量庫」導入向量資料庫。"
+    },
+    "zh-CN": {
+        "lang": "简体中文",
+        "title": "太盛昌AI助理",
+        "login": "登录",
+        "username": "账号",
+        "password": "密码",
+        "login_fail": "账号或密码错误！",
+        "ai_qa": "AI 问答",
+        "input_question": "请输入问题",
+        "submit": "提交",
+        "admin_panel": "管理员功能",
+        "upload": "上传文件（doc, docx, xls, xlsx, pdf, txt）",
+        "update_vector": "手动更新向量库",
+        "homepage_url": "全站首页网址(含http)",
+        "sitemap_url": "sitemap.xml网址",
+        "success_upload": "文件已上传！",
+        "logout": "登出",
+        "choose_lang": "选择语言",
+        "user_mode": "使用者模式",
+        "admin_mode": "管理员模式",
+        "homepage_filename": ".url档名",
+        "sitemap_filename": ".url档名",
+        "homepage_crawl": "用首页爬子页并产生 .url",
+        "sitemap_crawl": "用sitemap自动产生 .url",
+        "uploaded": "已上传：",
+        "update_notice": "请点“手动更新向量库”导入向量数据库。"
+    },
+    "en": {
+        "lang": "English",
+        "title": "KentWare AI BOX",
+        "login": "Login",
+        "username": "Username",
+        "password": "Password",
+        "login_fail": "Wrong username or password!",
+        "ai_qa": "AI QA",
+        "input_question": "Type your question here",
+        "submit": "Submit",
+        "admin_panel": "Admin Functions",
+        "upload": "Upload Files (doc, docx, xls, xlsx, pdf, txt)",
+        "update_vector": "Manual Vector Update",
+        "homepage_url": "Homepage URL (with http)",
+        "sitemap_url": "sitemap.xml URL",
+        "success_upload": "File uploaded!",
+        "logout": "Logout",
+        "choose_lang": "Choose language",
+        "user_mode": "User mode",
+        "admin_mode": "Admin mode",
+        "homepage_filename": ".url filename",
+        "sitemap_filename": ".url filename",
+        "homepage_crawl": "Crawl homepage & save .url",
+        "sitemap_crawl": "Crawl sitemap & save .url",
+        "uploaded": "Uploaded:",
+        "update_notice": "Please click 'Manual Vector Update' to import."
+    },
+    "ja": {
+        "lang": "日本語",
+        "title": "タイセイショウAIアシスタント",
+        "login": "ログイン",
+        "username": "ユーザー名",
+        "password": "パスワード",
+        "login_fail": "ユーザー名またはパスワードが間違っています！",
+        "ai_qa": "AI 質問",
+        "input_question": "質問を入力してください",
+        "submit": "送信",
+        "admin_panel": "管理者機能",
+        "upload": "ファイルをアップロード（doc, docx, xls, xlsx, pdf, txt）",
+        "update_vector": "ベクトル手動更新",
+        "homepage_url": "ホームページURL（http含む）",
+        "sitemap_url": "sitemap.xmlのURL",
+        "success_upload": "ファイルがアップロードされました！",
+        "logout": "ログアウト",
+        "choose_lang": "言語を選択",
+        "user_mode": "ユーザーモード",
+        "admin_mode": "管理者モード",
+        "homepage_filename": ".urlファイル名",
+        "sitemap_filename": ".urlファイル名",
+        "homepage_crawl": "ホームページクロールして .url 作成",
+        "sitemap_crawl": "sitemap から .url 作成",
+        "uploaded": "アップロード済み：",
+        "update_notice": "「ベクトル手動更新」を押して反映してください。"
+    },
+    "ko": {
+        "lang": "한국어",
+        "title": "태성창 AI 어시스턴트",
+        "login": "로그인",
+        "username": "아이디",
+        "password": "비밀번호",
+        "login_fail": "아이디 또는 비밀번호가 틀렸습니다!",
+        "ai_qa": "AI 질문",
+        "input_question": "질문을 입력하세요",
+        "submit": "제출",
+        "admin_panel": "관리자 기능",
+        "upload": "파일 업로드 (doc, docx, xls, xlsx, pdf, txt)",
+        "update_vector": "벡터 수동 업데이트",
+        "homepage_url": "홈페이지 URL (http 포함)",
+        "sitemap_url": "sitemap.xml URL",
+        "success_upload": "파일이 업로드되었습니다!",
+        "logout": "로그아웃",
+        "choose_lang": "언어 선택",
+        "user_mode": "사용자 모드",
+        "admin_mode": "관리자 모드",
+        "homepage_filename": ".url 파일명",
+        "sitemap_filename": ".url 파일명",
+        "homepage_crawl": "홈페이지 크롤링 및 .url 저장",
+        "sitemap_crawl": "sitemap으로 .url 저장",
+        "uploaded": "업로드됨:",
+        "update_notice": "‘벡터 수동 업데이트’를 눌러 반영하세요."
+    }
+}
+DEFAULT_LANG = "zh-TW"
+
+def detect_lang(request: gr.Request):
+    accept_language = request.headers.get('accept-language', '').lower()
+    if accept_language.startswith("zh-tw"):
+        return "zh-TW"
+    elif accept_language.startswith("zh-cn"):
+        return "zh-CN"
+    elif accept_language.startswith("ja"):
+        return "ja"
+    elif accept_language.startswith("ko"):
+        return "ko"
+    elif accept_language.startswith("zh"):
+        return "zh-TW"
+    else:
+        return "en"
+
+def check_login(username, password):
+    if username == "admin" and password == "AaAa691027!!":
+        return "admin"
+    if username == "user" and password == "":
+        return "user"
+    return None
+
 MAX_CONTEXT_TOKENS = 12000
 
 def safe_context_chunks(chunks, max_tokens=MAX_CONTEXT_TOKENS):
@@ -32,13 +196,15 @@ def safe_context_chunks(chunks, max_tokens=MAX_CONTEXT_TOKENS):
         output.append(chunk)
     return output
 
-COHERE_API_KEY = "DS1Ess8AcMXnuONkQKdQ56GmHXI7u7tkQekQrZDJ"
-
 VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
 DOCS_STATE_PATH = os.path.join(VECTOR_STORE_PATH, "last_docs.json")
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
+
+COHERE_API_KEY = os.getenv("COHERE_API_KEY")
+if not COHERE_API_KEY:
+    raise RuntimeError("請設定 Cohere API Key 到 COHERE_API_KEY 環境變數！")
 
 embedding_model = CohereEmbeddings(
     cohere_api_key=COHERE_API_KEY,
@@ -150,20 +316,16 @@ def ensure_qa():
             vectorstore = FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
             new_files = get_new_or_updated_files(current_docs_state, last_docs_state)
             if new_files:
-                print(f"偵測到新文件或文件變動：{new_files}，自動增量加入向量庫！")
                 vectorstore = add_new_files_to_vector_store(vectorstore, new_files, current_docs_state)
             elif len(current_docs_state) != len(last_docs_state):
-                print(f"文件數變動，重新建構向量庫")
                 vectorstore = build_vector_store(current_docs_state)
         else:
             vectorstore = build_vector_store(current_docs_state)
     else:
         new_files = get_new_or_updated_files(current_docs_state, last_docs_state)
         if new_files:
-            print(f"偵測到新文件或文件變動：{new_files}，自動增量加入向量庫！")
             vectorstore = add_new_files_to_vector_store(vectorstore, new_files, current_docs_state)
         elif len(current_docs_state) != len(last_docs_state):
-            print(f"文件數變動，重新建構向量庫")
             vectorstore = build_vector_store(current_docs_state)
     if qa is None:
         qa = RetrievalQA.from_chain_type(
@@ -189,7 +351,6 @@ def duckduckgo_search(query):
         res = requests.get(url, timeout=8)
         data = res.json()
         answer = data.get("AbstractText") or data.get("Answer")
-        # 先取摘要，再取相關主題
         if not answer:
             related = data.get("RelatedTopics", [])
             if isinstance(related, list) and related:
@@ -199,45 +360,55 @@ def duckduckgo_search(query):
     except Exception as e:
         return f"DuckDuckGo 查詢失敗: {e}"
 
-
-def format_llm_result(result):
-    # 若為 AIMessage, BaseMessage, ChatMessage 型態，取 content，否則轉字串
-    return getattr(result, 'content', str(result)).strip() if result else ""
-
-
-def rag_answer(question):
+def rag_answer_lang(question, lang_code):
+    force_english = lang_code in ["en", "ja", "ko"]
+    if force_english:
+        q = f"Please answer the following question in English:\n{question}"
+    else:
+        q = question
     ensure_qa()
-    # 1. RAG 內部檢索
+    # RAG 部分，永遠嘗試，出錯也給出明確提示
     try:
-        docs = qa.retriever.get_relevant_documents(question)
+        docs = qa.retriever.get_relevant_documents(q)
         safe_docs = safe_context_chunks(docs)
-        rag_result = qa.combine_documents_chain.run(input_documents=safe_docs, question=question)
+        rag_result = qa.combine_documents_chain.run(input_documents=safe_docs, question=q)
+        if not rag_result or str(rag_result).strip() == "":
+            rag_result = "查無內容" if not force_english else "No content"
     except Exception as e:
-        rag_result = f"【錯誤】RAG 失敗：{e}"
-
-    # 2. Cohere LLM 生成
+        rag_result = f"【RAG錯誤】{e}"
+    # Cohere LLM 部分，不影響主流程
     try:
-        cohere_result = llm.invoke(question)
+        cohere_result = llm.invoke(q)
+        cohere_msg = f"{getattr(cohere_result,'content',str(cohere_result)).strip()}"
+        if not cohere_msg:
+            raise Exception("Empty LLM result")
     except Exception as e:
-        cohere_result = f"【錯誤】Cohere LLM 失敗：{e}"
+        if lang_code == "en":
+            cohere_msg = "[LLM Error] External AI temporarily unavailable."
+        elif lang_code == "ja":
+            cohere_msg = "[LLMエラー] 外部AIは一時的に利用できません。"
+        elif lang_code == "ko":
+            cohere_msg = "[LLM 오류] 외부 AI를 일시적으로 사용할 수 없습니다."
+        elif lang_code == "zh-CN":
+            cohere_msg = "[LLM错误] 外部AI暂时无法响应。"
+        else:
+            cohere_msg = "[LLM錯誤] 外部AI暫時無法回應。"
 
-    # 3. DuckDuckGo 即時查詢
-    duck_result = duckduckgo_search(question)
+    # DuckDuckGo 可失敗但不影響主流程
+    try:
+        duck_result = duckduckgo_search(q)
+        if not duck_result or str(duck_result).strip() == "" or "查無" in duck_result:
+            duck_msg = "查無內容" if not force_english else "No content"
+        else:
+            duck_msg = duck_result.strip()
+    except Exception as e:
+        duck_msg = "查無內容" if not force_english else "No content"
 
-    # 格式化顯示（全部安全轉字串）
-    msg = ""
-    if rag_result and len(str(rag_result).strip()) > 0:
-        msg += f"【來自 RAG 向量資料庫】\n{str(rag_result).strip()}\n\n"
-    else:
-        msg += "【來自 RAG 向量資料庫】\n查無內容\n\n"
-    msg += f"【來自外部 Cohere LLM】\n{format_llm_result(cohere_result)}\n\n"
-    if duck_result and len(str(duck_result).strip()) > 0 and "查無" not in duck_result:
-        msg += f"【來自外部 DuckDuckGo】\n{duck_result.strip()}\n"
-    else:
-        msg += "【來自外部 DuckDuckGo】\n查無內容\n"
+    # 最終多來源並列回傳
+    msg = f"【RAG】\n{rag_result}\n\n"
+    msg += f"【LLM】\n{cohere_msg}\n\n"
+    msg += f"【DuckDuckGo】\n{duck_msg}\n"
     return msg
-
-
 
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
@@ -259,35 +430,121 @@ def crawl_and_save_urls_sitemap(sitemap_url, filename):
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
 
-with gr.Blocks() as demo:
-    gr.Markdown("# Cohere 向量檢索問答機器人")
+with gr.Blocks(title="太盛昌AI助理") as demo:
+    lang = gr.State(DEFAULT_LANG)
+    role = gr.State("user")
+    login_status = gr.State("")
     with gr.Row():
         with gr.Column():
-            question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
-            submit_btn = gr.Button("送出")
-            gr.Markdown("---")
-            homepage_url = gr.Textbox(label="全站首頁網址(含http)")
-            homepage_filename = gr.Textbox(label=".url檔名(如 demo_homepage.url )")
+            ai_title = gr.Markdown(f"<h1 id='ai_title'>{LABELS[DEFAULT_LANG]['title']}</h1>")
+            lang_selector = gr.Radio(
+                choices=[LABELS[k]["lang"] for k in LABELS],
+                value=LABELS[DEFAULT_LANG]["lang"],
+                label=LABELS[DEFAULT_LANG]["choose_lang"]
+            )
+            username_input = gr.Textbox(label=LABELS[DEFAULT_LANG]["username"])
+            password_input = gr.Textbox(label=LABELS[DEFAULT_LANG]["password"], type="password")
+            login_btn = gr.Button(LABELS[DEFAULT_LANG]["login"])
+            login_fail_tip = gr.Markdown("")
+    with gr.Row():
+        with gr.Column(visible=False) as main_left:
+            qa_box = gr.Textbox(label=LABELS[DEFAULT_LANG]["input_question"], placeholder=LABELS[DEFAULT_LANG]["input_question"])
+            submit_btn = gr.Button(LABELS[DEFAULT_LANG]["submit"])
+            answer_box = gr.Textbox(label=LABELS[DEFAULT_LANG]["ai_qa"], elem_id="answer_area", interactive=False, show_copy_button=True)
+        with gr.Column(visible=False) as admin_panel:
+            upload_file = gr.File(label=LABELS[DEFAULT_LANG]["upload"], file_count="multiple", file_types=[".doc",".docx",".xls",".xlsx",".pdf",".txt"])
+            upload_btn = gr.Button(LABELS[DEFAULT_LANG]["upload"])
+            update_btn = gr.Button(LABELS[DEFAULT_LANG]["update_vector"])
+            homepage_url = gr.Textbox(label=LABELS[DEFAULT_LANG]["homepage_url"])
+            homepage_filename = gr.Textbox(label=LABELS[DEFAULT_LANG]["homepage_filename"])
             homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
-            crawl_btn = gr.Button("用首頁爬子頁並產生 .url")
-            sitemap_url = gr.Textbox(label="sitemap.xml網址")
-            sitemap_filename = gr.Textbox(label=".url檔名(如 demo_sitemap.url )")
-            crawl_sitemap_btn = gr.Button("用sitemap自動產生 .url")
-            update_btn = gr.Button("手動更新向量庫")  # 放最下面
-        with gr.Column():
-            answer_box = gr.Textbox(label="AI 回答")
-    submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
+            crawl_btn = gr.Button(LABELS[DEFAULT_LANG]["homepage_crawl"])
+            sitemap_url = gr.Textbox(label=LABELS[DEFAULT_LANG]["sitemap_url"])
+            sitemap_filename = gr.Textbox(label=LABELS[DEFAULT_LANG]["sitemap_filename"])
+            crawl_sitemap_btn = gr.Button(LABELS[DEFAULT_LANG]["sitemap_crawl"])
+            admin_status = gr.Markdown("")
+
+    # ===== 登入邏輯 =====
+    def do_login(username, password, lang_str):
+        lang_code = None
+        for k, v in LABELS.items():
+            if v["lang"] == lang_str:
+                lang_code = k
+                break
+        if not lang_code:
+            lang_code = DEFAULT_LANG
+        role_val = check_login(username, password)
+        title = LABELS[lang_code]["title"]
+        if role_val == "admin":
+            return lang_code, role_val, "", gr.update(visible=True), gr.update(visible=True), gr.update(value=f"<h1 id='ai_title'>{title}</h1>")
+        elif role_val == "user":
+            return lang_code, role_val, "", gr.update(visible=True), gr.update(visible=False), gr.update(value=f"<h1 id='ai_title'>{title}</h1>")
+        else:
+            return lang_code, "user", LABELS[lang_code]["login_fail"], gr.update(visible=False), gr.update(visible=False), gr.update(value=f"<h1 id='ai_title'>{title}</h1>")
+    login_btn.click(
+        fn=do_login,
+        inputs=[username_input, password_input, lang_selector],
+        outputs=[lang, role, login_fail_tip, main_left, admin_panel, ai_title]
+    )
+    # AI 問答
+    submit_btn.click(fn=rag_answer_lang, inputs=[qa_box, lang], outputs=answer_box)
+
+    # ===== 檔案上傳 =====
+    def save_uploaded_files(files):
+        allowed_exts = {".doc",".docx",".xls",".xlsx",".pdf",".txt"}
+        saved = []
+        if not files:
+            return "請選擇要上傳的文件！"
+        if not isinstance(files, list):
+            files = [files]
+        for f in files:
+            filename = os.path.basename(f.name)
+            ext = os.path.splitext(filename)[1].lower()
+            if ext not in allowed_exts:
+                continue
+            save_path = os.path.join(DOCUMENTS_PATH, filename)
+            shutil.copy(f.name, save_path)
+            saved.append(filename)
+        if saved:
+            return f"{LABELS[DEFAULT_LANG]['uploaded']} {', '.join(saved)}\n{LABELS[DEFAULT_LANG]['update_notice']}"
+        else:
+            return "沒有支援的檔案被上傳！僅允許 doc, docx, xls, xlsx, pdf, txt"
+    upload_btn.click(fn=save_uploaded_files, inputs=upload_file, outputs=admin_status)
+    # ===== 手動更新向量 =====
+    update_btn.click(fn=manual_update_vector, inputs=None, outputs=admin_status)
+    # ===== 網站爬蟲 =====
     crawl_btn.click(
         fn=crawl_and_save_urls_homepage,
         inputs=[homepage_url, homepage_filename, homepage_maxpages],
-        outputs=None
+        outputs=admin_status
     )
     crawl_sitemap_btn.click(
         fn=crawl_and_save_urls_sitemap,
         inputs=[sitemap_url, sitemap_filename],
-        outputs=None
+        outputs=admin_status
     )
-    update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)   # 這行放最後
+    # ===== CSS =====
+    demo.load(None, None, None, js="""
+        function() {
+            let box = document.querySelector('#answer_area textarea');
+            if (box) {
+                if (window.innerWidth <= 700) {
+                    box.style.height = '200px';
+                    box.style.overflowY = 'scroll';
+                } else {
+                    box.style.height = (window.innerHeight - 320) + 'px';
+                    box.style.overflowY = 'auto';
+                }
+            }
+            // 標題即時切換
+            let title = document.getElementById('ai_title');
+            if (title && box) {
+                document.title = title.innerText;
+            }
+        }
+    """)
+    # 自動語言偵測
+    demo.load(lambda request: (detect_lang(request), "user"), outputs=[lang, role])
 
 app = FastAPI()
 app.add_middleware(
@@ -303,10 +560,3 @@ app = mount_gradio_app(app, demo, path="/gradio")
 @app.get("/", include_in_schema=False)
 async def root():
     return RedirectResponse(url="/gradio")
-
-@app.post("/webhook")
-async def webhook(request: Request):
-    payload = await request.json()
-    user_message = payload.get("message", "")
-    reply = rag_answer(user_message)
-    return {"reply": reply}

@@ -20,3 +20,6 @@ openpyxl
 beautifulsoup4
 requests
 pi-heif
+unstructured_inference
+pytesseract
+pdf2image
