@@ -63,7 +63,7 @@ def get_new_or_updated_files(current: dict, last: dict) -> List[str]:
 
 def build_vector_store(docs_state: dict = None):
     documents = load_documents_from_folder(DOCUMENTS_PATH)
-    splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+    splitter = CharacterTextSplitter(chunk_size=200, chunk_overlap=30)
     texts = splitter.split_documents(documents)
     if not texts:
         raise RuntimeError("docs 資料夾內沒有可用文件，無法建立向量資料庫，請至少放入一份 txt/pdf/docx/xlsx/csv/url 檔案！")
@@ -82,7 +82,7 @@ def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
         UnstructuredExcelLoader,
         WebBaseLoader
     )
-    splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=100)
+    splitter = CharacterTextSplitter(chunk_size=200, chunk_overlap=30)
     new_documents = []
     for file in new_files:
         filepath = os.path.join(DOCUMENTS_PATH, file)
@@ -153,12 +153,13 @@ def ensure_qa():
         qa = RetrievalQA.from_chain_type(
             llm=llm,
             chain_type="stuff",
-            retriever=vectorstore.as_retriever()
+            retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
         )
 
 def manual_update_vector():
     global vectorstore, qa
     vectorstore = build_vector_store(get_current_docs_state())
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
     qa = RetrievalQA.from_chain_type(
         llm=llm,
         chain_type="stuff",
