@@ -19,3 +19,4 @@ pdfminer.six
 openpyxl
 beautifulsoup4
 requests
+pi-heif
