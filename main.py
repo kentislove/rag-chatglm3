@@ -220,6 +220,7 @@ with gr.Blocks() as demo:
         with gr.Column():
             answer_box = gr.Textbox(label="AI 回答")
     submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
+    update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)
     update_btn.click(fn=manual_update_vector, inputs=None, outputs=None)
     crawl_btn.click(
         fn=crawl_and_save_urls_homepage,
