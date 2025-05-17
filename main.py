@@ -199,6 +199,12 @@ def duckduckgo_search(query):
     except Exception as e:
         return f"DuckDuckGo 查詢失敗: {e}"
 
+
+def format_llm_result(result):
+    # 若為 AIMessage, BaseMessage, ChatMessage 型態，取 content，否則轉字串
+    return getattr(result, 'content', str(result)).strip() if result else ""
+
+
 def rag_answer(question):
     ensure_qa()
     # 1. RAG 內部檢索
@@ -218,16 +224,13 @@ def rag_answer(question):
     # 3. DuckDuckGo 即時查詢
     duck_result = duckduckgo_search(question)
 
-    # 格式化顯示
+    # 格式化顯示（全部安全轉字串）
     msg = ""
     if rag_result and len(str(rag_result).strip()) > 0:
-        msg += f"【來自 RAG 向量資料庫】\n{rag_result.strip()}\n\n"
+        msg += f"【來自 RAG 向量資料庫】\n{str(rag_result).strip()}\n\n"
     else:
         msg += "【來自 RAG 向量資料庫】\n查無內容\n\n"
-    if cohere_result and len(str(cohere_result).strip()) > 0:
-        msg += f"【來自外部 Cohere LLM】\n{cohere_result.strip()}\n\n"
-    else:
-        msg += "【來自外部 Cohere LLM】\n查無內容\n\n"
+    msg += f"【來自外部 Cohere LLM】\n{format_llm_result(cohere_result)}\n\n"
     if duck_result and len(str(duck_result).strip()) > 0 and "查無" not in duck_result:
         msg += f"【來自外部 DuckDuckGo】\n{duck_result.strip()}\n"
     else:
