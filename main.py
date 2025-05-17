@@ -274,7 +274,8 @@ with gr.Blocks() as demo:
         inputs=[sitemap_url, sitemap_filename],
         outputs=None
     )
-
+# update_btn click 放最後，且 outputs=answer_box（顯示提示）
+    update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
