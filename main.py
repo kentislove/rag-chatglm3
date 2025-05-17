@@ -14,8 +14,10 @@ from utils import (
     save_url_list
 )
 import gradio as gr
-
 import tiktoken
+from typing import List
+import requests
+
 MAX_CONTEXT_TOKENS = 12000
 
 def safe_context_chunks(chunks, max_tokens=MAX_CONTEXT_TOKENS):
@@ -29,7 +31,6 @@ def safe_context_chunks(chunks, max_tokens=MAX_CONTEXT_TOKENS):
         total += n
         output.append(chunk)
     return output
-from typing import List
 
 COHERE_API_KEY = "DS1Ess8AcMXnuONkQKdQ56GmHXI7u7tkQekQrZDJ"
 
@@ -182,6 +183,22 @@ def manual_update_vector():
     )
     return "向量資料庫已手動重建完成"
 
+def duckduckgo_search(query):
+    url = f"https://api.duckduckgo.com/?q={query}&format=json"
+    try:
+        res = requests.get(url, timeout=8)
+        data = res.json()
+        answer = data.get("AbstractText") or data.get("Answer")
+        # 先取摘要，再取相關主題
+        if not answer:
+            related = data.get("RelatedTopics", [])
+            if isinstance(related, list) and related:
+                if isinstance(related[0], dict):
+                    answer = related[0].get("Text", "")
+        return answer if answer else "查無 DuckDuckGo 即時答案"
+    except Exception as e:
+        return f"DuckDuckGo 查詢失敗: {e}"
+
 def rag_answer(question):
     ensure_qa()
     try:
@@ -190,15 +207,24 @@ def rag_answer(question):
         result = qa.combine_documents_chain.run(input_documents=safe_docs, question=question)
     except Exception as e:
         return f"【系統錯誤】{e}"
-    if not result or result.strip().lower() in ["", "無相關內容", "no relevant content"]:
+    # 判斷無結果（空、預設句、內容太短），再 fallback
+    if (not result) or (result.strip().lower() in ["", "無相關內容", "no relevant content"]) or (len(result.strip()) < 10):
+        # 1. 先用 Cohere 直接問
         try:
             direct = llm.invoke(question)
-            return f"【外部網路搜尋結果】\n{direct}"
+            if direct and len(direct.strip()) > 10:
+                return f"【來自外部 Cohere LLM】\n{direct}"
         except Exception as e:
-            return f"RAG查無結果且外部查詢失敗：{e}"
-    return result
+            direct = None
+        # 2. 再用 DuckDuckGo 查詢
+        duck_ans = duckduckgo_search(question)
+        if duck_ans and len(duck_ans.strip()) > 5 and "查無" not in duck_ans:
+            return f"【來自外部 DuckDuckGo】\n{duck_ans}"
+        return "【查無內容】RAG 與外部查詢都沒有相關結果。"
+    # 有內部 RAG 回答
+    return f"【來自 RAG 向量資料庫】\n{result}"
 
-# 這裡自動補 .url 副檔名
+
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
         filename = "homepage_auto.url"
@@ -238,7 +264,6 @@ with gr.Blocks() as demo:
             answer_box = gr.Textbox(label="AI 回答")
     submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
     update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)
-    update_btn.click(fn=manual_update_vector, inputs=None, outputs=None)
     crawl_btn.click(
         fn=crawl_and_save_urls_homepage,
         inputs=[homepage_url, homepage_filename, homepage_maxpages],
