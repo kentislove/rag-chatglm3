@@ -7,7 +7,12 @@ from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
-from utils import load_documents_from_folder, crawl_links_from_homepage, fetch_urls_from_sitemap, save_url_list
+from utils import (
+    load_documents_from_folder,
+    crawl_links_from_homepage,
+    fetch_urls_from_sitemap,
+    save_url_list
+)
 import gradio as gr
 from typing import List
 
@@ -175,8 +180,7 @@ def rag_answer(question):
             return f"RAG查無結果且外部查詢失敗：{e}"
     return result
 
-# ----------- 這裡是你要的副檔名自動補全 function -----------
-
+# 這裡自動補 .url 副檔名
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
         filename = "homepage_auto.url"
@@ -196,8 +200,6 @@ def crawl_and_save_urls_sitemap(sitemap_url, filename):
     urls = fetch_urls_from_sitemap(sitemap_url)
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
-
-# ------------------------------------------------------------
 
 with gr.Blocks() as demo:
     gr.Markdown("# Cohere 向量檢索問答機器人")
