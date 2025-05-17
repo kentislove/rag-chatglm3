@@ -265,7 +265,6 @@ with gr.Blocks() as demo:
         with gr.Column():
             question_box = gr.Textbox(label="輸入問題", placeholder="請輸入問題")
             submit_btn = gr.Button("送出")
-            update_btn = gr.Button("手動更新向量庫")
             gr.Markdown("---")
             homepage_url = gr.Textbox(label="全站首頁網址(含http)")
             homepage_filename = gr.Textbox(label=".url檔名(如 demo_homepage.url )")
@@ -274,10 +273,10 @@ with gr.Blocks() as demo:
             sitemap_url = gr.Textbox(label="sitemap.xml網址")
             sitemap_filename = gr.Textbox(label=".url檔名(如 demo_sitemap.url )")
             crawl_sitemap_btn = gr.Button("用sitemap自動產生 .url")
+            update_btn = gr.Button("手動更新向量庫")  # 放最下面
         with gr.Column():
             answer_box = gr.Textbox(label="AI 回答")
     submit_btn.click(fn=rag_answer, inputs=question_box, outputs=answer_box)
-    update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)
     crawl_btn.click(
         fn=crawl_and_save_urls_homepage,
         inputs=[homepage_url, homepage_filename, homepage_maxpages],
@@ -288,8 +287,8 @@ with gr.Blocks() as demo:
         inputs=[sitemap_url, sitemap_filename],
         outputs=None
     )
-# update_btn click 放最後，且 outputs=answer_box（顯示提示）
-    update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)
+    update_btn.click(fn=manual_update_vector, inputs=None, outputs=answer_box)   # 這行放最後
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
