@@ -201,28 +201,39 @@ def duckduckgo_search(query):
 
 def rag_answer(question):
     ensure_qa()
+    # 1. RAG 內部檢索
     try:
         docs = qa.retriever.get_relevant_documents(question)
         safe_docs = safe_context_chunks(docs)
-        result = qa.combine_documents_chain.run(input_documents=safe_docs, question=question)
+        rag_result = qa.combine_documents_chain.run(input_documents=safe_docs, question=question)
     except Exception as e:
-        return f"【系統錯誤】{e}"
-    # 判斷無結果（空、預設句、內容太短），再 fallback
-    if (not result) or (result.strip().lower() in ["", "無相關內容", "no relevant content"]) or (len(result.strip()) < 10):
-        # 1. 先用 Cohere 直接問
-        try:
-            direct = llm.invoke(question)
-            if direct and len(direct.strip()) > 10:
-                return f"【來自外部 Cohere LLM】\n{direct}"
-        except Exception as e:
-            direct = None
-        # 2. 再用 DuckDuckGo 查詢
-        duck_ans = duckduckgo_search(question)
-        if duck_ans and len(duck_ans.strip()) > 5 and "查無" not in duck_ans:
-            return f"【來自外部 DuckDuckGo】\n{duck_ans}"
-        return "【查無內容】RAG 與外部查詢都沒有相關結果。"
-    # 有內部 RAG 回答
-    return f"【來自 RAG 向量資料庫】\n{result}"
+        rag_result = f"【錯誤】RAG 失敗：{e}"
+
+    # 2. Cohere LLM 生成
+    try:
+        cohere_result = llm.invoke(question)
+    except Exception as e:
+        cohere_result = f"【錯誤】Cohere LLM 失敗：{e}"
+
+    # 3. DuckDuckGo 即時查詢
+    duck_result = duckduckgo_search(question)
+
+    # 格式化顯示
+    msg = ""
+    if rag_result and len(str(rag_result).strip()) > 0:
+        msg += f"【來自 RAG 向量資料庫】\n{rag_result.strip()}\n\n"
+    else:
+        msg += "【來自 RAG 向量資料庫】\n查無內容\n\n"
+    if cohere_result and len(str(cohere_result).strip()) > 0:
+        msg += f"【來自外部 Cohere LLM】\n{cohere_result.strip()}\n\n"
+    else:
+        msg += "【來自外部 Cohere LLM】\n查無內容\n\n"
+    if duck_result and len(str(duck_result).strip()) > 0 and "查無" not in duck_result:
+        msg += f"【來自外部 DuckDuckGo】\n{duck_result.strip()}\n"
+    else:
+        msg += "【來自外部 DuckDuckGo】\n查無內容\n"
+    return msg
+
 
 
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
