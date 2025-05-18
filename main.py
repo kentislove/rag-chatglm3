@@ -11,7 +11,6 @@ from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
-print("utils path", os.path.abspath("utils.py"))
 from utils import (
     load_documents_from_folder,
     crawl_links_from_homepage,
@@ -19,7 +18,6 @@ from utils import (
     save_url_list
 )
 import gradio as gr
-from typing import List
 import cohere
 
 # ===========================
@@ -163,10 +161,10 @@ LABELS = {
     }
 }
 DEFAULT_LANG = "zh-TW"
-
 def detect_lang():
     return DEFAULT_LANG
 
+# ============ 帳號登入 =============
 def check_login(username, password):
     if username == "admin" and password == "AaAa691027!!":
         return "admin"
@@ -174,9 +172,7 @@ def check_login(username, password):
         return "user"
     return None
 
-# ===========================
-# Session ID, DB, 向量庫/LLM/NLU/NLG
-# ===========================
+# ============ Session/DB/向量庫/LLM/NLU/NLG ============
 def generate_session_id(method="uuid", username=None, token=None):
     if method == "uuid":
         return str(uuid.uuid4())
@@ -231,7 +227,6 @@ def get_vectorstore_file_count():
         return 0
     return len([f for f in os.listdir('faiss_index') if os.path.isfile(os.path.join('faiss_index', f))])
 
-# Cohere
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 if not COHERE_API_KEY:
     raise RuntimeError("請設定 Cohere API Key 到 COHERE_API_KEY 環境變數！")
@@ -253,7 +248,6 @@ def classify_intent(question):
         return response.classifications[0].prediction
     except Exception as e:
         return "unknown"
-
 
 def extract_entities(question):
     import re
@@ -285,7 +279,6 @@ def summarize_qa(question, answer):
     prompt = f"Summarize the following conversation in one sentence:\nQ: {question}\nA: {answer}"
     return cohere_generate(prompt)
 
-# FAISS 向量庫
 VECTOR_STORE_PATH = "./faiss_index"
 DOCUMENTS_PATH = "./docs"
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
@@ -348,52 +341,42 @@ def build_multi_turn_prompt(current_question, session_id):
     dialog += f"User: {current_question}\nBot:"
     return dialog
 
-# ===========================
-# RAG 多語入口
-# ===========================
-def rag_answer_lang(question, lang_code, username="user", session_id=None, login_type="user"):
+# =============== 精簡版多語 AI Chat/RAG 回覆 function ===================
+
+def ai_chat_llm_only(question, username="user"):
+    session_id = generate_session_id("uuid", username=username)
+    login_type = "user"
+    ensure_qa()
+    prompt = build_multi_turn_prompt(question, session_id)
+    llm_result = cohere_generate(prompt)
+    # 紀錄問答
+    intent = classify_intent(question)
+    entities = extract_entities(question)
+    summary = summarize_qa(question, llm_result)
+    rag_result = qa.run(question)
+    save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
+    return llm_result
+
+def rag_answer_rag_only(question, lang_code, username="user"):
+    session_id = generate_session_id("uuid", username=username)
+    login_type = "user"
+    ensure_qa()
     force_english = lang_code in ["en", "ja", "ko"]
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
-    ensure_qa()
     try:
         docs = qa.retriever.get_relevant_documents(q)
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
+    # 紀錄問答
     prompt = build_multi_turn_prompt(question, session_id)
-    try:
-        cohere_msg = cohere_generate(prompt)
-    except Exception as e:
-        cohere_msg = "[LLM error]"
+    cohere_msg = cohere_generate(prompt)
     intent = classify_intent(question)
     entities = extract_entities(question)
     summary = summarize_qa(question, cohere_msg)
-    save_chat(username, question, cohere_msg, intent, entities, summary, session_id or "default", login_type)
-    return f"【RAG】\n{rag_result}\n\n【LLM】\n{cohere_msg}\n\n【意圖】{intent}\n【實體】{entities}\n【摘要】{summary}\n"
+    save_chat(username, question, cohere_msg, intent, entities, summary, session_id, login_type)
+    return rag_result
 
-def ai_chat(question, username="user", session_id=None, login_type="user"):
-    if not session_id:
-        session_id = generate_session_id("uuid", username=username)
-    ensure_qa()
-    prompt = build_multi_turn_prompt(question, session_id)
-    intent = classify_intent(question)
-    entities = extract_entities(question)
-    llm_result = cohere_generate(prompt)
-    summary = summarize_qa(question, llm_result)
-    rag_result = qa.run(question)
-    save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
-    return {
-        "session_id": session_id,
-        "意圖": intent,
-        "實體": entities,
-        "LLM": llm_result,
-        "RAG": rag_result,
-        "摘要": summary
-    }
-
-# ===========================
-# 網站爬蟲功能
-# ===========================
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
         filename = "homepage_auto.url"
@@ -425,41 +408,33 @@ def manual_update_vector():
     )
     return "向量資料庫已手動重建完成"
 
-# ===========================
-# Gradio
-# ===========================
 init_db()
 with gr.Blocks(title="Cohere AI 多語助理") as demo:
     with gr.Tab("AI Chat 多語"):
         question_box = gr.Textbox(label="請輸入問題")
         username_box = gr.Textbox(label="使用者帳號", value="user")
-        session_id_box = gr.Textbox(label="Session ID (自動產生)", value="")
-        login_type_box = gr.Textbox(label="登入類型", value="user")
-        output_box = gr.JSON(label="AI 回應")
+        output_box = gr.Textbox(label="AI 回應")
         submit_btn = gr.Button("送出")
         submit_btn.click(
-            fn=ai_chat,
-            inputs=[question_box, username_box, session_id_box, login_type_box],
+            fn=ai_chat_llm_only,
+            inputs=[question_box, username_box],
             outputs=output_box
         )
     with gr.Tab("RAG QA 多語"):
         question_box2 = gr.Textbox(label="請輸入問題")
         lang_box = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value="zh-TW")
         username_box2 = gr.Textbox(label="使用者帳號", value="user")
-        session_id_box2 = gr.Textbox(label="Session ID", value="")
-        login_type_box2 = gr.Textbox(label="登入類型", value="user")
-        output_box2 = gr.Textbox(label="回應", lines=10)
+        output_box2 = gr.Textbox(label="RAG 回應", lines=10)
         submit_btn2 = gr.Button("送出")
         submit_btn2.click(
-            fn=rag_answer_lang,
-            inputs=[question_box2, lang_box, username_box2, session_id_box2, login_type_box2],
+            fn=rag_answer_rag_only,
+            inputs=[question_box2, lang_box, username_box2],
             outputs=output_box2
         )
     with gr.Tab("管理員功能"):
         add_vec_btn = gr.Button("將所有對話餵進知識庫")
         status_box = gr.Textbox(label="狀態")
         add_vec_btn.click(fn=lambda: (add_chats_to_vectorstore() or "已成功將所有問答導入知識庫！"), outputs=status_box)
-        # 系統狀態
         dbsize = gr.Textbox(label="資料庫大小（Bytes）")
         vcount = gr.Textbox(label="向量庫檔案數")
         cpu = gr.Textbox(label="CPU使用率")
@@ -475,11 +450,9 @@ with gr.Blocks(title="Cohere AI 多語助理") as demo:
                 str(psutil.disk_usage('/')._asdict())
             ]
         stats_btn.click(fn=get_stats, outputs=[dbsize, vcount, cpu, ram, disk])
-        # 手動重建向量庫
         update_vec_btn = gr.Button("手動更新向量庫")
         update_status = gr.Textbox(label="向量庫狀態")
         update_vec_btn.click(fn=manual_update_vector, outputs=update_status)
-        # 網站爬蟲
         homepage_url = gr.Textbox(label="全站首頁網址(含http)")
         homepage_filename = gr.Textbox(label=".url檔名")
         homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
@@ -499,8 +472,6 @@ with gr.Blocks(title="Cohere AI 多語助理") as demo:
             inputs=[sitemap_url, sitemap_filename],
             outputs=crawl_sitemap_status
         )
-
-    # 上傳功能（跳過重名不覆蓋）
     with gr.Tab("文件上傳"):
         upload_file = gr.File(label="上傳文件（doc, docx, xls, xlsx, pdf, txt）", file_count="multiple")
         upload_status = gr.Textbox(label="狀態")
@@ -516,7 +487,7 @@ with gr.Blocks(title="Cohere AI 多語助理") as demo:
                 ext = os.path.splitext(filename)[1].lower()
                 save_path = os.path.join(DOCUMENTS_PATH, filename)
                 if ext not in allowed_exts or os.path.exists(save_path):
-                    continue  # 跳過重名或不支援格式
+                    continue
                 shutil.copy(f.name, save_path)
                 saved.append(filename)
             if saved:
