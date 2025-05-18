@@ -14,3 +14,9 @@ xlrd
 beautifulsoup4
 requests
 psutil
+unstructured
+pytesseract
+pdf2image
+python-docx
+openpyxl
+xlrd
