@@ -18,6 +18,12 @@ from utils import (
 )
 import gradio as gr
 import cohere
+import tiktoken
+
+def get_token_count(text, model="gpt-3.5-turbo"):
+    # 以 gpt-3.5-turbo 為例，若 Cohere 有自己的 tokenizer 請替換
+    encoding = tiktoken.encoding_for_model(model)
+    return len(encoding.encode(text))
 
 LABELS = {
     "zh-TW": {
