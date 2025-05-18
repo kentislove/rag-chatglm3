@@ -239,11 +239,11 @@ co = cohere.Client(COHERE_API_KEY)
 
 def classify_intent(question):
     examples=[
-        cohere.ClassifyExample("I want to check order status", "query"),
-        cohere.ClassifyExample("Place an order for me", "order"),
-        cohere.ClassifyExample("Contact customer service", "contact"),
-        cohere.ClassifyExample("What can you do?", "about"),
-        cohere.ClassifyExample("Who are you?", "about"),
+        cohere.ClassifyExample(text="I want to check order status", label="query"),
+        cohere.ClassifyExample(text="Place an order for me", label="order"),
+        cohere.ClassifyExample(text="Contact customer service", label="contact"),
+        cohere.ClassifyExample(text="What can you do?", label="about"),
+        cohere.ClassifyExample(text="Who are you?", label="about"),
     ]
     try:
         response = co.classify(
@@ -253,6 +253,7 @@ def classify_intent(question):
         return response.classifications[0].prediction
     except Exception as e:
         return "unknown"
+
 
 def extract_entities(question):
     import re
