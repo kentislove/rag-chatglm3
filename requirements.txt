@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-gradio
+gradio>=4.6.0
 langchain
 langchain-community
 faiss-cpu
