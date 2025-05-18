@@ -261,6 +261,15 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     try:
         docs = qa.retriever.invoke(q)
         docs = docs[:3]
+        max_tokens = 120000  # 可以再降一點安全
+        current_tokens = 0
+        selected_docs = []
+        for doc in docs[:max_docs]:
+            tokens = get_token_count(doc.page_content)
+            if current_tokens + tokens > max_tokens:
+                break
+            selected_docs.append(doc)
+            current_tokens += tokens
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
