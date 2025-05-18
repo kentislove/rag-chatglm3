@@ -23,8 +23,8 @@ LABELS = {
     "zh-TW": {
         "lang": "繁體中文",
         "title": "太盛昌AI助理",
-        "ai_qa": "AI 問答",
-        "rag_qa": "RAG 問答",
+        "ai_qa": "網路搜尋",
+        "rag_qa": "FAQ搜尋",
         "input_question": "請輸入問題",
         "username": "帳號",
         "password": "密碼",
@@ -57,12 +57,14 @@ LABELS = {
         "lang_select": "🌐 語言 Language",
         "login_as_admin": "請先以管理員登入",
         "admin_locked": "管理員已登出",
+        "logged_in": "已登入",
+        "not_logged_in": "未登入",
     },
     "zh-CN": {
         "lang": "简体中文",
         "title": "太盛昌AI助理",
-        "ai_qa": "AI 问答",
-        "rag_qa": "RAG 问答",
+        "ai_qa": "网络搜索",
+        "rag_qa": "FAQ搜索",
         "input_question": "请输入问题",
         "username": "账号",
         "password": "密码",
@@ -95,12 +97,14 @@ LABELS = {
         "lang_select": "🌐 语言 Language",
         "login_as_admin": "请先以管理员登录",
         "admin_locked": "管理员已登出",
+        "logged_in": "已登录",
+        "not_logged_in": "未登录",
     },
     "en": {
         "lang": "English",
         "title": "KentWare AI BOX",
-        "ai_qa": "AI QA",
-        "rag_qa": "RAG QA",
+        "ai_qa": "Web Search",
+        "rag_qa": "FAQ Search",
         "input_question": "Type your question here",
         "username": "Username",
         "password": "Password",
@@ -133,7 +137,9 @@ LABELS = {
         "lang_select": "🌐 Language",
         "login_as_admin": "Please login as admin first",
         "admin_locked": "Admin logged out",
-    },
+        "logged_in": "Logged In",
+        "not_logged_in": "Not Logged In",
+    }
     "ja": {
         "lang": "日本語",
         "title": "タイセイショウAIアシスタント",
@@ -389,7 +395,7 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     intent = classify_intent(question)
     entities = extract_entities(question)
     summary = summarize_qa(question, llm_result)
-    rag_result = qa.invoke({"query": question})
+    rag_result = qa.invoke({"query": question})  # run 已棄用
     save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
     return llm_result
 
@@ -400,7 +406,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     force_english = lang_code in ["en", "ja", "ko"]
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
     try:
-        docs = qa.retriever.invoke(q)
+        docs = qa.retriever.invoke(q)  # get_relevant_documents 已棄用
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
@@ -456,17 +462,14 @@ with gr.Blocks(title="AI 多語助理") as demo:
     # --------- AI Chat 多語 ----------
     with gr.Tab(get_label(DEFAULT_LANG, "ai_qa")) as tab_ai_qa:
         ai_question = gr.Textbox(label=get_label(DEFAULT_LANG, "input_question"))
-        ai_username = gr.Textbox(label=get_label(DEFAULT_LANG, "username"), value="user")
         ai_output = gr.Textbox(label=get_label(DEFAULT_LANG, "ai_reply"))
         ai_submit = gr.Button(get_label(DEFAULT_LANG, "submit"))
-
-    def ai_chat_ui(question, username, lang):
+    def ai_chat_ui(question, lang):
         lang_key = lang_map.get(lang, DEFAULT_LANG)
-        return ai_chat_llm_only(question, username, lang_key)
-
+        return ai_chat_llm_only(question, "user", lang_key)
     ai_submit.click(
         ai_chat_ui,
-        inputs=[ai_question, ai_username, lang_dropdown],
+        inputs=[ai_question, lang_dropdown],
         outputs=ai_output
     )
 
@@ -474,17 +477,14 @@ with gr.Blocks(title="AI 多語助理") as demo:
     with gr.Tab(get_label(DEFAULT_LANG, "rag_qa")) as tab_rag_qa:
         rag_question = gr.Textbox(label=get_label(DEFAULT_LANG, "input_question"))
         rag_lang = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value=DEFAULT_LANG)
-        rag_username = gr.Textbox(label=get_label(DEFAULT_LANG, "username"), value="user")
         rag_output = gr.Textbox(label=get_label(DEFAULT_LANG, "rag_reply"))
         rag_submit = gr.Button(get_label(DEFAULT_LANG, "submit"))
-
-    def rag_chat_ui(question, lang_code, username, lang):
+    def rag_chat_ui(question, lang_code, lang):
         lang_key = lang_map.get(lang, DEFAULT_LANG)
-        return rag_answer_rag_only(question, lang_code, username, lang_key)
-
+        return rag_answer_rag_only(question, lang_code, "user", lang_key)
     rag_submit.click(
         rag_chat_ui,
-        inputs=[rag_question, rag_lang, rag_username, lang_dropdown],
+        inputs=[rag_question, rag_lang, lang_dropdown],
         outputs=rag_output
     )
 
@@ -512,31 +512,8 @@ with gr.Blocks(title="AI 多語助理") as demo:
         update_vec_btn = gr.Button(get_label(DEFAULT_LANG, "update_vector"))
         update_status = gr.Textbox(label=get_label(DEFAULT_LANG, "update_status"))
         update_vec_btn.click(fn=manual_update_vector, outputs=update_status)
-        homepage_url = gr.Textbox(label=get_label(DEFAULT_LANG, "homepage_url"))
-        homepage_filename = gr.Textbox(label=get_label(DEFAULT_LANG, "homepage_filename"))
-        homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
-        crawl_btn = gr.Button(get_label(DEFAULT_LANG, "homepage_crawl"))
-        crawl_status = gr.Textbox(label=get_label(DEFAULT_LANG, "crawl_status"))
-        crawl_btn.click(
-            fn=crawl_and_save_urls_homepage,
-            inputs=[homepage_url, homepage_filename, homepage_maxpages],
-            outputs=crawl_status
-        )
-        sitemap_url = gr.Textbox(label=get_label(DEFAULT_LANG, "sitemap_url"))
-        sitemap_filename = gr.Textbox(label=get_label(DEFAULT_LANG, "sitemap_filename"))
-        crawl_sitemap_btn = gr.Button(get_label(DEFAULT_LANG, "sitemap_crawl"))
-        crawl_sitemap_status = gr.Textbox(label=get_label(DEFAULT_LANG, "crawl_status"))
-        crawl_sitemap_btn.click(
-            fn=crawl_and_save_urls_sitemap,
-            inputs=[sitemap_url, sitemap_filename],
-            outputs=crawl_sitemap_status
-        )
-        def admin_logout():
-            tab_admin.visible = False
-            return False
-        admin_logout_btn.click(fn=admin_logout, outputs=None)
 
-    with gr.Tab(get_label(DEFAULT_LANG, "upload")):
+        # 上傳與爬蟲都合併在 admin 內部（僅 admin 可用）
         upload_file = gr.File(label=get_label(DEFAULT_LANG, "upload"), file_count="multiple")
         upload_status = gr.Textbox(label=get_label(DEFAULT_LANG, "file_status"))
         def save_uploaded_files(files):
@@ -561,23 +538,46 @@ with gr.Blocks(title="AI 多語助理") as demo:
         upload_btn = gr.Button(get_label(DEFAULT_LANG, "submit"))
         upload_btn.click(fn=save_uploaded_files, inputs=upload_file, outputs=upload_status)
 
+        homepage_url = gr.Textbox(label=get_label(DEFAULT_LANG, "homepage_url"))
+        homepage_filename = gr.Textbox(label=get_label(DEFAULT_LANG, "homepage_filename"))
+        homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
+        crawl_btn = gr.Button(get_label(DEFAULT_LANG, "homepage_crawl"))
+        crawl_status = gr.Textbox(label=get_label(DEFAULT_LANG, "crawl_status"))
+        crawl_btn.click(
+            fn=crawl_and_save_urls_homepage,
+            inputs=[homepage_url, homepage_filename, homepage_maxpages],
+            outputs=crawl_status
+        )
+        sitemap_url = gr.Textbox(label=get_label(DEFAULT_LANG, "sitemap_url"))
+        sitemap_filename = gr.Textbox(label=get_label(DEFAULT_LANG, "sitemap_filename"))
+        crawl_sitemap_btn = gr.Button(get_label(DEFAULT_LANG, "sitemap_crawl"))
+        crawl_sitemap_status = gr.Textbox(label=get_label(DEFAULT_LANG, "crawl_status"))
+        crawl_sitemap_btn.click(
+            fn=crawl_and_save_urls_sitemap,
+            inputs=[sitemap_url, sitemap_filename],
+            outputs=crawl_sitemap_status
+        )
+        def admin_logout():
+            tab_admin.visible = False
+            admin_login_row.visible = True
+            return get_label(DEFAULT_LANG, "not_logged_in")
+        admin_logout_btn.click(fn=admin_logout, outputs=[])
+
     # 登入框
     with gr.Row(visible=True) as admin_login_row:
         admin_username = gr.Textbox(label=get_label(DEFAULT_LANG, "username"))
         admin_password = gr.Textbox(label=get_label(DEFAULT_LANG, "password"), type="password")
         admin_login_btn = gr.Button(get_label(DEFAULT_LANG, "login"))
-        admin_login_status = gr.Textbox(label="Admin", interactive=False)
-
+        admin_login_status = gr.Textbox(label="", value=get_label(DEFAULT_LANG, "not_logged_in"), interactive=False)
     def admin_login_fn(username, password, lang):
         if check_login(username, password):
             tab_admin.visible = True
             admin_login_row.visible = False
-            return "", True
+            return get_label(lang_map.get(lang, DEFAULT_LANG), "logged_in")
         else:
             tab_admin.visible = False
             admin_login_row.visible = True
-            return get_label(lang_map.get(lang, DEFAULT_LANG), "login_fail")
-
+            return get_label(lang_map.get(lang, DEFAULT_LANG), "not_logged_in")
     admin_login_btn.click(
         admin_login_fn,
         inputs=[admin_username, admin_password, lang_dropdown],
@@ -585,44 +585,40 @@ with gr.Blocks(title="AI 多語助理") as demo:
     )
 
     def switch_lang(selected_lang):
-        # AI QA
-        tab_ai_qa.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "ai_qa")
-        ai_question.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "input_question")
-        ai_username.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "username")
-        ai_output.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "ai_reply")
-        ai_submit.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "submit")
-        # RAG QA
-        tab_rag_qa.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "rag_qa")
-        rag_question.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "input_question")
-        rag_username.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "username")
-        rag_output.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "rag_reply")
-        rag_submit.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "submit")
-        # 管理面
-        tab_admin.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "admin_panel")
-        dbsize.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "db_size")
-        vcount.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "vec_count")
-        cpu.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "cpu")
-        ram.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "ram")
-        disk.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "disk")
-        update_vec_btn.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "update_vector")
-        update_status.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "update_status")
-        homepage_url.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "homepage_url")
-        homepage_filename.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "homepage_filename")
-        crawl_btn.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "homepage_crawl")
-        crawl_status.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "crawl_status")
-        sitemap_url.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "sitemap_url")
-        sitemap_filename.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "sitemap_filename")
-        crawl_sitemap_btn.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "sitemap_crawl")
-        crawl_sitemap_status.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "crawl_status")
-        upload_file.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "upload")
-        upload_status.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "file_status")
-        upload_btn.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "submit")
-        demo.title = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "title")
-        admin_username.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "username")
-        admin_password.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "password")
-        admin_login_btn.value = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "login")
-        admin_login_status.label = get_label(lang_map.get(selected_lang, DEFAULT_LANG), "admin_panel")
-
+        lkey = lang_map.get(selected_lang, DEFAULT_LANG)
+        tab_ai_qa.label = get_label(lkey, "ai_qa")
+        ai_question.label = get_label(lkey, "input_question")
+        ai_output.label = get_label(lkey, "ai_reply")
+        ai_submit.value = get_label(lkey, "submit")
+        tab_rag_qa.label = get_label(lkey, "rag_qa")
+        rag_question.label = get_label(lkey, "input_question")
+        rag_output.label = get_label(lkey, "rag_reply")
+        rag_submit.value = get_label(lkey, "submit")
+        tab_admin.label = get_label(lkey, "admin_panel")
+        dbsize.label = get_label(lkey, "db_size")
+        vcount.label = get_label(lkey, "vec_count")
+        cpu.label = get_label(lkey, "cpu")
+        ram.label = get_label(lkey, "ram")
+        disk.label = get_label(lkey, "disk")
+        update_vec_btn.value = get_label(lkey, "update_vector")
+        update_status.label = get_label(lkey, "update_status")
+        homepage_url.label = get_label(lkey, "homepage_url")
+        homepage_filename.label = get_label(lkey, "homepage_filename")
+        crawl_btn.value = get_label(lkey, "homepage_crawl")
+        crawl_status.label = get_label(lkey, "crawl_status")
+        sitemap_url.label = get_label(lkey, "sitemap_url")
+        sitemap_filename.label = get_label(lkey, "sitemap_filename")
+        crawl_sitemap_btn.value = get_label(lkey, "sitemap_crawl")
+        crawl_sitemap_status.label = get_label(lkey, "crawl_status")
+        upload_file.label = get_label(lkey, "upload")
+        upload_status.label = get_label(lkey, "file_status")
+        upload_btn.value = get_label(lkey, "submit")
+        demo.title = get_label(lkey, "title")
+        admin_username.label = get_label(lkey, "username")
+        admin_password.label = get_label(lkey, "password")
+        admin_login_btn.value = get_label(lkey, "login")
+        admin_login_status.label = ""
+        return
     lang_dropdown.change(
         switch_lang,
         inputs=[lang_dropdown],
