@@ -54,8 +54,6 @@ def parse_csv_file(filepath: str) -> List[Document]:
             rows.append(Document(page_content=combined, metadata={"source": filepath}))
     return rows
 
-# 下面三個是 main.py 需要的網站爬蟲 function
-
 def crawl_links_from_homepage(start_url: str, max_pages=100) -> List[str]:
     import requests
     from bs4 import BeautifulSoup
