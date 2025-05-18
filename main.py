@@ -380,7 +380,7 @@ def build_multi_turn_prompt(current_question, session_id):
     dialog += f"User: {current_question}\nBot:"
     return dialog
 
-def ai_chat_llm_only(question, username="user"):
+def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     session_id = generate_session_id()
     login_type = "user"
     ensure_qa()
@@ -393,7 +393,7 @@ def ai_chat_llm_only(question, username="user"):
     save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
     return llm_result
 
-def rag_answer_rag_only(question, lang_code, username="user"):
+def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG):
     session_id = generate_session_id()
     login_type = "user"
     ensure_qa()
@@ -443,7 +443,6 @@ def manual_update_vector():
     )
     return "向量資料庫已手動重建完成"
 
-# ========== 狀態記憶 ==========
 admin_logged_in = gr.State(False)
 current_lang = gr.State(DEFAULT_LANG)
 
@@ -465,12 +464,13 @@ with gr.Blocks(title="AI 多語助理") as demo:
         ai_submit = gr.Button(get_label(DEFAULT_LANG, "submit"))
 
     def ai_chat_ui(question, username, lang):
-        return ai_chat_llm_only(question, username)
+        return ai_chat_llm_only(question, username, lang)
 
     ai_submit.click(
         ai_chat_ui,
-        inputs=[ai_question, ai_username, current_lang],
-        outputs=ai_output
+        inputs=[ai_question, ai_username],
+        outputs=ai_output,
+        state=current_lang
     )
 
     # --------- RAG QA 多語 ----------
@@ -482,12 +482,13 @@ with gr.Blocks(title="AI 多語助理") as demo:
         rag_submit = gr.Button(get_label(DEFAULT_LANG, "submit"))
 
     def rag_chat_ui(question, lang_code, username, lang):
-        return rag_answer_rag_only(question, lang_code, username)
+        return rag_answer_rag_only(question, lang_code, username, lang)
 
     rag_submit.click(
         rag_chat_ui,
-        inputs=[rag_question, rag_lang, rag_username, current_lang],
-        outputs=rag_output
+        inputs=[rag_question, rag_lang, rag_username],
+        outputs=rag_output,
+        state=current_lang
     )
 
     # =========== 管理員登入 UI & TAB ===========
@@ -533,7 +534,6 @@ with gr.Blocks(title="AI 多語助理") as demo:
             inputs=[sitemap_url, sitemap_filename],
             outputs=crawl_sitemap_status
         )
-        # 登出
         def admin_logout():
             tab_admin.visible = False
             return False
@@ -571,7 +571,6 @@ with gr.Blocks(title="AI 多語助理") as demo:
         admin_login_btn = gr.Button(get_label(DEFAULT_LANG, "login"))
         admin_login_status = gr.Textbox(label="Admin", interactive=False)
 
-    # 登入判斷
     def admin_login_fn(username, password, lang):
         if check_login(username, password):
             tab_admin.visible = True
@@ -588,21 +587,17 @@ with gr.Blocks(title="AI 多語助理") as demo:
         outputs=[admin_login_status, admin_logged_in]
     )
 
-    # 語言切換
     def switch_lang(selected_lang):
-        # AI QA
         tab_ai_qa.label = get_label(selected_lang, "ai_qa")
         ai_question.label = get_label(selected_lang, "input_question")
         ai_username.label = get_label(selected_lang, "username")
         ai_output.label = get_label(selected_lang, "ai_reply")
         ai_submit.value = get_label(selected_lang, "submit")
-        # RAG QA
         tab_rag_qa.label = get_label(selected_lang, "rag_qa")
         rag_question.label = get_label(selected_lang, "input_question")
         rag_username.label = get_label(selected_lang, "username")
         rag_output.label = get_label(selected_lang, "rag_reply")
         rag_submit.value = get_label(selected_lang, "submit")
-        # 管理面
         tab_admin.label = get_label(selected_lang, "admin_panel")
         dbsize.label = get_label(selected_lang, "db_size")
         vcount.label = get_label(selected_lang, "vec_count")
