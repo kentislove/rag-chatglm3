@@ -576,12 +576,12 @@ with gr.Blocks(title="AI 多語助理") as demo:
         else:
             tab_admin.visible = False
             admin_login_row.visible = True
-            return get_label(lang_map.get(lang, DEFAULT_LANG), "login_fail"), False
+            return get_label(lang_map.get(lang, DEFAULT_LANG), "login_fail")
 
     admin_login_btn.click(
         admin_login_fn,
         inputs=[admin_username, admin_password, lang_dropdown],
-        outputs=[admin_login_status, None]
+        outputs=[admin_login_status]
     )
 
     def switch_lang(selected_lang):
