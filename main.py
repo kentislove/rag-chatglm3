@@ -139,7 +139,7 @@ LABELS = {
         "admin_locked": "Admin logged out",
         "logged_in": "Logged In",
         "not_logged_in": "Not Logged In",
-    }
+    },
     "ja": {
         "lang": "日本語",
         "title": "タイセイショウAIアシスタント",
