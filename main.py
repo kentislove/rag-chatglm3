@@ -22,205 +22,52 @@ import cohere
 LABELS = {
     "zh-TW": {
         "lang": "繁體中文",
-        "title": "太盛昌AI助理",
         "ai_qa": "網路搜尋",
         "rag_qa": "FAQ搜尋",
         "input_question": "請輸入問題",
-        "username": "帳號",
-        "password": "密碼",
-        "login": "登入",
-        "login_fail": "帳號或密碼錯誤！",
         "submit": "送出",
-        "admin_panel": "管理員功能",
-        "logout": "登出",
-        "upload": "上傳文件（doc, docx, xls, xlsx, pdf, txt）",
-        "update_vector": "手動更新向量庫",
-        "homepage_url": "全站首頁網址(含http)",
-        "sitemap_url": "sitemap.xml網址",
-        "success_upload": "檔案已上傳！",
-        "homepage_filename": ".url檔名",
-        "sitemap_filename": ".url檔名",
-        "homepage_crawl": "用首頁爬子頁並產生 .url",
-        "sitemap_crawl": "用sitemap自動產生 .url",
-        "uploaded": "已上傳：",
-        "update_notice": "請點「手動更新向量庫」導入向量資料庫。",
-        "db_size": "資料庫大小（Bytes）",
-        "vec_count": "向量庫檔案數",
-        "cpu": "CPU使用率",
-        "ram": "RAM使用情形",
-        "disk": "磁碟使用情形",
-        "update_status": "向量庫狀態",
         "rag_reply": "RAG 回應",
         "ai_reply": "AI 回應",
-        "file_status": "狀態",
-        "crawl_status": "爬蟲狀態",
-        "lang_select": "🌐 語言 Language",
-        "login_as_admin": "請先以管理員登入",
-        "admin_locked": "管理員已登出",
-        "logged_in": "已登入",
-        "not_logged_in": "未登入",
     },
     "zh-CN": {
         "lang": "简体中文",
-        "title": "太盛昌AI助理",
         "ai_qa": "网络搜索",
         "rag_qa": "FAQ搜索",
         "input_question": "请输入问题",
-        "username": "账号",
-        "password": "密码",
-        "login": "登录",
-        "login_fail": "账号或密码错误！",
         "submit": "提交",
-        "admin_panel": "管理员功能",
-        "logout": "登出",
-        "upload": "上传文件（doc, docx, xls, xlsx, pdf, txt）",
-        "update_vector": "手动更新向量库",
-        "homepage_url": "全站首页网址(含http)",
-        "sitemap_url": "sitemap.xml URL",
-        "success_upload": "文件已上传！",
-        "homepage_filename": ".url档名",
-        "sitemap_filename": ".url档名",
-        "homepage_crawl": "用首页爬子页并产生 .url",
-        "sitemap_crawl": "用sitemap自动产生 .url",
-        "uploaded": "已上传：",
-        "update_notice": "请点“手动更新向量库”导入向量数据库。",
-        "db_size": "数据库大小（Bytes）",
-        "vec_count": "向量库文件数",
-        "cpu": "CPU使用率",
-        "ram": "RAM使用情况",
-        "disk": "磁盘使用情况",
-        "update_status": "向量库状态",
         "rag_reply": "RAG 回复",
         "ai_reply": "AI 回复",
-        "file_status": "状态",
-        "crawl_status": "爬虫状态",
-        "lang_select": "🌐 语言 Language",
-        "login_as_admin": "请先以管理员登录",
-        "admin_locked": "管理员已登出",
-        "logged_in": "已登录",
-        "not_logged_in": "未登录",
     },
     "en": {
         "lang": "English",
-        "title": "KentWare AI BOX",
         "ai_qa": "Web Search",
         "rag_qa": "FAQ Search",
         "input_question": "Type your question here",
-        "username": "Username",
-        "password": "Password",
-        "login": "Login",
-        "login_fail": "Wrong username or password!",
         "submit": "Submit",
-        "admin_panel": "Admin Functions",
-        "logout": "Logout",
-        "upload": "Upload Files (doc, docx, xls, xlsx, pdf, txt)",
-        "update_vector": "Manual Vector Update",
-        "homepage_url": "Homepage URL (with http)",
-        "sitemap_url": "sitemap.xml URL",
-        "success_upload": "File uploaded!",
-        "homepage_filename": ".url filename",
-        "sitemap_filename": ".url filename",
-        "homepage_crawl": "Crawl homepage & save .url",
-        "sitemap_crawl": "Crawl sitemap & save .url",
-        "uploaded": "Uploaded:",
-        "update_notice": "Please click 'Manual Vector Update' to import.",
-        "db_size": "DB size (Bytes)",
-        "vec_count": "Vector file count",
-        "cpu": "CPU usage",
-        "ram": "RAM usage",
-        "disk": "Disk usage",
-        "update_status": "Vector status",
         "rag_reply": "RAG Reply",
         "ai_reply": "AI Reply",
-        "file_status": "Status",
-        "crawl_status": "Crawl status",
-        "lang_select": "🌐 Language",
-        "login_as_admin": "Please login as admin first",
-        "admin_locked": "Admin logged out",
-        "logged_in": "Logged In",
-        "not_logged_in": "Not Logged In",
     },
     "ja": {
         "lang": "日本語",
-        "title": "タイセイショウAIアシスタント",
-        "ai_qa": "AI 質問",
-        "rag_qa": "RAG 質問",
+        "ai_qa": "ウェブ検索",
+        "rag_qa": "FAQ検索",
         "input_question": "質問を入力してください",
-        "username": "ユーザー名",
-        "password": "パスワード",
-        "login": "ログイン",
-        "login_fail": "ユーザー名またはパスワードが間違っています！",
         "submit": "送信",
-        "admin_panel": "管理者機能",
-        "logout": "ログアウト",
-        "upload": "ファイルをアップロード（doc, docx, xls, xlsx, pdf, txt）",
-        "update_vector": "ベクトル手動更新",
-        "homepage_url": "ホームページURL（http含む）",
-        "sitemap_url": "sitemap.xmlのURL",
-        "success_upload": "ファイルがアップロードされました！",
-        "homepage_filename": ".urlファイル名",
-        "sitemap_filename": ".urlファイル名",
-        "homepage_crawl": "ホームページクロールして .url 作成",
-        "sitemap_crawl": "sitemap から .url 作成",
-        "uploaded": "アップロード済み：",
-        "update_notice": "「ベクトル手動更新」を押して反映してください。",
-        "db_size": "DBサイズ（Bytes）",
-        "vec_count": "ベクトルファイル数",
-        "cpu": "CPU使用率",
-        "ram": "RAM使用状況",
-        "disk": "ディスク使用状況",
-        "update_status": "ベクトル状態",
         "rag_reply": "RAG返答",
         "ai_reply": "AI返答",
-        "file_status": "状態",
-        "crawl_status": "クロール状態",
-        "lang_select": "🌐 言語 Language",
-        "login_as_admin": "管理者でログインしてください",
-        "admin_locked": "管理者ログアウト",
     },
     "ko": {
         "lang": "한국어",
-        "title": "태성창 AI 어시스턴트",
-        "ai_qa": "AI 질문",
-        "rag_qa": "RAG 질문",
+        "ai_qa": "웹 검색",
+        "rag_qa": "FAQ 검색",
         "input_question": "질문을 입력하세요",
-        "username": "아이디",
-        "password": "비밀번호",
-        "login": "로그인",
-        "login_fail": "아이디 또는 비밀번호가 틀렸습니다!",
         "submit": "제출",
-        "admin_panel": "관리자 기능",
-        "logout": "로그아웃",
-        "upload": "파일 업로드 (doc, docx, xls, xlsx, pdf, txt)",
-        "update_vector": "벡터 수동 업데이트",
-        "homepage_url": "홈페이지 URL (http 포함)",
-        "sitemap_url": "sitemap.xml URL",
-        "success_upload": "파일이 업로드되었습니다!",
-        "homepage_filename": ".url 파일명",
-        "sitemap_filename": ".url 파일명",
-        "homepage_crawl": "홈페이지 크롤링 및 .url 저장",
-        "sitemap_crawl": "sitemap으로 .url 저장",
-        "uploaded": "업로드됨:",
-        "update_notice": "‘벡터 수동 업데이트’를 눌러 반영하세요.",
-        "db_size": "DB크기（Bytes）",
-        "vec_count": "벡터파일수",
-        "cpu": "CPU사용률",
-        "ram": "RAM사용상황",
-        "disk": "디스크사용상황",
-        "update_status": "벡터상태",
         "rag_reply": "RAG 답변",
         "ai_reply": "AI 답변",
-        "file_status": "상태",
-        "crawl_status": "크롤상태",
-        "lang_select": "🌐 언어 Language",
-        "login_as_admin": "관리자로 로그인하세요",
-        "admin_locked": "관리자 로그아웃",
     }
 }
-DEFAULT_LANG = "zh-TW"
 
-def get_label(lang, key):
-    return LABELS.get(lang, LABELS[DEFAULT_LANG]).get(key, key)
+DEFAULT_LANG = "zh-TW"
 
 def check_login(username, password):
     return username == "admin" and password == "AaAa691027!!"
@@ -406,7 +253,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     force_english = lang_code in ["en", "ja", "ko"]
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
     try:
-        docs = qa.retriever.invoke(q)  # get_relevant_documents 已棄用
+        docs = qa.retriever.invoke(q)
         docs = docs[:3]  # 只取最重要的3筆
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
@@ -452,54 +299,50 @@ def manual_update_vector():
 
 init_db()
 with gr.Blocks(title="AI 多語助理") as demo:
-    lang_map = {LABELS[k]["lang"]: k for k in LABELS}
-    lang_names = list(lang_map.keys())
-    lang_dropdown = gr.Dropdown(
-        choices=lang_names,
-        value=LABELS[DEFAULT_LANG]['lang'],
-        label=LABELS[DEFAULT_LANG]["lang_select"]
-    )
+    langs = ["zh-TW", "zh-CN", "en", "ja", "ko"]
 
-    # --------- AI Chat 多語 ----------
-    with gr.Tab(get_label(DEFAULT_LANG, "ai_qa")) as tab_ai_qa:
-        ai_question = gr.Textbox(label=get_label(DEFAULT_LANG, "input_question"))
-        ai_output = gr.Textbox(label=get_label(DEFAULT_LANG, "ai_reply"))
-        ai_submit = gr.Button(get_label(DEFAULT_LANG, "submit"))
-    def ai_chat_ui(question, lang):
-        lang_key = lang_map.get(lang, DEFAULT_LANG)
-        return ai_chat_llm_only(question, "user", lang_key)
-    ai_submit.click(
-        ai_chat_ui,
-        inputs=[ai_question, lang_dropdown],
-        outputs=ai_output
-    )
+    def make_language_tab(lang):
+        with gr.Tab(LABELS[lang]["lang"]):
+            # --- 網路搜尋 ---
+            with gr.Tab(LABELS[lang]["ai_qa"]):
+                ai_question = gr.Textbox(label=LABELS[lang]["input_question"])
+                ai_output = gr.Textbox(label=LABELS[lang]["ai_reply"])
+                ai_submit = gr.Button(LABELS[lang]["submit"])
+                def ai_chat_ui(question):
+                    return ai_chat_llm_only(question, "user", lang)
+                ai_submit.click(
+                    ai_chat_ui,
+                    inputs=[ai_question],
+                    outputs=ai_output
+                )
+            # --- FAQ搜尋 ---
+            with gr.Tab(LABELS[lang]["rag_qa"]):
+                rag_question = gr.Textbox(label=LABELS[lang]["input_question"])
+                rag_lang = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value=lang)
+                rag_output = gr.Textbox(label=LABELS[lang]["rag_reply"])
+                rag_submit = gr.Button(LABELS[lang]["submit"])
+                def rag_chat_ui(question, lang_code):
+                    return rag_answer_rag_only(question, lang_code, "user", lang)
+                rag_submit.click(
+                    rag_chat_ui,
+                    inputs=[rag_question, rag_lang],
+                    outputs=rag_output
+                )
+    # 五國語tab
+    for lang in langs:
+        make_language_tab(lang)
 
-    # --------- RAG QA 多語 ----------
-    with gr.Tab(get_label(DEFAULT_LANG, "rag_qa")) as tab_rag_qa:
-        rag_question = gr.Textbox(label=get_label(DEFAULT_LANG, "input_question"))
-        rag_lang = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value=DEFAULT_LANG)
-        rag_output = gr.Textbox(label=get_label(DEFAULT_LANG, "rag_reply"))
-        rag_submit = gr.Button(get_label(DEFAULT_LANG, "submit"))
-    def rag_chat_ui(question, lang_code, lang):
-        lang_key = lang_map.get(lang, DEFAULT_LANG)
-        return rag_answer_rag_only(question, lang_code, "user", lang_key)
-    rag_submit.click(
-        rag_chat_ui,
-        inputs=[rag_question, rag_lang, lang_dropdown],
-        outputs=rag_output
-    )
-
-    # =========== 管理員登入 UI & TAB ===========
-    with gr.Tab(get_label(DEFAULT_LANG, "admin_panel"), visible=False) as tab_admin:
-        admin_logout_btn = gr.Button(get_label(DEFAULT_LANG, "logout"))
+    # === 管理員統一 Tab（永遠在最後一個頁籤） ===
+    with gr.Tab("管理員功能"):
+        admin_logout_btn = gr.Button("登出")
         add_vec_btn = gr.Button("將所有對話餵進知識庫")
         status_box = gr.Textbox(label="狀態")
         add_vec_btn.click(fn=lambda: (add_chats_to_vectorstore() or "已成功將所有問答導入知識庫！"), outputs=status_box)
-        dbsize = gr.Textbox(label=get_label(DEFAULT_LANG, "db_size"))
-        vcount = gr.Textbox(label=get_label(DEFAULT_LANG, "vec_count"))
-        cpu = gr.Textbox(label=get_label(DEFAULT_LANG, "cpu"))
-        ram = gr.Textbox(label=get_label(DEFAULT_LANG, "ram"))
-        disk = gr.Textbox(label=get_label(DEFAULT_LANG, "disk"))
+        dbsize = gr.Textbox(label="資料庫大小（Bytes）")
+        vcount = gr.Textbox(label="向量庫檔案數")
+        cpu = gr.Textbox(label="CPU使用率")
+        ram = gr.Textbox(label="RAM使用情形")
+        disk = gr.Textbox(label="磁碟使用情形")
         stats_btn = gr.Button("立即更新狀態")
         def get_stats():
             return [
@@ -510,13 +353,12 @@ with gr.Blocks(title="AI 多語助理") as demo:
                 str(psutil.disk_usage('/')._asdict())
             ]
         stats_btn.click(fn=get_stats, outputs=[dbsize, vcount, cpu, ram, disk])
-        update_vec_btn = gr.Button(get_label(DEFAULT_LANG, "update_vector"))
-        update_status = gr.Textbox(label=get_label(DEFAULT_LANG, "update_status"))
+        update_vec_btn = gr.Button("手動更新向量庫")
+        update_status = gr.Textbox(label="向量庫狀態")
         update_vec_btn.click(fn=manual_update_vector, outputs=update_status)
 
-        # 上傳與爬蟲都合併在 admin 內部（僅 admin 可用）
-        upload_file = gr.File(label=get_label(DEFAULT_LANG, "upload"), file_count="multiple")
-        upload_status = gr.Textbox(label=get_label(DEFAULT_LANG, "file_status"))
+        upload_file = gr.File(label="上傳文件（doc, docx, xls, xlsx, pdf, txt）", file_count="multiple")
+        upload_status = gr.Textbox(label="狀態")
         def save_uploaded_files(files):
             allowed_exts = {".doc",".docx",".xls",".xlsx",".pdf",".txt"}
             saved = []
@@ -527,7 +369,7 @@ with gr.Blocks(title="AI 多語助理") as demo:
             for f in files:
                 filename = os.path.basename(f.name)
                 ext = os.path.splitext(filename)[1].lower()
-                save_path = os.path.join(DOCUMENTS_PATH, filename)
+                save_path = os.path.join("./docs", filename)
                 if ext not in allowed_exts or os.path.exists(save_path):
                     continue
                 shutil.copy(f.name, save_path)
@@ -536,95 +378,50 @@ with gr.Blocks(title="AI 多語助理") as demo:
                 return f"已上傳：{', '.join(saved)}\n請手動更新向量庫。"
             else:
                 return "沒有支援的檔案被上傳，或全部檔案已存在（未覆蓋）"
-        upload_btn = gr.Button(get_label(DEFAULT_LANG, "submit"))
+        upload_btn = gr.Button("送出")
         upload_btn.click(fn=save_uploaded_files, inputs=upload_file, outputs=upload_status)
 
-        homepage_url = gr.Textbox(label=get_label(DEFAULT_LANG, "homepage_url"))
-        homepage_filename = gr.Textbox(label=get_label(DEFAULT_LANG, "homepage_filename"))
+        homepage_url = gr.Textbox(label="全站首頁網址(含http)")
+        homepage_filename = gr.Textbox(label=".url檔名")
         homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
-        crawl_btn = gr.Button(get_label(DEFAULT_LANG, "homepage_crawl"))
-        crawl_status = gr.Textbox(label=get_label(DEFAULT_LANG, "crawl_status"))
+        crawl_btn = gr.Button("用首頁爬子頁並產生 .url")
+        crawl_status = gr.Textbox(label="爬蟲狀態")
         crawl_btn.click(
             fn=crawl_and_save_urls_homepage,
             inputs=[homepage_url, homepage_filename, homepage_maxpages],
             outputs=crawl_status
         )
-        sitemap_url = gr.Textbox(label=get_label(DEFAULT_LANG, "sitemap_url"))
-        sitemap_filename = gr.Textbox(label=get_label(DEFAULT_LANG, "sitemap_filename"))
-        crawl_sitemap_btn = gr.Button(get_label(DEFAULT_LANG, "sitemap_crawl"))
-        crawl_sitemap_status = gr.Textbox(label=get_label(DEFAULT_LANG, "crawl_status"))
+        sitemap_url = gr.Textbox(label="sitemap.xml網址")
+        sitemap_filename = gr.Textbox(label=".url檔名")
+        crawl_sitemap_btn = gr.Button("用sitemap自動產生 .url")
+        crawl_sitemap_status = gr.Textbox(label="爬蟲狀態")
         crawl_sitemap_btn.click(
             fn=crawl_and_save_urls_sitemap,
             inputs=[sitemap_url, sitemap_filename],
             outputs=crawl_sitemap_status
         )
+        # 登入區塊
+        with gr.Row(visible=True) as admin_login_row:
+            admin_username = gr.Textbox(label="帳號")
+            admin_password = gr.Textbox(label="密碼", type="password")
+            admin_login_btn = gr.Button("登入")
+            admin_login_status = gr.Textbox(label="", value="未登入", interactive=False)
+        def admin_login_fn(username, password):
+            if check_login(username, password):
+                admin_login_row.visible = False
+                return "已登入"
+            else:
+                admin_login_row.visible = True
+                return "未登入"
+        admin_login_btn.click(
+            admin_login_fn,
+            inputs=[admin_username, admin_password],
+            outputs=[admin_login_status]
+        )
         def admin_logout():
-            tab_admin.visible = False
             admin_login_row.visible = True
-            return get_label(DEFAULT_LANG, "not_logged_in")
-        admin_logout_btn.click(fn=admin_logout, outputs=[])
-
-    # 登入框
-    with gr.Row(visible=True) as admin_login_row:
-        admin_username = gr.Textbox(label=get_label(DEFAULT_LANG, "username"))
-        admin_password = gr.Textbox(label=get_label(DEFAULT_LANG, "password"), type="password")
-        admin_login_btn = gr.Button(get_label(DEFAULT_LANG, "login"))
-        admin_login_status = gr.Textbox(label="", value=get_label(DEFAULT_LANG, "not_logged_in"), interactive=False)
-    def admin_login_fn(username, password, lang):
-        if check_login(username, password):
-            tab_admin.visible = True
-            admin_login_row.visible = False
-            return get_label(lang_map.get(lang, DEFAULT_LANG), "logged_in")
-        else:
-            tab_admin.visible = False
-            admin_login_row.visible = True
-            return get_label(lang_map.get(lang, DEFAULT_LANG), "not_logged_in")
-    admin_login_btn.click(
-        admin_login_fn,
-        inputs=[admin_username, admin_password, lang_dropdown],
-        outputs=[admin_login_status]
-    )
-
-    def switch_lang(selected_lang):
-        lkey = lang_map.get(selected_lang, DEFAULT_LANG)
-        tab_ai_qa.label = get_label(lkey, "ai_qa")
-        ai_question.label = get_label(lkey, "input_question")
-        ai_output.label = get_label(lkey, "ai_reply")
-        ai_submit.value = get_label(lkey, "submit")
-        tab_rag_qa.label = get_label(lkey, "rag_qa")
-        rag_question.label = get_label(lkey, "input_question")
-        rag_output.label = get_label(lkey, "rag_reply")
-        rag_submit.value = get_label(lkey, "submit")
-        tab_admin.label = get_label(lkey, "admin_panel")
-        dbsize.label = get_label(lkey, "db_size")
-        vcount.label = get_label(lkey, "vec_count")
-        cpu.label = get_label(lkey, "cpu")
-        ram.label = get_label(lkey, "ram")
-        disk.label = get_label(lkey, "disk")
-        update_vec_btn.value = get_label(lkey, "update_vector")
-        update_status.label = get_label(lkey, "update_status")
-        homepage_url.label = get_label(lkey, "homepage_url")
-        homepage_filename.label = get_label(lkey, "homepage_filename")
-        crawl_btn.value = get_label(lkey, "homepage_crawl")
-        crawl_status.label = get_label(lkey, "crawl_status")
-        sitemap_url.label = get_label(lkey, "sitemap_url")
-        sitemap_filename.label = get_label(lkey, "sitemap_filename")
-        crawl_sitemap_btn.value = get_label(lkey, "sitemap_crawl")
-        crawl_sitemap_status.label = get_label(lkey, "crawl_status")
-        upload_file.label = get_label(lkey, "upload")
-        upload_status.label = get_label(lkey, "file_status")
-        upload_btn.value = get_label(lkey, "submit")
-        demo.title = get_label(lkey, "title")
-        admin_username.label = get_label(lkey, "username")
-        admin_password.label = get_label(lkey, "password")
-        admin_login_btn.value = get_label(lkey, "login")
-        admin_login_status.label = ""
-        return
-    lang_dropdown.change(
-        switch_lang,
-        inputs=[lang_dropdown],
-        outputs=[]
-    )
+            return "未登入"
+        admin_logout_btn.click(fn=admin_logout, outputs=[admin_login_status])
 
 app = FastAPI()
 app.add_middleware(
