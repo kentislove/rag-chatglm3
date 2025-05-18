@@ -260,17 +260,20 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
     try:
         docs = qa.retriever.invoke(q)
-        docs = docs[:3]
-        max_tokens = 120000  # 可以再降一點安全
+        max_docs = 3
+        max_tokens = 120000
         current_tokens = 0
         selected_docs = []
         for doc in docs[:max_docs]:
-            tokens = get_token_count(doc.page_content)
+            # 若 page_content 不是 str 要轉換
+            content = doc.page_content if hasattr(doc, "page_content") else str(doc)
+            tokens = len(content)
+            # 這裡你也可以用 get_token_count(content) 如果你有 tokenizer
             if current_tokens + tokens > max_tokens:
                 break
             selected_docs.append(doc)
             current_tokens += tokens
-        rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
+        rag_result = qa.combine_documents_chain.run(input_documents=selected_docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
     prompt = build_multi_turn_prompt(question, session_id)
@@ -280,6 +283,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     summary = summarize_qa(question, cohere_msg)
     save_chat(username, question, cohere_msg, intent, entities, summary, session_id, login_type)
     return rag_result
+
 
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
