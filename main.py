@@ -242,7 +242,7 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     intent = classify_intent(question)
     entities = extract_entities(question)
     summary = summarize_qa(question, llm_result)
-    rag_result = qa.invoke({"query": question})  # run 已棄用
+    rag_result = qa.invoke({"query": question})
     save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
     return llm_result
 
@@ -254,7 +254,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
     try:
         docs = qa.retriever.invoke(q)
-        docs = docs[:3]  # 只取最重要的3筆
+        docs = docs[:3]
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
@@ -299,41 +299,45 @@ def manual_update_vector():
 
 init_db()
 with gr.Blocks(title="AI 多語助理") as demo:
-    langs = ["zh-TW", "zh-CN", "en", "ja", "ko"]
+    admin_status = gr.State(False)
 
-    def make_language_tab(lang):
-        with gr.Tab(LABELS[lang]["lang"]):
-            # --- 網路搜尋 ---
-            with gr.Tab(LABELS[lang]["ai_qa"]):
-                ai_question = gr.Textbox(label=LABELS[lang]["input_question"])
-                ai_output = gr.Textbox(label=LABELS[lang]["ai_reply"])
-                ai_submit = gr.Button(LABELS[lang]["submit"])
-                def ai_chat_ui(question):
-                    return ai_chat_llm_only(question, "user", lang)
-                ai_submit.click(
-                    ai_chat_ui,
-                    inputs=[ai_question],
-                    outputs=ai_output
-                )
-            # --- FAQ搜尋 ---
-            with gr.Tab(LABELS[lang]["rag_qa"]):
-                rag_question = gr.Textbox(label=LABELS[lang]["input_question"])
-                rag_lang = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value=lang)
-                rag_output = gr.Textbox(label=LABELS[lang]["rag_reply"])
-                rag_submit = gr.Button(LABELS[lang]["submit"])
-                def rag_chat_ui(question, lang_code):
-                    return rag_answer_rag_only(question, lang_code, "user", lang)
-                rag_submit.click(
-                    rag_chat_ui,
-                    inputs=[rag_question, rag_lang],
-                    outputs=rag_output
-                )
-    # 五國語tab
-    for lang in langs:
-        make_language_tab(lang)
+    with gr.Group(visible=True) as qa_group:
+        langs = ["zh-TW", "zh-CN", "en", "ja", "ko"]
+        def make_language_tab(lang):
+            with gr.Tab(LABELS[lang]["lang"]):
+                with gr.Tab(LABELS[lang]["ai_qa"]):
+                    ai_question = gr.Textbox(label=LABELS[lang]["input_question"])
+                    ai_output = gr.Textbox(label=LABELS[lang]["ai_reply"])
+                    ai_submit = gr.Button(LABELS[lang]["submit"])
+                    def ai_chat_ui(question):
+                        return ai_chat_llm_only(question, "user", lang)
+                    ai_submit.click(
+                        ai_chat_ui,
+                        inputs=[ai_question],
+                        outputs=ai_output
+                    )
+                with gr.Tab(LABELS[lang]["rag_qa"]):
+                    rag_question = gr.Textbox(label=LABELS[lang]["input_question"])
+                    rag_lang = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value=lang)
+                    rag_output = gr.Textbox(label=LABELS[lang]["rag_reply"])
+                    rag_submit = gr.Button(LABELS[lang]["submit"])
+                    def rag_chat_ui(question, lang_code):
+                        return rag_answer_rag_only(question, lang_code, "user", lang)
+                    rag_submit.click(
+                        rag_chat_ui,
+                        inputs=[rag_question, rag_lang],
+                        outputs=rag_output
+                    )
+        for lang in langs:
+            make_language_tab(lang)
+        # 管理員登入區（底部唯一，不分語系）
+        with gr.Row():
+            admin_username = gr.Textbox(label="帳號")
+            admin_password = gr.Textbox(label="密碼", type="password")
+            admin_login_btn = gr.Button("登入")
+            admin_login_status = gr.Textbox(label="", value="未登入", interactive=False)
 
-    # === 管理員統一 Tab（永遠在最後一個頁籤） ===
-    with gr.Tab("管理員功能"):
+    with gr.Group(visible=False) as admin_group:
         admin_logout_btn = gr.Button("登出")
         add_vec_btn = gr.Button("將所有對話餵進知識庫")
         status_box = gr.Textbox(label="狀態")
@@ -400,28 +404,24 @@ with gr.Blocks(title="AI 多語助理") as demo:
             inputs=[sitemap_url, sitemap_filename],
             outputs=crawl_sitemap_status
         )
-        # 登入區塊
-        with gr.Row(visible=True) as admin_login_row:
-            admin_username = gr.Textbox(label="帳號")
-            admin_password = gr.Textbox(label="密碼", type="password")
-            admin_login_btn = gr.Button("登入")
-            admin_login_status = gr.Textbox(label="", value="未登入", interactive=False)
-        def admin_login_fn(username, password):
-            if check_login(username, password):
-                admin_login_row.visible = False
-                return "已登入"
-            else:
-                admin_login_row.visible = True
-                return "未登入"
-        admin_login_btn.click(
-            admin_login_fn,
-            inputs=[admin_username, admin_password],
-            outputs=[admin_login_status]
-        )
-        def admin_logout():
-            admin_login_row.visible = True
-            return "未登入"
-        admin_logout_btn.click(fn=admin_logout, outputs=[admin_login_status])
+
+    def do_login(username, password):
+        if check_login(username, password):
+            return gr.update(visible=False), gr.update(visible=True), "已登入"
+        else:
+            return gr.update(visible=True), gr.update(visible=False), "帳號或密碼錯誤"
+    admin_login_btn.click(
+        do_login,
+        inputs=[admin_username, admin_password],
+        outputs=[qa_group, admin_group, admin_login_status]
+    )
+
+    def do_logout():
+        return gr.update(visible=True), gr.update(visible=False)
+    admin_logout_btn.click(
+        do_logout,
+        outputs=[qa_group, admin_group]
+    )
 
 app = FastAPI()
 app.add_middleware(
