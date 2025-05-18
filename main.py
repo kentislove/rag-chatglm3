@@ -389,7 +389,7 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     intent = classify_intent(question)
     entities = extract_entities(question)
     summary = summarize_qa(question, llm_result)
-    rag_result = qa.run(question)
+    rag_result = qa.invoke({"query": question})
     save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
     return llm_result
 
@@ -400,7 +400,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     force_english = lang_code in ["en", "ja", "ko"]
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
     try:
-        docs = qa.retriever.get_relevant_documents(q)
+        docs = qa.retriever.invoke(q)
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
