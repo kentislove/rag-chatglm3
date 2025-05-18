@@ -11,6 +11,7 @@ from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
+print("utils path", os.path.abspath("utils.py"))
 from utils import (
     load_documents_from_folder,
     crawl_links_from_homepage,
