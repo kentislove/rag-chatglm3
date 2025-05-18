@@ -1,0 +1,9 @@
+所有功能均已合併：多輪上下文（Session）、問答紀錄（sqlite）、意圖分類（Cohere classify）、資訊抽取（Cohere extract）、NLG（Cohere generate）、RAG（FAISS）、摘要、問答自動進向量庫。
+
+session_id 支援多種方式產生。
+
+支援 Gradio & FastAPI 部署於 Render。
+
+主機規格完全足夠，這些功能在標準 x86 機器運作無壓力。
+
+API key 請於 Render Dashboard 設定。

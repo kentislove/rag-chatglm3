@@ -1,7 +1,10 @@
 import os
 import json
 import shutil
-from fastapi import FastAPI, Request
+import uuid
+import sqlite3
+import psutil
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from langchain_cohere import CohereEmbeddings, ChatCohere
@@ -15,12 +18,12 @@ from utils import (
     save_url_list
 )
 import gradio as gr
-import tiktoken
 from typing import List
-import requests
+import cohere
 
-
+# ===========================
 # 多語 LABELS
+# ===========================
 LABELS = {
     "zh-TW": {
         "lang": "繁體中文",
@@ -63,7 +66,7 @@ LABELS = {
         "upload": "上传文件（doc, docx, xls, xlsx, pdf, txt）",
         "update_vector": "手动更新向量库",
         "homepage_url": "全站首页网址(含http)",
-        "sitemap_url": "sitemap.xml网址",
+        "sitemap_url": "sitemap.xml URL",
         "success_upload": "文件已上传！",
         "logout": "登出",
         "choose_lang": "选择语言",
@@ -160,20 +163,8 @@ LABELS = {
 }
 DEFAULT_LANG = "zh-TW"
 
-def detect_lang(request: gr.Request):
-    accept_language = request.headers.get('accept-language', '').lower()
-    if accept_language.startswith("zh-tw"):
-        return "zh-TW"
-    elif accept_language.startswith("zh-cn"):
-        return "zh-CN"
-    elif accept_language.startswith("ja"):
-        return "ja"
-    elif accept_language.startswith("ko"):
-        return "ko"
-    elif accept_language.startswith("zh"):
-        return "zh-TW"
-    else:
-        return "en"
+def detect_lang():
+    return DEFAULT_LANG
 
 def check_login(username, password):
     if username == "admin" and password == "AaAa691027!!":
@@ -182,30 +173,121 @@ def check_login(username, password):
         return "user"
     return None
 
-MAX_CONTEXT_TOKENS = 12000
+# ===========================
+# Session ID, DB, 向量庫/LLM/NLU/NLG
+# ===========================
+def generate_session_id(method="uuid", username=None, token=None):
+    if method == "uuid":
+        return str(uuid.uuid4())
+    elif method == "username" and username:
+        return f"user-{username}-{uuid.uuid4()}"
+    elif method == "token" and token:
+        return f"token-{token}"
+    else:
+        return str(uuid.uuid4())
 
-def safe_context_chunks(chunks, max_tokens=MAX_CONTEXT_TOKENS):
-    tokenizer = tiktoken.get_encoding("cl100k_base")
-    total = 0
-    output = []
-    for chunk in chunks:
-        n = len(tokenizer.encode(chunk.page_content))
-        if total + n > max_tokens:
-            break
-        total += n
-        output.append(chunk)
-    return output
+def init_db():
+    conn = sqlite3.connect('chat_history.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS chat_history (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT,
+        question TEXT,
+        answer TEXT,
+        intent TEXT,
+        entities TEXT,
+        summary TEXT,
+        timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+        session_id TEXT,
+        login_type TEXT
+    )''')
+    conn.commit()
+    conn.close()
 
-VECTOR_STORE_PATH = "./faiss_index"
-DOCUMENTS_PATH = "./docs"
-DOCS_STATE_PATH = os.path.join(VECTOR_STORE_PATH, "last_docs.json")
-os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
-os.makedirs(DOCUMENTS_PATH, exist_ok=True)
+def save_chat(username, question, answer, intent, entities, summary, session_id, login_type):
+    conn = sqlite3.connect('chat_history.db')
+    c = conn.cursor()
+    c.execute('INSERT INTO chat_history (username, question, answer, intent, entities, summary, session_id, login_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
+              (username, question, answer, intent, entities, summary, session_id, login_type))
+    conn.commit()
+    conn.close()
 
+def get_recent_chats(session_id, n=5):
+    conn = sqlite3.connect('chat_history.db')
+    c = conn.cursor()
+    c.execute('SELECT question, answer FROM chat_history WHERE session_id=? ORDER BY timestamp DESC LIMIT ?', (session_id, n))
+    rows = c.fetchall()
+    conn.close()
+    return rows[::-1]
+
+def get_db_size():
+    if not os.path.exists('chat_history.db'):
+        return 0
+    return os.path.getsize('chat_history.db')
+
+def get_vectorstore_file_count():
+    if not os.path.exists('faiss_index'):
+        return 0
+    return len([f for f in os.listdir('faiss_index') if os.path.isfile(os.path.join('faiss_index', f))])
+
+# Cohere
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 if not COHERE_API_KEY:
     raise RuntimeError("請設定 Cohere API Key 到 COHERE_API_KEY 環境變數！")
+co = cohere.Client(COHERE_API_KEY)
 
+def classify_intent(question):
+    examples=[
+        cohere.ClassifyExample("I want to check order status", "query"),
+        cohere.ClassifyExample("Place an order for me", "order"),
+        cohere.ClassifyExample("Contact customer service", "contact"),
+        cohere.ClassifyExample("What can you do?", "about"),
+        cohere.ClassifyExample("Who are you?", "about"),
+    ]
+    try:
+        response = co.classify(
+            inputs=[question],
+            examples=examples
+        )
+        return response.classifications[0].prediction
+    except Exception as e:
+        return "unknown"
+
+def extract_entities(question):
+    import re
+    if re.search('[\u4e00-\u9fff]', question):  # 有中文字就跳過
+        return "[]"
+    try:
+        response = co.extract(
+            texts=[question],
+            examples=[{"text": "I want 5 apples to Taipei", "entities": [
+                {"type": "item", "text": "apples"},
+                {"type": "quantity", "text": "5"},
+                {"type": "location", "text": "Taipei"}
+            ]}]
+        )
+        return str(response[0].entities) if response else "[]"
+    except Exception as e:
+        return "[]"
+
+def cohere_generate(prompt):
+    response = co.generate(
+        model="command-r-plus",
+        prompt=prompt,
+        max_tokens=300,
+        temperature=0.3
+    )
+    return response.generations[0].text.strip()
+
+def summarize_qa(question, answer):
+    prompt = f"Summarize the following conversation in one sentence:\nQ: {question}\nA: {answer}"
+    return cohere_generate(prompt)
+
+# FAISS 向量庫
+VECTOR_STORE_PATH = "./faiss_index"
+DOCUMENTS_PATH = "./docs"
+os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
+os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 embedding_model = CohereEmbeddings(
     cohere_api_key=COHERE_API_KEY,
     model="embed-multilingual-v3.0"
@@ -218,198 +300,98 @@ llm = ChatCohere(
 vectorstore = None
 qa = None
 
-def get_current_docs_state() -> dict:
-    docs_state = {}
-    for f in os.listdir(DOCUMENTS_PATH):
-        path = os.path.join(DOCUMENTS_PATH, f)
-        if os.path.isfile(path):
-            docs_state[f] = os.path.getmtime(path)
-    return docs_state
-
-def load_last_docs_state() -> dict:
-    if os.path.exists(DOCS_STATE_PATH):
-        with open(DOCS_STATE_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
-    return {}
-
-def save_docs_state(state: dict):
-    with open(DOCS_STATE_PATH, "w", encoding="utf-8") as f:
-        json.dump(state, f)
-
-def get_new_or_updated_files(current: dict, last: dict) -> List[str]:
-    changed = []
-    for name, mtime in current.items():
-        if name not in last or last[name] < mtime:
-            changed.append(name)
-    return changed
-
-def build_vector_store(docs_state: dict = None):
+def build_vector_store():
     documents = load_documents_from_folder(DOCUMENTS_PATH)
-    splitter = CharacterTextSplitter(chunk_size=200, chunk_overlap=30)
+    splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
     texts = splitter.split_documents(documents)
     if not texts:
-        raise RuntimeError("docs 資料夾內沒有可用文件，無法建立向量資料庫，請至少放入一份 txt/pdf/docx/xlsx/csv/url 檔案！")
+        raise RuntimeError("No document to build vectorstore.")
     db = FAISS.from_documents(texts, embedding_model)
     db.save_local(VECTOR_STORE_PATH)
-    if docs_state:
-        save_docs_state(docs_state)
-    return db
-
-def add_new_files_to_vector_store(db, new_files: List[str], docs_state: dict):
-    from langchain.schema import Document
-    from langchain_community.document_loaders import (
-        TextLoader,
-        UnstructuredPDFLoader,
-        UnstructuredWordDocumentLoader,
-        UnstructuredExcelLoader,
-        WebBaseLoader
-    )
-    splitter = CharacterTextSplitter(chunk_size=200, chunk_overlap=30)
-    new_documents = []
-    for file in new_files:
-        filepath = os.path.join(DOCUMENTS_PATH, file)
-        if os.path.isfile(filepath):
-            ext = os.path.splitext(file)[1].lower()
-            if ext == ".txt":
-                loader = TextLoader(filepath, autodetect_encoding=True)
-                docs = loader.load()
-            elif ext == ".pdf":
-                loader = UnstructuredPDFLoader(filepath)
-                docs = loader.load()
-            elif ext == ".docx":
-                loader = UnstructuredWordDocumentLoader(filepath)
-                docs = loader.load()
-            elif ext in [".xlsx", ".xls"]:
-                loader = UnstructuredExcelLoader(filepath)
-                docs = loader.load()
-            elif ext == ".csv":
-                from utils import parse_csv_file
-                docs = parse_csv_file(filepath)
-            elif ext == ".url":
-                with open(filepath, "r", encoding="utf-8") as f:
-                    urls = [line.strip() for line in f if line.strip()]
-                    for url in urls:
-                        try:
-                            web_loader = WebBaseLoader(url)
-                            docs = web_loader.load()
-                            new_documents.extend(docs)
-                        except Exception as e:
-                            print(f"讀取網址失敗 {url}: {e}")
-                continue
-            else:
-                print(f"不支援的格式：{file}")
-                continue
-            new_documents.extend(docs)
-    if new_documents:
-        texts = splitter.split_documents(new_documents)
-        db.add_documents(texts)
-        db.save_local(VECTOR_STORE_PATH)
-        save_docs_state(docs_state)
     return db
 
 def ensure_qa():
     global vectorstore, qa
-    current_docs_state = get_current_docs_state()
-    last_docs_state = load_last_docs_state()
     if vectorstore is None:
         if os.path.exists(VECTOR_STORE_PATH) and os.listdir(VECTOR_STORE_PATH):
             vectorstore = FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
-            new_files = get_new_or_updated_files(current_docs_state, last_docs_state)
-            if new_files:
-                vectorstore = add_new_files_to_vector_store(vectorstore, new_files, current_docs_state)
-            elif len(current_docs_state) != len(last_docs_state):
-                vectorstore = build_vector_store(current_docs_state)
         else:
-            vectorstore = build_vector_store(current_docs_state)
-    else:
-        new_files = get_new_or_updated_files(current_docs_state, last_docs_state)
-        if new_files:
-            vectorstore = add_new_files_to_vector_store(vectorstore, new_files, current_docs_state)
-        elif len(current_docs_state) != len(last_docs_state):
-            vectorstore = build_vector_store(current_docs_state)
+            vectorstore = build_vector_store()
     if qa is None:
         qa = RetrievalQA.from_chain_type(
             llm=llm,
             chain_type="stuff",
-            retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
+            retriever=vectorstore.as_retriever(search_kwargs={"k": 1})
         )
 
-def manual_update_vector():
-    global vectorstore, qa
-    vectorstore = build_vector_store(get_current_docs_state())
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
-    qa = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="stuff",
-        retriever=vectorstore.as_retriever()
-    )
-    return "向量資料庫已手動重建完成"
+def add_chats_to_vectorstore():
+    conn = sqlite3.connect('chat_history.db')
+    c = conn.cursor()
+    c.execute('SELECT question, answer, summary FROM chat_history')
+    rows = c.fetchall()
+    conn.close()
+    from langchain.schema import Document
+    chat_docs = [Document(page_content=f"Q: {q}\nA: {a}\nSummary: {s}") for q, a, s in rows if q and a]
+    if chat_docs:
+        splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
+        texts = splitter.split_documents(chat_docs)
+        vectorstore.add_documents(texts)
+        vectorstore.save_local(VECTOR_STORE_PATH)
 
-def duckduckgo_search(query):
-    url = f"https://api.duckduckgo.com/?q={query}&format=json"
-    try:
-        res = requests.get(url, timeout=8)
-        data = res.json()
-        answer = data.get("AbstractText") or data.get("Answer")
-        if not answer:
-            related = data.get("RelatedTopics", [])
-            if isinstance(related, list) and related:
-                if isinstance(related[0], dict):
-                    answer = related[0].get("Text", "")
-        return answer if answer else "查無 DuckDuckGo 即時答案"
-    except Exception as e:
-        return f"DuckDuckGo 查詢失敗: {e}"
+def build_multi_turn_prompt(current_question, session_id):
+    history = get_recent_chats(session_id)
+    dialog = ""
+    for q, a in history:
+        dialog += f"User: {q}\nBot: {a}\n"
+    dialog += f"User: {current_question}\nBot:"
+    return dialog
 
-def rag_answer_lang(question, lang_code):
+# ===========================
+# RAG 多語入口
+# ===========================
+def rag_answer_lang(question, lang_code, username="user", session_id=None, login_type="user"):
     force_english = lang_code in ["en", "ja", "ko"]
-    if force_english:
-        q = f"Please answer the following question in English:\n{question}"
-    else:
-        q = question
+    q = question if not force_english else f"Please answer the following question in English:\n{question}"
     ensure_qa()
-    # RAG 部分，永遠嘗試，出錯也給出明確提示
     try:
         docs = qa.retriever.get_relevant_documents(q)
-        safe_docs = safe_context_chunks(docs)
-        rag_result = qa.combine_documents_chain.run(input_documents=safe_docs, question=q)
-        if not rag_result or str(rag_result).strip() == "":
-            rag_result = "查無內容" if not force_english else "No content"
+        rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
-    # Cohere LLM 部分，不影響主流程
+    prompt = build_multi_turn_prompt(question, session_id)
     try:
-        cohere_result = llm.invoke(q)
-        cohere_msg = f"{getattr(cohere_result,'content',str(cohere_result)).strip()}"
-        if not cohere_msg:
-            raise Exception("Empty LLM result")
+        cohere_msg = cohere_generate(prompt)
     except Exception as e:
-        if lang_code == "en":
-            cohere_msg = "[LLM Error] External AI temporarily unavailable."
-        elif lang_code == "ja":
-            cohere_msg = "[LLMエラー] 外部AIは一時的に利用できません。"
-        elif lang_code == "ko":
-            cohere_msg = "[LLM 오류] 외부 AI를 일시적으로 사용할 수 없습니다."
-        elif lang_code == "zh-CN":
-            cohere_msg = "[LLM错误] 外部AI暂时无法响应。"
-        else:
-            cohere_msg = "[LLM錯誤] 外部AI暫時無法回應。"
+        cohere_msg = "[LLM error]"
+    intent = classify_intent(question)
+    entities = extract_entities(question)
+    summary = summarize_qa(question, cohere_msg)
+    save_chat(username, question, cohere_msg, intent, entities, summary, session_id or "default", login_type)
+    return f"【RAG】\n{rag_result}\n\n【LLM】\n{cohere_msg}\n\n【意圖】{intent}\n【實體】{entities}\n【摘要】{summary}\n"
 
-    # DuckDuckGo 可失敗但不影響主流程
-    try:
-        duck_result = duckduckgo_search(q)
-        if not duck_result or str(duck_result).strip() == "" or "查無" in duck_result:
-            duck_msg = "查無內容" if not force_english else "No content"
-        else:
-            duck_msg = duck_result.strip()
-    except Exception as e:
-        duck_msg = "查無內容" if not force_english else "No content"
+def ai_chat(question, username="user", session_id=None, login_type="user"):
+    if not session_id:
+        session_id = generate_session_id("uuid", username=username)
+    ensure_qa()
+    prompt = build_multi_turn_prompt(question, session_id)
+    intent = classify_intent(question)
+    entities = extract_entities(question)
+    llm_result = cohere_generate(prompt)
+    summary = summarize_qa(question, llm_result)
+    rag_result = qa.run(question)
+    save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
+    return {
+        "session_id": session_id,
+        "意圖": intent,
+        "實體": entities,
+        "LLM": llm_result,
+        "RAG": rag_result,
+        "摘要": summary
+    }
 
-    # 最終多來源並列回傳
-    msg = f"【RAG】\n{rag_result}\n\n"
-    msg += f"【LLM】\n{cohere_msg}\n\n"
-    msg += f"【DuckDuckGo】\n{duck_msg}\n"
-    return msg
-
+# ===========================
+# 網站爬蟲功能
+# ===========================
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
         filename = "homepage_auto.url"
@@ -430,122 +412,119 @@ def crawl_and_save_urls_sitemap(sitemap_url, filename):
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
 
-with gr.Blocks(title="太盛昌AI助理") as demo:
-    lang = gr.State(DEFAULT_LANG)
-    role = gr.State("user")
-    login_status = gr.State("")
-    with gr.Row():
-        with gr.Column():
-            ai_title = gr.Markdown(f"<h1 id='ai_title'>{LABELS[DEFAULT_LANG]['title']}</h1>")
-            lang_selector = gr.Radio(
-                choices=[LABELS[k]["lang"] for k in LABELS],
-                value=LABELS[DEFAULT_LANG]["lang"],
-                label=LABELS[DEFAULT_LANG]["choose_lang"]
-            )
-            username_input = gr.Textbox(label=LABELS[DEFAULT_LANG]["username"])
-            password_input = gr.Textbox(label=LABELS[DEFAULT_LANG]["password"], type="password")
-            login_btn = gr.Button(LABELS[DEFAULT_LANG]["login"])
-            login_fail_tip = gr.Markdown("")
-    with gr.Row():
-        with gr.Column(visible=False) as main_left:
-            qa_box = gr.Textbox(label=LABELS[DEFAULT_LANG]["input_question"], placeholder=LABELS[DEFAULT_LANG]["input_question"])
-            submit_btn = gr.Button(LABELS[DEFAULT_LANG]["submit"])
-            answer_box = gr.Textbox(label=LABELS[DEFAULT_LANG]["ai_qa"], elem_id="answer_area", interactive=False, show_copy_button=True)
-        with gr.Column(visible=False) as admin_panel:
-            upload_file = gr.File(label=LABELS[DEFAULT_LANG]["upload"], file_count="multiple", file_types=[".doc",".docx",".xls",".xlsx",".pdf",".txt"])
-            upload_btn = gr.Button(LABELS[DEFAULT_LANG]["upload"])
-            update_btn = gr.Button(LABELS[DEFAULT_LANG]["update_vector"])
-            homepage_url = gr.Textbox(label=LABELS[DEFAULT_LANG]["homepage_url"])
-            homepage_filename = gr.Textbox(label=LABELS[DEFAULT_LANG]["homepage_filename"])
-            homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
-            crawl_btn = gr.Button(LABELS[DEFAULT_LANG]["homepage_crawl"])
-            sitemap_url = gr.Textbox(label=LABELS[DEFAULT_LANG]["sitemap_url"])
-            sitemap_filename = gr.Textbox(label=LABELS[DEFAULT_LANG]["sitemap_filename"])
-            crawl_sitemap_btn = gr.Button(LABELS[DEFAULT_LANG]["sitemap_crawl"])
-            admin_status = gr.Markdown("")
-
-    # ===== 登入邏輯 =====
-    def do_login(username, password, lang_str):
-        lang_code = None
-        for k, v in LABELS.items():
-            if v["lang"] == lang_str:
-                lang_code = k
-                break
-        if not lang_code:
-            lang_code = DEFAULT_LANG
-        role_val = check_login(username, password)
-        title = LABELS[lang_code]["title"]
-        if role_val == "admin":
-            return lang_code, role_val, "", gr.update(visible=True), gr.update(visible=True), gr.update(value=f"<h1 id='ai_title'>{title}</h1>")
-        elif role_val == "user":
-            return lang_code, role_val, "", gr.update(visible=True), gr.update(visible=False), gr.update(value=f"<h1 id='ai_title'>{title}</h1>")
-        else:
-            return lang_code, "user", LABELS[lang_code]["login_fail"], gr.update(visible=False), gr.update(visible=False), gr.update(value=f"<h1 id='ai_title'>{title}</h1>")
-    login_btn.click(
-        fn=do_login,
-        inputs=[username_input, password_input, lang_selector],
-        outputs=[lang, role, login_fail_tip, main_left, admin_panel, ai_title]
+def manual_update_vector():
+    global vectorstore, qa
+    vectorstore = build_vector_store()
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
+    qa = RetrievalQA.from_chain_type(
+        llm=llm,
+        chain_type="stuff",
+        retriever=vectorstore.as_retriever()
     )
-    # AI 問答
-    submit_btn.click(fn=rag_answer_lang, inputs=[qa_box, lang], outputs=answer_box)
+    return "向量資料庫已手動重建完成"
 
-    # ===== 檔案上傳 =====
-    def save_uploaded_files(files):
-        allowed_exts = {".doc",".docx",".xls",".xlsx",".pdf",".txt"}
-        saved = []
-        if not files:
-            return "請選擇要上傳的文件！"
-        if not isinstance(files, list):
-            files = [files]
-        for f in files:
-            filename = os.path.basename(f.name)
-            ext = os.path.splitext(filename)[1].lower()
-            if ext not in allowed_exts:
-                continue
-            save_path = os.path.join(DOCUMENTS_PATH, filename)
-            shutil.copy(f.name, save_path)
-            saved.append(filename)
-        if saved:
-            return f"{LABELS[DEFAULT_LANG]['uploaded']} {', '.join(saved)}\n{LABELS[DEFAULT_LANG]['update_notice']}"
-        else:
-            return "沒有支援的檔案被上傳！僅允許 doc, docx, xls, xlsx, pdf, txt"
-    upload_btn.click(fn=save_uploaded_files, inputs=upload_file, outputs=admin_status)
-    # ===== 手動更新向量 =====
-    update_btn.click(fn=manual_update_vector, inputs=None, outputs=admin_status)
-    # ===== 網站爬蟲 =====
-    crawl_btn.click(
-        fn=crawl_and_save_urls_homepage,
-        inputs=[homepage_url, homepage_filename, homepage_maxpages],
-        outputs=admin_status
-    )
-    crawl_sitemap_btn.click(
-        fn=crawl_and_save_urls_sitemap,
-        inputs=[sitemap_url, sitemap_filename],
-        outputs=admin_status
-    )
-    # ===== CSS =====
-    demo.load(None, None, None, js="""
-        function() {
-            let box = document.querySelector('#answer_area textarea');
-            if (box) {
-                if (window.innerWidth <= 700) {
-                    box.style.height = '200px';
-                    box.style.overflowY = 'scroll';
-                } else {
-                    box.style.height = (window.innerHeight - 320) + 'px';
-                    box.style.overflowY = 'auto';
-                }
-            }
-            // 標題即時切換
-            let title = document.getElementById('ai_title');
-            if (title && box) {
-                document.title = title.innerText;
-            }
-        }
-    """)
-    # 自動語言偵測
-    demo.load(lambda request: (detect_lang(request), "user"), outputs=[lang, role])
+# ===========================
+# Gradio
+# ===========================
+init_db()
+with gr.Blocks(title="Cohere AI 多語助理") as demo:
+    with gr.Tab("AI Chat 多語"):
+        question_box = gr.Textbox(label="請輸入問題")
+        username_box = gr.Textbox(label="使用者帳號", value="user")
+        session_id_box = gr.Textbox(label="Session ID (自動產生)", value="")
+        login_type_box = gr.Textbox(label="登入類型", value="user")
+        output_box = gr.JSON(label="AI 回應")
+        submit_btn = gr.Button("送出")
+        submit_btn.click(
+            fn=ai_chat,
+            inputs=[question_box, username_box, session_id_box, login_type_box],
+            outputs=output_box
+        )
+    with gr.Tab("RAG QA 多語"):
+        question_box2 = gr.Textbox(label="請輸入問題")
+        lang_box = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value="zh-TW")
+        username_box2 = gr.Textbox(label="使用者帳號", value="user")
+        session_id_box2 = gr.Textbox(label="Session ID", value="")
+        login_type_box2 = gr.Textbox(label="登入類型", value="user")
+        output_box2 = gr.Textbox(label="回應", lines=10)
+        submit_btn2 = gr.Button("送出")
+        submit_btn2.click(
+            fn=rag_answer_lang,
+            inputs=[question_box2, lang_box, username_box2, session_id_box2, login_type_box2],
+            outputs=output_box2
+        )
+    with gr.Tab("管理員功能"):
+        add_vec_btn = gr.Button("將所有對話餵進知識庫")
+        status_box = gr.Textbox(label="狀態")
+        add_vec_btn.click(fn=lambda: (add_chats_to_vectorstore() or "已成功將所有問答導入知識庫！"), outputs=status_box)
+        # 系統狀態
+        dbsize = gr.Textbox(label="資料庫大小（Bytes）")
+        vcount = gr.Textbox(label="向量庫檔案數")
+        cpu = gr.Textbox(label="CPU使用率")
+        ram = gr.Textbox(label="RAM使用情形")
+        disk = gr.Textbox(label="磁碟使用情形")
+        stats_btn = gr.Button("立即更新狀態")
+        def get_stats():
+            return [
+                str(get_db_size()),
+                str(get_vectorstore_file_count()),
+                str(psutil.cpu_percent()),
+                str(psutil.virtual_memory()._asdict()),
+                str(psutil.disk_usage('/')._asdict())
+            ]
+        stats_btn.click(fn=get_stats, outputs=[dbsize, vcount, cpu, ram, disk])
+        # 手動重建向量庫
+        update_vec_btn = gr.Button("手動更新向量庫")
+        update_status = gr.Textbox(label="向量庫狀態")
+        update_vec_btn.click(fn=manual_update_vector, outputs=update_status)
+        # 網站爬蟲
+        homepage_url = gr.Textbox(label="全站首頁網址(含http)")
+        homepage_filename = gr.Textbox(label=".url檔名")
+        homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
+        crawl_btn = gr.Button("用首頁爬子頁並產生 .url")
+        crawl_status = gr.Textbox(label="爬蟲狀態")
+        crawl_btn.click(
+            fn=crawl_and_save_urls_homepage,
+            inputs=[homepage_url, homepage_filename, homepage_maxpages],
+            outputs=crawl_status
+        )
+        sitemap_url = gr.Textbox(label="sitemap.xml網址")
+        sitemap_filename = gr.Textbox(label=".url檔名")
+        crawl_sitemap_btn = gr.Button("用sitemap自動產生 .url")
+        crawl_sitemap_status = gr.Textbox(label="爬蟲狀態")
+        crawl_sitemap_btn.click(
+            fn=crawl_and_save_urls_sitemap,
+            inputs=[sitemap_url, sitemap_filename],
+            outputs=crawl_sitemap_status
+        )
 
+    # 上傳功能（跳過重名不覆蓋）
+    with gr.Tab("文件上傳"):
+        upload_file = gr.File(label="上傳文件（doc, docx, xls, xlsx, pdf, txt）", file_count="multiple")
+        upload_status = gr.Textbox(label="狀態")
+        def save_uploaded_files(files):
+            allowed_exts = {".doc",".docx",".xls",".xlsx",".pdf",".txt"}
+            saved = []
+            if not files:
+                return "請選擇要上傳的文件！"
+            if not isinstance(files, list):
+                files = [files]
+            for f in files:
+                filename = os.path.basename(f.name)
+                ext = os.path.splitext(filename)[1].lower()
+                save_path = os.path.join(DOCUMENTS_PATH, filename)
+                if ext not in allowed_exts or os.path.exists(save_path):
+                    continue  # 跳過重名或不支援格式
+                shutil.copy(f.name, save_path)
+                saved.append(filename)
+            if saved:
+                return f"已上傳：{', '.join(saved)}\n請手動更新向量庫。"
+            else:
+                return "沒有支援的檔案被上傳，或全部檔案已存在（未覆蓋）"
+        upload_btn = gr.Button("上傳")
+        upload_btn.click(fn=save_uploaded_files, inputs=upload_file, outputs=upload_status)
+
+# FastAPI + Gradio
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,

@@ -1,10 +1,10 @@
 services:
   - type: web
-    name: rag-openai-app
+    name: ai-cohere-app
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "uvicorn main:app --host 0.0.0.0 --port 10000"
-    plan: starter
+    plan: standard
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
     envVars:
       - key: COHERE_API_KEY
-        sync: false
+        sync: false  # 請於 Render 後台設定
