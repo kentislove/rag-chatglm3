@@ -342,7 +342,7 @@ qa = None
 
 def build_vector_store():
     documents = load_documents_from_folder(DOCUMENTS_PATH)
-    splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
+    splitter = CharacterTextSplitter(chunk_size=256, chunk_overlap=50)
     texts = splitter.split_documents(documents)
     if not texts:
         raise RuntimeError("No document to build vectorstore.")
@@ -373,7 +373,7 @@ def add_chats_to_vectorstore():
     from langchain.schema import Document
     chat_docs = [Document(page_content=f"Q: {q}\nA: {a}\nSummary: {s}") for q, a, s in rows if q and a]
     if chat_docs:
-        splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=50)
+        splitter = CharacterTextSplitter(chunk_size=256, chunk_overlap=50)
         texts = splitter.split_documents(chat_docs)
         vectorstore.add_documents(texts)
         vectorstore.save_local(VECTOR_STORE_PATH)
@@ -407,6 +407,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     q = question if not force_english else f"Please answer the following question in English:\n{question}"
     try:
         docs = qa.retriever.invoke(q)  # get_relevant_documents 已棄用
+        docs = docs[:3]  # 只取最重要的3筆
         rag_result = qa.combine_documents_chain.run(input_documents=docs, question=q)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
