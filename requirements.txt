@@ -20,3 +20,4 @@ pdf2image
 python-docx
 openpyxl
 xlrd
+networkx
