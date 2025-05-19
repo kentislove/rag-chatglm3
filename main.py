@@ -3,6 +3,8 @@ import shutil
 import uuid
 import sqlite3
 import psutil
+import csv
+import tempfile
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
@@ -83,6 +85,8 @@ def generate_session_id():
 def init_db():
     conn = sqlite3.connect('chat_history.db')
     c = conn.cursor()
+    # 若你還沒加ip4，請用以下SQL加入
+    # c.execute('ALTER TABLE chat_history ADD COLUMN ip4 TEXT;')
     c.execute('''CREATE TABLE IF NOT EXISTS chat_history (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT,
@@ -93,16 +97,18 @@ def init_db():
         summary TEXT,
         timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
         session_id TEXT,
-        login_type TEXT
+        login_type TEXT,
+        ip4 TEXT
     )''')
     conn.commit()
     conn.close()
 
-def save_chat(username, question, answer, intent, entities, summary, session_id, login_type):
+def save_chat(username, question, answer, intent, entities, summary, session_id, login_type, ip4=None):
     conn = sqlite3.connect('chat_history.db')
     c = conn.cursor()
-    c.execute('INSERT INTO chat_history (username, question, answer, intent, entities, summary, session_id, login_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-              (username, question, answer, intent, entities, summary, session_id, login_type))
+    # 如果你db有ip4欄位
+    c.execute('INSERT INTO chat_history (username, question, answer, intent, entities, summary, session_id, login_type, ip4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+              (username, question, answer, intent, entities, summary, session_id, login_type, ip4))
     conn.commit()
     conn.close()
 
@@ -252,7 +258,8 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     entities = extract_entities(question)
     summary = summarize_qa(question, llm_result)
     rag_result = qa.invoke({"query": question})
-    save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
+    # 這裡IP建議抓request或os.environ，現在假設沒抓
+    save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type, ip4=None)
     return llm_result
 
 def get_token_count_cohere(text):
@@ -298,7 +305,7 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     intent = classify_intent(question)
     entities = extract_entities(question)
     summary = summarize_qa(question, cohere_msg)
-    save_chat(username, question, cohere_msg, intent, entities, summary, session_id, login_type)
+    save_chat(username, question, cohere_msg, intent, entities, summary, session_id, login_type, ip4=None)
     return rag_result
 
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
@@ -306,7 +313,7 @@ def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
         filename = "homepage_auto.url"
     if not filename.endswith('.url'):
         filename = filename + '.url'
-    file_path = os.path.join(DOCUMENTS_PATH, filename)
+    file_path = os.path.join('./docs', filename)
     urls = crawl_links_from_homepage(start_url, max_pages=max_pages)
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
@@ -316,7 +323,7 @@ def crawl_and_save_urls_sitemap(sitemap_url, filename):
         filename = "sitemap_auto.url"
     if not filename.endswith('.url'):
         filename = filename + '.url'
-    file_path = os.path.join(DOCUMENTS_PATH, filename)
+    file_path = os.path.join('./docs', filename)
     urls = fetch_urls_from_sitemap(sitemap_url)
     save_url_list(urls, file_path)
     return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
@@ -331,6 +338,28 @@ def manual_update_vector():
         retriever=vectorstore.as_retriever()
     )
     return "向量資料庫已手動重建完成"
+
+def export_chat_history_csv():
+    conn = sqlite3.connect('chat_history.db')
+    c = conn.cursor()
+    try:
+        c.execute("SELECT session_id, ip4, question, answer FROM chat_history ORDER BY timestamp ASC")
+        has_ip = True
+    except sqlite3.OperationalError:
+        c.execute("SELECT session_id, question, answer FROM chat_history ORDER BY timestamp ASC")
+        has_ip = False
+    rows = c.fetchall()
+    conn.close()
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
+    with open(tmp.name, 'w', encoding='utf-8', newline='') as f:
+        writer = csv.writer(f)
+        if has_ip:
+            writer.writerow(['session_id','ip4','question','answer'])
+        else:
+            writer.writerow(['session_id','question','answer'])
+        for row in rows:
+            writer.writerow(row)
+    return tmp.name
 
 init_db()
 with gr.Blocks(title="AI 多語助理") as demo:
@@ -365,7 +394,6 @@ with gr.Blocks(title="AI 多語助理") as demo:
                     )
         for lang in langs:
             make_language_tab(lang)
-        # 管理員登入區（底部唯一，不分語系）
         with gr.Row():
             admin_username = gr.Textbox(label="帳號")
             admin_password = gr.Textbox(label="密碼", type="password")
@@ -439,6 +467,10 @@ with gr.Blocks(title="AI 多語助理") as demo:
             inputs=[sitemap_url, sitemap_filename],
             outputs=crawl_sitemap_status
         )
+        # 匯出問答紀錄
+        export_btn = gr.Button("一鍵匯出問答紀錄 (CSV)")
+        export_file = gr.File(label="下載匯出檔", interactive=True)
+        export_btn.click(fn=export_chat_history_csv, inputs=[], outputs=export_file)
 
     def do_login(username, password):
         if check_login(username, password):
