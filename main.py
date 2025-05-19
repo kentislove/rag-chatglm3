@@ -18,12 +18,6 @@ from utils import (
 )
 import gradio as gr
 import cohere
-import tiktoken
-
-def get_token_count(text, model="gpt-3.5-turbo"):
-    # 以 gpt-3.5-turbo 為例，若 Cohere 有自己的 tokenizer 請替換
-    encoding = tiktoken.encoding_for_model(model)
-    return len(encoding.encode(text))
 
 LABELS = {
     "zh-TW": {
@@ -74,6 +68,11 @@ LABELS = {
 }
 
 DEFAULT_LANG = "zh-TW"
+
+STYLE_PROMPT = {
+    "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答：",
+    "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答："
+}
 
 def check_login(username, password):
     return username == "admin" and password == "AaAa691027!!"
@@ -168,7 +167,7 @@ def cohere_generate(prompt):
     response = co.generate(
         model="command-r-plus",
         prompt=prompt,
-        max_tokens=300,
+        max_tokens=1024,      # 可依你需求再放大
         temperature=0.3
     )
     return response.generations[0].text.strip()
@@ -239,10 +238,6 @@ def build_multi_turn_prompt(current_question, session_id):
     dialog += f"User: {current_question}\nBot:"
     return dialog
 
-STYLE_PROMPT = {
-    "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答：",
-    "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答："
-}
 def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     session_id = generate_session_id()
     login_type = "user"
@@ -260,7 +255,13 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
     return llm_result
 
-
+def get_token_count_cohere(text):
+    """用 Cohere v2 SDK 官方 tokenizer 計算 token 數"""
+    try:
+        token_resp = co.tokenize(text=text)
+        return len(token_resp.tokens)
+    except Exception:
+        return len(text)  # fallback, 最差用 char 數
 
 def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG):
     session_id = generate_session_id()
@@ -275,24 +276,21 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
         current_tokens = 0
         selected_docs = []
         for doc in docs[:max_docs]:
-            # 若 page_content 不是 str 要轉換
             content = doc.page_content if hasattr(doc, "page_content") else str(doc)
-            tokens = len(content)
-            # 這裡你也可以用 get_token_count(content) 如果你有 tokenizer
+            tokens = get_token_count_cohere(content)
             if current_tokens + tokens > max_tokens:
                 break
             selected_docs.append(doc)
             current_tokens += tokens
-    style_prefix = STYLE_PROMPT.get(lang, "")
-    if style_prefix:
-        rag_question = f"{style_prefix}\n{question}"
-    else:
-        rag_question = question
-    rag_result = qa.combine_documents_chain.run(
-        input_documents=selected_docs,
-        question=rag_question
-    )
-
+        style_prefix = STYLE_PROMPT.get(lang, "")
+        if style_prefix:
+            rag_question = f"{style_prefix}\n{question}"
+        else:
+            rag_question = question
+        rag_result = qa.combine_documents_chain.run(
+            input_documents=selected_docs,
+            question=rag_question
+        )
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
     prompt = build_multi_turn_prompt(question, session_id)
@@ -302,7 +300,6 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
     summary = summarize_qa(question, cohere_msg)
     save_chat(username, question, cohere_msg, intent, entities, summary, session_id, login_type)
     return rag_result
-
 
 def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
     if not filename or filename.strip() == "":
