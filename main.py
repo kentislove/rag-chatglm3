@@ -351,7 +351,8 @@ def export_chat_history_csv():
     rows = c.fetchall()
     conn.close()
     tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
-    with open(tmp.name, 'w', encoding='utf-8', newline='') as f:
+    with open(tmp.name, 'w', encoding='utf-8-sig', newline='') as f:
+
         writer = csv.writer(f)
         if has_ip:
             writer.writerow(['session_id','ip4','question','answer'])
