@@ -239,12 +239,20 @@ def build_multi_turn_prompt(current_question, session_id):
     dialog += f"User: {current_question}\nBot:"
     return dialog
 
+STYLE_PROMPT = {
+    "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答：",
+    "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答："
+}
 def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     session_id = generate_session_id()
     login_type = "user"
     ensure_qa()
+    style_prefix = STYLE_PROMPT.get(lang, "")
+if style_prefix:
+    prompt = f"{style_prefix}\n{build_multi_turn_prompt(question, session_id)}"
+else:
     prompt = build_multi_turn_prompt(question, session_id)
-    llm_result = cohere_generate(prompt)
+llm_result = cohere_generate(prompt)
     intent = classify_intent(question)
     entities = extract_entities(question)
     summary = summarize_qa(question, llm_result)
@@ -252,6 +260,10 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type)
     return llm_result
 
+STYLE_PROMPT = {
+    "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答：",
+    "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答："
+}
 def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG):
     session_id = generate_session_id()
     login_type = "user"
@@ -273,7 +285,15 @@ def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG)
                 break
             selected_docs.append(doc)
             current_tokens += tokens
-        rag_result = qa.combine_documents_chain.run(input_documents=selected_docs, question=q)
+        style_prefix = STYLE_PROMPT.get(lang, "")
+if style_prefix:
+    rag_question = f"{style_prefix}\n{question}"
+else:
+    rag_question = question
+rag_result = qa.combine_documents_chain.run(
+    input_documents=selected_docs,
+    question=rag_question
+)
     except Exception as e:
         rag_result = f"【RAG錯誤】{e}"
     prompt = build_multi_turn_prompt(question, session_id)
