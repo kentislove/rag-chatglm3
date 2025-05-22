@@ -5,88 +5,44 @@ import sqlite3
 import psutil
 import csv
 import tempfile
-from fastapi import FastAPI
+
+from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
+
+import gradio as gr
 from langchain_cohere import CohereEmbeddings, ChatCohere
 from langchain_community.vectorstores import FAISS
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import CharacterTextSplitter
+
 from utils import (
     load_documents_from_folder,
     crawl_links_from_homepage,
     fetch_urls_from_sitemap,
     save_url_list
 )
-import gradio as gr
+
 import cohere
 
+# === 多語 label 及樣式
 LABELS = {
-    "zh-TW": {
-        "lang": "繁體中文",
-        "ai_qa": "網路搜尋",
-        "rag_qa": "FAQ搜尋",
-        "input_question": "請輸入問題",
-        "submit": "送出",
-        "rag_reply": "RAG 回應",
-        "ai_reply": "AI 回應",
-    },
-    "zh-CN": {
-        "lang": "简体中文",
-        "ai_qa": "网络搜索",
-        "rag_qa": "FAQ搜索",
-        "input_question": "请输入问题",
-        "submit": "提交",
-        "rag_reply": "RAG 回复",
-        "ai_reply": "AI 回复",
-    },
-    "en": {
-        "lang": "English",
-        "ai_qa": "Web Search",
-        "rag_qa": "FAQ Search",
-        "input_question": "Type your question here",
-        "submit": "Submit",
-        "rag_reply": "RAG Reply",
-        "ai_reply": "AI Reply",
-    },
-    "ja": {
-        "lang": "日本語",
-        "ai_qa": "ウェブ検索",
-        "rag_qa": "FAQ検索",
-        "input_question": "質問を入力してください",
-        "submit": "送信",
-        "rag_reply": "RAG返答",
-        "ai_reply": "AI返答",
-    },
-    "ko": {
-        "lang": "한국어",
-        "ai_qa": "웹 검색",
-        "rag_qa": "FAQ 검색",
-        "input_question": "질문을 입력하세요",
-        "submit": "제출",
-        "rag_reply": "RAG 답변",
-        "ai_reply": "AI 답변",
-    }
+    "zh-TW": {"lang": "繁體中文", "ai_qa": "網路搜尋", "rag_qa": "FAQ搜尋", "input_question": "請輸入問題", "submit": "送出", "rag_reply": "RAG 回應", "ai_reply": "AI 回應"},
+    "zh-CN": {"lang": "简体中文", "ai_qa": "网络搜索", "rag_qa": "FAQ搜索", "input_question": "请输入问题", "submit": "提交", "rag_reply": "RAG 回复", "ai_reply": "AI 回复"},
+    "en": {"lang": "English", "ai_qa": "Web Search", "rag_qa": "FAQ Search", "input_question": "Type your question here", "submit": "Submit", "rag_reply": "RAG Reply", "ai_reply": "AI Reply"},
+    "ja": {"lang": "日本語", "ai_qa": "ウェブ検索", "rag_qa": "FAQ検索", "input_question": "質問を入力してください", "submit": "送信", "rag_reply": "RAG返答", "ai_reply": "AI返答"},
+    "ko": {"lang": "한국어", "ai_qa": "웹 검색", "rag_qa": "FAQ 검색", "input_question": "질문을 입력하세요", "submit": "제출", "rag_reply": "RAG 답변", "ai_reply": "AI 답변"},
 }
-
 DEFAULT_LANG = "zh-TW"
-
 STYLE_PROMPT = {
     "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答：",
     "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答："
 }
 
-def check_login(username, password):
-    return username == "admin" and password == "AaAa691027!!"
-
-def generate_session_id():
-    return str(uuid.uuid4())
-
+# === DB ===
 def init_db():
     conn = sqlite3.connect('chat_history.db')
     c = conn.cursor()
-    # 若你還沒加ip4，請用以下SQL加入
-    # c.execute('ALTER TABLE chat_history ADD COLUMN ip4 TEXT;')
     c.execute('''CREATE TABLE IF NOT EXISTS chat_history (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         username TEXT,
@@ -98,17 +54,24 @@ def init_db():
         timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
         session_id TEXT,
         login_type TEXT,
-        ip4 TEXT
+        ip4 TEXT,
+        platform TEXT,
+        line_display_name TEXT
     )''')
     conn.commit()
     conn.close()
 
-def save_chat(username, question, answer, intent, entities, summary, session_id, login_type, ip4=None):
+def save_chat(
+    username, question, answer, intent, entities, summary,
+    session_id, login_type, ip4=None, platform=None, line_display_name=None
+):
     conn = sqlite3.connect('chat_history.db')
     c = conn.cursor()
-    # 如果你db有ip4欄位
-    c.execute('INSERT INTO chat_history (username, question, answer, intent, entities, summary, session_id, login_type, ip4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-              (username, question, answer, intent, entities, summary, session_id, login_type, ip4))
+    c.execute('''
+        INSERT INTO chat_history
+        (username, question, answer, intent, entities, summary, session_id, login_type, ip4, platform, line_display_name)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (username, question, answer, intent, entities, summary, session_id, login_type, ip4, platform, line_display_name))
     conn.commit()
     conn.close()
 
@@ -130,6 +93,21 @@ def get_vectorstore_file_count():
         return 0
     return len([f for f in os.listdir('faiss_index') if os.path.isfile(os.path.join('faiss_index', f))])
 
+def export_chat_history_csv():
+    conn = sqlite3.connect('chat_history.db')
+    c = conn.cursor()
+    c.execute("SELECT session_id, platform, username, line_display_name, question, answer, timestamp FROM chat_history ORDER BY timestamp ASC")
+    rows = c.fetchall()
+    conn.close()
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
+    with open(tmp.name, 'w', encoding='utf-8-sig', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['session_id', 'platform', 'username', 'line_display_name', 'question', 'answer', 'timestamp'])
+        for row in rows:
+            writer.writerow(row)
+    return tmp.name
+
+# === AI / LLM 部分 ===
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 if not COHERE_API_KEY:
     raise RuntimeError("請設定 Cohere API Key 到 COHERE_API_KEY 環境變數！")
@@ -144,12 +122,9 @@ def classify_intent(question):
         cohere.ClassifyExample(text="Who are you?", label="about"),
     ]
     try:
-        response = co.classify(
-            inputs=[question],
-            examples=examples
-        )
+        response = co.classify(inputs=[question], examples=examples)
         return response.classifications[0].prediction
-    except Exception as e:
+    except Exception:
         return "unknown"
 
 def extract_entities(question):
@@ -166,14 +141,14 @@ def extract_entities(question):
             ]}]
         )
         return str(response[0].entities) if response else "[]"
-    except Exception as e:
+    except Exception:
         return "[]"
 
 def cohere_generate(prompt):
     response = co.generate(
         model="command-r-plus",
         prompt=prompt,
-        max_tokens=1024,      # 可依你需求再放大
+        max_tokens=1024,
         temperature=0.3
     )
     return response.generations[0].text.strip()
@@ -222,20 +197,6 @@ def ensure_qa():
             retriever=vectorstore.as_retriever(search_kwargs={"k": 1})
         )
 
-def add_chats_to_vectorstore():
-    conn = sqlite3.connect('chat_history.db')
-    c = conn.cursor()
-    c.execute('SELECT question, answer, summary FROM chat_history')
-    rows = c.fetchall()
-    conn.close()
-    from langchain.schema import Document
-    chat_docs = [Document(page_content=f"Q: {q}\nA: {a}\nSummary: {s}") for q, a, s in rows if q and a]
-    if chat_docs:
-        splitter = CharacterTextSplitter(chunk_size=256, chunk_overlap=50)
-        texts = splitter.split_documents(chat_docs)
-        vectorstore.add_documents(texts)
-        vectorstore.save_local(VECTOR_STORE_PATH)
-
 def build_multi_turn_prompt(current_question, session_id):
     history = get_recent_chats(session_id)
     dialog = ""
@@ -244,8 +205,14 @@ def build_multi_turn_prompt(current_question, session_id):
     dialog += f"User: {current_question}\nBot:"
     return dialog
 
-def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
-    session_id = generate_session_id()
+def ai_chat_llm_only(
+    question,
+    username="user",
+    lang=DEFAULT_LANG,
+    platform="gradio",
+    line_display_name=None
+):
+    session_id = username
     login_type = "user"
     ensure_qa()
     style_prefix = STYLE_PROMPT.get(lang, "")
@@ -258,109 +225,15 @@ def ai_chat_llm_only(question, username="user", lang=DEFAULT_LANG):
     entities = extract_entities(question)
     summary = summarize_qa(question, llm_result)
     rag_result = qa.invoke({"query": question})
-    # 這裡IP建議抓request或os.environ，現在假設沒抓
-    save_chat(username, question, llm_result, intent, entities, summary, session_id, login_type, ip4=None)
+    save_chat(
+        username, question, llm_result, intent, entities, summary,
+        session_id, login_type, ip4=None, platform=platform, line_display_name=line_display_name
+    )
     return llm_result
 
-def get_token_count_cohere(text):
-    """用 Cohere v2 SDK 官方 tokenizer 計算 token 數"""
-    try:
-        token_resp = co.tokenize(text=text)
-        return len(token_resp.tokens)
-    except Exception:
-        return len(text)  # fallback, 最差用 char 數
-
-def rag_answer_rag_only(question, lang_code, username="user", lang=DEFAULT_LANG):
-    session_id = generate_session_id()
-    login_type = "user"
-    ensure_qa()
-    force_english = lang_code in ["en", "ja", "ko"]
-    q = question if not force_english else f"Please answer the following question in English:\n{question}"
-    try:
-        docs = qa.retriever.invoke(q)
-        max_docs = 3
-        max_tokens = 120000
-        current_tokens = 0
-        selected_docs = []
-        for doc in docs[:max_docs]:
-            content = doc.page_content if hasattr(doc, "page_content") else str(doc)
-            tokens = get_token_count_cohere(content)
-            if current_tokens + tokens > max_tokens:
-                break
-            selected_docs.append(doc)
-            current_tokens += tokens
-        style_prefix = STYLE_PROMPT.get(lang, "")
-        if style_prefix:
-            rag_question = f"{style_prefix}\n{question}"
-        else:
-            rag_question = question
-        rag_result = qa.combine_documents_chain.run(
-            input_documents=selected_docs,
-            question=rag_question
-        )
-    except Exception as e:
-        rag_result = f"【RAG錯誤】{e}"
-    prompt = build_multi_turn_prompt(question, session_id)
-    cohere_msg = cohere_generate(prompt)
-    intent = classify_intent(question)
-    entities = extract_entities(question)
-    summary = summarize_qa(question, cohere_msg)
-    save_chat(username, question, cohere_msg, intent, entities, summary, session_id, login_type, ip4=None)
-    return rag_result
-
-def crawl_and_save_urls_homepage(start_url, filename, max_pages=100):
-    if not filename or filename.strip() == "":
-        filename = "homepage_auto.url"
-    if not filename.endswith('.url'):
-        filename = filename + '.url'
-    file_path = os.path.join('./docs', filename)
-    urls = crawl_links_from_homepage(start_url, max_pages=max_pages)
-    save_url_list(urls, file_path)
-    return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
-
-def crawl_and_save_urls_sitemap(sitemap_url, filename):
-    if not filename or filename.strip() == "":
-        filename = "sitemap_auto.url"
-    if not filename.endswith('.url'):
-        filename = filename + '.url'
-    file_path = os.path.join('./docs', filename)
-    urls = fetch_urls_from_sitemap(sitemap_url)
-    save_url_list(urls, file_path)
-    return f"{len(urls)} 筆網址已存入 {file_path}，請點手動更新向量庫。"
-
-def manual_update_vector():
-    global vectorstore, qa
-    vectorstore = build_vector_store()
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 1})
-    qa = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="stuff",
-        retriever=vectorstore.as_retriever()
-    )
-    return "向量資料庫已手動重建完成"
-
-def export_chat_history_csv():
-    conn = sqlite3.connect('chat_history.db')
-    c = conn.cursor()
-    try:
-        c.execute("SELECT session_id, ip4, question, answer FROM chat_history ORDER BY timestamp ASC")
-        has_ip = True
-    except sqlite3.OperationalError:
-        c.execute("SELECT session_id, question, answer FROM chat_history ORDER BY timestamp ASC")
-        has_ip = False
-    rows = c.fetchall()
-    conn.close()
-    tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
-    with open(tmp.name, 'w', encoding='utf-8-sig', newline='') as f:
-
-        writer = csv.writer(f)
-        if has_ip:
-            writer.writerow(['session_id','ip4','question','answer'])
-        else:
-            writer.writerow(['session_id','question','answer'])
-        for row in rows:
-            writer.writerow(row)
-    return tmp.name
+# === FastAPI + Gradio ===
+def check_login(username, password):
+    return username == "admin" and password == "AaAa691027!!"
 
 init_db()
 with gr.Blocks(title="AI 多語助理") as demo:
@@ -375,23 +248,11 @@ with gr.Blocks(title="AI 多語助理") as demo:
                     ai_output = gr.Textbox(label=LABELS[lang]["ai_reply"])
                     ai_submit = gr.Button(LABELS[lang]["submit"])
                     def ai_chat_ui(question):
-                        return ai_chat_llm_only(question, "user", lang)
+                        return ai_chat_llm_only(question, "user", lang, platform="gradio", line_display_name=None)
                     ai_submit.click(
                         ai_chat_ui,
                         inputs=[ai_question],
                         outputs=ai_output
-                    )
-                with gr.Tab(LABELS[lang]["rag_qa"]):
-                    rag_question = gr.Textbox(label=LABELS[lang]["input_question"])
-                    rag_lang = gr.Textbox(label="語言代碼（en/zh-TW/zh-CN/ja/ko）", value=lang)
-                    rag_output = gr.Textbox(label=LABELS[lang]["rag_reply"])
-                    rag_submit = gr.Button(LABELS[lang]["submit"])
-                    def rag_chat_ui(question, lang_code):
-                        return rag_answer_rag_only(question, lang_code, "user", lang)
-                    rag_submit.click(
-                        rag_chat_ui,
-                        inputs=[rag_question, rag_lang],
-                        outputs=rag_output
                     )
         for lang in langs:
             make_language_tab(lang)
@@ -403,9 +264,6 @@ with gr.Blocks(title="AI 多語助理") as demo:
 
     with gr.Group(visible=False) as admin_group:
         admin_logout_btn = gr.Button("登出")
-        add_vec_btn = gr.Button("將所有對話餵進知識庫")
-        status_box = gr.Textbox(label="狀態")
-        add_vec_btn.click(fn=lambda: (add_chats_to_vectorstore() or "已成功將所有問答導入知識庫！"), outputs=status_box)
         dbsize = gr.Textbox(label="資料庫大小（Bytes）")
         vcount = gr.Textbox(label="向量庫檔案數")
         cpu = gr.Textbox(label="CPU使用率")
@@ -423,51 +281,21 @@ with gr.Blocks(title="AI 多語助理") as demo:
         stats_btn.click(fn=get_stats, outputs=[dbsize, vcount, cpu, ram, disk])
         update_vec_btn = gr.Button("手動更新向量庫")
         update_status = gr.Textbox(label="向量庫狀態")
-        update_vec_btn.click(fn=manual_update_vector, outputs=update_status)
 
         upload_file = gr.File(label="上傳文件（doc, docx, xls, xlsx, pdf, txt）", file_count="multiple")
         upload_status = gr.Textbox(label="狀態")
-        def save_uploaded_files(files):
-            allowed_exts = {".doc",".docx",".xls",".xlsx",".pdf",".txt"}
-            saved = []
-            if not files:
-                return "請選擇要上傳的文件！"
-            if not isinstance(files, list):
-                files = [files]
-            for f in files:
-                filename = os.path.basename(f.name)
-                ext = os.path.splitext(filename)[1].lower()
-                save_path = os.path.join("./docs", filename)
-                if ext not in allowed_exts or os.path.exists(save_path):
-                    continue
-                shutil.copy(f.name, save_path)
-                saved.append(filename)
-            if saved:
-                return f"已上傳：{', '.join(saved)}\n請手動更新向量庫。"
-            else:
-                return "沒有支援的檔案被上傳，或全部檔案已存在（未覆蓋）"
-        upload_btn = gr.Button("送出")
-        upload_btn.click(fn=save_uploaded_files, inputs=upload_file, outputs=upload_status)
 
         homepage_url = gr.Textbox(label="全站首頁網址(含http)")
         homepage_filename = gr.Textbox(label=".url檔名")
         homepage_maxpages = gr.Number(label="最大爬頁數", value=30)
         crawl_btn = gr.Button("用首頁爬子頁並產生 .url")
         crawl_status = gr.Textbox(label="爬蟲狀態")
-        crawl_btn.click(
-            fn=crawl_and_save_urls_homepage,
-            inputs=[homepage_url, homepage_filename, homepage_maxpages],
-            outputs=crawl_status
-        )
+
         sitemap_url = gr.Textbox(label="sitemap.xml網址")
         sitemap_filename = gr.Textbox(label=".url檔名")
         crawl_sitemap_btn = gr.Button("用sitemap自動產生 .url")
         crawl_sitemap_status = gr.Textbox(label="爬蟲狀態")
-        crawl_sitemap_btn.click(
-            fn=crawl_and_save_urls_sitemap,
-            inputs=[sitemap_url, sitemap_filename],
-            outputs=crawl_sitemap_status
-        )
+
         # 匯出問答紀錄
         export_btn = gr.Button("一鍵匯出問答紀錄 (CSV)")
         export_file = gr.File(label="下載匯出檔", interactive=True)
@@ -505,3 +333,45 @@ app = mount_gradio_app(app, demo, path="/gradio")
 @app.get("/", include_in_schema=False)
 async def root():
     return RedirectResponse(url="/gradio")
+
+# === LINE BOT 整合 ===
+from linebot import LineBotApi, WebhookHandler
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
+
+LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET")
+LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
+
+if not LINE_CHANNEL_SECRET or not LINE_CHANNEL_ACCESS_TOKEN:
+    raise RuntimeError("請設定 LINE_CHANNEL_SECRET 與 LINE_CHANNEL_ACCESS_TOKEN 到環境變數")
+
+line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
+handler = WebhookHandler(LINE_CHANNEL_SECRET)
+
+@app.post("/callback/line")
+async def callback_line(request: Request):
+    signature = request.headers.get('X-Line-Signature', '')
+    body = await request.body()
+    try:
+        handler.handle(body.decode('utf-8'), signature)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    return "OK"
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    user_id = event.source.user_id
+    username = f"line_{user_id}"
+    try:
+        profile = line_bot_api.get_profile(user_id)
+        display_name = profile.display_name
+    except Exception:
+        display_name = None
+    user_text = event.message.text
+    reply = ai_chat_llm_only(
+        user_text,
+        username=username,
+        lang=DEFAULT_LANG,
+        platform="line",
+        line_display_name=display_name
+    )
+    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply))
