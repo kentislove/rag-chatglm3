@@ -347,16 +347,6 @@ if not LINE_CHANNEL_SECRET or not LINE_CHANNEL_ACCESS_TOKEN:
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
-@app.post("/callback/line")
-async def callback_line(request: Request):
-    signature = request.headers.get('X-Line-Signature', '')
-    body = await request.body()
-    try:
-        handler.handle(body.decode('utf-8'), signature)
-    except Exception as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    return "OK"
-
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     user_id = event.source.user_id
