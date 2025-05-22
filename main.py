@@ -39,8 +39,9 @@ LABELS = {
 }
 DEFAULT_LANG = "zh-TW"
 STYLE_PROMPT = {
-    "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答：",
-    "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答："
+    "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答，**並以不超過30字**精簡扼要回應：",
+    "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答，**且不超过30字**简短扼要回复：",
+     "en":  "Please answer in less than 30 words, concise and clear: "
 }
 
 # === DB ===
@@ -159,7 +160,7 @@ def cohere_generate(prompt):
     response = co.generate(
         model="command-r-plus",
         prompt=prompt,
-        max_tokens=1024,
+        max_tokens=128,
         temperature=0.3
     )
     return response.generations[0].text.strip()
