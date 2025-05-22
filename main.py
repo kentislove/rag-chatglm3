@@ -107,6 +107,13 @@ def export_chat_history_csv():
             writer.writerow(row)
     return tmp.name
 
+# === 向量庫已上傳過的檔案清單 ===
+DOCUMENTS_PATH = "./docs"
+def get_uploaded_doc_files():
+    if not os.path.exists(DOCUMENTS_PATH):
+        return []
+    return [f for f in os.listdir(DOCUMENTS_PATH) if os.path.isfile(os.path.join(DOCUMENTS_PATH, f))]
+
 # === AI / LLM 部分 ===
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 if not COHERE_API_KEY:
@@ -158,7 +165,6 @@ def summarize_qa(question, answer):
     return cohere_generate(prompt)
 
 VECTOR_STORE_PATH = "./faiss_index"
-DOCUMENTS_PATH = "./docs"
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
 embedding_model = CohereEmbeddings(
@@ -231,6 +237,20 @@ def ai_chat_llm_only(
     )
     return llm_result
 
+def faq_chat_only(
+    question,
+    username="user",
+    lang=DEFAULT_LANG,
+    platform="gradio",
+    line_display_name=None
+):
+    ensure_qa()
+    rag_result = qa.invoke({"query": question})
+    if isinstance(rag_result, dict) and "result" in rag_result:
+        return rag_result["result"]
+    else:
+        return str(rag_result)
+
 # === FastAPI + Gradio ===
 def check_login(username, password):
     return username == "admin" and password == "AaAa691027!!"
@@ -243,6 +263,7 @@ with gr.Blocks(title="AI 多語助理") as demo:
         langs = ["zh-TW", "zh-CN", "en", "ja", "ko"]
         def make_language_tab(lang):
             with gr.Tab(LABELS[lang]["lang"]):
+                # AI 回應 tab
                 with gr.Tab(LABELS[lang]["ai_qa"]):
                     ai_question = gr.Textbox(label=LABELS[lang]["input_question"])
                     ai_output = gr.Textbox(label=LABELS[lang]["ai_reply"])
@@ -253,6 +274,18 @@ with gr.Blocks(title="AI 多語助理") as demo:
                         ai_chat_ui,
                         inputs=[ai_question],
                         outputs=ai_output
+                    )
+                # FAQ（RAG回應）tab
+                with gr.Tab(LABELS[lang]["rag_qa"]):
+                    faq_question = gr.Textbox(label=LABELS[lang]["input_question"])
+                    faq_output = gr.Textbox(label=LABELS[lang]["rag_reply"])
+                    faq_submit = gr.Button(LABELS[lang]["submit"])
+                    def faq_chat_ui(question):
+                        return faq_chat_only(question, "user", lang, platform="gradio", line_display_name=None)
+                    faq_submit.click(
+                        faq_chat_ui,
+                        inputs=[faq_question],
+                        outputs=faq_output
                     )
         for lang in langs:
             make_language_tab(lang)
@@ -269,6 +302,7 @@ with gr.Blocks(title="AI 多語助理") as demo:
         cpu = gr.Textbox(label="CPU使用率")
         ram = gr.Textbox(label="RAM使用情形")
         disk = gr.Textbox(label="磁碟使用情形")
+        uploaded_files_list = gr.Textbox(label="向量資料庫已上傳檔案", interactive=False)
         stats_btn = gr.Button("立即更新狀態")
         def get_stats():
             return [
@@ -276,9 +310,10 @@ with gr.Blocks(title="AI 多語助理") as demo:
                 str(get_vectorstore_file_count()),
                 str(psutil.cpu_percent()),
                 str(psutil.virtual_memory()._asdict()),
-                str(psutil.disk_usage('/')._asdict())
+                str(psutil.disk_usage('/')._asdict()),
+                "\n".join(get_uploaded_doc_files())
             ]
-        stats_btn.click(fn=get_stats, outputs=[dbsize, vcount, cpu, ram, disk])
+        stats_btn.click(fn=get_stats, outputs=[dbsize, vcount, cpu, ram, disk, uploaded_files_list])
         update_vec_btn = gr.Button("手動更新向量庫")
         update_status = gr.Textbox(label="向量庫狀態")
 
