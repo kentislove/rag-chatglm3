@@ -9,6 +9,10 @@ import tempfile
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
+from fastapi import Request
+from fastapi.responses import PlainTextResponse
+from linebot.exceptions import InvalidSignatureError
+
 
 import gradio as gr
 from langchain_cohere import CohereEmbeddings, ChatCohere
@@ -353,7 +357,16 @@ with gr.Blocks(title="AI 多語助理") as demo:
         do_logout,
         outputs=[qa_group, admin_group]
     )
-
+@app.post("/callback/line")
+async def line_callback(request: Request):
+    signature = request.headers.get("X-Line-Signature", "")
+    body = await request.body()
+    body_str = body.decode("utf-8")
+    try:
+        handler.handle(body_str, signature)
+        return PlainTextResponse("OK")
+    except InvalidSignatureError:
+        return PlainTextResponse("Invalid signature", status_code=400)
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
