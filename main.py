@@ -415,3 +415,7 @@ async def line_callback(request: Request):
         return PlainTextResponse("OK")
     except InvalidSignatureError:
         return PlainTextResponse("Invalid signature", status_code=400)
+    except Exception as e:
+        print("LINE handler error:", e)
+        return PlainTextResponse("Error", status_code=500)
+
