@@ -403,7 +403,10 @@ def handle_message(event):
         platform="line",
         line_display_name=display_name
     )
-    line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply))
+    try:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply))
+    except Exception as e:
+        print("Reply error:", e)
 
 @app.post("/callback/line")
 async def line_callback(request: Request):
@@ -412,10 +415,9 @@ async def line_callback(request: Request):
     body_str = body.decode("utf-8")
     try:
         handler.handle(body_str, signature)
-        return PlainTextResponse("OK")
     except InvalidSignatureError:
         return PlainTextResponse("Invalid signature", status_code=400)
     except Exception as e:
         print("LINE handler error:", e)
-        return PlainTextResponse("Error", status_code=500)
-
+        return PlainTextResponse("OK", status_code=200)  # 一定要 200，防止 LINE 一直重送
+    return PlainTextResponse("OK")
