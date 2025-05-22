@@ -8,11 +8,11 @@ import tempfile
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
-from fastapi import Request
-from fastapi.responses import PlainTextResponse
-from linebot.exceptions import InvalidSignatureError
+from fastapi.responses import RedirectResponse, PlainTextResponse
 
+from linebot.exceptions import InvalidSignatureError
+from linebot import LineBotApi, WebhookHandler
+from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 import gradio as gr
 from langchain_cohere import CohereEmbeddings, ChatCohere
@@ -29,7 +29,7 @@ from utils import (
 
 import cohere
 
-# === 多語 label 及樣式
+# === 多語 label 及樣式 ===
 LABELS = {
     "zh-TW": {"lang": "繁體中文", "ai_qa": "網路搜尋", "rag_qa": "FAQ搜尋", "input_question": "請輸入問題", "submit": "送出", "rag_reply": "RAG 回應", "ai_reply": "AI 回應"},
     "zh-CN": {"lang": "简体中文", "ai_qa": "网络搜索", "rag_qa": "FAQ搜索", "input_question": "请输入问题", "submit": "提交", "rag_reply": "RAG 回复", "ai_reply": "AI 回复"},
@@ -255,10 +255,17 @@ def faq_chat_only(
     else:
         return str(rag_result)
 
-# === FastAPI + Gradio ===
-def check_login(username, password):
-    return username == "admin" and password == "AaAa691027!!"
+# === FastAPI app 須先宣告 ===
+app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
+# === Gradio 介面組裝 ===
 init_db()
 with gr.Blocks(title="AI 多語助理") as demo:
     admin_status = gr.State(False)
@@ -340,6 +347,9 @@ with gr.Blocks(title="AI 多語助理") as demo:
         export_file = gr.File(label="下載匯出檔", interactive=True)
         export_btn.click(fn=export_chat_history_csv, inputs=[], outputs=export_file)
 
+    def check_login(username, password):
+        return username == "admin" and password == "AaAa691027!!"
+
     def do_login(username, password):
         if check_login(username, password):
             return gr.update(visible=False), gr.update(visible=True), "已登入"
@@ -357,24 +367,8 @@ with gr.Blocks(title="AI 多語助理") as demo:
         do_logout,
         outputs=[qa_group, admin_group]
     )
-@app.post("/callback/line")
-async def line_callback(request: Request):
-    signature = request.headers.get("X-Line-Signature", "")
-    body = await request.body()
-    body_str = body.decode("utf-8")
-    try:
-        handler.handle(body_str, signature)
-        return PlainTextResponse("OK")
-    except InvalidSignatureError:
-        return PlainTextResponse("Invalid signature", status_code=400)
-app = FastAPI()
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
+# === Gradio 綁定到 FastAPI ===
 from gradio.routes import mount_gradio_app
 app = mount_gradio_app(app, demo, path="/gradio")
 
@@ -383,9 +377,6 @@ async def root():
     return RedirectResponse(url="/gradio")
 
 # === LINE BOT 整合 ===
-from linebot import LineBotApi, WebhookHandler
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
-
 LINE_CHANNEL_SECRET = os.getenv("LINE_CHANNEL_SECRET")
 LINE_CHANNEL_ACCESS_TOKEN = os.getenv("LINE_CHANNEL_ACCESS_TOKEN")
 
@@ -413,3 +404,14 @@ def handle_message(event):
         line_display_name=display_name
     )
     line_bot_api.reply_message(event.reply_token, TextSendMessage(text=reply))
+
+@app.post("/callback/line")
+async def line_callback(request: Request):
+    signature = request.headers.get("X-Line-Signature", "")
+    body = await request.body()
+    body_str = body.decode("utf-8")
+    try:
+        handler.handle(body_str, signature)
+        return PlainTextResponse("OK")
+    except InvalidSignatureError:
+        return PlainTextResponse("Invalid signature", status_code=400)
