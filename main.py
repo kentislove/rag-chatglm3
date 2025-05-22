@@ -420,5 +420,6 @@ async def line_callback(request: Request):
         return PlainTextResponse("Invalid signature", status_code=400)
     except Exception as e:
         print("LINE handler error:", e)
-        return PlainTextResponse("OK", status_code=200)  # 一定要 200，防止 LINE 一直重送
+        # 不管出什麼錯，都回 200，避免 LINE 重送同一個事件，否則無窮回圈
+        return PlainTextResponse("OK", status_code=200)
     return PlainTextResponse("OK")
