@@ -5,6 +5,8 @@ import sqlite3
 import psutil
 import csv
 import tempfile
+import time
+import threading
 
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -387,8 +389,28 @@ if not LINE_CHANNEL_SECRET or not LINE_CHANNEL_ACCESS_TOKEN:
 line_bot_api = LineBotApi(LINE_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINE_CHANNEL_SECRET)
 
+# === 新增「reply_token 去重」 ===
+recent_reply_tokens = {}
+recent_reply_tokens_lock = threading.Lock()
+
+def is_duplicate_token(token, expire=180):
+    now = time.time()
+    with recent_reply_tokens_lock:
+        expired = [t for t, ts in recent_reply_tokens.items() if now - ts > expire]
+        for t in expired:
+            del recent_reply_tokens[t]
+        if token in recent_reply_tokens:
+            return True
+        recent_reply_tokens[token] = now
+    return False
+
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    # --- 加入去重邏輯 ---
+    if is_duplicate_token(event.reply_token):
+        print(f"Skip duplicated event, token: {event.reply_token}")
+        return
+
     user_id = event.source.user_id
     username = f"line_{user_id}"
     try:
