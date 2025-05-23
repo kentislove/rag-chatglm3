@@ -165,7 +165,8 @@ def cohere_generate(prompt: str) -> str:
         max_tokens=128,
         temperature=0.3
     )
-    return response.choices[0].message.content.strip()
+    # NonStreamedChatResponse 使用 .message.content 取回內容
+    return response.message.content.strip()
 
 
 def summarize_qa(question: str, answer: str) -> str:
