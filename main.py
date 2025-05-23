@@ -165,8 +165,8 @@ def cohere_generate(prompt: str) -> str:
         max_tokens=128,
         temperature=0.3
     )
-    # NonStreamedChatResponse 使用 .generations[0].text 取回內容
-    return response.generations[0].text.strip()
+    # CohereChatResponse 使用 .text 屬性取回完整回覆文字
+    return response.text.strip()
 
 
 
