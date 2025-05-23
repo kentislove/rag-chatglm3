@@ -30,7 +30,6 @@ from utils import (
 )
 
 import cohere
-from cohere.responses.chat import ChatCompletion
 
 # === 多語 label 及樣式 ===
 LABELS = {
@@ -160,12 +159,13 @@ def extract_entities(question):
         return "[]"
 
 def cohere_generate(prompt: str) -> str:
-    response: ChatCompletion = co.chat(
+    response = co.chat(
         model="command-r7b",
         messages=[{"role": "user", "content": prompt}],
         max_tokens=128,
         temperature=0.3
     )
+    # 直接取得回覆內容
     return response.choices[0].message.content.strip()
 
 def summarize_qa(question: str, answer: str) -> str:
@@ -193,6 +193,7 @@ llm = ChatCohere(
     model="command-r7b",
     temperature=0.3
 )
+
 vectorstore = None
 qa = None
 
