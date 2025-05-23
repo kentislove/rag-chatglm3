@@ -161,12 +161,13 @@ def extract_entities(question):
 def cohere_generate(prompt: str) -> str:
     response = co.chat(
         model="command-r7b",
-        messages=[{"role": "user", "content": prompt}],
+        message=prompt,
         max_tokens=128,
         temperature=0.3
     )
     # 直接取得回覆內容
     return response.choices[0].message.content.strip()
+
 
 def summarize_qa(question: str, answer: str) -> str:
     prompt = (
