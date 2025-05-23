@@ -200,7 +200,12 @@ def ensure_qa():
     global vectorstore, qa
     if vectorstore is None:
         if os.path.exists(VECTOR_STORE_PATH) and os.listdir(VECTOR_STORE_PATH):
-            vectorstore = FAISS.load_local(VECTOR_STORE_PATH, embedding_model)
+            # 允许从本地 pickle 文件反序列化
+            vectorstore = FAISS.load_local(
+                VECTOR_STORE_PATH,
+                embedding_model,
+                allow_dangerous_deserialization=True
+            )
         else:
             vectorstore = build_vector_store()
     if qa is None:
