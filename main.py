@@ -349,6 +349,23 @@ with gr.Blocks(title="AI 多語助理") as demo:
         export_btn = gr.Button("一鍵匯出問答紀錄 (CSV)")
         export_file = gr.File(label="下載匯出檔", interactive=True)
         export_btn.click(fn=export_chat_history_csv, inputs=[], outputs=export_file)
+                # 手動更新向量庫
+        def admin_update_vectorstore():
+            try:
+                db = build_vector_store()
+                global vectorstore, qa
+                vectorstore = None
+                qa = None
+                return "向量資料庫已重新建立"
+            except Exception as e:
+                return f"重建失敗：{e}"
+
+        update_vec_btn.click(
+            admin_update_vectorstore,
+            inputs=[],
+            outputs=update_status
+        )
+
 
     def check_login(username, password):
         return username == "admin" and password == "AaAa691027!!"
