@@ -160,7 +160,7 @@ def extract_entities(question):
 
 def cohere_generate(prompt):
     response = co.generate(
-        model="command-r-plus",
+        model="command-r",
         prompt=prompt,
         max_tokens=128,
         temperature=0.3
@@ -180,7 +180,7 @@ embedding_model = CohereEmbeddings(
 )
 llm = ChatCohere(
     cohere_api_key=COHERE_API_KEY,
-    model="command-r-plus",
+    model="command-r",
     temperature=0.3
 )
 vectorstore = None
