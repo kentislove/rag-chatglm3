@@ -30,20 +30,21 @@ from utils import (
 )
 
 import cohere
+from cohere.responses.chat import ChatCompletion
 
 # === 多語 label 及樣式 ===
 LABELS = {
     "zh-TW": {"lang": "繁體中文", "ai_qa": "網路搜尋", "rag_qa": "FAQ搜尋", "input_question": "請輸入問題", "submit": "送出", "rag_reply": "RAG 回應", "ai_reply": "AI 回應"},
     "zh-CN": {"lang": "简体中文", "ai_qa": "网络搜索", "rag_qa": "FAQ搜索", "input_question": "请输入问题", "submit": "提交", "rag_reply": "RAG 回复", "ai_reply": "AI 回复"},
-    "en": {"lang": "English", "ai_qa": "Web Search", "rag_qa": "FAQ Search", "input_question": "Type your question here", "submit": "Submit", "rag_reply": "RAG Reply", "ai_reply": "AI Reply"},
-    "ja": {"lang": "日本語", "ai_qa": "ウェブ検索", "rag_qa": "FAQ検索", "input_question": "質問を入力してください", "submit": "送信", "rag_reply": "RAG返答", "ai_reply": "AI返答"},
-    "ko": {"lang": "한국어", "ai_qa": "웹 검색", "rag_qa": "FAQ 검색", "input_question": "질문을 입력하세요", "submit": "제출", "rag_reply": "RAG 답변", "ai_reply": "AI 답변"},
+    "en":    {"lang": "English",   "ai_qa": "Web Search",  "rag_qa": "FAQ Search",   "input_question": "Type your question here", "submit": "Submit", "rag_reply": "RAG Reply", "ai_reply": "AI Reply"},
+    "ja":    {"lang": "日本語",     "ai_qa": "ウェブ検索",   "rag_qa": "FAQ検索",    "input_question": "質問を入力してください", "submit": "送信", "rag_reply": "RAG返答",  "ai_reply": "AI返答"},
+    "ko":    {"lang": "한국어",     "ai_qa": "웹 검색",     "rag_qa": "FAQ 검색",    "input_question": "질문을 입력하세요",      "submit": "제출", "rag_reply": "RAG 답변", "ai_reply": "AI 답변"},
 }
 DEFAULT_LANG = "zh-TW"
 STYLE_PROMPT = {
     "zh-TW": "請以溫暖、貼心、鼓勵、分析、細膩、簡短扼要但不失重點的方式回答，**並以不超過30字**精簡扼要回應：",
     "zh-CN": "请以温暖、贴心、鼓励、分析、细腻、简短扼要但不失重点的方式回答，**且不超过30字**简短扼要回复：",
-     "en":  "Please answer in less than 30 words, concise and clear: "
+    "en":    "Please answer in less than 30 words, concise and clear: "
 }
 
 # === DB ===
@@ -158,29 +159,38 @@ def extract_entities(question):
     except Exception:
         return "[]"
 
-def cohere_generate(prompt):
-    response = co.generate(
-        model="command",      # ← 改成 Cohere 生成端支援的 model
-        prompt=prompt,
+def cohere_generate(prompt: str) -> str:
+    response: ChatCompletion = co.chat(
+        model="command-r7b",
+        messages=[{"role": "user", "content": prompt}],
         max_tokens=128,
         temperature=0.3
     )
-    return response.generations[0].text.strip()
+    return response.choices[0].message.content.strip()
 
-def summarize_qa(question, answer):
-    prompt = f"Summarize the following conversation in one sentence:\nQ: {question}\nA: {answer}"
+def summarize_qa(question: str, answer: str) -> str:
+    prompt = (
+        "Summarize the following conversation in one sentence:\n"
+        f"Q: {question}\n"
+        f"A: {answer}"
+    )
     return cohere_generate(prompt)
 
+# 路徑準備
 VECTOR_STORE_PATH = "./faiss_index"
 os.makedirs(VECTOR_STORE_PATH, exist_ok=True)
 os.makedirs(DOCUMENTS_PATH, exist_ok=True)
+
+# 嵌入模型
 embedding_model = CohereEmbeddings(
     cohere_api_key=COHERE_API_KEY,
     model="embed-multilingual-v3.0"
 )
+
+# LLM wrapper 使用新 model
 llm = ChatCohere(
     cohere_api_key=COHERE_API_KEY,
-    model="command",       # ← 同樣改成 "command"
+    model="command-r7b",
     temperature=0.3
 )
 vectorstore = None
