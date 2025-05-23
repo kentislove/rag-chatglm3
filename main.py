@@ -160,12 +160,11 @@ def extract_entities(question):
 
 def cohere_generate(prompt: str) -> str:
     response = co.chat(
-        model="command-r7b",
+        model="command-r7b-12-2024",
         message=prompt,
         max_tokens=128,
         temperature=0.3
     )
-    # 直接取得回覆內容
     return response.choices[0].message.content.strip()
 
 
@@ -188,10 +187,10 @@ embedding_model = CohereEmbeddings(
     model="embed-multilingual-v3.0"
 )
 
-# LLM wrapper 使用新 model
+# LLM wrapper 使用指定 model
 llm = ChatCohere(
     cohere_api_key=COHERE_API_KEY,
-    model="command-r7b",
+    model="command-r7b-12-2024",
     temperature=0.3
 )
 
