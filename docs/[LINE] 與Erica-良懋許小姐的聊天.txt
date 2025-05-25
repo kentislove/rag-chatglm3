@@ -1,0 +1,83 @@
+[LINE] 與Erica-良懋許小姐的聊天記錄
+儲存日期： 2025/05/22 23:28
+
+2022/07/01（五）
+16:59	Erica-良懋許小姐	(BaobaoNeverTell !)
+17:18	Erica-良懋許小姐	☎ 通話時間3:39
+
+2023/02/08（三）
+11:54	Erica-良懋許小姐	張先生，我們小姐電腦有重整過，要請你們重新做連結，請問報價，就針對系統連結做報價就可以
+12:49	張書豪-Ragic SA Promote	"工作端兩千元設定
+主機端3000"
+13:06	Erica-良懋許小姐	所以加起來要500元？
+13:06	張書豪-Ragic SA Promote	不用
+13:06	張書豪-Ragic SA Promote	你小姐是主機端還是工作端
+13:07	張書豪-Ragic SA Promote	主機端的話不只五千
+13:07	張書豪-Ragic SA Promote	工作端的話只要兩千
+13:08	Erica-良懋許小姐	她是工作瑞
+13:12	張書豪-Ragic SA Promote	給我處理的話 付款完成後給我遠端
+13:13	張書豪-Ragic SA Promote	"郵局700
+帳號00020150192833"
+14:17	張書豪-Ragic SA Promote	我三點半外出
+14:17	張書豪-Ragic SA Promote	若今天來不及就明天吧
+14:17	Erica-良懋許小姐	我還在等電腦公司來幫我用網路連線
+14:17	Erica-良懋許小姐	沒有好，你這裡可能沒法工作
+14:18	張書豪-Ragic SA Promote	所以全公司現在網路是暫停使用?
+14:18	張書豪-Ragic SA Promote	還是那一位小姐的電腦而已
+14:18	Erica-良懋許小姐	小姐可以上網，但連不到工作主機
+14:18	張書豪-Ragic SA Promote	@@
+14:18	張書豪-Ragic SA Promote	那等你弄好了在跟我說
+14:18	Erica-良懋許小姐	明天沒關係
+14:19	Erica-良懋許小姐	他用好我也要試一下
+16:53	Erica-良懋許小姐	我內部網路好了，也可以連到庫存系統，你現在有空嗎?
+17:00	張書豪-Ragic SA Promote	付款後處理唷''
+17:04	Erica-良懋許小姐	好
+17:04	Erica-良懋許小姐	2000元嗎
+17:05	張書豪-Ragic SA Promote	恩恩
+17:05	Erica-良懋許小姐	等我一下
+17:06	Erica-良懋許小姐	你會使用到我這一台嗎
+17:06	張書豪-Ragic SA Promote	兩台工作端都開遠端給我
+17:06	張書豪-Ragic SA Promote	anydesk
+17:06	Erica-良懋許小姐	要去下載嗎
+17:07	張書豪-Ragic SA Promote	恩恩
+17:07	Erica-良懋許小姐	可以用team viewer嗎
+17:07	張書豪-Ragic SA Promote	我這邊不能'
+17:08	Erica-良懋許小姐	好，我先叫小姐下載
+17:10	Erica-良懋許小姐	收款人名稱是？
+17:11	張書豪-Ragic SA Promote	張書豪
+17:11	Erica-良懋許小姐	好
+17:13	Erica-良懋許小姐	[照片]
+17:14	Erica-良懋許小姐	好了
+17:14	張書豪-Ragic SA Promote	等遠端
+17:16	Erica-良懋許小姐	？？
+17:16	Erica-良懋許小姐	我們都下載好了
+17:16	張書豪-Ragic SA Promote	給我ID
+17:16	張書豪-Ragic SA Promote	兩台的
+17:16	張書豪-Ragic SA Promote	當我連線時
+17:17	張書豪-Ragic SA Promote	要按確認接受
+17:18	Erica-良懋許小姐	[照片]
+17:18	Erica-良懋許小姐	[照片]
+17:19	Erica-良懋許小姐	分別有二台
+17:19	Erica-良懋許小姐	914 為主工作台
+17:21	張書豪-Ragic SA Promote	幫我按確認
+17:24	張書豪-Ragic SA Promote	好啦，檢查一下
+17:26	Erica-良懋許小姐	好，目前都檢查一下
+17:29	Erica-良懋許小姐	目前正常，明天正式出貨時再來全面試試，謝謝喔
+17:52	張書豪-Ragic SA Promote	[貼圖]
+
+2023/03/01（三）
+10:13	Erica-良懋許小姐	HI 張先生早，我們小姐那台電腦早上開機後發現桌面上的庫存系統不見了，進去找不到install檔重新執行耶，要請你看看原因在那裡
+10:14	Erica-良懋許小姐	你什麼時候有空？？
+10:28	張書豪-Ragic SA Promote	11點給我遠端
+10:28	Erica-良懋許小姐	我這一台還是小姐的
+10:29	張書豪-Ragic SA Promote	有問題的
+10:29	Erica-良懋許小姐	OK
+10:50	張書豪-Ragic SA Promote	給我 看看
+11:05	Erica-良懋許小姐	好
+11:08	Erica-良懋許小姐	895 212 760
+11:12	張書豪-Ragic SA Promote	☎ 通話時間3:35
+
+2025/04/26（六）
+17:12	張書豪-Ragic SA Promote	"https://kentware.com/python_exe/
+我自己開發的小程式
+保證無毒 免費 歡迎自行取用 會不間斷開發好用的小工具"

@@ -1,0 +1,1625 @@
+[LINE] 與Eric Wang安克美的聊天記錄
+儲存日期： 2025/05/18 12:16
+
+2020/12/22（二）
+08:04	Eric Wang安克美	"張先生早安：
+請問有企業總管的試用版連結嗎？"
+08:05		Eric Wang安克美已收回訊息
+08:29	張書豪-Ragic SA Promote	有
+08:29	張書豪-Ragic SA Promote	您需要甚麼功能的
+08:29	張書豪-Ragic SA Promote	我等等貼給你
+08:35	Eric Wang安克美	試用版有那些限制呢？
+08:36	張書豪-Ragic SA Promote	不能開立自己的公司  一百筆紀錄 一個月期限
+08:37	Eric Wang安克美	可以不要有筆數限制嗎？
+08:37	Eric Wang安克美	因為那天要換過來就還要補打很多資料
+08:38	張書豪-Ragic SA Promote	"不能唷 試用版就是讓你模擬功能
+如果要當作正式使用就是購買後解鎖"
+08:39	Eric Wang安克美	不是還有日期限制嗎？
+08:39	張書豪-Ragic SA Promote	兩者其一  一個到達就停止了
+08:40	Eric Wang安克美	了解
+08:42	張書豪-Ragic SA Promote	你怎麼會突然想要用總管我記得你不是有買過幫手了嗎
+09:07	Eric Wang安克美	想有空再試試那些功能可用
+09:18		您已收回訊息
+09:44	張書豪-Ragic SA Promote	你想用舊功能試用的話  就讓我磚你的資料
+09:44	張書豪-Ragic SA Promote	我幫你移轉到總管上
+09:44	張書豪-Ragic SA Promote	就不用新增比數了
+11:26	Eric Wang安克美	我是想順便把ㄧ些ㄧ次性的客戶廠商刪除，順便重新編碼過。
+11:26	張書豪-Ragic SA Promote	那不可能在你試用的時候操作了
+11:26	張書豪-Ragic SA Promote	總管你先試用吧 把功能摸一下
+11:26	Eric Wang安克美	因為使用一陣子了，想針對之前不適當的地方重新整編。
+11:27	Eric Wang安克美	好吧！
+11:27	張書豪-Ragic SA Promote	我直接給你壓縮檔
+11:27	張書豪-Ragic SA Promote	妳回家下載解壓所
+11:27	Eric Wang安克美	好
+11:41	張書豪-Ragic SA Promote	[檔案]
+19:17	Eric Wang安克美	執行檔有二個，smag.   Smag-64.  要按那一個呢？
+19:21	張書豪-Ragic SA Promote	沒有64的
+21:52	Eric Wang安克美	好
+22:03	Eric Wang安克美	"有發現問題了
+在客戶或廠商內的結帳及備註   結帳說明及備註事項。有一些字存檔後會變？號"
+22:42	張書豪-Ragic SA Promote	你是說你的版本還是我給你的試用版
+22:45	Eric Wang安克美	給我測試的
+22:45	張書豪-Ragic SA Promote	你的電腦是Windows 10嗎
+22:47	張書豪-Ragic SA Promote	你跟我說是什麼字
+22:49	張書豪-Ragic SA Promote	我知道問題了我明後天來修
+23:12	Eric Wang安克美	堃  這個字就變？號了
+23:12	Eric Wang安克美	Win 10 沒錯
+
+2020/12/24（四）
+09:42	Eric Wang安克美	有找到問題了嗎？
+09:43	張書豪-Ragic SA Promote	"處理玩了
+這個不影響你試用 所以現在先不給你@@"
+09:51	Eric Wang安克美	另外請教一下，我現在用的可以升到新版的嗎？改善字的問題及存檔路徑。
+09:53	Eric Wang安克美	另外，在選地址時點選上會頓頓的是正常嗎？移動選單也會慢半拍
+09:54	張書豪-Ragic SA Promote	"可以生新版上去
+但是你必須知道總管單價本來就高
+在怎麼優惠還是比你當初貴"
+09:54	張書豪-Ragic SA Promote	所謂的噸或慢半拍是跟你本來的舊版比較有差異嗎?
+09:55	Eric Wang安克美	舊版的跟新版的都一樣有這個問題
+09:55	張書豪-Ragic SA Promote	我錄影給你看我這邊操作
+09:55	Eric Wang安克美	好
+09:55	張書豪-Ragic SA Promote	因為從沒人反映過 我自己也感覺不出來有0a04
+09:56	Eric Wang安克美	如果我現有的幫手更新到新的幫手呢？
+09:57	張書豪-Ragic SA Promote	"是便宜一點
+比總管來說"
+09:57	張書豪-Ragic SA Promote	https://www.berrycast.com/conversations/bce1b12e-f939-50a9-ab87-91ff921e56c0
+10:00	Eric Wang安克美	大約要補多少呢？
+10:00	張書豪-Ragic SA Promote	我忘記你原本的功能
+10:00	Eric Wang安克美	你自己經營後有再開發新的嗎？
+10:00	張書豪-Ragic SA Promote	你拍一下軟體整個畫面給我
+10:01	張書豪-Ragic SA Promote	"有很多新的小工具跟功能啊
+要看客戶有沒有問  不然講不完的"
+10:22	Eric Wang安克美	好
+10:23	Eric Wang安克美	好像是製造的代工、託工及組裝。
+10:23	張書豪-Ragic SA Promote	"升級不會便宜
+因為承接舊資料要升級需要花時間 這也是成本"
+10:23	張書豪-Ragic SA Promote	你可能遠端給我比較好
+10:24	張書豪-Ragic SA Promote	我順便抓資料
+10:26	Eric Wang安克美	資料我想重新編整，把之前一些一次性客戶廠商移除並重新編碼
+10:27	張書豪-Ragic SA Promote	有交易過的不能刪除
+10:27	張書豪-Ragic SA Promote	除非你開新公司
+10:27	Eric Wang安克美	所以資料我可以自己重打
+10:27	張書豪-Ragic SA Promote	你要重打就是開新公司的意思了
+10:27	Eric Wang安克美	是的
+10:27	張書豪-Ragic SA Promote	就編號只要有交易過就不能山唷
+10:28	Eric Wang安克美	這個了解，因為有出單料所以不能直接刪除。
+10:28	張書豪-Ragic SA Promote	會這樣問就是要 你是要升級
+10:29	張書豪-Ragic SA Promote	還是不升級?
+10:29	張書豪-Ragic SA Promote	不升級 單純再買一套
+10:29	張書豪-Ragic SA Promote	但是不能購買幫手
+10:29	張書豪-Ragic SA Promote	因為你電腦內已經有一套幫手
+10:53	Eric Wang安克美	如果是總管功能同幫手的呢？
+10:53	張書豪-Ragic SA Promote	價格會多一倍
+10:53	張書豪-Ragic SA Promote	最少一倍
+10:53	張書豪-Ragic SA Promote	因為總管單價高
+10:53	張書豪-Ragic SA Promote	你中午撥電話給我
+10:53	張書豪-Ragic SA Promote	幫你想一個最簡單又比較便宜的方式
+11:02	Eric Wang安克美	好
+11:02	張書豪-Ragic SA Promote	0920129830
+11:02	張書豪-Ragic SA Promote	我中午十二點等你電話
+11:03	Eric Wang安克美	好
+12:06	Eric Wang安克美	可以接電話了嗎
+12:06		Eric Wang安克美已收回訊息
+12:25	張書豪-Ragic SA Promote	我算過最便宜的方法你不用再買了我直接幫你用續約那的話你的版本續約是$9000所以我幫你軟體整個更新到新版就好
+13:30	張書豪-Ragic SA Promote	"如果OK就盡快跟我說決定吧
+這個報價是最低的了
+不然就是重買一套"
+13:30	張書豪-Ragic SA Promote	那也不會比這個低@@
+13:45	Eric Wang安克美	我跟內人討論一下
+13:45	張書豪-Ragic SA Promote	OK
+
+2020/12/25（五）
+10:26	張書豪-Ragic SA Promote	有答復嗎?在跟我說
+19:26	張書豪-Ragic SA Promote	"現在都沒有消息是沒有預算嗎
+還是讓你分期"
+
+2020/12/28（一）
+10:43	張書豪-Ragic SA Promote	今天再等你消息唷 謝謝
+
+2020/12/29（二）
+12:05	張書豪-Ragic SA Promote	再看看跟我說
+
+2020/12/31（四）
+23:53	張書豪-Ragic SA Promote	[影片]
+
+2021/01/04（一）
+10:28	張書豪-Ragic SA Promote	"新年度上班平安喜樂
+
+如果還有需要 在跟我說 感激"
+
+2021/01/05（二）
+16:27	張書豪-Ragic SA Promote	還有問題在跟我說
+
+2021/06/10（四）
+09:42	Eric Wang安克美	請問有沒有地址的更新檔呢？
+09:47	張書豪-Ragic SA Promote	有啊 可是你的版本有點就
+09:47	張書豪-Ragic SA Promote	不確定能不能掛上
+09:47	張書豪-Ragic SA Promote	我傳給你
+09:48	張書豪-Ragic SA Promote	[檔案]
+09:48	張書豪-Ragic SA Promote	先把資料夾內的zipcode自行備份
+09:48	張書豪-Ragic SA Promote	然後解壓縮我傳給你的
+09:48	張書豪-Ragic SA Promote	再開程式看看
+09:48	張書豪-Ragic SA Promote	一定要備份唷
+09:49	張書豪-Ragic SA Promote	沒備份用新的若出現問題
+09:49	張書豪-Ragic SA Promote	我就沒法了
+09:52	Eric Wang安克美	好
+09:57	Eric Wang安克美	謝謝
+10:06	Eric Wang安克美	目前可以運作
+10:07	張書豪-Ragic SA Promote	OK
+
+2021/07/25（日）
+23:17	Eric Wang安克美	請問，我7/16日明明有一銷貨單，因為是補不良品，所以我把單價改成0元。但在製作每月的請款單時這一筆銷貨單卻沒有顯示出來，這有那些原因呢？
+
+2021/07/26（一）
+07:56	張書豪-Ragic SA Promote	單價要有
+07:56	張書豪-Ragic SA Promote	折讓打
+09:27	Eric Wang安克美	折讓要打什麼
+09:27	Eric Wang安克美	[照片]
+09:28	Eric Wang安克美	要讓小記是零，因為是補給客戶不收費用的
+09:36	張書豪-Ragic SA Promote	該產品單價多少就打多少 折讓打的是產品單價
+09:36	張書豪-Ragic SA Promote	兩者互抵
+09:36	張書豪-Ragic SA Promote	才會在對帳單出現
+09:36	張書豪-Ragic SA Promote	對帳單要選擇列印已結清項目
+09:37	Eric Wang安克美	列印已結清，不是已經收到款項結算的意思嗎？
+09:41	Eric Wang安克美	而且折讓不讓我打小數的會變成一
+09:42	張書豪-Ragic SA Promote	你折讓給對方就是代表已結清
+09:43	張書豪-Ragic SA Promote	這個商品就是不收錢 你單價打整數不就好了
+11:27	Eric Wang安克美	了解
+
+2022/09/01（四）
+08:31	Eric Wang安克美	"張先生早安：
+廠商託工單右下的簽名欄應該是。廠商簽收。不是客戶簽收。"
+08:31	Eric Wang安克美	[照片]
+08:32	Eric Wang安克美	因為表格打印出來是客戶簽收
+08:33	張書豪-Ragic SA Promote	"等我一下
+
+我九點跟你說怎麼改"
+08:45	Eric Wang安克美	好
+08:45	Eric Wang安克美	寫步驟給我，等一下會外出
+08:57	張書豪-Ragic SA Promote	等你回來 在讓我更新 提早給我遠端即可ˋ
+12:39	Eric Wang安克美	[照片]
+12:39	張書豪-Ragic SA Promote	請用別套
+12:39	張書豪-Ragic SA Promote	TEAMVIEWER現在不能用
+12:39	Eric Wang安克美	要用那套
+12:40	張書豪-Ragic SA Promote	AWESUN  ANYDESK這兩套都可
+12:45	Eric Wang安克美	[照片]
+12:50	張書豪-Ragic SA Promote	幫我按確認
+12:50	張書豪-Ragic SA Promote	然後留給我半小時就好
+12:50	Eric Wang安克美	好
+12:58	張書豪-Ragic SA Promote	改好囉
+12:58	Eric Wang安克美	好的，謝謝你！
+20:02	Eric Wang安克美	請問一下，像製造幫手可以整合人資、財務嗎？還是必須獨立系統呢？
+20:02	張書豪-Ragic SA Promote	可以整合財務 人資是獨立的
+20:15	Eric Wang安克美	那差勤打卡可以嗎？
+20:15	張書豪-Ragic SA Promote	只是打卡就獨立小程式 不用管人資了
+20:15	張書豪-Ragic SA Promote	比較便宜
+20:17	Eric Wang安克美	了解，應該這樣說如果有共用到廠商、客戶、產品這些基本資料的基本上是可以整合的對吧？
+20:18	張書豪-Ragic SA Promote	人資不需要廠商客戶產品
+20:18	張書豪-Ragic SA Promote	人資反而是人事資料  出勤排班 薪資計算 年假管理
+20:19	張書豪-Ragic SA Promote	跟原本的製造幫手系列完全錯開的
+21:07	張書豪-Ragic SA Promote	所以你要考慮升級?
+21:08	張書豪-Ragic SA Promote	還是怎麼?
+21:08	張書豪-Ragic SA Promote	因為你說升級也說好多年了
+21:08	張書豪-Ragic SA Promote	所以想說你該升級了
+
+2022/09/03（六）
+23:20	Eric Wang安克美	有考慮
+23:21	Eric Wang安克美	可以提供最新版幫手（託工、代工）給我試試👀嗎？
+23:21	張書豪-Ragic SA Promote	你要用最新版的?
+23:21	Eric Wang安克美	是啊
+23:21	張書豪-Ragic SA Promote	舊版加功能我就只維持模組的費用
+23:22	張書豪-Ragic SA Promote	升級到新版費用會更高唷
+23:22	張書豪-Ragic SA Promote	因為你的版本差太多了
+23:22	張書豪-Ragic SA Promote	我會收一個升級費用
+23:23	Eric Wang安克美	舊版加功能會一樣有一些字無法打且較長料號打印時慧不見，舊版升級可以改善嗎？
+23:24	張書豪-Ragic SA Promote	會
+23:24	張書豪-Ragic SA Promote	一定會改善
+23:27	Eric Wang安克美	"那跟最新版有何差異呢？
+因為我也打算把一些資料作更新重新輸入，因為第一次使用經驗較沒有所以有一些編碼不好用，但現在可以彙整更好，所以才請您提供最新版直接試用看看"
+23:27	張書豪-Ragic SA Promote	好
+23:28	Eric Wang安克美	麻煩你了，謝謝。
+23:28	張書豪-Ragic SA Promote	要財務嗎?
+23:28	Eric Wang安克美	如果可以一起試看
+23:29	Eric Wang安克美	我記得製造本身就有含組裝了是嗎？
+23:30	張書豪-Ragic SA Promote	新版已經不會出現組裝
+23:30	張書豪-Ragic SA Promote	新版是單純物料結構
+23:31	Eric Wang安克美	Bpm功能有就好，名稱不重要。
+23:31	Eric Wang安克美	Bom
+23:32	張書豪-Ragic SA Promote	我現在船
+23:32	張書豪-Ragic SA Promote	傳給你
+23:32	張書豪-Ragic SA Promote	等
+23:33	張書豪-Ragic SA Promote	[檔案]
+23:34	張書豪-Ragic SA Promote	下載後 解壓縮
+23:34	Eric Wang安克美	好
+23:36	Eric Wang安克美	裝在同台電腦跟原本的不會有衝突吧！
+23:41	張書豪-Ragic SA Promote	你不要放在同一個資料夾就好
+23:41	張書豪-Ragic SA Promote	反正沒註冊
+23:42	Eric Wang安克美	[照片]
+23:42	Eric Wang安克美	像銷貨單紅圈處可以不印製嗎
+23:43	Eric Wang安克美	設定不印嗎
+23:44	張書豪-Ragic SA Promote	客製
+23:46	Eric Wang安克美	[照片]
+23:46	Eric Wang安克美	紅圈處又錯了
+23:52	張書豪-Ragic SA Promote	這是我們官方就出這樣的
+23:52	張書豪-Ragic SA Promote	所以這個字我到時還是會幫你修正
+23:52	張書豪-Ragic SA Promote	不收費的我會不收
+23:53	張書豪-Ragic SA Promote	收費的我一樣會報價
+23:53	Eric Wang安克美	了解
+23:54	Eric Wang安克美	功能上有很大的改變，但介面字體沒有之前的柔視。
+
+2022/09/04（日）
+00:01	張書豪-Ragic SA Promote	可能吧有改過
+00:02	張書豪-Ragic SA Promote	我們事都看了習慣
+00:02	張書豪-Ragic SA Promote	重點在功能
+00:02	張書豪-Ragic SA Promote	所以舊版還是新版
+00:02	張書豪-Ragic SA Promote	就是看你
+06:44	Eric Wang安克美	好
+06:44	Eric Wang安克美	我再試試看
+14:08	Eric Wang安克美	舊升級到新是介面不太有變更；但新版該有的功能升級後都有是嗎？
+14:08	張書豪-Ragic SA Promote	該有的功能?
+14:09	張書豪-Ragic SA Promote	你現在測試的新版的就是你要的全部功能
+14:09	張書豪-Ragic SA Promote	至於甚麼是該有 
+14:10	Eric Wang安克美	沒關係，我新版先熟悉一下。
+14:13	Eric Wang安克美	進銷存資料可以拋轉到會計嗎
+14:13	張書豪-Ragic SA Promote	新版你可以測試看看
+14:13	張書豪-Ragic SA Promote	找一下功能舊好
+14:37	張書豪-Ragic SA Promote	"我的做法就是
+你如果有要升級到新版並加購功能
+如果有某些舊版我曾經幫你改過的 我會盡量幫你改一下
+但是舊版沒有的 新版也沒有的 就要客製費用
+有些新版有 舊版沒有 但是你用不到的 也是要客製"
+14:37	張書豪-Ragic SA Promote	所以要請你勤於比對一下
+14:42	Eric Wang安克美	"好，其實也沒有那麼複雜啦。
+目前使用的主要問題如下：
+1、有一些字打不出來。
+2、無法列印較長字數的料號。
+3、備份存檔路徑每次都要選一次。
+其它目前都尚好"
+14:44	張書豪-Ragic SA Promote	舊版的是這樣 新版這三個都解決的了
+14:44	Eric Wang安克美	"所以我也不知道是原軟體升級就可以改善上述問題。
+
+還是直接要直接上新版才能解決上述問題。"
+14:47	張書豪-Ragic SA Promote	直接上新版 我就不用處理舊資料問題 但是等於你要買的一套
+14:47	張書豪-Ragic SA Promote	也沒比較便宜
+14:51	Eric Wang安克美	"哈哈，我重新打資料倒還好啦。
+讓我想一想"
+14:52	Eric Wang安克美	如果購入新版能給我怎樣的優惠價呢？
+15:18	張書豪-Ragic SA Promote	原價70%
+15:18	張書豪-Ragic SA Promote	因為新版目前的版權成本比較高了
+15:19	張書豪-Ragic SA Promote	所以我沒辦法像過去一樣給妳那麼多優惠
+22:08	Eric Wang安克美	銷貨單的銷貨數量如果達百萬是不是打印不出來
+22:21	張書豪-Ragic SA Promote	基本上不會到這麼多銷貨數量如果你有需要這麼多那我就要克制化改呈現的為元素
+22:52	Eric Wang安克美	"因為曾經客戶有下過100萬顆的小零件，雖然單價很迪，但真的有下個這樣的數量。
+當然我就拆成兩個50萬個去紀錄。"
+22:54	張書豪-Ragic SA Promote	銷貨單是可以打只是印出來會截短而已所以如果你真的有這種情況的話我還是要幫你做克制化
+23:37	Eric Wang安克美	"如果我現正在用的軟體用升級的方式有辦法改善下列三個問題嗎？不用再增加任何功能
+
+1、有一些字打不出來。
+2、無法列印較長字數的料號。
+3、備份存檔路徑每次都要選一次。"
+
+2022/09/05（一）
+00:06	張書豪-Ragic SA Promote	可
+16:36	Eric Wang安克美	如果上述可以像銷貨單後面的備註如果字數較多也都可以跳行印出來呢
+16:37	張書豪-Ragic SA Promote	[語音訊息]
+16:38	Eric Wang安克美	[照片]
+16:38	Eric Wang安克美	就紅圈處這個
+16:57	張書豪-Ragic SA Promote	這個你試試看
+
+2022/09/06（二）
+10:53	張書豪-Ragic SA Promote	還沒空測試嗎?
+11:09	Eric Wang安克美	測試那個，我知道新版的備註長字數可以跳行列印。
+11:10	張書豪-Ragic SA Promote	那還有要升級嗎?
+11:10	張書豪-Ragic SA Promote	升級上還有甚麼問題?
+11:12	Eric Wang安克美	"上級上就原本那三個問題改善也可以。
+那升級要價多少呢？"
+11:13	張書豪-Ragic SA Promote	"重買
+藥用隨身碟版
+因為舊版要保存
+製造幫手整合+財務
+定價26500
+26500*0.7 = *18,550* 
+"
+11:14	張書豪-Ragic SA Promote	"舊版升級
+加購財務功能
+6000
+資料庫升級10000
+16000"
+15:03	Eric Wang安克美	"如果舊版不保存，不含財務。
+這樣是多少呢？
+"
+15:16		您已收回訊息
+15:17	張書豪-Ragic SA Promote	10000
+15:22	張書豪-Ragic SA Promote	"你等於只是原地升級到新版
+不採購功能 那就是單純升級"
+15:27	張書豪-Ragic SA Promote	這樣的話你必須要給我三到五天你不能打單因為我必需要做
+16:23	Eric Wang安克美	了解
+
+2022/09/10（六）
+13:18	張書豪-Ragic SA Promote	中秋快樂!!
+13:42	Eric Wang安克美	中秋佳節快樂！
+
+2022/09/13（二）
+09:41	張書豪-Ragic SA Promote	"可以的話 升級需求不要在這個月底
+可以提早 最好
+不能 也挪到十月中或十月後
+因為剛好有接案子要忙 可能會無法分心處理你的升級跟加購
+感謝!!
+"
+
+2022/09/15（四）
+20:38		Eric Wang安克美已收回訊息
+20:39	Eric Wang安克美	[照片]
+20:39	張書豪-Ragic SA Promote	?
+20:40	Eric Wang安克美	我測試全頁時，發現虛線好像不會因為多行描述而移到紅色處
+20:41	張書豪-Ragic SA Promote	這邊的虛線就是凸顯產品編號跟名稱 不是包含其他資訊
+20:42	Eric Wang安克美	還是列印時可以選擇不印虛線呢？
+20:42	張書豪-Ragic SA Promote	你去看新版的
+20:42	張書豪-Ragic SA Promote	你要不印虛線 就是要客製
+20:43	Eric Wang安克美	[照片]
+20:44	Eric Wang安克美	因為這樣會被容易判讀綠色圈起來這是同一類的
+20:44	張書豪-Ragic SA Promote	你去看新版的
+20:44	張書豪-Ragic SA Promote	新版若沒這問題就沒
+20:44	張書豪-Ragic SA Promote	舊版要客製
+20:45	Eric Wang安克美	這是你上次給我測試的新版的，我測試打的資料。
+20:46	張書豪-Ragic SA Promote	那新版有的話   只能再修正 但是你要跟我說是哪一張單
+20:46	張書豪-Ragic SA Promote	我不能全部都改
+20:47	Eric Wang安克美	一般常用的就採購單、銷貨單。
+20:47	張書豪-Ragic SA Promote	就這兩個?
+20:48	Eric Wang安克美	對
+20:49	張書豪-Ragic SA Promote	全張模式嗎?
+20:51	Eric Wang安克美	報價單也是
+20:52	Eric Wang安克美	對，全頁模式
+20:58	張書豪-Ragic SA Promote	等你更新新版再改
+21:07	Eric Wang安克美	好
+
+2022/09/16（五）
+11:24	張書豪-Ragic SA Promote	還沒有預算升?
+12:49	Eric Wang安克美	"請問新版的採購單選好廠商後，送貨地址會變成自己公司的地址；因為舊版的是帶供應商的地址。
+哪一個才是正確的呢？"
+12:50	張書豪-Ragic SA Promote	那你可以再廠商資料的送貨地址改成你自己公司地址
+12:50	張書豪-Ragic SA Promote	是您將廠商的連絡地址也同樣填入了送貨地址去了
+13:02	Eric Wang安克美	也就是說，採購單的送貨地址是要填自己的是嗎？
+13:04	Eric Wang安克美	[照片]
+13:04	Eric Wang安克美	這是我現在用的廠商資料地址
+13:04	Eric Wang安克美	聯絡地址，跟送貨地址一樣
+13:14	張書豪-Ragic SA Promote	你測看看就知道
+
+2022/09/19（一）
+17:02	張書豪-Ragic SA Promote	還沒打算要更新?
+
+2022/09/22（四）
+19:22	Eric Wang安克美	下半年製造業非常慘，同行的今年收了好幾家。
+19:29	張書豪-Ragic SA Promote	各行各業一定都很慘
+19:36	Eric Wang安克美	對啊！今年下半年都蠻糟糕的。
+19:36	張書豪-Ragic SA Promote	那等你好轉再說吧
+19:36	張書豪-Ragic SA Promote	現在問你都沒太大意義
+19:37	張書豪-Ragic SA Promote	等你好轉 能有餘額升級了再說
+19:38	Eric Wang安克美	好的，現在就是多一些時間好好測試新版的。
+19:38	Eric Wang安克美	請體諒一下了。
+19:38	張書豪-Ragic SA Promote	僅測試
+19:38	張書豪-Ragic SA Promote	不要打正式資料
+19:38	張書豪-Ragic SA Promote	只有一個月時間
+19:38	張書豪-Ragic SA Promote	然後升級會全部從頭來過
+19:38	張書豪-Ragic SA Promote	所以請還是正常使用舊版操作
+19:39	Eric Wang安克美	了解，
+19:39	Eric Wang安克美	目前運作還是舊版的。
+
+2022/09/28（三）
+16:43	Eric Wang安克美	"試用會計時有一個地方有錯
+傳票轉入設定   內有一欄百分比的比。軟體顯示。百分筆"
+16:46	張書豪-Ragic SA Promote	?
+18:19	Eric Wang安克美	[照片]
+18:20	張書豪-Ragic SA Promote	"你是因為字打錯嗎?
+比?!"
+18:20	張書豪-Ragic SA Promote	這個不影響操作
+18:46	Eric Wang安克美	我順便幫忙抓軟體錯誤。哈(哈哈哈)
+21:43	Eric Wang安克美	請問一下，你們會計科目是不是沒有帶入第三科目？
+21:44	張書豪-Ragic SA Promote	請舉例什麼叫做第三科目
+21:58	Eric Wang安克美	應該是說採用ifrs 
+22:08	張書豪-Ragic SA Promote	目前沒有做套裝
+22:08	張書豪-Ragic SA Promote	都是克制化需求
+
+2022/09/30（五）
+22:59	Eric Wang安克美	突然想到一件事，好久以前有試過總管，裡面有一個貿易的進口成本計算功能，為什麼有開立國內廠商的進貨單為何，在進口成本計算中也會有呢？但是產品並不是進口的啊！
+
+2022/10/01（六）
+00:06	張書豪-Ragic SA Promote	"你問的問題很弔詭 截圖再說
+我感覺已經問到很細你又用不到的功能了"
+08:56	Eric Wang安克美	[照片]
+08:56	Eric Wang安克美	"因為前一陣子有一些用料台灣少人進所以有可能要自己進口。
+"
+08:59	Eric Wang安克美	問題如上圖，進口成本計算，為何會帶入進貨單的資料呢？進貨單是屬於國內廠商進貨為何會帶到進口這邊，我想要知道的是它的關聯關係。
+20:22	張書豪-Ragic SA Promote	我覺得你完全搞錯意義
+20:23	張書豪-Ragic SA Promote	進口成本計算是來自於已經進貨的事實才去計算其他進口成本後去增加該進貨單的品項成本
+20:24	張書豪-Ragic SA Promote	國外採購  >  進貨單  >  進口成本計算
+20:24	張書豪-Ragic SA Promote	才對
+20:31	Eric Wang安克美	"但是，我測試用，國內採購>進貨單，就這樣不小心看到進口成本計算就點進去卻也看到裡面有一樣的進貨單資料。
+我的問題是為何作國內採購及進貨，為何會把資料也帶入進口成本計算裡面。"
+20:50	張書豪-Ragic SA Promote	"為什麼不
+
+許多國內大廠在進貨時並沒有自己的倉庫可以擺放 所以會租用他人倉庫或冷凍櫃 這些也要納入成本計算"
+20:50	張書豪-Ragic SA Promote	看商品及業種去使用
+21:13	Eric Wang安克美	"了解！
+
+所以只要有進貨單都會被帶入進口成本計算是嗎？
+
+有方法讓國內採購的進貨不被帶入嗎？
+"
+21:14	張書豪-Ragic SA Promote	預設的是進口單據打勾的才會被帶到
+21:40	Eric Wang安克美	那要去哪裡改呢？
+21:40	張書豪-Ragic SA Promote	進貨單是從國外採購轉入的就自動
+21:41	張書豪-Ragic SA Promote	你是不是都不用邏輯去轉入
+21:46	Eric Wang安克美	也是用單據轉入的方式
+21:47	Eric Wang安克美	進貨單也是從一般的採購單轉入的
+21:54	Eric Wang安克美	轉入後去看進口成本計算，就可以看到跟進貨單一樣的資料，連要刪除都沒法可以點刪除。
+23:00	張書豪-Ragic SA Promote	"進口成本計算只是一個輔助更新成本的畫面
+你不填入任何費用項目 成本也不會改變
+"
+23:01	張書豪-Ragic SA Promote	https://www.youtube.com/watch?v=_jQHUj-4gMg
+23:01	張書豪-Ragic SA Promote	你在意的點在哪裡?
+23:31	Eric Wang安克美	"應該是國內採購的進貨單不需被系統直接帶入到進口成本計算中。
+這樣不就國內採購和國外採購都混在一起了。
+而且國內採購變重複了兩次單而且又沒有要作其它關稅…等計算所以跟進口成本計算完全搭不上邊。
+既然功能名為進口成本計算，對用戶而言直覺上就是針對進口的貨品進行成本計算分析。然而屬於國內採購的進貨單理所當然不被拉到這邊來才是。"
+23:33	Eric Wang安克美	這應該算軟體的bug
+23:45	張書豪-Ragic SA Promote	等更多客戶反映再看看
+23:45	張書豪-Ragic SA Promote	如果很多客戶反映 有計算成本上的錯誤 那就是bug 就該改
+
+2022/10/02（日）
+12:41	Eric Wang安克美	"這樣被動式修正不好吧！
+或許公司這邊可以主動詢問這樣會不會造成使用上的誤解，如果會公司會做修正更新。這樣會讓用戶對你們公司更有信心與信任。
+就像買車收到車廠的主動召回更換，比等到客戶出問題在更換；兩種的感受是不同的。
+以上建議跟供參考。"
+14:13	張書豪-Ragic SA Promote	"連我都不認為這是bug了
+我都算是最貼近消費者觀念的
+進口模組購買過的客戶超過20家 還沒有一家提出像你這樣反應的
+我要怎麼說服修改?"
+14:20	張書豪-Ragic SA Promote	"而且甚麼叫bug  數據上算錯 才算
+你只是看不冠進口成本計算會甚麼會出現國內進貨單
+問題是 國外採購 轉進貨就是進貨單 進貨單本質上沒有分國內國外
+進口成本計算功能上也有狀態成立是進口單據或否
+如果操作人員自己眼睛不注意看錯 將未進口單據的進貨單去操錯數據了  這要怪系統嗎?
+
+"
+14:53	Eric Wang安克美	"了解，我不是爭論啦！
+請不要生氣，或許就像你說的是我看不慣的個人因素。
+
+只是我在用測試的時候看到系統的進貨單假設有30筆；但在進口成本計算中我算過總共只有十幾筆；那也代表並不是每筆進貨單都會轉進進口成本計算中。
+所以才會覺得奇怪，所以自己打幾筆測試時卻筆筆都有轉到進口成本計算中。"
+14:56	張書豪-Ragic SA Promote	"就當作是另一種額外計算的工具
+本來成本計算就不分國內外 進銷存的進貨成本原本就不是那麼簡單而以"
+14:59	Eric Wang安克美	了解了。
+
+2022/12/14（三）
+18:05	Eric Wang安克美	請問，公司表頭要如何設自己的logo上去呢？
+18:59	張書豪-Ragic SA Promote	[檔案]
+19:51	Eric Wang安克美	謝謝
+
+2022/12/29（四）
+18:59	Eric Wang安克美	請問一下，應收沖帳管理-收款明細-新增匯款；這邊是填客戶匯款的銀行還是自己的呢？
+19:38	張書豪-Ragic SA Promote	收 當然是自己的
+19:38	張書豪-Ragic SA Promote	不過你有在往來銀行建立你自己的銀行資料嗎
+19:38	張書豪-Ragic SA Promote	有 才選的到
+19:41	Eric Wang安克美	了解，謝謝。
+
+2022/12/30（五）
+14:00	Eric Wang安克美	前一陣子試用出口的出貨船押-出口資料-選取嘜頭  裡面無法點擊。是無法試用這個部分嗎？
+14:00	Eric Wang安克美	[照片]
+14:07	張書豪-Ragic SA Promote	要新增
+14:24	Eric Wang安克美	要如何新增呢
+15:15	張書豪-Ragic SA Promote	外銷客戶資料
+
+2023/04/01（六）
+09:17	Eric Wang安克美	"請問人資系統的休息時間是不是不會扣除
+舉例：8點上班到5點，扣除中午1小時，若時薪應為8小時，但系統仍顯示9小時。
+這個有解嗎？"
+09:57	張書豪-Ragic SA Promote	你先確定一下你說這個你說的這個是要用在計時員工上還是正常員工
+10:06	Eric Wang安克美	計時員工
+10:07	Eric Wang安克美	就是算時薪的人員
+10:07	Eric Wang安克美	但因跨午休時間，所以午休那1小時是不計時薪的。
+10:23	張書豪-Ragic SA Promote	計時員工的概念就是他多少時間來就算多少時間薪水沒有所謂的休息不休息
+10:39	Eric Wang安克美	好，我在用其他方法克服看看。
+10:40	Eric Wang安克美	系統未來可以增加一個選項嗎？就是是否扣除休息時間。
+11:11	張書豪-Ragic SA Promote	你要只能客製 系統不會更新這個功能
+11:11	張書豪-Ragic SA Promote	"Kentware.com
+"
+11:12	張書豪-Ragic SA Promote	我的公司 網站也成立了 可以看看
+11:22	Eric Wang安克美	"你自己出來自立門戶哦！
+厲害哦👍"
+11:37	張書豪-Ragic SA Promote	這樣才有機會
+11:53	Eric Wang安克美	那進銷存軟體也是配合舊東家的；還是你又全新開發新的呢？
+11:54	張書豪-Ragic SA Promote	都有
+11:54	張書豪-Ragic SA Promote	但是我開發還沒出來
+11:58	Eric Wang安克美	期待
+
+2023/06/15（四）
+16:15	Eric Wang安克美	[照片]
+16:16	Eric Wang安克美	產品名稱有完整，但預覽採購單的產品名稱為何只出現前面6個中文字。後面的0.2mm之後都沒有出現
+16:16	Eric Wang安克美	[照片]
+16:18	張書豪-Ragic SA Promote	名稱太長 明天給我遠端
+16:30	Eric Wang安克美	等一下
+16:30	張書豪-Ragic SA Promote	"等一下？
+我現在手邊沒電腦喔，明天才有辦法幫你處理耶"
+16:31	Eric Wang安克美	名稱太長應該頂多消失一些超出格式的字才對
+16:31	Eric Wang安克美	好！
+16:32	Eric Wang安克美	我有說過中文字後面不要空格就有出現
+16:32	Eric Wang安克美	試過
+16:33	Eric Wang安克美	有空格就只出現中文字部分，其它後面就不見了。
+16:34	張書豪-Ragic SA Promote	你不要用空格你試試看用-
+16:34	張書豪-Ragic SA Promote	讓他制服那個業務拿字符有相連的狀況就可以了
+16:38	Eric Wang安克美	"好，之前我也有一張跟這次一樣的採購，但有空格也會出現。
+但今天卻不行。"
+
+2023/06/19（一）
+10:52	張書豪-Ragic SA Promote	可以的話 給我遠端 幫你修正一下 要修嗎?
+12:59	Eric Wang安克美	要用那個遠端軟體呢？
+13:00	張書豪-Ragic SA Promote	AWESUN
+13:03	Eric Wang安克美	好像字數較長會把空格後面的字全部不見，如果沒有空格就可以顯示但超出部分也是看不見的。
+13:03	張書豪-Ragic SA Promote	其實你產品字數太多
+13:03	張書豪-Ragic SA Promote	可以挪到多行描述去
+13:04	張書豪-Ragic SA Promote	你不要習慣把產品的說明全部打到名稱上
+13:05	Eric Wang安克美	好
+13:06	Eric Wang安克美	修是可以讓全部都顯示嗎？
+13:07	張書豪-Ragic SA Promote	不
+13:07	張書豪-Ragic SA Promote	修  是可以跳行
+13:07	張書豪-Ragic SA Promote	字數太多也是會不建
+13:08	Eric Wang安克美	[照片]
+13:09	Eric Wang安克美	抱歉，好像搞錯軟體了。
+13:09	張書豪-Ragic SA Promote	？
+13:10	Eric Wang安克美	沒事，是這個遠端遙控軟體。
+13:11	Eric Wang安克美	可以連線嗎？
+13:12	張書豪-Ragic SA Promote	可 等等
+13:12	Eric Wang安克美	好
+13:17	張書豪-Ragic SA Promote	☎ 通話時間3:17
+13:18	Eric Wang安克美	非常感謝
+
+2023/06/24（六）
+19:15	Eric Wang安克美	[照片]
+19:16	Eric Wang安克美	應付的對帳單，左下紅圈處是不是應該改成，預付總餘額呢？
+20:02	張書豪-Ragic SA Promote	你改了預收就會錯
+
+2023/06/25（日）
+18:12	張書豪-Ragic SA Promote	我可以改為 預收/付總餘額
+18:12	張書豪-Ragic SA Promote	藥嗎?
+18:30	Eric Wang安克美	為何改了預收就會錯呢？
+21:41	Eric Wang安克美	Eric Wang來電。但「開啟語音通話功能」目前為關閉狀態，故無法接聽。
+21:46	張書豪-Ragic SA Promote	☎ 通話時間0:18
+21:47	張書豪-Ragic SA Promote	☎ 通話時間1:00
+
+2023/07/07（五）
+10:16	Eric Wang安克美	"張先生你好：
+請教一事，如果我有一個成品，需要五個零件組成，其中四個是廠商自製的，其中一個零件是我必須提供給廠商一起組裝；組裝是跟四個零件的廠商同一家的。
+
+如果是這樣的情況應該如何操作，因為會牽扯到採購及託工領料。"
+11:04	張書豪-Ragic SA Promote	晚點再處理
+11:24	Eric Wang安克美	好，再麻煩你了！謝謝
+11:32	張書豪-Ragic SA Promote	"S=S1+S2+S3+S4+S5
+S1~S4 廠商的 要採購
+S5是跟上述廠商合作製造的 要託工給廠商組裝
+所以S5應該還會有S51 是你採購的
+S51採購>給廠商託工變成S5>再託工領料
+
+這樣才對
+另外我忘記你現有的版本 所以無法測試"
+12:26	Eric Wang安克美	S5這個零件是自己廠內生產的零件
+12:27	Eric Wang安克美	目前版本就託代工，幫手
+12:27	張書豪-Ragic SA Promote	"你仔細看我所寫的步驟
+代號不是重點"
+12:29		Eric Wang安克美已收回訊息
+12:35	Eric Wang安克美	我的問題應該是S1~S4是廠商自製的零件，再加上自己生產的S5零件並託工給S1~S4這家廠商一起組裝成S在進貨給我。
+12:48	張書豪-Ragic SA Promote	S1~S4 理論上是你先採購進來的
+12:49	張書豪-Ragic SA Promote	再將S5你們自己生產的零件一併託工領料給廠商再做
+12:49	張書豪-Ragic SA Promote	所以你實務上 S1~S4可能不會進你公司
+12:49	張書豪-Ragic SA Promote	但是邏輯上需要
+13:14	Eric Wang安克美	了解，
+13:15	Eric Wang安克美	如果這樣S1~S4的零件是不是也要建Bom在加上S5來出託工單。
+13:15	張書豪-Ragic SA Promote	是啊
+13:15	Eric Wang安克美	好的，我來運行看看。
+15:02	Eric Wang安克美	另外，請問一下廠內自製的零件入庫後，有可以查詢或列印入庫明細並有帶單價及成本的報表嗎？
+15:08	張書豪-Ragic SA Promote	你的邏輯怪怪的
+15:16	Eric Wang安克美	應該說我想看廠內自己生產的總成本與總售價。
+15:21	張書豪-Ragic SA Promote	那你也要進原料 再去做生產 入庫 採會有半成品S5的成本
+15:25	Eric Wang安克美	是啊
+15:27	Eric Wang安克美	"其實就是我想看生產部這個月生產S5的數量、總成本及售價的表單。
+因為制令入庫明細表只有數量但沒有成本及售價。"
+16:13	張書豪-Ragic SA Promote	入庫是不會的
+16:14	張書豪-Ragic SA Promote	除非你偽裝成託工
+16:14	張書豪-Ragic SA Promote	就是場內生產偽裝去給另個廠商託工
+16:14	張書豪-Ragic SA Promote	才會有進貨單
+16:43	Eric Wang安克美	了解，把身分換一下。
+16:44	Eric Wang安克美	[照片]
+16:45	Eric Wang安克美	把制令單列印多行描述打勾後變這樣；
+16:45	Eric Wang安克美	[照片]
+16:45	Eric Wang安克美	不打勾就正常
+16:45	Eric Wang安克美	為何會這樣呢？
+16:51	張書豪-Ragic SA Promote	你打溝的畫面拍給我
+16:56	Eric Wang安克美	[照片]
+16:56	Eric Wang安克美	[照片]
+16:57	Eric Wang安克美	而且還預覽出20頁，還出現一些試用版時的內建資料。
+21:28	Eric Wang安克美	會不會是這些多行描述都要從產品的多行描述載入，不可以在單上自行另外加入。而導致的問題呢？
+22:01	張書豪-Ragic SA Promote	我覺得不是 但是你可以試試看
+22:02	張書豪-Ragic SA Promote	至於跳出試用版資料不合理 明天遠端抓資料看看
+
+2023/07/08（六）
+09:51	Eric Wang安克美	像我這套幫手可以使用SQL的資料庫嗎？
+10:05	張書豪-Ragic SA Promote	可以 但是要有加購
+10:17	Eric Wang安克美	是要加購那些東西呢？
+10:19	Eric Wang安克美	會有哪些優點呢？
+12:07	張書豪-Ragic SA Promote	高速 穩定 多筆數
+17:49	Eric Wang安克美	加購要多少呢？那原本的筆數是可用到幾筆呢？
+19:02	張書豪-Ragic SA Promote	"你的主機要給力
+不買主機的話
+加購SQL安裝訂價25000
+目前有優惠20000"
+19:03	張書豪-Ragic SA Promote	原本舊的資料庫65536筆
+19:06	Eric Wang安克美	那資料庫是使用原本的還是用sql寫的資料庫呢？
+19:08	張書豪-Ragic SA Promote	就是要升級成SQL的資料庫
+19:09	Eric Wang安克美	有這個的試用版嗎？想看看差異會不會很大
+19:09	張書豪-Ragic SA Promote	這個沒辦法試用
+19:10	張書豪-Ragic SA Promote	要升級就是你目前有遇到速度上變慢了 或者你覺得反應不夠了
+19:10	張書豪-Ragic SA Promote	就只有升級一途
+19:10	張書豪-Ragic SA Promote	升級沒得試用
+19:10	Eric Wang安克美	65536筆、是包含商品、客戶、廠商、還有其他建立的表單；總和65536筆嗎？
+19:11	張書豪-Ragic SA Promote	"客戶廠商一起
+產品單一
+採訂購進銷貨一起
+製造全部算一起"
+19:11	張書豪-Ragic SA Promote	個別計算
+19:11	Eric Wang安克美	了解了
+19:13	Eric Wang安克美	如果筆數達到上限；又沒升級那怎麼辦？有其他解法嗎？
+19:13	張書豪-Ragic SA Promote	沒 除非花錢刪減資料庫資料筆數
+19:14	Eric Wang安克美	了解
+19:15	Eric Wang安克美	那目前我的有辦法多人作業嗎？
+19:16	張書豪-Ragic SA Promote	你現在是單機版?
+19:16	Eric Wang安克美	應該是
+19:17	張書豪-Ragic SA Promote	妳要內網多人還是網際網路多人?
+19:17	Eric Wang安克美	內網
+19:17	張書豪-Ragic SA Promote	幾人?
+19:17	張書豪-Ragic SA Promote	之前公司名稱給我一下
+19:17	Eric Wang安克美	應該不會超過5人
+19:18	Eric Wang安克美	安克美
+19:30	張書豪-Ragic SA Promote	☎ 通話時間11:26
+19:40	Eric Wang安克美	☎ 未接來電
+19:41	張書豪-Ragic SA Promote	我在電話中
+19:41	張書豪-Ragic SA Promote	等等
+19:45	張書豪-Ragic SA Promote	☎ 您已取消通話
+19:47	Eric Wang安克美	☎ 通話時間0:44
+21:02	Eric Wang安克美	"張先生你好：
+那麻煩你提供你說的那個總管我來試看看。"
+21:07	張書豪-Ragic SA Promote	[檔案]
+21:07	Eric Wang安克美	謝謝
+21:20	Eric Wang安克美	[照片]
+21:20	Eric Wang安克美	是在這邊設定嗎？
+21:21	Eric Wang安克美	但也是只有R和F
+21:21	張書豪-Ragic SA Promote	不
+21:21	張書豪-Ragic SA Promote	單據設定
+21:21	張書豪-Ragic SA Promote	在後面
+21:21	張書豪-Ragic SA Promote	你找
+21:21	張書豪-Ragic SA Promote	上面工作列的最右邊
+21:22	Eric Wang安克美	有看到了
+21:22	Eric Wang安克美	在系統工具內
+21:22	Eric Wang安克美	我有發現這次的搜尋也有改善
+21:23	Eric Wang安克美	[照片]
+21:23	張書豪-Ragic SA Promote	對的
+21:23	張書豪-Ragic SA Promote	因為你的版本差太多
+21:23	Eric Wang安克美	這些功能是不是沒有下放到幫手
+21:23	張書豪-Ragic SA Promote	所以很有感
+21:23	Eric Wang安克美	對
+21:24	張書豪-Ragic SA Promote	所以你應該要先考慮先升到總管再升級人數
+21:25	張書豪-Ragic SA Promote	這樣才好利用
+21:28	Eric Wang安克美	上述那些功能有下放到幫手嗎？
+21:29	張書豪-Ragic SA Promote	單據設定沒有唷
+21:31	Eric Wang安克美	天啊
+21:32	Eric Wang安克美	好想有這個功能
+21:37	張書豪-Ragic SA Promote	升級吧
+21:37	張書豪-Ragic SA Promote	反正都是要花的
+21:51	Eric Wang安克美	那不就要升級總管
+21:51	張書豪-Ragic SA Promote	你如果升級到五人也是要總管啊，幫手不行
+21:52	張書豪-Ragic SA Promote	你如果先生在幫手的話除了沒有單據設定的功能以外，你未來升到總管你還是要多花一筆總管的費用啊
+21:52	張書豪-Ragic SA Promote	這樣沒有比較省
+22:02	Eric Wang安克美	那升總管要多少呢？
+22:04	張書豪-Ragic SA Promote	依樣兩ˋ人版嗎
+22:05	Eric Wang安克美	先一人
+22:07	張書豪-Ragic SA Promote	要不要SQL?
+22:07	Eric Wang安克美	先不用
+22:07	張書豪-Ragic SA Promote	"總管的話 製造總管定價是80000
+我給你七折56000"
+
+2023/07/09（日）
+11:14	張書豪-Ragic SA Promote	"如果只是要升級幫手的話
+意義不大
+費用是12600而已
+單機版
+
+如果選擇總管
+一起升級SQL我便宜一萬給你"
+12:12	Eric Wang安克美	好，我想看看。謝謝你
+16:00	Eric Wang安克美	"請問一下，我試用總管時發現，廠商基本資料的送貨地址會跟連絡地址一起帶出來；廠商這邊的送貨地址應該是我們的地址吧？！
+因為之前試用新版的幫手時好像送貨地址不會自動帶出。"
+16:01	張書豪-Ragic SA Promote	那就去修改送貨地址就好
+17:23	Eric Wang安克美	好
+
+2023/07/12（三）
+12:28	張書豪-Ragic SA Promote	你現在是卡在預算嗎
+13:27	Eric Wang安克美	還有一個點，真的要升級嗎？因為目前還可以用。
+13:27	Eric Wang安克美	另外，請問一下你有客戶是製鎖業的嗎？
+13:29	Eric Wang安克美	"因為我有一個疑問，因為一個型號的鑰匙會生產2000支但這兩千支都各自有自己的編碼。總不能編2000個編碼吧！
+像這種情況要如何對應呢？"
+13:52	張書豪-Ragic SA Promote	你是這個問題是你沒買的功能 批號模組
+13:52	張書豪-Ragic SA Promote	你可以不買升級呀
+13:53	張書豪-Ragic SA Promote	"單據設定用一次性
+我幫你設定
+未來就無法自己改來改去
+這樣只要幫手就好了"
+13:54	張書豪-Ragic SA Promote	"製鎖業沒有碰過
+但是製造業有"
+14:03	Eric Wang安克美	批號模組是怎麼個應用呢？
+14:04	張書豪-Ragic SA Promote	"進貨時針對單一品號進貨時
+由規則產生批次號碼"
+14:05	張書豪-Ragic SA Promote	有點像食品業針對他的一箱一箱的貨品產生日期的序號
+14:06	Eric Wang安克美	如果是自己生產的也可以嗎？
+14:08	張書豪-Ragic SA Promote	可以 生產入庫就可以跟進貨時一樣
+14:16	Eric Wang安克美	如果序號要從2000～3999要如何打呢？
+14:17	張書豪-Ragic SA Promote	可以打 但是你現在總管有這個測試功能嗎
+14:17	張書豪-Ragic SA Promote	有的話截圖給我
+14:17	張書豪-Ragic SA Promote	因為我現在不在電腦前
+14:20	Eric Wang安克美	好像沒有這個功能
+14:21	張書豪-Ragic SA Promote	那就沒有辦法 等四點
+14:24	Eric Wang安克美	好
+14:28	張書豪-Ragic SA Promote	"幫手單機版升級12600
+加購批號模組12000
+（如果多人版價格又會不一樣）
+單據設定給我規則4000
+（一次性設定無附加功能）
+"
+14:44	Eric Wang安克美	請問在選批號時，如果共有1000號，如果要出貨其中的100號，只能一個一個點100次，還是可以按shift 連號點選呢？
+14:45	張書豪-Ragic SA Promote	好問題 我晚點測試
+14:46	Eric Wang安克美	麻煩你了，因為只能一個一個點那會很慘的。
+14:53	張書豪-Ragic SA Promote	我會錄一段操作的影片包含你說的批號序號的生成以及在銷貨的時候選擇批號序號的選擇
+14:55	Eric Wang安克美	好
+14:56	Eric Wang安克美	謝謝你
+14:56	張書豪-Ragic SA Promote	你再自己評估看看
+14:59	Eric Wang安克美	另外，還有一個問題共有100個號碼，生產時每個號碼會生產5支，制令單或採購單的數量總共會有500支，那入庫時可以做到每個序號數量有5支嗎？
+14:59	Eric Wang安克美	也就是每個序號可以帶數量
+15:00	張書豪-Ragic SA Promote	"批號的概念是一號多樣
+序號的概念是一號一樣
+所以你這個操作要弄批號
+"
+15:01	Eric Wang安克美	那軟體也有批號功能嗎？如果有也錄影片給我參考看看
+15:01	張書豪-Ragic SA Promote	可以
+19:30	張書豪-Ragic SA Promote	[檔案]
+20:41	Eric Wang安克美	方便通話嗎？
+20:48	張書豪-Ragic SA Promote	☎ 通話時間7:27
+
+2023/07/13（四）
+07:23	Eric Wang安克美	我測試一下，發現有一個問題，當有一張客戶的訂單時；在開採購單時利用單據拷貝帶入資料其採購金額卻是帶銷售金額而不是成本金額。
+07:28	Eric Wang安克美	"我的幫手也是有這樣的問題。
+除非是從選擇產品處選採購的產品就會有正常的採購價格"
+08:18	張書豪-Ragic SA Promote	單據拷貝請問是栲被哪種單據
+08:19	Eric Wang安克美	客戶訂單
+08:29	張書豪-Ragic SA Promote	"你的來源是訂單
+拷貝是如實資料
+怎麼可能還幫你判斷應該帶入進貨價勒"
+09:42	Eric Wang安克美	不過這樣的話變成單據拷貝這個功能變成沒太大意義了。
+09:43	張書豪-Ragic SA Promote	怎麼會 有產品編號名稱數量  這樣意義就大多了
+09:43	張書豪-Ragic SA Promote	拷貝本來就只是省力工具
+09:43	張書豪-Ragic SA Promote	妳可以不用
+09:44	Eric Wang安克美	[照片]
+09:45	Eric Wang安克美	總管有這個是否轉入金額就可以帶入進貨價，但要把勾取消，不然一樣帶銷售價格。
+10:29	張書豪-Ragic SA Promote	新版的幫手也有
+10:29	張書豪-Ragic SA Promote	是你的版本沒已
+10:29	張書豪-Ragic SA Promote	有
+10:35	Eric Wang安克美	天啊❗️
+11:11	張書豪-Ragic SA Promote	"你早該知道啊
+你的版本汰舊 本來就該換了"
+12:37	Eric Wang安克美	應該是你有在改進功能，所以我又要再花錢跟著進步。🤣
+12:39	Eric Wang安克美	那個勾可以預設不勾嗎？因為預設好像是直接勾選了。
+12:41	張書豪-Ragic SA Promote	預設與否差不了一個動作啦
+12:58	Eric Wang安克美	是常常會忘記取消勾勾
+
+2023/07/14（五）
+14:00	張書豪-Ragic SA Promote	其實老話一句  我的系統可以幫你省下80%的力氣就可以了
+14:00	張書豪-Ragic SA Promote	100%力氣要花錢 我不建議
+14:00	張書豪-Ragic SA Promote	我都會盡量滿足你的想法
+14:00	張書豪-Ragic SA Promote	但是你要確定跟我說你要買甚麼 我才能幫你升級
+14:28	Eric Wang安克美	"了解，我先跟其他未來會用的同事先試看看是否合用在目前的製程作業上，再跟你討論。
+謝謝你"
+14:34	張書豪-Ragic SA Promote	[貼圖]
+
+2023/07/22（六）
+12:50	張書豪-Ragic SA Promote	[貼圖]
+
+2023/08/11（五）
+14:49	Eric Wang安克美	"張先生你好：
+我可以麻煩你提供清除完資料的總管試用嗎？功能就進銷存、代工、託工、會計總帳、票據、資產、生產製造、庫存、貿易…等
+我要讓員工從無到有來輸入評估一下功能的適用性。"
+14:59	張書豪-Ragic SA Promote	晚點提供給你
+14:59	Eric Wang安克美	好，謝謝你。
+15:01	Eric Wang安克美	另外，請問一下產品結構可以到幾階呢？
+15:04	張書豪-Ragic SA Promote	"不會設定 一階
+懂邏輯 沒限定"
+15:09	Eric Wang安克美	好
+15:50	Eric Wang安克美	如果多階時，可以列印出多階的組合清單嗎
+15:57	Eric Wang安克美	"物料結構可以多階列印。
+生產制令就不行了對嗎？"
+16:30	張書豪-Ragic SA Promote	當然不行
+16:30	張書豪-Ragic SA Promote	也不是這樣設定的
+17:15	張書豪-Ragic SA Promote	[檔案]
+18:18	Eric Wang安克美	那應該如何設定，可以做過影片嗎？
+18:21	張書豪-Ragic SA Promote	有空在做影片給你
+18:21	Eric Wang安克美	好
+18:21	Eric Wang安克美	謝謝
+18:21	張書豪-Ragic SA Promote	牽扯到最細的設定
+18:22	Eric Wang安克美	那確實需要你的講解了！
+19:23	張書豪-Ragic SA Promote	"你要先知道預算不到位
+我講再多次都沒用唷"
+19:29	Eric Wang安克美	了解
+19:31	張書豪-Ragic SA Promote	"我來來回回說明講解不少次了
+每每預算卡住我也是白耗心力
+所以請你先有預算上的心理準備再來討論比較實在"
+19:39	Eric Wang安克美	"不然，先呈現上述功能的結果畫面或列印結果，也不讓你太花時間。
+我已經在極力爭取，也要先讓 未來使用的員工確認功能是否能大部分適用，不然我也很難說服。"
+19:54	張書豪-Ragic SA Promote	我儘量給你
+20:43	Eric Wang安克美	謝謝你
+
+2023/08/12（六）
+11:05	張書豪-Ragic SA Promote	[檔案]
+20:12	Eric Wang安克美	謝謝
+
+2023/08/13（日）
+12:46	張書豪-Ragic SA Promote	看得懂我的邏輯嗎？
+12:46	張書豪-Ragic SA Promote	這個是製造業最係最複雜，但是也最完善的功能
+13:13	Eric Wang安克美	有看懂，真的蠻不錯的。
+13:14	Eric Wang安克美	如果部分子件的成本變更，主件也會跟著變更嗎？還是要再進製造成本功能中進行重新計算
+13:17	張書豪-Ragic SA Promote	要重新計算
+13:17	張書豪-Ragic SA Promote	這樣才會算出真實成品所需成本
+13:17	張書豪-Ragic SA Promote	你才會知道利潤
+13:20	張書豪-Ragic SA Promote	我先跟你說你要的版本訂價 免得你不知道預算
+13:23	張書豪-Ragic SA Promote	"進銷存、代工、託工、會計總帳、票據、資產、生產製造、庫存、貿易
+
+製造整合版單機版
+已含進銷存會計票據代工託工
+80000
+資產 15000
+貿易有進出口 各20000
+訂價總計為135000
+人數一人加15000
+多少人就往上遞增
+"
+13:23	張書豪-Ragic SA Promote	"當然你是升級 會折扣
+但是先讓你知道預算"
+13:31	Eric Wang安克美	了解
+
+2023/08/15（二）
+11:06	Eric Wang安克美	今天要給員工測試使用但客戶、廠商、產品都有預設的資料
+11:06	Eric Wang安克美	可以清除這些嗎？
+11:07	Eric Wang安克美	[照片]
+11:32	張書豪-Ragic SA Promote	不用 你重新建立就好
+11:43	Eric Wang安克美	重新建立要如何處理呢？
+11:44	張書豪-Ragic SA Promote	新增客戶資料廠商資料產品資料啊
+11:48	Eric Wang安克美	了解
+11:49	Eric Wang安克美	原本的筆數會不會佔用太多呢
+11:49	張書豪-Ragic SA Promote	這本來就是測試
+11:49	張書豪-Ragic SA Promote	你不可以當正式用
+12:01	Eric Wang安克美	當然
+12:02	Eric Wang安克美	只是想讓員工方便找產品對應，不用一直滾滑鼠。
+12:03	張書豪-Ragic SA Promote	把原本產品的是否交易選擇否就好
+12:03	Eric Wang安克美	好
+14:11	張書豪-Ragic SA Promote	測試有問題，記得問我
+16:12	Eric Wang安克美	好
+
+2023/08/16（三）
+08:44	Eric Wang安克美	[照片]
+08:46	Eric Wang安克美	為何銷貨單選取貨品，帶入的價格會打42%，要如何選取貨品後內定不打折呢？
+08:53	張書豪-Ragic SA Promote	"你用我的客戶我的產品
+該價格已有交易紀錄會參考前例 所以才會有折扣
+不是要你建新客戶跟新產品嗎"
+09:00	Eric Wang安克美	那我知道了
+09:00	Eric Wang安克美	謝謝
+09:58	Eric Wang安克美	最近天氣濕熱，腦袋也跟著渾渾噩噩。
+15:22	Eric Wang安克美	"請問一下
+如果客戶的報價是以美金，客戶每週五會提供匯率給公司計算請款台幣金額。
+如果星期一出貨一批、星期四又出貨一批；故星期一和四都會先打銷貨單但此時匯率有可能不是正確的；都到週五客戶提供匯率後回頭修改銷貨單的匯率這樣系統會重新計算嗎？"
+15:25	張書豪-Ragic SA Promote	"報美金 結美金
+怎麼報美金 結台幣?"
+15:26	張書豪-Ragic SA Promote	"另外 銷貨單一開始的匯率都可能只是牌告匯率
+如果週五提供匯率後 在修改為真實的匯率亦可"
+15:26	張書豪-Ragic SA Promote	但是結帳作業依然是結美金
+15:26	Eric Wang安克美	其實業界真的有這樣做
+15:26	張書豪-Ragic SA Promote	只是結帳作業的匯率要跟銷貨單匯率一致
+15:26	張書豪-Ragic SA Promote	那是業界的會計自己作帳做成台幣結帳
+15:28	張書豪-Ragic SA Promote	你們的會計功力夠  也可以這樣做
+15:28	張書豪-Ragic SA Promote	那根系統無關
+15:29	Eric Wang安克美	其實客戶會這麼作都是想要再賺匯差。
+15:33	Eric Wang安克美	[影片]
+15:34	張書豪-Ragic SA Promote	"你跟我解釋一下 怎麼賺匯差?
+匯差的定義是自己公司收外幣入外幣帳戶後轉存台幣
+客戶要賺匯差無非是同樣美金一百元 匯率從30變31 可以少付台幣一點錢 問題是報價是報美金  除非銷貨單改為台幣 然後你們自己手動改價格"
+15:35	Eric Wang安克美	像影片所示，幣別匯率這邊修改，但單價還是依照公司設定的匯率計算，並不會各別計算是嗎？
+15:35	張書豪-Ragic SA Promote	你要變動的是甚麼?
+15:35	張書豪-Ragic SA Promote	美金單價?
+15:44	張書豪-Ragic SA Promote	☎ 通話時間8:08
+17:18	張書豪-Ragic SA Promote	"你再熟悉熟悉一下
+我八月底有特別折扣 不需要一年保固的可以訂價65折算
+不管是新客戶或者老客戶
+"
+17:50	Eric Wang安克美	好，謝謝。
+20:28	Eric Wang安克美	"銷貨單列印時勾選對方編號，是否可以讓原本的產品編號不在出現呢？
+我記得目前用的幫手可以。"
+20:29	張書豪-Ragic SA Promote	可以
+20:31	張書豪-Ragic SA Promote	你去找設定 銷貨單列印時的進階設定
+20:35	Eric Wang安克美	好，明天來試試看。
+21:26	Eric Wang安克美	有到進階設定勾選對方料號了，但ㄧ樣把原本的產品編號也列印出來了。
+21:26	Eric Wang安克美	[照片]
+21:26	Eric Wang安克美	[照片]
+22:10	張書豪-Ragic SA Promote	等等看看
+22:34	Eric Wang安克美	好
+
+2023/08/17（四）
+15:29	張書豪-Ragic SA Promote	你這個可以是我當初幫你修改客製的
+15:29	張書豪-Ragic SA Promote	現在的公版都是會兩者出現
+15:29	張書豪-Ragic SA Promote	到時在客製給你取消產品編號的列印就好
+16:09	Eric Wang安克美	了解，謝謝
+
+2023/08/18（五）
+15:35	張書豪-Ragic SA Promote	測試得如何在提出問題
+15:35	張書豪-Ragic SA Promote	測試時間只有一個月唷
+15:50	Eric Wang安克美	好
+
+2023/08/19（六）
+19:43	Eric Wang安克美	[照片]
+19:43	Eric Wang安克美	地址出現兩個嘉義縣
+20:37	張書豪-Ragic SA Promote	試用版還是正式在用的？
+21:26	Eric Wang安克美	試用的，有bug
+21:27	張書豪-Ragic SA Promote	等正式購買後再處理
+
+2023/08/20（日）
+10:52	張書豪-Ragic SA Promote	妳自己要記得需要我修正的地方
+12:23	Eric Wang安克美	[照片]
+12:24	Eric Wang安克美	"像物料結構中的產品屬性，除了上圖這3個還可以在增加其他的嗎？
+例如：Y虛擬件"
+12:25	張書豪-Ragic SA Promote	請解釋什麼叫虛擬
+12:26	張書豪-Ragic SA Promote	請依照正常工序來提問
+12:38	Eric Wang安克美	以前上班的工廠就有設置所謂的虛擬件，可以應用在 包裝Bom
+12:48	張書豪-Ragic SA Promote	我的建議是用採購
+12:49	張書豪-Ragic SA Promote	包裝him 的子件還是要算庫存
+13:27	張書豪-Ragic SA Promote	"等於說 虛擬件就當作一個正常的產品資料
+到物料結構這邊就用採購屬性 當做要進貨處理
+只是這個產品不要管庫存 反正對你來說是假的產品"
+13:37	Eric Wang安克美	例如：有一個產品因應不同客戶要求有不同的包裝需求，那麼包裝方式就獨立建立一個料號，這個料號下面就是各式各樣的包裝材料與用量。當出貨給某客戶就獨立拉對應的包裝Bom來用，這時候就可以建立虛擬件，因為這個包裝料號本身是由許多包裝物料組成的。
+13:39	Eric Wang安克美	又因為包裝材料本身是採購進來的，然後出貨時用來包裝使用又屬於自製；所以因應方式就是用虛擬件作區分而來的。
+13:40	Eric Wang安克美	其實有些物料屬性會牽連到成本會計。
+13:41	Eric Wang安克美	就好像，物料和原料的定義，就有很多人不清楚了。
+13:42	張書豪-Ragic SA Promote	"系統沒有幫你分那麼細
+如果你要這些有系統幫你分類
+就要花很高預算"
+13:42	張書豪-Ragic SA Promote	你確定你現在要花上最起碼七位數的預算嗎
+13:43	Eric Wang安克美	了解，就當是一個技術探討。
+13:43	張書豪-Ragic SA Promote	有些事情不是做不到，而是沒有那個層級去達成那個目標
+13:51	Eric Wang安克美	確實
+13:52	張書豪-Ragic SA Promote	就我來說 客戶要的東西不是做不到
+13:52	張書豪-Ragic SA Promote	但是客戶到底有多少預算是我最無解的
+13:53	張書豪-Ragic SA Promote	所以我的工作就是讓客人合理評估自己的預算
+13:53	張書豪-Ragic SA Promote	我在提供可以用的功能
+13:53	Eric Wang安克美	哈哈，現在任何行業都不好生存。
+13:53	張書豪-Ragic SA Promote	我目前所能提供的軟體就市場來說最低了
+13:54	張書豪-Ragic SA Promote	你也找不到低於10萬以下的單機版
+13:55	Eric Wang安克美	應該是吧
+13:56	Eric Wang安克美	我覺得目前你的用起來倒是順手。
+13:58	Eric Wang安克美	"雖然部分功能沒有或還有進步空間。
+但就如你所說的能有一定的比例可以使用了；畢竟是公版的。"
+14:00	Eric Wang安克美	有一事想問，像對方料號為何不設置在產品的基本資料那呢？當銷貨時要印原本料號或是對方料號；可以單獨用勾選的。
+14:02	張書豪-Ragic SA Promote	"對方料號要利用訂單去下
+訂單中才有記憶該客戶的料號隸屬於使用"
+14:11	Eric Wang安克美	那這個記憶是每次打客戶的訂購單時都要打嗎？
+14:15	張書豪-Ragic SA Promote	第一次打完後如果然後客戶料號沒有變更會自動沿用
+14:16	張書豪-Ragic SA Promote	你可以自己打兩張訂購單測試看看
+14:18	Eric Wang安克美	好
+14:26	張書豪-Ragic SA Promote	然後結果要用訂購單轉銷貨單唷
+14:35	張書豪-Ragic SA Promote	"儘快測試後給我答覆吧
+我才能進入報價"
+
+2023/08/22（二）
+12:36	張書豪-Ragic SA Promote	[貼圖]
+
+2023/08/23（三）
+10:04	張書豪-Ragic SA Promote	先跟你說 優惠我真的只能到月底 因為我也要跟原廠付授權費 原廠有調降給我 我才會調降 所以你不要九月以後才來問我優惠報價 到時怎麼算就怎麼算唷
+
+2023/08/28（一）
+10:01	張書豪-Ragic SA Promote	"我覺得您那邊可能又是預算不足
+日後如果有在詢問的話，請先報價續約付款後再詢問
+"
+
+2024/01/31（三）
+11:51	Eric Wang安克美	"今天使用時突然閃退，再次執行時出現捷徑無效，檢查程式資料夾的mstock.exe的程式不見了。
+請問有碰過這樣的問題嗎？"
+11:53	Eric Wang安克美	"檢查回收桶等也都沒有，該執行檔就突然不見了。
+要該如何解決呢？"
+12:03	張書豪-Ragic SA Promote	等等回你
+12:19	張書豪-Ragic SA Promote	你先不要在做任何動作
+12:19	張書豪-Ragic SA Promote	等我遠端
+12:19	張書豪-Ragic SA Promote	這個是你的防毒誤判
+12:19	Eric Wang安克美	好
+12:56	張書豪-Ragic SA Promote	準備給我遠端
+13:01	Eric Wang安克美	好
+13:01	Eric Wang安克美	一樣用 Awesun 這軟體嗎
+13:01	張書豪-Ragic SA Promote	對
+13:02	Eric Wang安克美	[照片]
+13:03	張書豪-Ragic SA Promote	等我
+13:03	Eric Wang安克美	好
+13:30	張書豪-Ragic SA Promote	看起來問題很多
+13:30	張書豪-Ragic SA Promote	你的防毒我關了
+13:31	張書豪-Ragic SA Promote	我盡量恢復讓你使用了
+13:31	Eric Wang安克美	好
+13:31	Eric Wang安克美	謝謝你
+13:33	Eric Wang安克美	現在可以使用了嗎？
+13:33	張書豪-Ragic SA Promote	你用用看
+13:33	Eric Wang安克美	好
+13:44	Eric Wang安克美	[照片]
+13:45	Eric Wang安克美	應收（付）對帳單
+13:45	張書豪-Ragic SA Promote	電腦擺著遠端
+13:45	張書豪-Ragic SA Promote	我等等處理
+13:45	Eric Wang安克美	好
+13:46	Eric Wang安克美	[照片]
+14:17	Eric Wang安克美	[照片]
+14:17	Eric Wang安克美	一些單據列印都出現上圖這個
+14:18	張書豪-Ragic SA Promote	先不要動作了
+14:18	張書豪-Ragic SA Promote	[貼圖]
+14:27	Eric Wang安克美	好
+15:39	張書豪-Ragic SA Promote	你試試看
+15:56	Eric Wang安克美	好
+
+2024/02/09（五）
+17:30	張書豪-Ragic SA Promote	[照片]
+23:27	Eric Wang安克美	新年快樂
+
+2024/02/10（六）
+08:30	Eric Wang安克美	[照片]
+
+2024/02/19（一）
+09:46		Eric Wang安克美已收回訊息
+10:02	Eric Wang安克美	"張先生您好：
+請問一張訂購單中有兩筆同樣料號但數量不同、交期也不同的訂購資料。
+在銷貨單中點選單據轉入先出貨第一筆是沒有問題的。但幾天後要銷貨第二筆時在單據轉入中就沒有同訂購單的另一筆，反而顯示空白。
+這是正常的嗎？
+照理說應該還有一筆還沒銷貨啊？！"
+10:37	張書豪-Ragic SA Promote	遠端看看
+11:13	Eric Wang安克美	[照片]
+11:21	張書豪-Ragic SA Promote	☎ 通話時間3:30
+15:46	Eric Wang安克美	新版的還有產品單位換算功能嗎？
+15:50	張書豪-Ragic SA Promote	可加購 有大小單位互算的功能
+
+2024/03/22（五）
+08:45		Eric Wang安克美已收回訊息
+08:46	Eric Wang安克美	您何時比較方便通話，之前試用時有看到驗收單的功能，想向你請教這個功能的使用邏輯與場合。
+08:47	張書豪-Ragic SA Promote	"可以
+大概是10:30"
+08:47	Eric Wang安克美	好。屆時麻煩了
+08:47	張書豪-Ragic SA Promote	[貼圖]
+10:21	張書豪-Ragic SA Promote	你好了就打給我
+10:45	Eric Wang安克美	好
+10:52	Eric Wang安克美	☎ 通話時間6:12
+10:53	Eric Wang安克美	☎ 通話時間1:00
+11:16	張書豪-Ragic SA Promote	還沒有預算要升級吧
+11:17	Eric Wang安克美	有在想
+11:23	Eric Wang安克美	"稍早問託工。驗收。是有一個狀況如下的！
+
+因為我有一個產品要託工，我必須提供一個鋁合金給廠商進行包膠，假設需求100個，但包膠會有一些損耗，可能最終廠商進貨只有95個。另5個就變成不可重工的廢品，所以我原本提供的100個鋁合金中會有5個變成不良的報廢品。"
+11:25	張書豪-Ragic SA Promote	"進貨時選擇單據轉入類別選擇託工
+有驗收數量
+打95
+剩下不可重工的廢品就是5個是不需要計算因為託工出料是出100個庫存已經扣除過"
+11:26	Eric Wang安克美	如果廠商把這5個退回成廠商託工退料，這樣鋁合金庫存就會有5個但實際這6個已經不能使用了。
+11:28	張書豪-Ragic SA Promote	你都說了，不能重工
+11:28	張書豪-Ragic SA Promote	脫工退料就不切實際了
+11:29	張書豪-Ragic SA Promote	所以當作損耗無需退料
+11:29	Eric Wang安克美	是啊，我現在也都是當損害處理。
+11:30	Eric Wang安克美	但這樣不選託工，選其他的也帶不出單據內容。
+11:31	張書豪-Ragic SA Promote	我不懂你第二句話的意思
+11:33	Eric Wang安克美	就是託工單到進貨單使用單據轉入的來源單別如果不選託工選其他的帶不出託工單的資料
+11:39	張書豪-Ragic SA Promote	我知道你的意思了
+11:39	張書豪-Ragic SA Promote	進貨單只能託工轉入確定OK的數量
+11:40	張書豪-Ragic SA Promote	但是你第二次在託工可以在出料一次
+11:54	Eric Wang安克美	是啊
+11:55	張書豪-Ragic SA Promote	託工驗退這個觀念目前沒有完整
+11:55	張書豪-Ragic SA Promote	但是託工後未完整數量的二度進貨是沒有問題
+11:56	張書豪-Ragic SA Promote	只是你要在託工出料第二次
+12:26	Eric Wang安克美	好
+
+2024/03/26（二）
+10:42	張書豪-Ragic SA Promote	"有想好要升級在跟我說
+"
+11:12	Eric Wang安克美	好
+
+2024/09/17（二）
+10:06	Eric Wang安克美	[照片]
+
+2025/01/13（一）
+22:13		Eric Wang安克美已收回訊息
+22:33	Eric Wang安克美	[照片]
+22:35	張書豪-Ragic SA Promote	"你中間還要加產品C（經過x託工）以及產品D（經過y託工）
+最後做出產品E成品"
+22:55	Eric Wang安克美	產品C和D是把加工費也當成一個料號看待嗎？
+23:17	Eric Wang安克美	[照片]
+23:17	Eric Wang安克美	變這樣嗎？
+23:18	Eric Wang安克美	但這樣成本就沒有計算到1-1、1-2的物料費了。
+23:18	Eric Wang安克美	[照片]
+23:20	Eric Wang安克美	[照片]
+
+2025/01/14（二）
+00:50	張書豪-Ragic SA Promote	"你的版本無法做到跨階合併零件成本及加工成本
+你只能自己成品去填入成本
+至於產品C&D的進貨價九等於是廠商X&Y的加工費而已"
+07:48	Eric Wang安克美	那個版本才有你說的功能呢？
+08:01	張書豪-Ragic SA Promote	總管
+08:01	張書豪-Ragic SA Promote	問題是 預算
+09:07	Eric Wang安克美	[照片]
+09:07	Eric Wang安克美	[照片]
+09:08	張書豪-Ragic SA Promote	[照片]
+09:08	張書豪-Ragic SA Promote	這中間少了一個步驟
+09:08	張書豪-Ragic SA Promote	並不是生產入庫單E
+09:09	Eric Wang安克美	如果射出改成自製，整個Bom的結構如上第一張圖,整個開單流程是不是如第二張圖呢？
+09:09	Eric Wang安克美	少了那個步驟呢？
+09:09	張書豪-Ragic SA Promote	你這張圖順序顛倒了
+09:10	張書豪-Ragic SA Promote	你順一次看看
+09:12	Eric Wang安克美	[照片]
+09:12	Eric Wang安克美	是這樣嗎？
+09:13	張書豪-Ragic SA Promote	你這張圖是正確的流程嗎
+09:14	Eric Wang安克美	我覺得應該是這樣的吧？
+09:14	Eric Wang安克美	先射出後衝壓
+09:18	張書豪-Ragic SA Promote	"訂單E  缺E
+單獨下採購AB(如果AB不同廠商 就要下兩張採購)
+進貨AB(如果AB不同廠商 就要下兩張進貨)
+生產C 領料AB 入庫C
+託工D 託工出料C 進貨D(這一步是要付款給託工Y廠商費用) 
+D→E 是產內生產的嗎?如果是請參考下列
+生產E 領料D 入庫E
+"
+09:25	Eric Wang安克美	D-E屬於廠商交貨後廠內進行檢查、清潔包裝再出貨給客戶。
+09:25	Eric Wang安克美	A B確實要分開下單採購因為不同廠商。
+09:26	張書豪-Ragic SA Promote	那就參照以上
+09:27	Eric Wang安克美	好
+09:27	Eric Wang安克美	[照片]
+09:28	Eric Wang安克美	上圖這個動作也是要把D轉成E這樣才有E可以出貨。
+09:28	Eric Wang安克美	這樣解釋對嗎？
+09:28	張書豪-Ragic SA Promote	D到E就是廠內生產
+09:29	Eric Wang安克美	是的，只是不在用機器；是檢查包裝作業。
+10:16	張書豪-Ragic SA Promote	[檔案]
+10:16	張書豪-Ragic SA Promote	這是月初在協助一個客戶購買總管後 製造業的成本設定
+10:16	張書豪-Ragic SA Promote	你看看影片
+10:34	Eric Wang安克美	好
+11:52	張書豪-Ragic SA Promote	"你自己看完後考慮看看要不要升級
+"
+12:24	Eric Wang安克美	晚點看
+16:01	Eric Wang安克美	[照片]
+16:02	張書豪-Ragic SA Promote	？
+16:02	Eric Wang安克美	"紅圈處的小數位數可以獨立設定嗎？
+因為在大單位換小單位就好用了。"
+16:02	張書豪-Ragic SA Promote	"可 系統參數內
+但是你的版本太舊，我不確定有沒有"
+16:05	Eric Wang安克美	"就像原料原料以公斤進貨，但生產時一顆產品可能只用7公克，所以希望能變成0.007公斤。
+但這邊的小數位數變更後不會跟採購單…等單據的小數位數有所變更。"
+16:06	Eric Wang安克美	記得之前測試過好像會一起變更。
+16:10	張書豪-Ragic SA Promote	"這功能有點像是大單位換小單位的概念，你的版本沒有這個東西新版才有
+如果是零件小數的話，應該有"
+16:11	張書豪-Ragic SA Promote	但是如果是同一個產品同一個零件，你要有大小單位之分，現在沒有
+16:27	Eric Wang安克美	了解
+16:31	Eric Wang安克美	"再問一個問題，接上午的問題延伸。
+如射出後的C有很多個不同的料號（因為金屬A有多款），但都必須託工給廠商進行裁切D,那是不是D最好也要一工序一個料號較好呢？(即使衝壓裁切製程加工都一樣）"
+16:42	張書豪-Ragic SA Promote	"不同的A 就有不同的A1+B A2+B 以此類推的話
+A1+B=C1 A2+B=C2"
+16:42	張書豪-Ragic SA Promote	A要多個 C也要多個 對應
+16:42	張書豪-Ragic SA Promote	而且 D也要多個
+16:42	張書豪-Ragic SA Promote	E也是
+16:43	張書豪-Ragic SA Promote	因為都不是同一個東西
+16:44	Eric Wang安克美	哇！這樣建立起來真的很龐大。不過這也是最好的做法。
+17:27	張書豪-Ragic SA Promote	你如果未來要持續經營並且確實掌握庫存
+17:27	張書豪-Ragic SA Promote	這是必不可少
+17:57	Eric Wang安克美	是啊
+17:59	Eric Wang安克美	新版的廠商託工單中的子件明細的數量欄的小數位數是否可以獨立設定呢？
+18:01	Eric Wang安克美	包含代工單、生產製令單….等只要有帶到子件的數量。
+20:27	張書豪-Ragic SA Promote	你要看系統設定中參數設定是否有子件小數的選項
+20:27	張書豪-Ragic SA Promote	如果有就可以
+22:38	Eric Wang安克美	可以提供你影片用的總管軟體給我試用這個看看嗎？
+22:41	張書豪-Ragic SA Promote	明天下午給你
+22:57	Eric Wang安克美	好，謝謝你
+
+2025/01/15（三）
+09:23	張書豪-Ragic SA Promote	"忘了問
+您這次是有預算了嗎？
+如果沒預算 就先暫緩"
+11:12	Eric Wang安克美	最近有可能接到一些特殊的工作製程所以舊的在模擬時有碰這幾天的問題，剛好你提供影片想說試試看合不合適。
+11:14	張書豪-Ragic SA Promote	好 等等回到電腦桌給你
+12:13	張書豪-Ragic SA Promote	[檔案]
+13:21	Eric Wang安克美	謝謝
+13:22	張書豪-Ragic SA Promote	你參考參考
+13:22	張書豪-Ragic SA Promote	"年前如果你有確定
+我們再來談報價"
+14:27	Eric Wang安克美	[影片]
+14:27	Eric Wang安克美	拖拉視窗背後有文字bug
+14:28	張書豪-Ragic SA Promote	"小事 更新時一併處理
+以不影響操作及數值為主"
+14:40	Eric Wang安克美	Ok
+14:41	Eric Wang安克美	[照片]
+14:41	Eric Wang安克美	[照片]
+14:43	Eric Wang安克美	1&2的物料費共8.6；射出加工費2。但產品這邊會把加工和物料費加總變成是射出費的總成本
+14:43	Eric Wang安克美	但實際射出費成本是2
+14:45	張書豪-Ragic SA Promote	請你看昨天的影片 以及真實的跑一次託工轉進貨
+14:46	Eric Wang安克美	好
+14:47	Eric Wang安克美	我在看仔細一點
+15:12	Eric Wang安克美	"影片裡面也是累加上去的。粗車進貨價格100，雙面研磨180，線割600，精車300，。所以成品是1180沒錯。
+但在產品資料中雙面研磨及線割及精車；這邊都是只有工費180、600、300。"
+15:13	Eric Wang安克美	[照片]
+15:14	Eric Wang安克美	圖中雙面研磨成本已經變成280，而不是原本的雙面研磨費180。
+15:15	張書豪-Ragic SA Promote	那是因為我按了更新成本
+15:15	Eric Wang安克美	這樣託工時託工單會帶出280元的託工費用，而不是實際的180元
+15:15	張書豪-Ragic SA Promote	你如果不按 成本價就是自己定義
+15:16	Eric Wang安克美	如果是這樣是不是已知的加工費就先在產品資料中打進去。
+15:17	張書豪-Ragic SA Promote	對的
+15:17	Eric Wang安克美	我在試試看
+15:25	Eric Wang安克美	更新成本這個按鍵是物料結構裡面的嗎？
+15:26	張書豪-Ragic SA Promote	總管不要看物料結構
+15:26	張書豪-Ragic SA Promote	總管只要看製造成本
+15:26	Eric Wang安克美	好
+15:29	Eric Wang安克美	[照片]
+15:30	Eric Wang安克美	如果在產品資料中已經有打上加工費，上圖紅圈還需要在打上去嗎嗎？
+15:31	張書豪-Ragic SA Promote	可以不需要
+15:36	張書豪-Ragic SA Promote	☎ 通話時間5:12
+15:46	Eric Wang安克美	[照片]
+15:47	Eric Wang安克美	我已經把產品資料的成本價改了，為何製造成本這邊一直帶出8.6的物料費
+15:48	張書豪-Ragic SA Promote	"製造成本怎麼帶都是如實的呈現，從頭到尾的費用加總
+你不要去管製造成本帶出來的金額是多少你只要去管他回到產品基本資料檔，不要讓他回寫回去"
+16:02	Eric Wang安克美	好
+16:04	Eric Wang安克美	如果這樣是不是最終的成品成本也不是正確的，因為可能只計算到成品的前一階的金額。
+16:04	張書豪-Ragic SA Promote	"不會唷
+你需要我從頭到尾錄影一次給你看嗎？"
+16:05	Eric Wang安克美	好
+16:05	Eric Wang安克美	[照片]
+16:05	張書豪-Ragic SA Promote	我晚點按照你的流程圖我做假的商品，我模擬一次給你看
+16:05	Eric Wang安克美	可以用我這個實力做看看嗎
+16:05	Eric Wang安克美	好
+16:06	Eric Wang安克美	"3、4就只有加工費
+1、2是物料費"
+16:08	Eric Wang安克美	那美拓這家客戶，可以計算成品總成本，那他的各加工流程是如何出託工單的呢？
+16:09	張書豪-Ragic SA Promote	"他的拖工廠商都是自己的子公司
+他們只是為了要節稅分帳而已
+所以金額越高越好"
+16:13	張書豪-Ragic SA Promote	我等一下做給你看
+16:13	Eric Wang安克美	好
+16:13	Eric Wang安克美	謝謝你
+17:29	張書豪-Ragic SA Promote	[檔案]
+23:21		Eric Wang安克美已收回訊息
+23:49	Eric Wang安克美	看完後，有點像是把製造成本的功能，當成一個統計最終成品製造成本的計算工具。然後再回頭把產品資料的工費成本改成實際的加工金額。
+
+2025/01/16（四）
+00:37	張書豪-Ragic SA Promote	這是比較一勞永逸的做法
+08:32	Eric Wang安克美	[照片]
+08:33	Eric Wang安克美	紅圈處好像軟體有計算錯誤，應該是8.6、10.6；怎麼還有那麼多位數出現呢？
+08:35	Eric Wang安克美	0.007*300=2.1 計算後也沒那麼多位數啊！？
+08:38	張書豪-Ragic SA Promote	你把你的流程寫給我，我這邊算
+09:35	張書豪-Ragic SA Promote	基本上那個不影響成本價
+09:35	張書豪-Ragic SA Promote	因為成本價也只計算到小數點後三位而已
+11:20	Eric Wang安克美	好
+11:20	Eric Wang安克美	[照片]
+11:20	Eric Wang安克美	整個流程說明如上
+11:34	張書豪-Ragic SA Promote	我下午回來後在做錄影給你
+11:58	Eric Wang安克美	好，你先忙不用急。謝謝你
+15:28	張書豪-Ragic SA Promote	[影片]
+19:31	Eric Wang安克美	那麼起問一下，射包加工雖然是廠內自製但也是要有製造工費，那我可以在射包加工階段的製造費用打如廠內自製的工費2元嗎？
+19:31	Eric Wang安克美	[照片]
+19:32	張書豪-Ragic SA Promote	可以
+19:32	張書豪-Ragic SA Promote	增加的話只是增加這個東西的成本，進而累加到最終成品的成本
+19:32	張書豪-Ragic SA Promote	因為製造費用不用付錢給任何人
+19:33	Eric Wang安克美	是的，只是要把自製的製造成本精算到成品中才能呈現真實的製造成本。
+19:35	Eric Wang安克美	因為廠內自製也是要找工人進來作業還有機台用電…等必要的費用。
+19:35	張書豪-Ragic SA Promote	嗯
+19:35	張書豪-Ragic SA Promote	那這對這套軟體還有什麼問題？趕快提問，你看年前有沒有辦法購買
+19:37	Eric Wang安克美	另外，經過一段時間後如果採購進來的物料有調漲或是加工費有異動；是不是製造成本的這些流程再跑一遍後，再把產品資料的加工費再變更為正確的加工費。
+19:37	張書豪-Ragic SA Promote	"當然
+Bom表並不是一成不變的"
+19:37	張書豪-Ragic SA Promote	每次的變更都需要你再一次的修改或是增加減少料件
+19:39	Eric Wang安克美	"好的，謝謝你。
+後面的位數問題之後軟體有辦法修正嗎？"
+19:39	張書豪-Ragic SA Promote	"等更新的時候再一併做修正
+現在先不需要修
+現在提出修正的話，原廠會收費用"
+19:40	Eric Wang安克美	那目前最新的版本有多哪些新功能呢？
+19:40	張書豪-Ragic SA Promote	"你現在拿的試用版，就最新的版本
+"
+19:41	Eric Wang安克美	那這套要多少錢呢？
+19:42	張書豪-Ragic SA Promote	"定價沒變
+你看一下你要什麼功能我核算完再打折給你"
+19:43	Eric Wang安克美	那我在詳細試試看
+
+2025/01/17（五）
+13:26	Eric Wang安克美	[照片]
+13:27	Eric Wang安克美	這個是什麼新功能呢
+13:27	張書豪-Ragic SA Promote	你截圖全部畫面
+13:27	張書豪-Ragic SA Promote	這樣我看步道
+13:28	Eric Wang安克美	[照片]
+13:29	張書豪-Ragic SA Promote	你用不到
+13:29	張書豪-Ragic SA Promote	你除非有超過五人以上授權的使用者才用的到
+13:31	Eric Wang安克美	另外，產品資料中未來可以在產品名稱增加一個規格欄嗎？列印時可以勾選印與不印。
+13:31	張書豪-Ragic SA Promote	用意在哪?
+13:31	Eric Wang安克美	[照片]
+13:32	Eric Wang安克美	可以註記該零件的材料、顏色、材質…等簡易資訊
+13:32	Eric Wang安克美	因為有時產品名稱可能一樣，但尺寸會有差異。
+13:34	張書豪-Ragic SA Promote	不同顏色 不同材料 不同材質 那就是不同商品
+13:34	張書豪-Ragic SA Promote	"同一商品 不同尺寸 或顏色
+可以用服飾模組加購"
+13:34	Eric Wang安克美	是不同料號沒錯
+13:35	張書豪-Ragic SA Promote	"如果你要說明在列進銷貨單中時
+可以輸入多行描述"
+13:35	張書豪-Ragic SA Promote	如果是不同顏色尺寸 除了加購服飾模組 也需要輸入
+13:35	張書豪-Ragic SA Promote	請參考產品編號007
+13:36	Eric Wang安克美	跟服飾的不一樣
+13:37	Eric Wang安克美	[照片]
+13:37	Eric Wang安克美	這是我自己做的Bom表
+13:38	張書豪-Ragic SA Promote	"我乍看是 看不懂的
+你是要給自己看得 還是給客戶或託工廠商看的?"
+13:39	Eric Wang安克美	自己、客戶及廠商都有可能會用到
+13:39	Eric Wang安克美	[照片]
+13:39	Eric Wang安克美	有料號、產品名稱、產品規格
+13:40	張書豪-Ragic SA Promote	這跟你一開始要問的 有甚麼關聯?
+13:43	Eric Wang安克美	"好比螺絲：同樣M10的螺絲
+有材質：鋼、銅、鋁的
+牙距：有粗牙、和細牙之分
+表面處理：有鍍鋅、鍍鉻、陽極處理、染黑…等
+這樣再選產品資料時就可以清晰看到詳細的產品差異。"
+13:44	Eric Wang安克美	沒有關聯，只是自己或員工在記錄產品資料及使用操作上會比較清晰。
+13:45	張書豪-Ragic SA Promote	"你要用到選擇
+你就是要全部建立不同產品料號"
+13:46	張書豪-Ragic SA Promote	所以你還沒有跟我說甚麼列印與否的需求
+13:47	Eric Wang安克美	[照片]
+13:48	Eric Wang安克美	這是網站上我隨便找的，你看光產品名稱叫貼片電阻都一樣，但細部規格是不同的。
+13:49	張書豪-Ragic SA Promote	"我不看名稱 我看編號
+編號是一樣沒錯 但是規格不同 還是要用服飾業來修改"
+13:50	Eric Wang安克美	這是因為有時候全印出來會佔很多紙張空間，也或許給客戶或廠商不用太詳細。
+13:51	Eric Wang安克美	像上圖這個Bom料號給都不同啊！
+13:52	張書豪-Ragic SA Promote	"對對，那我看錯了
+那你網站這個做法其實就是我說的這所有不同規格的相同產品都設定為不同的產品"
+13:52	Eric Wang安克美	因為服飾可紀錄顏色、尺寸但那是因為價格也都一樣。
+13:52	張書豪-Ragic SA Promote	"名稱都一樣沒關係
+所有的規格就當作多行描述再做敘述就好"
+13:53	Eric Wang安克美	上圖範例Bom有可能價格會不同。
+13:53	張書豪-Ragic SA Promote	"如果你接受用多行描述來做規格的敘述
+列印時就可以選擇是否列印描述"
+13:53	張書豪-Ragic SA Promote	既然都視為不同的產品，那當然不同的產品價格就不一定會一樣啊，你自己定義就好
+13:54	Eric Wang安克美	目前沒有規格欄我也是這樣弄，但很不直覺。例如在作產品結構就看不到規格就可能會選錯。
+13:55	張書豪-Ragic SA Promote	"去認列產品編號
+你全部都放在產品名稱裡面把規格打上去才是不直覺的做法吧"
+13:55	Eric Wang安克美	當然啊
+13:57	Eric Wang安克美	所以我需要。產品名稱是產品的簡易名稱一個欄位。產品規格一個欄位（詳細規格紀錄在此欄）。
+13:59	Eric Wang安克美	就像剛剛螺絲例子，產品名稱都是螺絲，規格則會把一些尺寸、表面處理…等紀錄在產品規格
+14:08	張書豪-Ragic SA Promote	還是利用多行描述
+14:08	張書豪-Ragic SA Promote	你去試著用看看
+17:27	Eric Wang安克美	好
+
+2025/01/18（六）
+11:31	張書豪-Ragic SA Promote	測試的怎麼樣？考慮購買了嗎？
+
+2025/01/20（一）
+21:06	張書豪-Ragic SA Promote	王大哥，評估了嗎？
+23:33	Eric Wang安克美	這兩天忙著整理圖檔
+23:34	Eric Wang安克美	哪有新版幫手可以試嗎？
+23:42	張書豪-Ragic SA Promote	幫手？測試做啥 沒意義
+
+2025/01/21（二）
+09:21	Eric Wang安克美	哈哈，怕買不起總管就只能用幫手啊！
+09:22	張書豪-Ragic SA Promote	"這樣買沒意義啊
+你要的功能總管才有"
+09:24	Eric Wang安克美	昨晚整晚沒啥睡，腦袋昏昏的。
+09:51	張書豪-Ragic SA Promote	你過年前啦，我最低總管給你八折
+09:52	張書豪-Ragic SA Promote	以你現在的單機版的作業的話，八折頂多六萬多而已
+
+2025/01/22（三）
+17:52	張書豪-Ragic SA Promote	"王大哥 說一句不好聽的話
+這幾年每年都有在問功能 反而比較少問操作相關問題
+基本上軟體摸得非常熟稔
+您所有的不足 都不是軟體
+都是預算
+所以 日後您有需要 很歡迎你繼續來交流
+就是預算上您自己要多考量
+看過對話紀錄 翻起來 您至少跟我詢問超過五年了
+只有一開始我跟您收過軟體費用
+後續沒收過您其他項目
+所以我應該算能幫得上您的忙了
+
+年節要到了 祝您事業商祺 一切順心"
+
+2025/01/23（四）
+07:51	Eric Wang安克美	"我很想更新，但2024年景氣真的很差，我2024年後半年平均一個月的營業額不到10萬元。
+只是最近有一個機會看能否接到新的組裝案但目前還不明朗；我也很努力想要多拼一點能來換軟體。
+我也很感謝你願意這樣的指導我，我會再拼一下多存一點。因為幾個月前也才勉強把機器的貸款先還完。
+你也知道這幾年都是台積電的舞台，傳統產業已經不曉得收掉幾家了。
+其實最近我也在想是否也來換跑道了，因為身體也有一些狀況了無法在搬重物了那還要繼續搞模具塑膠射出嗎！
+希望您能多多體諒一下。謝謝你"
+08:06	張書豪-Ragic SA Promote	"了解 大家去年都莫名奇妙的差
+我也是
+去年選完總統本來以為會好一點
+結果更ooxx
+我也是趁我還沒滿46趕緊去辦企業貸款
+才能活下來
+目前也是學習其他技能
+把軟體全部網頁化轉成app
+大家都努力"
+12:22	Eric Wang安克美	謝謝體諒。
+20:26	張書豪-Ragic SA Promote	"我很想給你支持
+我提個建議
+依照你現在的想法升級總管
+定價要八萬
+就算我給你折扣 80%也是要64000
+
+年前我也想衝個喜氣
+我跟你收一半費用 我幫你升級
+也就是32000
+
+剩下32000及稅金外加的部分
+等你有確定接案及存到預算後 在給我
+這部分我們互信 我沒有壓期限
+你也不用押票給我
+
+你考慮一下
+如果我的軟體對你有幫助
+你看看"
+
+2025/01/27（一）
+19:14	張書豪-Ragic SA Promote	"衷心感謝您在過去一年中的支持與信任。新的一年，我們期待繼續與您攜手並進，共同迎接更大的成功與挑戰。我們現已開發出新的專案，歡迎多加參考與比較新的方式。願您在新的一年裡，事業蒸蒸日上，家庭幸福安康，萬事如意！新年快樂！
+
+順頌商祺
+
+新專案介紹
+https://kentware.com/ragic/
+"
+
+2025/01/28（二）
+19:57	Eric Wang安克美	[照片]
+
+2025/03/04（二）
+17:51	張書豪-Ragic SA Promote	哈 最近還行嗎
+17:56	Eric Wang安克美	"我去年說要想接的新客戶，因為沒談成所以就沒接了。
+客戶都承認現在物料及人力成本一直在增加；也不給合理的利潤，所以報不進我就不接了。
+現在這個階段製造業是很難生存的。
+很多鈑金廠及塑膠代工廠，價格不合就丟一句話：做沒賺錢的就不做了，反正作也虧那乾脆收掉好了。"
+17:57	張書豪-Ragic SA Promote	"辛苦了
+"
+
+2025/03/07（五）
+23:50	Eric Wang安克美	請問系統中的設定多家公司，所選的公司就會套用其所設定的幣別進行運算是嗎？例如：A公司設定台幣，B公司設定美金，那在運算時就會依所設定的幣別進行運算是嗎？
+23:53		Eric Wang安克美已收回訊息
+23:55	Eric Wang安克美	另一個使用情境，我進貨是台幣計價進貨或製造生產，但出貨時，客戶是以美金報價及出貨，但每個月結算貨款時客戶會提供一個匯率給我進行換算成台幣的金額來進行開發票及請款。這樣的狀況一般要如何操作呢？
+
+2025/03/08（六）
+07:28	張書豪-Ragic SA Promote	這些系統都做得到
+10:12	Eric Wang安克美	方便錄個影片教學給我嗎
+11:32	張書豪-Ragic SA Promote	晚一點給你
+11:55	張書豪-Ragic SA Promote	這個指的是自己成立不同公司唷
+11:57	張書豪-Ragic SA Promote	"這個是客戶用外幣交易 結帳時使用外幣
+但是這部分到結帳後都不會跟台幣整合
+你要變成換算成台幣來開發票跟請款是不可能的"
+11:57	張書豪-Ragic SA Promote	不合理
+12:30	Eric Wang安克美	對啊！我覺得這樣會很不合理，而且匯率一直在變動。
+12:35	Eric Wang安克美	"但實務上業界好像很多是這樣做交易的。
+報價是美金，訂單及出貨時都是美金，等請款時客戶提供一個匯率，再去換算成台幣開發票來請款。
+這樣對系統而言在設定金額位數也是很麻煩。因為美金會計算到3位數，但換成台幣時也是小數點後3位數，但一般台幣都4捨5入成整數來開發票及請款。"
+12:40	張書豪-Ragic SA Promote	"我個人是知道是不可能讓客戶用台幣付款
+客人一樣是美金做付款的動作，因為他跟你訂購的時候是用美金做訂購
+然後呢他們已經付款給你之後你他結帳給你是用美金你又美金沖帳完之後再到後端的會計端去做美金轉換台幣的動作，這個時候就可以依照實際匯率去做台幣，然後再跟自己的銷貨單上的美金乘以銷貨單，當時的匯率去做匯差"
+12:45	Eric Wang安克美	其實會這樣操作都是偏貿易商類型的客戶，想要避開匯差風險，所以在跟國內廠商進貨時會美金報價，實際付款卻是付台幣。
+13:22	張書豪-Ragic SA Promote	總管可以
+13:22	張書豪-Ragic SA Promote	你的不行
+15:01	Eric Wang安克美	天啊
+19:32	張書豪-Ragic SA Promote	"你的版本本來就只是簡易版  加上又很多年前的版本 沒有這些功能也算正常
+"
+19:38	Eric Wang安克美	那不就只能用美金沖帳了
+20:07	張書豪-Ragic SA Promote	對
+
+2025/03/10（一）
+22:00	張書豪-Ragic SA Promote	"其實你現在的不足 都已經無法在原系統中達成了
+所以我錄影再多也沒意義"
+23:45	Eric Wang安克美	這麼說也是
+
+2025/04/11（五）
+13:31	Eric Wang安克美	[照片]
+13:31	Eric Wang安克美	請問這邊的金額小數是指哪個部分呢
+13:33	張書豪-Ragic SA Promote	泛指所有金額
+13:38	Eric Wang安克美	但好像跟單據顯示的位數是不相關的是嗎？
+13:39	張書豪-Ragic SA Promote	請你去參數設定
+13:39	Eric Wang安克美	因為單據的為數是由參數設定那邊決定的是嗎？
+13:40	Eric Wang安克美	那請教一下，如果金額有台幣也有美金的時候，可以單獨設定台幣的位數，及美金的位數嗎？
+13:46	張書豪-Ragic SA Promote	不能 系統是統一的
+13:46	張書豪-Ragic SA Promote	如果因應美金有三位數的需求
+13:46	張書豪-Ragic SA Promote	台幣就要一起三位數呈現
+13:51	Eric Wang安克美	了解
+
+2025/04/22（二）
+08:51	Eric Wang安克美	"早安：
+請問一下，如果有一個組件，其中有一個零件是由我方提供給，其它6個零件是由向廠商購買並組裝，那託工時帶出來的子件是不是要把其他6個刪除只剩我方提供的即可。"
+08:54	張書豪-Ragic SA Promote	"如果按照總管
+工序試
+A=B(B1生產)+(A2~~A7託工)
+A1是第一個工 產內生產 零件試採購的
+給廠商的試A2~~A7的工序
+"
+09:03	Eric Wang安克美	A2-A7是廠商自己的
+09:04	Eric Wang安克美	A1是自己生產的
+09:04	張書豪-Ragic SA Promote	那就不用管
+09:04	張書豪-Ragic SA Promote	你就是A1給他 要跟廠商說做A
+09:04	張書豪-Ragic SA Promote	其他材料請他備料
+09:04	Eric Wang安克美	是的
+09:08	Eric Wang安克美	那是不是託工時帶出來的子件就刪除A2-A7，只留A1
+09:11	張書豪-Ragic SA Promote	基本上A2-A7不關你的事情
+09:12	張書豪-Ragic SA Promote	你只是要管A=A1=A完成品 這樣
+09:12	張書豪-Ragic SA Promote	所以基本上來說 你不需要建立A2-A7
+09:20	張書豪-Ragic SA Promote	"我還是在提醒您一次
+依您現在的版本 問我再多技術方面的操作
+都必須要手動
+您不會比較省事 而且 要記住每一件物品的BOM跟操作邏輯
+我不會一直都記得您所提問的
+
+"
+09:31	Eric Wang安克美	了解
+12:00	Eric Wang安克美	那這樣我是不是直接開託工單給廠商，不是開採購單？
+12:00	張書豪-Ragic SA Promote	採購單是你自己要去買A1
+12:00	張書豪-Ragic SA Promote	那是A1的廠商
+12:00	張書豪-Ragic SA Promote	跟你託工的廠商無關
+12:01	張書豪-Ragic SA Promote	如果你要做BOM表給廠商
+12:01	張書豪-Ragic SA Promote	那是獨立的步驟
+12:01	張書豪-Ragic SA Promote	跟工序無關
+12:01	張書豪-Ragic SA Promote	你可以建立A2~A7
+12:01	張書豪-Ragic SA Promote	也可以做A=A1+~~~A7
+12:02	張書豪-Ragic SA Promote	但是託工單只會有A1要給他  A2A7她自己準備
+12:02	張書豪-Ragic SA Promote	回來就是A
+12:03	Eric Wang安克美	A1是自製的,A2-A7是廠商的；我是提供A1給廠商廠商把A1-A7組好賣給我但賣價不含A1的錢。
+12:03	張書豪-Ragic SA Promote	對
+12:04	Eric Wang安克美	好的，謝謝你
+12:04	張書豪-Ragic SA Promote	你要付的錢是單純來說就是A
+12:04	張書豪-Ragic SA Promote	至於A怎麼做 成本多少 是廠商的事情
+13:58	Eric Wang安克美	好
+13:58	Eric Wang安克美	了解了
+13:58	Eric Wang安克美	謝謝你
+
+2025/05/02（五）
+11:27	張書豪-Ragic SA Promote	"我不知道你現在預算上是不是手頭比較充裕？
+不過我這邊剛好有一套總管製造版的序號是客戶退貨的
+如果你有需要的話，我再優惠給你"
+14:35	Eric Wang安克美	了解，我在評估看看。
+
+2025/05/05（一）
+08:54	Eric Wang安克美	對了，上次忘了回報一個bug，就是當要切換其他程式時，把總管最小化到工作列，要再點開時常常會當掉要強制關閉再重開啟總管。
+08:55	張書豪-Ragic SA Promote	舊版會這樣
+08:57	Eric Wang安克美	"那時候試用的是你提供給我測試的那個版本。
+現在又有更新是嗎？還有之前反應的一些錯誤也都有改善了嗎？例如：製造成本那邊的計算出現很多位數…等"
+08:59	張書豪-Ragic SA Promote	"最小化到工作列 這部分多半跟你系統的作業系統有關係
+製造成本出現很多小數點
+我目前還沒測到其他客人有這個問題
+所以可能要拉你正確的資料來交叉比對"
+09:02	Eric Wang安克美	[照片]
+09:03	Eric Wang安克美	就上圖這個問題，記得上次好像你那邊也有測試過也是這樣。
+09:04	張書豪-Ragic SA Promote	我從新開公司 重新設定過不同的產品結構及成品  數字是正確的
+09:05	張書豪-Ragic SA Promote	那可能是舊資料的問題
+09:09	Eric Wang安克美	那就好！謝謝你
+13:18	Eric Wang安克美	你方便提供一個新的再給我試試看嗎？我順便測試看看是不是我系統也有問題。
+13:31	張書豪-Ragic SA Promote	晚點給你
+16:30	張書豪-Ragic SA Promote	[檔案]
+
+2025/05/06（二）
+19:52	張書豪-Ragic SA Promote	 有測過在跟我討論
+
+2025/05/07（三）
+07:53	Eric Wang安克美	好，
+07:57	Eric Wang安克美	請問像銷貨單或進貨單，有一個 發票明細 選單內有一個 聯式 的下拉選單 這個可以增加 電子式 嗎？好像最近很多廠商都提供電子式發票其格式代號 25
+07:57	Eric Wang安克美	[照片]
+08:01	張書豪-Ragic SA Promote	可以啊 預算
+08:05	Eric Wang安克美	知道了
+22:40	張書豪-Ragic SA Promote	"你先想辦法生出預算吧
+"
+23:31	Eric Wang安克美	是啊
+23:31	Eric Wang安克美	最近大家都快被川普搞死了
+
+2025/05/08（四）
+07:17	張書豪-Ragic SA Promote	"這件事情我相信
+所以想辦法突破是目前企業主當務之急"
+07:48	Eric Wang安克美	是啊
+07:49	Eric Wang安克美	七月中又是一個新的挑戰

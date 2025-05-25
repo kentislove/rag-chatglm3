@@ -1,0 +1,236 @@
+[LINE] 與Yvonne H.-何S 老皮的聊天記錄
+儲存日期： 2025/05/24 01:30
+
+2021/08/24（二）
+14:51	張書豪-Ragic SA Promote	嗨再麻煩你給我檔案囉然後加入群組謝謝
+15:05	Yvonne H.-何S 老皮	好
+15:40	張書豪-Ragic SA Promote	現在大概口述給你軟體的部分的話單機版光軟體而已大概是$18,000
+15:40	張書豪-Ragic SA Promote	修改的部分不確定看幅度大小所以等你檔案給我先讓你有個底
+15:44	Yvonne H.-何S 老皮	好，我這兩天給你喔
+
+2021/08/25（三）
+09:57	張書豪-Ragic SA Promote	有空 給我資料一下 我建檔
+09:59	Yvonne H.-何S 老皮	表單我今天抓一下給你，公司資料先給你
+10:00	張書豪-Ragic SA Promote	OKOK
+10:00	張書豪-Ragic SA Promote	謝謝
+10:00	Yvonne H.-何S 老皮	"老皮商號
+42515563
+
+tel:  02-27600045
+fax: 02-27677745
+0921915377
+tpminsu@gmail.com 
+台北市信義區忠孝東路五段17-3號"
+
+2021/09/02（四）
+16:50	Yvonne H.-何S 老皮	☎ 通話時間2:37
+
+2021/09/03（五）
+16:11	張書豪-Ragic SA Promote	資料再麻煩唷
+
+2021/09/06（一）
+13:35	張書豪-Ragic SA Promote	辛苦了 資料有疑問再問我
+
+2021/09/07（二）
+12:06	Yvonne H.-何S 老皮	有時間等我嗎(tearsofjoy) 大概明後天傳給你
+12:44	張書豪-Ragic SA Promote	我會一直等你  除非你不要了
+12:44	張書豪-Ragic SA Promote	哈哈哈哈哈哈
+17:24	Yvonne H.-何S 老皮	哈哈哈，等我等我
+
+2021/09/08（三）
+11:36	張書豪-Ragic SA Promote	洪小姐 等你唷
+
+2021/09/09（四）
+10:51	張書豪-Ragic SA Promote	@@ 你現在應該為了雙北是否禁內用在煩惱
+10:51	張書豪-Ragic SA Promote	等妳有空再給我檔案
+
+2021/09/13（一）
+08:02	張書豪-Ragic SA Promote	"嗨 早 
+還記得要跟我討論嗎
+檔案等你喔"
+08:19	Yvonne H.-何S 老皮	哈哈好，抱歉抱歉，好像讓你等很多天，我這周末前真的忙翻，基本上如果你們家可以解決這個問題我就沒再考慮其他，可以的話真的等我幾天弄給你
+08:20	張書豪-Ragic SA Promote	好喔沒問題再麻煩你了
+
+2021/09/15（三）
+11:14	張書豪-Ragic SA Promote	加油唷!!等你
+
+2021/09/16（四）
+17:43	張書豪-Ragic SA Promote	[貼圖]
+
+2021/09/22（三）
+13:16	張書豪-Ragic SA Promote	繼續等你!!
+
+2021/10/04（一）
+11:54	張書豪-Ragic SA Promote	嗨 一個月過去了  還有想法嗎?
+
+2021/10/28（四）
+19:34	張書豪-Ragic SA Promote	☎ 通話時間9:02
+
+2021/10/31（日）
+18:22	張書豪-Ragic SA Promote	我已經測試大概完成了緊緊插在最後一步沒有產品編號這個部分所以你們的小姐要能夠用excel做出自動判斷欄位的功能
+22:04	Yvonne H.-何S 老皮	理解，我明天跟她討論看看
+22:38	張書豪-Ragic SA Promote	如果可以 修改價格會少1/3
+22:38	張書豪-Ragic SA Promote	在麻煩你
+22:38	張書豪-Ragic SA Promote	3Q
+
+2021/11/01（一）
+05:37	Yvonne H.-何S 老皮	好的，我這兩天跟她研究看看
+
+2021/11/02（二）
+16:03	張書豪-Ragic SA Promote	討論的怎麼樣在有空跟我說
+16:03	張書豪-Ragic SA Promote	我晚上先把錄影給你
+16:03	張書豪-Ragic SA Promote	我這邊已經做好了
+16:14	Yvonne H.-何S 老皮	好，然後可能那個試用要再幾天給我們，效期過了(tearsofjoy)
+16:15	張書豪-Ragic SA Promote	給我遠端  不過現在都跟軟體是用無關呢
+16:15	張書豪-Ragic SA Promote	[檔案]
+16:16	張書豪-Ragic SA Promote	要用這份 去判斷編號
+16:46	Yvonne H.-何S 老皮	我先給她看這個
+16:49	張書豪-Ragic SA Promote	我剛剛在一次問過ICHEF
+16:49	張書豪-Ragic SA Promote	它們系統內的確沒有編號
+16:49	張書豪-Ragic SA Promote	所以你給他一個EXCEL函數
+16:49	張書豪-Ragic SA Promote	=VLOOKUP
+16:49	張書豪-Ragic SA Promote	要用兩個工作表來比對
+16:49	張書豪-Ragic SA Promote	他如果會 就知道
+17:01	Yvonne H.-何S 老皮	好
+
+2021/11/03（三）
+19:05	張書豪-Ragic SA Promote	小姐有了解我說的問題嗎如果他無法了解做不出來那就給我來做
+19:05	張書豪-Ragic SA Promote	因為我現在差在這邊而已
+19:05	張書豪-Ragic SA Promote	其他我都做好了
+19:54	Yvonne H.-何S 老皮	我這兩天請她試試看，今天我看她在處理發票好像都沒弄，明天我確認一下
+20:24	張書豪-Ragic SA Promote	好謝囉再麻煩你
+
+2021/11/05（五）
+13:01	張書豪-Ragic SA Promote	"可不可@@
+紅茶!!"
+
+2021/11/06（六）
+00:14	Yvonne H.-何S 老皮	哈哈，我好了會趕快跟你講(tearsofjoy)
+
+2021/11/09（二）
+10:08	張書豪-Ragic SA Promote	嗚嗚   可愛大狗的臉看你
+
+2021/11/12（五）
+12:14	張書豪-Ragic SA Promote	辛苦了
+13:35	Yvonne H.-何S 老皮	(tearsofjoy)(tearsofjoy)(tearsofjoy)
+13:39	張書豪-Ragic SA Promote	沒事 沒事  我要傲嬌的說別理我 哈哈哈
+13:51	張書豪-Ragic SA Promote	[貼圖]
+14:28	Yvonne H.-何S 老皮	哈哈，我們今天發現vlookup可喔
+14:29	Yvonne H.-何S 老皮	我還是希望可以跟你問詳細
+14:29	Yvonne H.-何S 老皮	現在方便接電話嗎
+14:29	張書豪-Ragic SA Promote	等我一下
+14:29	Yvonne H.-何S 老皮	好哦
+14:33	張書豪-Ragic SA Promote	☎ 通話時間2:57
+14:34	Yvonne H.-何S 老皮	[聯絡資訊]
+
+2021/11/14（日）
+14:19	張書豪-Ragic SA Promote	"何小姐軟體的部分是24,000是單機版
+組裝加財務
+然後修改的部分是20,000含修改的格式及匯入程式
+全部是44,000那如果要開發票的話稅外加"
+14:56	Yvonne H.-何S 老皮	了解，我這週確定給你好嗎
+15:11	張書豪-Ragic SA Promote	好
+
+2021/11/15（一）
+14:16	張書豪-Ragic SA Promote	要產品資料的匯入 我已經給EXCＥＬ格式
+14:16	張書豪-Ragic SA Promote	如果要我協助匯入　整理好後　一次性匯入　我會在收１５００元
+14:29	Yvonne H.-何S 老皮	收到
+14:30	張書豪-Ragic SA Promote	[貼圖]
+
+2021/11/16（二）
+13:26	張書豪-Ragic SA Promote	"稍早的匯入
+是產品資料
+第二個你們可能會需要的匯入
+是組合關係 一樣1500
+
+鮮血給妳筆記"
+13:26	張書豪-Ragic SA Promote	先寫
+13:48	Yvonne H.-何S 老皮	好
+
+2021/11/18（四）
+08:23	張書豪-Ragic SA Promote	"早安啊
+你看看我的部分這個禮拜是不是確定結單
+如果確定的話幫我完成匯款 
+因為我還有細節還沒有做
+那個細節是要付了費之後
+我才會幫你完成的
+其他都OK了現在就等你"
+08:23	Yvonne H.-何S 老皮	好的
+08:23	Yvonne H.-何S 老皮	我這兩天出款跟你講
+08:23	張書豪-Ragic SA Promote	[貼圖]
+
+2021/11/19（五）
+10:52	張書豪-Ragic SA Promote	今天匯款後 在跟我說是匯款到哪一個帳戶
+10:52	張書豪-Ragic SA Promote	如果是臨櫃 需要寫戶名 我再給你存摺封面
+10:57	Yvonne H.-何S 老皮	存摺封面還是給我好了，我這邊留底喔
+10:57	張書豪-Ragic SA Promote	哪一個呢
+10:57	張書豪-Ragic SA Promote	富邦 永豐 郵局
+11:04	Yvonne H.-何S 老皮	富邦就可以
+11:04	張書豪-Ragic SA Promote	[照片]
+12:36	Yvonne H.-何S 老皮	謝謝
+18:10	張書豪-Ragic SA Promote	"今天有幫我匯的話再跟我說
+感恩唷
+"
+19:06	Yvonne H.-何S 老皮	啊啊好，等等啊
+19:06	Yvonne H.-何S 老皮	忙到忘記
+19:06	Yvonne H.-何S 老皮	會用轉帳的
+19:43	張書豪-Ragic SA Promote	[貼圖]
+21:17	Yvonne H.-何S 老皮	匯款是一半訂金一半尾款嗎？(tearsofjoy)
+21:17	Yvonne H.-何S 老皮	轉帳
+21:18	張書豪-Ragic SA Promote	十萬元以內都全額
+21:18	張書豪-Ragic SA Promote	我差不多80%做完了
+21:18	張書豪-Ragic SA Promote	現在只差最後收尾
+21:18	張書豪-Ragic SA Promote	下周三前就可以完工
+21:19	張書豪-Ragic SA Promote	所以我收全額 金額不大
+21:29	Yvonne H.-何S 老皮	哈好的
+21:29	Yvonne H.-何S 老皮	我轉出傳給你
+21:30	張書豪-Ragic SA Promote	謝謝你啦!!!感恩
+21:30	張書豪-Ragic SA Promote	你轉帳玩 匯款單或網頁給我一下就好
+21:34	Yvonne H.-何S 老皮	[照片]
+21:35	Yvonne H.-何S 老皮	沒錯吧(tearsofjoy)
+21:35	張書豪-Ragic SA Promote	收到!!!!
+21:35	張書豪-Ragic SA Promote	感謝
+21:35	張書豪-Ragic SA Promote	這兩天我整理整理
+21:36	張書豪-Ragic SA Promote	"你們試用的版本可以停止作業了
+有輸入過任何的東西可以暫緩"
+21:36	張書豪-Ragic SA Promote	等我正是安裝後 你們再使用
+22:11	Yvonne H.-何S 老皮	好哦！
+22:11	Yvonne H.-何S 老皮	感謝！
+22:11	張書豪-Ragic SA Promote	不 才要感謝你選擇了我
+22:39	Yvonne H.-何S 老皮	(emoji)(emoji)(emoji)
+
+2021/11/22（一）
+10:08	張書豪-Ragic SA Promote	今晚可以的話 先讓我遠端安裝
+11:10	Yvonne H.-何S 老皮	明天下午可以嗎？
+11:10	張書豪-Ragic SA Promote	請小姐賴我
+11:11	張書豪-Ragic SA Promote	我要遠端後 安裝設定註冊相關內容
+11:11	Yvonne H.-何S 老皮	今天剛好她請假
+11:11	張書豪-Ragic SA Promote	好
+11:11	Yvonne H.-何S 老皮	我也不在(tearsofjoy)
+11:11	Yvonne H.-何S 老皮	謝謝
+11:11	張書豪-Ragic SA Promote	OKOK!!
+11:11	Yvonne H.-何S 老皮	明天她來我請她直接line你
+11:12	張書豪-Ragic SA Promote	OK
+11:12	張書豪-Ragic SA Promote	放假多休息
+11:14	Yvonne H.-何S 老皮	感謝！我轉達她(emoji)
+
+2021/12/14（二）
+11:30	張書豪-Ragic SA Promote	嗨 林S那邊有空再跟我聯繫 雖然安裝了 都還沒進行動作
+12:04	Yvonne H.-何S 老皮	好的  最近她在整理代碼那些 有點頭痛  XD
+12:04	Yvonne H.-何S 老皮	今天我在跟她討論一下進度
+
+2021/12/15（三）
+19:40	張書豪-Ragic SA Promote	林小姐的電腦現在是打開給我用請不要關機我很晚才使用它所以今晚都不要關
+19:48	Yvonne H.-何S 老皮	好
+
+2022/01/31（一）
+15:11	張書豪-Ragic SA Promote	[照片]
+
+2022/02/01（二）
+00:14	Yvonne H.-何S 老皮	"新年快樂啊！
+祝福新的一年你和家人都健康平安、心想事成！(祈願)"
+
+2025/04/26（六）
+13:37	張書豪-Ragic SA Promote	"https://kentware.com/python_exe/
+我自己開發的小程式
+保證無毒 免費 歡迎自行取用 會不間斷開發好用的小工具"

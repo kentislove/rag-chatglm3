@@ -1,0 +1,1258 @@
+[LINE] 與Hung Yeh Wu-NO的聊天記錄
+儲存日期： 2025/05/24 01:30
+
+2021/02/21（日）
+18:40	Hung Yeh Wu-NO	請問 2019 已過帳  那我還可以登錄傳票嗎
+18:42	張書豪-Ragic SA Promote	可以唷
+18:43	Hung Yeh Wu-NO	好 。   去郵局現金寄包裹  是選  現金類別  會計傳票登錄 嗎
+18:59	張書豪-Ragic SA Promote	應該
+18:59	Hung Yeh Wu-NO	謝謝
+
+2021/02/23（二）
+19:09	Hung Yeh Wu-NO	會計傳票登錄完成  可以用excel 拋出來嗎
+19:09	張書豪-Ragic SA Promote	你要跑出來什麼東西
+19:09	張書豪-Ragic SA Promote	哪一個畫面要跑
+19:10	Hung Yeh Wu-NO	[照片]
+19:10	Hung Yeh Wu-NO	這張傳票要拋出轉excel
+19:10	張書豪-Ragic SA Promote	單張傳票轉成Excel嗎
+19:10	Hung Yeh Wu-NO	對
+19:11	張書豪-Ragic SA Promote	用滑鼠按右鍵在序號的名字上面按右鍵會出現匯出資料
+19:11	張書豪-Ragic SA Promote	它可以將船票明細匯出
+19:11	張書豪-Ragic SA Promote	但是只有明細沒有上面的主要內容物跟日期
+19:11	Hung Yeh Wu-NO	好  謝謝
+
+2021/03/23（二）
+19:56	Hung Yeh Wu-NO	請問 新增 國外訂單，收到國外30 % 訂金。   是在 國外訂單 預收款明細 建 收款日期  金額嗎 ?在  在  國外訂單 結帳嗎
+19:57	Hung Yeh Wu-NO	[照片]
+19:58	張書豪-Ragic SA Promote	對的沒錯
+20:00	Hung Yeh Wu-NO	好的。 訂金及 尾款 出貨前收到， 在國外訂單做 預收款明細   。  我還要做一張 傳票登錄  嗎 
+20:01	張書豪-Ragic SA Promote	需要喔不然你沖帳會少這筆訂金的沖帳金額喔
+20:01	Hung Yeh Wu-NO	好的
+
+2021/03/27（六）
+20:04	Hung Yeh Wu-NO	"請問流程:
+進貨單由採購單轉入-進貨單新增發票-
+問題: 先做 應付沖帳管理 or 先新增 進貨單 ?
+
+國外訂單-做預收款-結帳-出貨船押-拋轉銷貨
+問題: 先做進貨單後做 出貨船押-拋轉銷貨 嗎?
+"
+20:05	張書豪-Ragic SA Promote	第一個問題要先做進貨單
+20:05	Hung Yeh Wu-NO	好
+20:05	張書豪-Ragic SA Promote	第二個問題跟進貨單無關你的邏輯流程是對的但是國外訂單要轉採購才能夠轉到你第一個流程去拋磚進貨
+20:07	Hung Yeh Wu-NO	好 明白了  謝謝 
+
+2021/03/28（日）
+10:44	Hung Yeh Wu-NO	"請問
+國外訂單幣別USD 30.78
+問題: 1. 出貨船押一樣做幣別USD 30.78嗎? 或可做出貨當日USD30.80
+         2. 為何拋轉的出貨船押 顯示單價跟國外訂單不一樣 ?  跟幣別USD匯率有關係嗎
+"
+10:46	張書豪-Ragic SA Promote	"跟交易條件有關 妳沒變過應該沒差
+同幣別匯率波動不影響"
+13:02	Hung Yeh Wu-NO	好
+13:03	Hung Yeh Wu-NO	"請問流程
+建 進貨單-應付帳款沖帳-載入未結款完成-進貨單覆核
+問題: 1. 上述流程正確嗎
+問題: 2. 應付沖帳管理-載入未結款-本次結帳完成
+        需要再做 傳票登錄嗎?
+"
+13:12	張書豪-Ragic SA Promote	等等回你喔
+13:13	Hung Yeh Wu-NO	謝謝
+14:30	張書豪-Ragic SA Promote	進貨單到應付衝帳款沖帳載錄進貨單你不用去附和系統會自動復合
+14:30	張書豪-Ragic SA Promote	問題二需要你進貨單成立就要跑船票就叫粒狀船票結完帳之後要去做沖帳傳票都會跑都可以跑轉
+20:05	Hung Yeh Wu-NO	進貨單 - 應付沖帳管理-載入未結款-顯示本次結帳沖帳金額-做傳票轉入- 單據類別選 應付 -   流程正確嗎
+20:19	張書豪-Ragic SA Promote	對
+20:19	Hung Yeh Wu-NO	好的
+
+2021/03/29（一）
+20:14	Hung Yeh Wu-NO	"傳票轉入作業 
+
+1.      選  結帳單據 應付 ?
+
+2.      OR 選 庫存單據 進貨 ?
+
+3.      庫存單據-載入顯示六筆，但只要第六筆  如何只拋轉第六筆呢 ?  是要一筆一筆刪除前五筆嗎?    "
+20:15	Hung Yeh Wu-NO	[照片]
+20:27	張書豪-Ragic SA Promote	結帳單據轉帳的是沖帳庫存單據轉帳的勢力漲這兩個沒有衝突再跌個問題你再載入明細的時候生那個按鈕叫做刪除點選跟明細刪除就好啦
+21:34	Hung Yeh Wu-NO	"流程= 傳票轉入-庫存單據 進貨。
+流程 = 傳票轉入-結帳單據-應付
+上述選擇一種流程做沖帳皆可  對嗎
+"
+21:36	張書豪-Ragic SA Promote	你還是搞錯第一個流程是立帳單去第二個流程是沖帳單去喔
+21:38	Hung Yeh Wu-NO	兩個流程都要做嗎
+21:41	Hung Yeh Wu-NO	應付沖帳管理-新增匯款資料-做本次結帳/沖帳金額- 傳票轉入-結帳單據-應付。  流程對嗎?
+21:42	張書豪-Ragic SA Promote	對
+21:42	張書豪-Ragic SA Promote	對
+21:42	Hung Yeh Wu-NO	好
+21:42	Hung Yeh Wu-NO	流程= 傳票轉入-庫存單據 進貨   這個要做嗎
+21:44	Hung Yeh Wu-NO	立帳單的意思是?
+21:45	張書豪-Ragic SA Promote	☎ 您已取消通話
+21:46	張書豪-Ragic SA Promote	[語音訊息]
+21:55	Hung Yeh Wu-NO	不好意思 剛剛電話中   謝謝您的解說
+21:56	Hung Yeh Wu-NO	流程=國外訂單-轉採購-先做進貨單後-出貨船押-拋轉銷貨-產生銷貨單-傳票轉入-庫存單據 進貨。  對嗎
+21:56	張書豪-Ragic SA Promote	你的流程還少了
+21:59	Hung Yeh Wu-NO	流程=國外訂單-轉採購單-回到國外訂單-做預收款-結帳-先做進貨單後-出貨船押-拋轉銷貨-產生銷貨單-傳票轉入-庫存單據 進貨。  對嗎
+22:00	張書豪-Ragic SA Promote	還是不太對
+22:00	張書豪-Ragic SA Promote	"我寫給你
+"
+22:00	Hung Yeh Wu-NO	☎ 未接來電
+22:00	張書豪-Ragic SA Promote	國外訂單 --
+22:01	Hung Yeh Wu-NO	好的
+22:04	張書豪-Ragic SA Promote	"國外訂單 --拋轉 出貨船押--拋轉銷貨單(拋轉銷貨傳票)
+｜
+收預收款(此時可以做預收訂金傳票)
+
+國外訂單轉採購-可以產生採購單 (有預付金額的話)--拋轉預付訂金傳票)
+
+採購單--拋轉--進貨單(拋轉進貨傳票)
+
+各自獨立在應收沖帳--存檔後 拋轉結帳單據的應收傳票
+各自獨立在應付沖帳--存檔後 拋轉結帳單據的應付傳票
+
+
+     "
+22:05	Hung Yeh Wu-NO	非常感謝
+22:05	張書豪-Ragic SA Promote	"所以這樣的流程全部做完會最少六種傳票
+預收傳票
+預付傳票
+銷貨傳票
+進貨傳票
+應收傳票
+應付傳票
+
+如果應收跟應付作業中有用到收支票付支票
+日後還要做到支票兌現的傳票"
+22:05	張書豪-Ragic SA Promote	這樣才是完整
+22:05	張書豪-Ragic SA Promote	你會計帳才會對的
+22:06	Hung Yeh Wu-NO	好的。謝謝謝謝
+
+2021/03/30（二）
+19:15	Hung Yeh Wu-NO	"採購單日期 2020 12 28
+匯款日期   2021 02 15
+進貨單日期 2021 02 18
+問題
+1. 採購單可以新增預付款明細做日期2021 02 15嗎?
+2.傳票轉入-訂金管理-採購預付-匯款-選1256預付款-匯款銀行-拋轉-調閱傳票-顯示傳票摘要應付沖帳-該筆傳票上按覆核-表示沖帳完成嗎?
+@上述正確嗎 ? @表示沖帳完成嗎
+3.傳票轉入-庫存單據-進貨-拋轉-調閱傳票-顯示傳票摘要-進貨-該筆傳票上按覆核-@表示沖帳完成嗎?
+"
+19:50	張書豪-Ragic SA Promote	我錄製一段影片給你看好了
+19:50	Hung Yeh Wu-NO	謝謝
+19:51	張書豪-Ragic SA Promote	因為我覺得你全部和在一起討論很奇怪
+19:51	Hung Yeh Wu-NO	好
+19:51	張書豪-Ragic SA Promote	很多東西不是你做完了你自動泡船票就代表沖帳完成我錄影然後用語音的方式你再聽聽看
+20:25	Hung Yeh Wu-NO	好的
+20:32	張書豪-Ragic SA Promote	https://www.berrycast.com/conversations/eb6cba6b-807b-5b05-b127-c8ce74291cb7
+20:33	Hung Yeh Wu-NO	要 SING IN 嗎
+20:33	張書豪-Ragic SA Promote	不用
+20:33	張書豪-Ragic SA Promote	直接看影片
+20:35	Hung Yeh Wu-NO	[照片]
+20:36	Hung Yeh Wu-NO	影片好像還沒顯示
+20:36	張書豪-Ragic SA Promote	燒等
+20:36	張書豪-Ragic SA Promote	還在上船˙
+20:53	Hung Yeh Wu-NO	可以看了  謝謝
+21:15	Hung Yeh Wu-NO	我看完了
+21:18	Hung Yeh Wu-NO	我的 國外訂單  出貨船押  銷貨 都是美元。   進貨及廠商採購 皆是 台幣。  @流程都一樣， 只要之後做傳票調整金額就行吧 @ 出貨船押可以做結關日嗎
+21:19	張書豪-Ragic SA Promote	結關日沒有
+21:19	張書豪-Ragic SA Promote	寫在備註內就好
+21:19	Hung Yeh Wu-NO	好
+21:20	Hung Yeh Wu-NO	影片中  出貨船押和國外訂單是同一天日期
+21:21	張書豪-Ragic SA Promote	那是我為了快速
+21:21	張書豪-Ragic SA Promote	實際上一定會落差
+21:22	張書豪-Ragic SA Promote	重點在於拋轉傳票得˙過程
+21:22	張書豪-Ragic SA Promote	其他你都會
+
+2021/03/31（三）
+08:55	Hung Yeh Wu-NO	我明白，感謝您
+20:36	Hung Yeh Wu-NO	國外訂單做結帳匯款。 傳票轉入選預收款匯款日期或國外訂單日期。 皆無預收款資料可載入
+20:36	Hung Yeh Wu-NO	[照片]
+20:37	張書豪-Ragic SA Promote	幣別要選對
+20:37	張書豪-Ragic SA Promote	你沒注意看我的幣別
+20:37	Hung Yeh Wu-NO	[照片]
+20:37	Hung Yeh Wu-NO	沒幣別可以選
+20:40	Hung Yeh Wu-NO	傳票轉入無幣別可以選
+20:57	張書豪-Ragic SA Promote	你截圖國外訂單的預收款明細給我看
+20:57	張書豪-Ragic SA Promote	你確定有收錢嗎
+20:59	Hung Yeh Wu-NO	[照片]
+20:59	張書豪-Ragic SA Promote	然後你傳票轉入日期呢
+20:59	Hung Yeh Wu-NO	2018.11.30-2019.02.20 區間
+21:00	張書豪-Ragic SA Promote	你給我遠端連線
+21:00	Hung Yeh Wu-NO	好 哪我先關掉一些網頁
+21:03	Hung Yeh Wu-NO	如何連線
+21:03	張書豪-Ragic SA Promote	ANYDESK 或者 TEAMVIEWER
+21:04	Hung Yeh Wu-NO	ANYDESK 729 788 299
+21:05	Hung Yeh Wu-NO	有連上嘞嗎
+21:06	張書豪-Ragic SA Promote	給我操作
+21:06	張書豪-Ragic SA Promote	我看
+21:06	張書豪-Ragic SA Promote	你電腦不要動
+21:06	張書豪-Ragic SA Promote	我操作
+21:06	張書豪-Ragic SA Promote	妳的類別要選擇匯款
+21:06	張書豪-Ragic SA Promote	你選到現今
+21:06	張書豪-Ragic SA Promote	你點
+21:06	張書豪-Ragic SA Promote	我不能操作
+21:07	張書豪-Ragic SA Promote	按下載入
+21:07	張書豪-Ragic SA Promote	回到國外訂單
+21:08	張書豪-Ragic SA Promote	按上面報表 選擇帳款管理
+21:08	張書豪-Ragic SA Promote	報表
+21:08	張書豪-Ragic SA Promote	溢收付明細表
+21:09	張書豪-Ragic SA Promote	請你關掉
+21:09	張書豪-Ragic SA Promote	不要縮小
+21:09	張書豪-Ragic SA Promote	多於的功能視窗
+21:09	張書豪-Ragic SA Promote	關掉
+21:09	張書豪-Ragic SA Promote	看到了
+21:10	張書豪-Ragic SA Promote	幣別選一下
+21:10	張書豪-Ragic SA Promote	在選擇對象編號ˇ
+21:10	張書豪-Ragic SA Promote	前後都要選同一個
+21:10	張書豪-Ragic SA Promote	查詢
+21:10	張書豪-Ragic SA Promote	否
+21:11	張書豪-Ragic SA Promote	往下拉
+21:11	張書豪-Ragic SA Promote	找到201902
+21:11	張書豪-Ragic SA Promote	你把備份檔傳給我好了
+21:11	張書豪-Ragic SA Promote	你的電腦我這樣看太慢
+21:11	張書豪-Ragic SA Promote	很難找
+21:12	Hung Yeh Wu-NO	我沒有2019
+21:12	Hung Yeh Wu-NO	往下拉只有到2018
+21:14	Hung Yeh Wu-NO	找到了
+21:14	張書豪-Ragic SA Promote	恩
+21:14	張書豪-Ragic SA Promote	看到了
+21:18	Hung Yeh Wu-NO	那接下來怎麼做
+21:23	張書豪-Ragic SA Promote	回到傳票登入
+21:24	張書豪-Ragic SA Promote	匯款銀行選一下
+21:24	張書豪-Ragic SA Promote	有自己的收款方嗎?
+21:24	張書豪-Ragic SA Promote	在載入
+21:24	張書豪-Ragic SA Promote	日期不要打
+21:24	張書豪-Ragic SA Promote	前後都刪掉
+21:25	張書豪-Ragic SA Promote	載入
+21:25	張書豪-Ragic SA Promote	回到國外訂單
+21:25	張書豪-Ragic SA Promote	我在看一次
+21:25	張書豪-Ragic SA Promote	這筆國外訂單相對應的銷貨單拋傳票了沒
+21:26	張書豪-Ragic SA Promote	"國外訂單 > 出貨船押 > 拋轉銷貨單
+
+這張銷貨單 拋傳票了沒"
+21:26	張書豪-Ragic SA Promote	點備註
+21:26	張書豪-Ragic SA Promote	還沒拋過
+21:26	張書豪-Ragic SA Promote	你去拋銷貨單
+21:26	張書豪-Ragic SA Promote	確定是這筆嗎
+21:27	Hung Yeh Wu-NO	是
+21:27	Hung Yeh Wu-NO	已拋銷貨
+21:27	張書豪-Ragic SA Promote	回傳票作業
+21:27	張書豪-Ragic SA Promote	庫存單據
+21:27	張書豪-Ragic SA Promote	選擇銷貨
+21:27	張書豪-Ragic SA Promote	日期打一下
+21:28	張書豪-Ragic SA Promote	那筆銷貨單的日期
+21:29	張書豪-Ragic SA Promote	詭異了
+21:29	張書豪-Ragic SA Promote	你備份檔拉給我算了
+21:29	張書豪-Ragic SA Promote	我來做
+21:29	Hung Yeh Wu-NO	20220225 
+21:29	張書豪-Ragic SA Promote	我斷線了
+21:29	張書豪-Ragic SA Promote	你丟備份檔給我
+21:29	Hung Yeh Wu-NO	等等
+21:32	Hung Yeh Wu-NO	我發現我的出貨船押/銷貨單都是做 2022
+21:32	Hung Yeh Wu-NO	是這個問題嗎
+21:33	Hung Yeh Wu-NO	出貨船押 如何刪除
+21:34	Hung Yeh Wu-NO	還是我重新拋轉出貨船押/=
+21:46	張書豪-Ragic SA Promote	銷貨單先山
+21:46	張書豪-Ragic SA Promote	在山出貨船押
+21:46	張書豪-Ragic SA Promote	才能拋
+21:46	張書豪-Ragic SA Promote	不過你收過錢了沒
+21:47	Hung Yeh Wu-NO	國外訂單有新增預收款
+21:56	Hung Yeh Wu-NO	我的進貨 銷貨 應收 應付  採購預付 傳票皆可以載入 吉拋轉  
+21:56	Hung Yeh Wu-NO	就 訂單預收不行載入
+21:58	張書豪-Ragic SA Promote	檔案
+22:06	Hung Yeh Wu-NO	我可以跟你商量用現場教學實機操做  我付你費用好嗎 ?  我一定要學會 五月份又要申報  
+22:16	張書豪-Ragic SA Promote	妳在哪裡?
+22:17	張書豪-Ragic SA Promote	連假過後
+22:17	Hung Yeh Wu-NO	東門站 中盒新蘆線的站皆可以
+22:18	Hung Yeh Wu-NO	哪一暫離你進
+22:18	張書豪-Ragic SA Promote	找一個周六 妳覺得如何?
+22:18	Hung Yeh Wu-NO	近
+22:18	Hung Yeh Wu-NO	好
+22:18	張書豪-Ragic SA Promote	東門可以
+22:18	Hung Yeh Wu-NO	好
+22:18	張書豪-Ragic SA Promote	時間明天給你
+22:18	Hung Yeh Wu-NO	標籤列印
+22:18	Hung Yeh Wu-NO	是要買機器嗎
+22:18	張書豪-Ragic SA Promote	教學最少四小時 我是收三千唷
+22:19	Hung Yeh Wu-NO	好
+22:19	張書豪-Ragic SA Promote	所以你問題備妥
+22:19	Hung Yeh Wu-NO	好
+22:19	張書豪-Ragic SA Promote	標籤列印的問題 一併現場跟妳說
+22:19	張書豪-Ragic SA Promote	因為你沒法自己買 買錯很麻煩
+22:19	Hung Yeh Wu-NO	好
+
+2021/04/05（一）
+17:08	Hung Yeh Wu-NO	想請問一次列印108年度所有已登錄傳票可以嗎
+17:10	張書豪-Ragic SA Promote	當然可以
+17:11	張書豪-Ragic SA Promote	只是列印紙張要調整而已
+17:11	張書豪-Ragic SA Promote	而且要看妳應表機
+17:27	Hung Yeh Wu-NO	[照片]
+17:27	Hung Yeh Wu-NO	預覽只顯示一張傳票
+17:28	張書豪-Ragic SA Promote	按下查詢過嗎?
+17:29	Hung Yeh Wu-NO	好 可以了
+20:06	Hung Yeh Wu-NO	傳票轉入應收沖帳，在這傳票可另改USD  匯率嗎
+20:06	Hung Yeh Wu-NO	[照片]
+20:13	張書豪-Ragic SA Promote	妳問到一個很難的問題
+20:13	張書豪-Ragic SA Promote	不適可不可以的問題
+20:13	張書豪-Ragic SA Promote	而是你懂不懂這邏輯
+20:14	Hung Yeh Wu-NO	出貨船押和國外匯入的匯率不同
+20:16	Hung Yeh Wu-NO	我明晚方便先簡單詢問列印標籤嗎？我剛好有些產品需要標籤
+20:17	張書豪-Ragic SA Promote	好
+20:17	張書豪-Ragic SA Promote	要用電話詢問的嗎
+20:35	Hung Yeh Wu-NO	對 明晚
+20:36	張書豪-Ragic SA Promote	OK
+20:36	Hung Yeh Wu-NO	採購單 預付貨款 的 銀行電匯費 15元我支付。 這費用如何做
+20:36	張書豪-Ragic SA Promote	自己切傳票
+20:36	張書豪-Ragic SA Promote	或者切零用金支出
+20:37	張書豪-Ragic SA Promote	這樣比較簡單
+20:37	Hung Yeh Wu-NO	好的。
+
+2021/04/06（二）
+17:56	張書豪-Ragic SA Promote	確認一下 0410還要我過去教學嗎? 幾點你方便
+17:56	張書豪-Ragic SA Promote	我早上十一點有事
+17:58	Hung Yeh Wu-NO	下午一點好嗎？
+17:58	張書豪-Ragic SA Promote	OK
+17:59	張書豪-Ragic SA Promote	到時要哪個地點在跟我說
+17:59	張書豪-Ragic SA Promote	因為那附近難聽車
+17:59	張書豪-Ragic SA Promote	停
+17:59	張書豪-Ragic SA Promote	你要跟我說地址在哪
+18:00	Hung Yeh Wu-NO	好的。我查一個點
+18:00	張書豪-Ragic SA Promote	晚上八九點在問我有關標籤
+18:00	Hung Yeh Wu-NO	好
+20:26	Hung Yeh Wu-NO	☎ 通話時間6:51
+
+2021/04/07（三）
+20:07	Hung Yeh Wu-NO	新店到板橋方便嗎
+20:20	Hung Yeh Wu-NO	新北市永和區仁愛路311號＋313號1F  免費插座  但每位要點一杯飲料  
+20:21	Hung Yeh Wu-NO	Louisa Coffee 路易．莎咖啡(永和捷運門市)
+20:21	Hung Yeh Wu-NO	方便約哪嗎
+20:21	Hung Yeh Wu-NO	我可能早上先去佔 插座區
+20:47	張書豪-Ragic SA Promote	OK啊可以
+20:47	張書豪-Ragic SA Promote	反正我早上11點的約我處理完畢我過去
+20:48	張書豪-Ragic SA Promote	我提早到我們就提早講
+20:48	Hung Yeh Wu-NO	好
+20:48	張書豪-Ragic SA Promote	講完我當場收費喔
+20:48	Hung Yeh Wu-NO	可以
+20:48	Hung Yeh Wu-NO	3000元 四小時
+20:49	張書豪-Ragic SA Promote	對沒錯是的
+20:49	張書豪-Ragic SA Promote	所以4小時內請你把握時間把該問的問題問清楚
+22:24	Hung Yeh Wu-NO	好的。我會
+
+2021/04/08（四）
+20:36	Hung Yeh Wu-NO	匯入是指國外貨款嗎
+20:36	Hung Yeh Wu-NO	[照片]
+20:52	張書豪-Ragic SA Promote	不
+20:52	張書豪-Ragic SA Promote	單純銀行匯入
+20:52	張書豪-Ragic SA Promote	跟貨款沖帳無關
+20:52	Hung Yeh Wu-NO	嗯  國外匯入款就登錄傳票
+20:52	Hung Yeh Wu-NO	嗎
+21:04	張書豪-Ragic SA Promote	不是你國外匯入的緣由一定是來自於沖帳啊這個我覺得你禮拜六再問我
+21:05	Hung Yeh Wu-NO	對喔  沖應收  預收
+21:05	Hung Yeh Wu-NO	只是我剛好想到國外匯入款國稅局說也要有每筆傳票
+21:07	Hung Yeh Wu-NO	因為我現在要補很多資料  所以我可能銘琬作業中 有問題=會再詢問你。 不然我資料太多來不急周一給
+21:07	Hung Yeh Wu-NO	明晚*
+21:51	Hung Yeh Wu-NO	已拋轉銷貨單刪除， 出貨船押無法刪除
+21:57	張書豪-Ragic SA Promote	你是不是沖帳了就沒辦法刪除啊
+22:03	Hung Yeh Wu-NO	沖應付   銷貨 應收 都沒沖傳票
+22:04	Hung Yeh Wu-NO	只沖 進貨 及 應付 傳票
+22:05	張書豪-Ragic SA Promote	[語音訊息]
+22:05	張書豪-Ragic SA Promote	[語音訊息]
+
+2021/04/09（五）
+19:31	Hung Yeh Wu-NO	[照片]
+19:32	Hung Yeh Wu-NO	應收Usd 昨天還可以改匯率
+19:32	Hung Yeh Wu-NO	現在不行改
+19:32	張書豪-Ragic SA Promote	你已經結帳過了當然就不能再改啦
+19:32	Hung Yeh Wu-NO	我新增應收
+19:33	Hung Yeh Wu-NO	還沒結
+19:33	Hung Yeh Wu-NO	帳
+19:33	張書豪-Ragic SA Promote	匯率是一開始新增就要選擇的啊不是你拉進來之後才選擇
+19:34	Hung Yeh Wu-NO	我試過 一樣不行改   。  應付新增改匯率就可
+19:35	張書豪-Ragic SA Promote	那我遠端就好
+19:35	Hung Yeh Wu-NO	應收昨晚做十筆都可以改匯率
+19:35	Hung Yeh Wu-NO	我全部關掉再試一次
+20:15	Hung Yeh Wu-NO	跳出系統再登入可以改usd匯率了
+21:13	張書豪-Ragic SA Promote	明天你早上先過去我過去大概12點到12點半左右
+21:13	張書豪-Ragic SA Promote	記得備妥問題
+22:16	Hung Yeh Wu-NO	好  明天就麻煩你囉
+22:16	Hung Yeh Wu-NO	謝謝
+
+2021/04/10（六）
+10:52	Hung Yeh Wu-NO	我佔兩個位置  你慢慢來
+11:32	張書豪-Ragic SA Promote	20分鐘到
+11:36	Hung Yeh Wu-NO	不急
+12:05	Hung Yeh Wu-NO	[檔案]
+12:27	Hung Yeh Wu-NO	[檔案]
+12:33	張書豪-Ragic SA Promote	[檔案]
+13:09	張書豪-Ragic SA Promote	"第二個問題
+國外銀行匯入國內銀行
+須扣除兩筆手續費
+一筆 國外匯兌的外幣手續費
+二筆 國內轉入台幣帳號的手續費
+要在系統內怎麼做"
+13:28	張書豪-Ragic SA Promote	"國外訂單  30
+出貨船押  31
+銷貨單>沖帳 31
+
+匯兌調整
+自切傳票
+"
+14:02	張書豪-Ragic SA Promote	"進貨單  銷貨單
+應收對帳單
+應付對帳單
+帳款統計表
+明細分類帳
+總分類帳
+損益表
+資產負債表
+
+試算表
+
+以上都要準備好交出去"
+14:38	張書豪-Ragic SA Promote	"國外訂單匯率若跟出貨船押匯率 不一致
+拋轉後 會影響FOB單價"
+20:29	Hung Yeh Wu-NO	108年二月採購進貨一批,108年八月銷售兩個，直接打銷貨單嗎？？
+20:48	張書豪-Ragic SA Promote	這是兩條線路的概念
+20:48	張書豪-Ragic SA Promote	進貨歸進貨
+20:48	張書豪-Ragic SA Promote	有銷貨 當然要打銷貨單
+20:48	張書豪-Ragic SA Promote	這是應該的
+20:49	張書豪-Ragic SA Promote	不要又搞混了
+20:49	Hung Yeh Wu-NO	二月進貨  八月銷貨  打八月銷貨 @不用打國外訂單吧
+20:49	張書豪-Ragic SA Promote	妳的銷貨是來自於出口就要打
+20:49	張書豪-Ragic SA Promote	不用就不打
+20:52	Hung Yeh Wu-NO	八月打國外訂單 /  訂單轉銷貨單  /  採購單二月/   八月打國外訂單就沒有訂單轉採購這流程。  二月已打採購。  
+20:53	張書豪-Ragic SA Promote	"訂單轉採購這種規則是貿易才會有
+主要適用於貿易公司自己沒有庫存 全部都是買空賣空的概念"
+20:53	張書豪-Ragic SA Promote	如果像妳自己有被庫存的習慣
+20:53	張書豪-Ragic SA Promote	採購轉進貨是日常作業
+20:53	張書豪-Ragic SA Promote	跟有沒有國外訂單 或銷貨單無關
+20:53	張書豪-Ragic SA Promote	獨立兩條線路操作
+20:54	張書豪-Ragic SA Promote	不要搞混了因果
+20:55	Hung Yeh Wu-NO	好。  那八月國外訂單就沒有 來源別 採購單 。  這樣可以嗎
+20:59	Hung Yeh Wu-NO	通常是國外訂單轉採購
+20:59	Hung Yeh Wu-NO	[照片]
+21:00	Hung Yeh Wu-NO	但二月採購單  如何八月國外訂單轉採購?  二月已產生採購單
+21:04	張書豪-Ragic SA Promote	為何你一定要訂單轉採購
+21:04	張書豪-Ragic SA Promote	妳二月採購是先進貨了
+21:04	張書豪-Ragic SA Promote	不適嗎?
+21:05	Hung Yeh Wu-NO	對
+21:05	張書豪-Ragic SA Promote	八月才有國外訂單來要轉銷貨 不適嗎?
+21:05	張書豪-Ragic SA Promote	幹嘛轉?
+21:05	Hung Yeh Wu-NO	好
+21:06	Hung Yeh Wu-NO	八月國外訂單不用勾稽二月採購單嗎?  單據關聯性
+21:06	張書豪-Ragic SA Promote	為什麼一定要?
+21:06	張書豪-Ragic SA Promote	妳解釋看看
+21:07	Hung Yeh Wu-NO	我不知道。  只想通常 是先國外訂單 訂單轉採購
+21:07	張書豪-Ragic SA Promote	我錄音 我打字手邊沒空
+21:07	Hung Yeh Wu-NO	好
+21:08	張書豪-Ragic SA Promote	[語音訊息]
+21:10	Hung Yeh Wu-NO	好的
+22:09	Hung Yeh Wu-NO	傳票轉入 採購預付 匯款  拋轉  顯示這張傳票和下午的正常版不同
+22:09	Hung Yeh Wu-NO	[照片]
+22:21	張書豪-Ragic SA Promote	明天早上給我遠端
+22:22	Hung Yeh Wu-NO	好的
+22:33	Hung Yeh Wu-NO	是無 會計科目 造成  那張傳票問題嗎
+22:33	Hung Yeh Wu-NO	[照片]
+22:34	張書豪-Ragic SA Promote	有可能
+22:35	Hung Yeh Wu-NO	但 我無法 新增會計科目 
+22:36	Hung Yeh Wu-NO	往來銀行已新增  玉山。  會計科目 無法 新增
+22:36	Hung Yeh Wu-NO	[照片]
+22:41	張書豪-Ragic SA Promote	我覺得你的問題到雲端我現在人在處理別的客人事情
+22:42	Hung Yeh Wu-NO	對后  十點了
+22:42	Hung Yeh Wu-NO	明天遠端
+
+2021/04/11（日）
+10:43	Hung Yeh Wu-NO	國稅局轉帳退稅到我銀行是切零用金現金收入嗎
+10:43	Hung Yeh Wu-NO	銀行利息的傳票如何做
+10:44	Hung Yeh Wu-NO	定存利息如何做
+10:44	張書豪-Ragic SA Promote	 這個你問我我也不會做簡單就全部都零用金收入就好
+10:44	Hung Yeh Wu-NO	好
+10:44	張書豪-Ragic SA Promote	這些已經是會計的本業了跟我軟體差別越來越多啦
+10:44	Hung Yeh Wu-NO	嗯嗯
+10:47	Hung Yeh Wu-NO	產品外銷資料   昨晚及目前的問題
+10:47	Hung Yeh Wu-NO	[照片]
+11:10	張書豪-Ragic SA Promote	"你這個是開太多了
+"
+11:10	張書豪-Ragic SA Promote	關掉重開
+11:20	Hung Yeh Wu-NO	筆電重新開機兩次 登入系統兩次一樣問題
+11:38	張書豪-Ragic SA Promote	你試著補一下長寬高敬重毛重這些都填一下吧
+13:55	Hung Yeh Wu-NO	[照片]
+14:32	Hung Yeh Wu-NO	[照片]
+15:37	Hung Yeh Wu-NO	我需要補三筆國外訂單  但產品外銷資料問題  就不可新增訂單
+15:40	張書豪-Ragic SA Promote	妳要先去在產品資料建檔啊
+15:40	張書豪-Ragic SA Promote	才能建檔國外
+15:40	Hung Yeh Wu-NO	產品資料可以
+15:40	Hung Yeh Wu-NO	這個問題
+15:41	張書豪-Ragic SA Promote	等等給我連線
+15:41	Hung Yeh Wu-NO	我要建 英文名稱  單位 就出現這畫面
+15:42	Hung Yeh Wu-NO	好
+15:42	Hung Yeh Wu-NO	這我要試過三次  不行新增銀行會計科目
+15:52	Hung Yeh Wu-NO	729 788 299
+15:52	Hung Yeh Wu-NO	現在方便連 anydesk 嗎
+16:01	張書豪-Ragic SA Promote	 先給我操作
+16:01	張書豪-Ragic SA Promote	不要動
+16:03	張書豪-Ragic SA Promote	幫我點更多資料
+16:03	張書豪-Ragic SA Promote	往下拉
+16:03	張書豪-Ragic SA Promote	一直往下
+16:04	張書豪-Ragic SA Promote	關掉這個工作管理員
+16:04	張書豪-Ragic SA Promote	把總管關掉
+16:05	張書豪-Ragic SA Promote	給我操作
+16:06	Hung Yeh Wu-NO	[檔案]
+16:11	張書豪-Ragic SA Promote	我測試 燒等
+16:28	張書豪-Ragic SA Promote	妳先換別的編號吧
+16:28	張書豪-Ragic SA Promote	這個編號好像有問題
+16:28	張書豪-Ragic SA Promote	然後你的產品為什麼會有三個編號是空白
+16:28	Hung Yeh Wu-NO	我有換一個編號新增  一樣問題
+16:28	張書豪-Ragic SA Promote	"50880-SNG-981  
+69810-87301
+MB295340
+這三個前面都有空白"
+16:29	張書豪-Ragic SA Promote	還有 妳有編號為什麼要用加號?
+16:29	張書豪-Ragic SA Promote	"17801-3360+3370
+"
+16:29	張書豪-Ragic SA Promote	這個也是不可以
+16:29	Hung Yeh Wu-NO	好
+16:29	Hung Yeh Wu-NO	可能是不小心空白
+16:30	張書豪-Ragic SA Promote	我很想問妳
+16:30	張書豪-Ragic SA Promote	為什麼你有些編號是空白
+16:32	張書豪-Ragic SA Promote	E6TZ 5776-B 也是空白
+16:32	Hung Yeh Wu-NO	我不知道
+16:32	張書豪-Ragic SA Promote	妳要換電腦了
+16:32	張書豪-Ragic SA Promote	這台電腦會讓你資料庫輸入錯誤
+16:32	張書豪-Ragic SA Promote	由於妳都開很多作業
+16:32	張書豪-Ragic SA Promote	不只是我的軟體
+16:32	Hung Yeh Wu-NO	嗯嗯
+16:32	張書豪-Ragic SA Promote	妳這台效能不高 妳太操
+16:33	張書豪-Ragic SA Promote	造成資料庫毀損
+16:33	張書豪-Ragic SA Promote	我現在清資料庫
+16:33	張書豪-Ragic SA Promote	妳等
+16:33	張書豪-Ragic SA Promote	妳關掉程式
+16:33	張書豪-Ragic SA Promote	編號前面空白 中間空白 有其他符號 這些妳自己處理
+16:33	Hung Yeh Wu-NO	關掉那個程式
+16:33	張書豪-Ragic SA Promote	我處理妳重複編號敲太多了
+16:36	張書豪-Ragic SA Promote	先不要動
+16:36	張書豪-Ragic SA Promote	[照片]
+16:36	張書豪-Ragic SA Promote	請注意看
+16:37	張書豪-Ragic SA Promote	我說的空白 是妳看步道的
+16:37	張書豪-Ragic SA Promote	妳重複輸入的編號
+16:37	張書豪-Ragic SA Promote	沒有對應公司
+16:37	張書豪-Ragic SA Promote	就像MC110181
+16:37	張書豪-Ragic SA Promote	這種粒子太多了
+16:38	張書豪-Ragic SA Promote	除了這些我動
+16:38	張書豪-Ragic SA Promote	其他編號異常請妳自己處理
+16:38	張書豪-Ragic SA Promote	如果有交易紀錄 請做完帳之後
+16:38	張書豪-Ragic SA Promote	109全部重來
+16:38	張書豪-Ragic SA Promote	開新公司
+16:39	Hung Yeh Wu-NO	嗯
+16:40	Hung Yeh Wu-NO	我還沒做109，目前補108
+16:40	張書豪-Ragic SA Promote	至於你現在沒有產品外銷名稱的
+16:41	張書豪-Ragic SA Promote	我打給你
+16:48	張書豪-Ragic SA Promote	☎ 通話時間7:45
+18:23	Hung Yeh Wu-NO	新版可以備份嗎？
+18:46	Hung Yeh Wu-NO	直接打銷貨單  單據轉入  只有訂購單
+18:46	Hung Yeh Wu-NO	[照片]
+18:50	Hung Yeh Wu-NO	要捕的三筆 我要打訂購單 再轉銷貨單  取代國外訂單轉船押轉銷貨嗎
+18:52	張書豪-Ragic SA Promote	 都不用直接打銷貨單收帳就好除非你要記錄訂金不然根本不需要再打國外訂單也不用打訂購單直接打銷貨。
+18:52	Hung Yeh Wu-NO	好
+19:18	Hung Yeh Wu-NO	銷貨單裡 結帳   就不用做應收帳款嗎
+19:18	Hung Yeh Wu-NO	[照片]
+19:22	張書豪-Ragic SA Promote	那叫線收帳
+19:22	張書豪-Ragic SA Promote	現收
+19:23	張書豪-Ragic SA Promote	有現收 就不用沖帳拉
+19:23	張書豪-Ragic SA Promote	但是現收只能收獻金
+19:23	張書豪-Ragic SA Promote	不能用匯款唷
+19:23	Hung Yeh Wu-NO	那我不是現收
+19:23	Hung Yeh Wu-NO	我要做應收沖帳
+19:24	張書豪-Ragic SA Promote	對的 所以你問的問題 離妳的本來用意差得很遠
+20:46	Hung Yeh Wu-NO	應收已結帳  如何刪除這筆
+20:46	Hung Yeh Wu-NO	[照片]
+21:16	Hung Yeh Wu-NO	我看到刪除了
+
+2021/04/12（一）
+11:52	Hung Yeh Wu-NO	[檔案]
+11:53	Hung Yeh Wu-NO	為何 資產- 9,497,816
+11:54	張書豪-Ragic SA Promote	你先看你的試算表試算表是全部的還有你的左邊那張是全部的應該是否平衡
+11:54	張書豪-Ragic SA Promote	總分類帳及明細分類帳都看一下
+11:54	Hung Yeh Wu-NO	1101 $-庫存現金 16,104,104 是負數
+11:54	Hung Yeh Wu-NO	我都看不懂 太難了
+11:57	張書豪-Ragic SA Promote	你都有過帳嗎你每年都要做每年的每個月都要過帳然後的每個月都要存每年結轉
+11:57	張書豪-Ragic SA Promote	你什麼時候教啊如果到今天問題都還沒有解決的話你今天會來不及耶
+11:58	Hung Yeh Wu-NO	我先看世都有過仗
+11:58	Hung Yeh Wu-NO	[檔案]
+11:58	張書豪-Ragic SA Promote	請你呢從2015年開始每個月都過帳2015年一到12月都過完帳之後再來做2015年結轉依此類推一路做到現在
+11:58	Hung Yeh Wu-NO	損益-71930000
+11:58	Hung Yeh Wu-NO	好
+20:40	Hung Yeh Wu-NO	我逐年過帳節轉  但還是負數
+20:40	Hung Yeh Wu-NO	明細分類帳要如何看問題呢
+20:43	張書豪-Ragic SA Promote	妳有自己新增過科目嗎
+20:43	Hung Yeh Wu-NO	沒有
+20:44	張書豪-Ragic SA Promote	應該有吧
+20:44	張書豪-Ragic SA Promote	妳光銀行就新增了三個科目
+20:44	張書豪-Ragic SA Promote	不適嗎?
+20:44	Hung Yeh Wu-NO	銀行科目
+20:45	張書豪-Ragic SA Promote	妳登入一下 雲太 看我1102-000的銀行科目的本位方是借還是貸
+20:47	Hung Yeh Wu-NO	借
+20:47	張書豪-Ragic SA Promote	妳再回去看一下你的銀行
+20:47	張書豪-Ragic SA Promote	登入妳的工作
+20:47	張書豪-Ragic SA Promote	檢查全部銀行科目
+20:47	張書豪-Ragic SA Promote	本位方是借還是貸
+20:48	Hung Yeh Wu-NO	借
+20:49	張書豪-Ragic SA Promote	那我覺得你的真的做錯了
+20:49	張書豪-Ragic SA Promote	應該要正數
+20:49	張書豪-Ragic SA Promote	妳把備份黨壓縮傳給我
+20:49	Hung Yeh Wu-NO	哪裡錯
+20:50	張書豪-Ragic SA Promote	先傳給我吧
+20:50	張書豪-Ragic SA Promote	我今晚看
+20:51	Hung Yeh Wu-NO	明細分類帳嗎
+20:51	張書豪-Ragic SA Promote	整個系統備份
+20:51	張書豪-Ragic SA Promote	傳給我
+20:52	Hung Yeh Wu-NO	輩分在哪
+20:52	Hung Yeh Wu-NO	新版我還沒備份吧
+20:52	張書豪-Ragic SA Promote	你現在備份就好啦
+20:53	Hung Yeh Wu-NO	如何備
+20:53	張書豪-Ragic SA Promote	系統關閉都會提醒你要備份
+20:53	張書豪-Ragic SA Promote	妳忘記了
+20:54	Hung Yeh Wu-NO	我離開時 沒有提醒
+20:54	Hung Yeh Wu-NO	是要登出嗎
+20:54	張書豪-Ragic SA Promote	系統功能列最上方
+20:54	張書豪-Ragic SA Promote	找到備份
+20:55	Hung Yeh Wu-NO	好
+20:55	Hung Yeh Wu-NO	本期損益 $-7,323,928  表示做錯嗎
+20:55	張書豪-Ragic SA Promote	除非你真的陪到七百多萬
+20:57	Hung Yeh Wu-NO	應該沒這多
+20:57	Hung Yeh Wu-NO	這也是異常嗎
+20:57	Hung Yeh Wu-NO	[照片]
+20:57	張書豪-Ragic SA Promote	不用對了
+20:57	張書豪-Ragic SA Promote	給我備份
+20:57	張書豪-Ragic SA Promote	我等等看
+20:57	Hung Yeh Wu-NO	國稅局 說收到我資料  還要一一問我
+20:58	Hung Yeh Wu-NO	我都看不懂  如何被問
+20:58	張書豪-Ragic SA Promote	妳前幾年就應該學
+20:58	張書豪-Ragic SA Promote	今年是數字異常太多
+20:58	張書豪-Ragic SA Promote	才被問到
+20:58	張書豪-Ragic SA Promote	妳先把備份給我拉
+20:58	Hung Yeh Wu-NO	嗯嗯
+20:58	張書豪-Ragic SA Promote	我還有事要忙
+20:58	張書豪-Ragic SA Promote	我等等看
+21:00	Hung Yeh Wu-NO	我備份了
+21:00	Hung Yeh Wu-NO	那如何找我的ˊ備份檔
+21:05	Hung Yeh Wu-NO	這個嗎
+21:11	Hung Yeh Wu-NO	這是備份嗎
+21:11	Hung Yeh Wu-NO	[照片]
+21:12	張書豪-Ragic SA Promote	對
+21:13	Hung Yeh Wu-NO	我 LINE 兩次了
+21:13	Hung Yeh Wu-NO	[照片]
+21:18	張書豪-Ragic SA Promote	壓縮一下再傳Line不可以直接傳檔案
+21:21	Hung Yeh Wu-NO	[檔案]
+21:43	張書豪-Ragic SA Promote	你方便講話嗎?
+21:44	Hung Yeh Wu-NO	可以
+21:58	張書豪-Ragic SA Promote	☎ 通話時間14:04
+22:21	張書豪-Ragic SA Promote	☎ 通話時間7:05
+22:22	Hung Yeh Wu-NO	729 788 299
+22:24	張書豪-Ragic SA Promote	[檔案]
+22:25	張書豪-Ragic SA Promote	我還給你了
+22:25	張書豪-Ragic SA Promote	請你確定你接下來要做動作
+22:26	張書豪-Ragic SA Promote	在你輸入系統之前
+22:26	張書豪-Ragic SA Promote	寫大綱在這邊
+22:26	張書豪-Ragic SA Promote	我看過沒問題 你在做
+22:28	Hung Yeh Wu-NO	"銷貨單
+進貨單
+應收沖帳/應付沖帳
+每個月過帳
+財務結轉存檔
+
+若以 出貨船押前必須補齊產品外銷資料 英文  淨毛重 INNER
+"
+22:29	Hung Yeh Wu-NO	對嗎
+22:29	張書豪-Ragic SA Promote	少了零用金收入 支出
+22:29	Hung Yeh Wu-NO	好
+22:30	Hung Yeh Wu-NO	謝謝你的幫忙
+22:31	張書豪-Ragic SA Promote	"我今晚部會再回妳問題
+妳只剩下補資料"
+22:31	張書豪-Ragic SA Promote	請你補完後 明天給我看
+22:31	張書豪-Ragic SA Promote	不然今天周一 妳只剩兩天 絕對來不及
+22:31	Hung Yeh Wu-NO	新公司都沒有國外訂單資料
+22:31	張書豪-Ragic SA Promote	不需要
+22:32	Hung Yeh Wu-NO	所以只打銷貨
+22:32	張書豪-Ragic SA Promote	我十分鐘前 五分鐘前都說了一次
+22:32	張書豪-Ragic SA Promote	只需要銷貨單
+22:32	張書豪-Ragic SA Promote	不需要前置作業
+22:32	Hung Yeh Wu-NO	對的
+22:32	張書豪-Ragic SA Promote	妳要補上 當然沒問題
+22:32	張書豪-Ragic SA Promote	問題是
+22:32	張書豪-Ragic SA Promote	妳根本時間來不及
+22:32	張書豪-Ragic SA Promote	你現在重要的是時間
+22:32	Hung Yeh Wu-NO	我懂了
+22:34	張書豪-Ragic SA Promote	"大姐
+請你最後聽我一句中肯的話
+你要給國稅局的是讓他們看得懂覺得合理的帳
+就目前而言
+你已經沒有時間做校正重新輸入重新來過給予正確的帳
+而且你還要了解
+如果當國稅局問你的時候
+你要怎麼回答
+如果你要把前置作業全部補上去
+你根本回答不了
+如果知道進銷貨單只打沖帳那至少還看得懂"
+22:36	Hung Yeh Wu-NO	是的 有道理  就是做一份符合的帳
+22:36	Hung Yeh Wu-NO	我會按照你的建議
+22:36	張書豪-Ragic SA Promote	"如果週四過關 如果後面妳要我幫你重新補帳
+我會另外報價
+這已經超乎我原本該給你的服務了
+所以請周四前千萬注意不要出錯"
+22:37	Hung Yeh Wu-NO	好的
+22:39	Hung Yeh Wu-NO	先把進貨 在打銷貨嗎  
+22:40	Hung Yeh Wu-NO	先打進貨 在打銷貨嗎
+22:40	Hung Yeh Wu-NO	有順序分別嗎
+22:45	張書豪-Ragic SA Promote	沒差
+22:45	Hung Yeh Wu-NO	好
+
+2021/04/13（二）
+08:30	Hung Yeh Wu-NO	銷貨單 單價無法做有小數三位
+08:30	Hung Yeh Wu-NO	[照片]
+08:32	張書豪-Ragic SA Promote	"公司設定參數設定單價小數金額小數改成3
+改完之後存檔重新開程式要關掉再開就可以銷貨單打到小數點三味"
+08:34	Hung Yeh Wu-NO	"KEY 編號 進貨單單價沒顯示 工廠進價。 
+昨晚還要一筆一筆手修改單價。 
+舊版的單價代編號 顯示進價
+"
+08:34	Hung Yeh Wu-NO	[照片]
+08:39	張書豪-Ragic SA Promote	因為呢工廠進價這件事情是來自於你有錢之前的進貨單他會抓之前進貨單的交易歷史的最後一筆價格問題是你現在這個新公司完全沒有交易
+08:40	Hung Yeh Wu-NO	好
+08:42	Hung Yeh Wu-NO	零用金沒會計科目可選
+08:42	Hung Yeh Wu-NO	[照片]
+08:42	Hung Yeh Wu-NO	我的海運費要做零用金
+08:43	Hung Yeh Wu-NO	傳票登錄 會計科目資料
+08:43	Hung Yeh Wu-NO	[照片]
+08:44	張書豪-Ragic SA Promote	10點讓我遠端連線先不要做
+08:48	張書豪-Ragic SA Promote	有關會計科目的任何工作都先不要做10點讓我連線
+09:03	Hung Yeh Wu-NO	好
+09:33	張書豪-Ragic SA Promote	幫我開遠端
+09:35	Hung Yeh Wu-NO	729 788 299
+09:40	張書豪-Ragic SA Promote	好了 你有會計可以用
+09:40	Hung Yeh Wu-NO	謝謝
+19:02	Hung Yeh Wu-NO	進貨單可以設定不折數嗎
+19:02	Hung Yeh Wu-NO	[照片]
+19:03	Hung Yeh Wu-NO	不需要折數%
+19:03	張書豪-Ragic SA Promote	你不要管他你就打單價就好了啊
+19:50	Hung Yeh Wu-NO	零用金只顯示金額，進項稅額如何打
+19:50	Hung Yeh Wu-NO	[照片]
+20:04	張書豪-Ragic SA Promote	費用沒有税額
+20:04	張書豪-Ragic SA Promote	你要有稅額就必須把它當作產品去做進貨
+20:04	Hung Yeh Wu-NO	海運費有開發票
+20:04	Hung Yeh Wu-NO	用零用金切海運費嗎
+20:05	張書豪-Ragic SA Promote	把海關當作廠商見一個商品叫海運費
+20:06	Hung Yeh Wu-NO	那直接做傳票登錄   就沒有傳票轉入
+20:06	張書豪-Ragic SA Promote	船票轉錄就是輔助你不會做船票藉由來源來泡轉船票如果你自己會做船票全部都自己切就好啦
+20:07	Hung Yeh Wu-NO	會計科目有出口費用  我可以用這科目代替海運費嗎
+20:07	張書豪-Ragic SA Promote	我只能教你用系統的做法如果你要自己切傳票你該用什麼科目該怎麼去處理借貸我不能跟你說正確我不知道
+20:22	Hung Yeh Wu-NO	海運商品建好 直接做 銷貨單嗎
+20:22	Hung Yeh Wu-NO	還是 進貨單
+20:23	Hung Yeh Wu-NO	海關當廠商  約有商品十項
+20:25	張書豪-Ragic SA Promote	妳是付前 當然是進貨單囉
+20:26	Hung Yeh Wu-NO	好
+20:28	Hung Yeh Wu-NO	但 開進貨單 沒銷貨  不就變庫存嗎
+20:28	張書豪-Ragic SA Promote	庫存這東西 你知我知
+20:28	張書豪-Ragic SA Promote	國稅局不知
+20:29	Hung Yeh Wu-NO	會影響 資產負載表 貨損表嗎
+20:29	張書豪-Ragic SA Promote	不會
+20:29	Hung Yeh Wu-NO	損益
+20:29	Hung Yeh Wu-NO	好
+20:29	張書豪-Ragic SA Promote	我沒有教你做庫存傳票
+20:29	張書豪-Ragic SA Promote	所以根本不贏想
+20:30	Hung Yeh Wu-NO	好
+20:41	Hung Yeh Wu-NO	我  108 申報書有期初庫存  期末  那我的ˊ報表也要顯示庫存  國稅局說這樣才符合
+20:46	張書豪-Ragic SA Promote	妳自己做一張傳票 1080101開的傳票 把所有騎出科目及數字打進去就好
+20:47	張書豪-Ragic SA Promote	如果不會 妳用財務開帳來做也可以
+20:47	Hung Yeh Wu-NO	財務開帳 不懂
+20:47	張書豪-Ragic SA Promote	財務開帳一樣是1080101 輸入所有妳之前的期初
+20:47	張書豪-Ragic SA Promote	系統有一個功能較財務開帳
+20:48	Hung Yeh Wu-NO	會計開帳嗎
+20:48	張書豪-Ragic SA Promote	恩
+20:52	Hung Yeh Wu-NO	貸方的科目是
+20:52	Hung Yeh Wu-NO	[照片]
+20:53	張書豪-Ragic SA Promote	妳上網找會計開帳所需要科目
+21:13	Hung Yeh Wu-NO	太難了
+21:14	Hung Yeh Wu-NO	是用永續盤存制還是定期盤存制  我是哪一個呢
+21:14	張書豪-Ragic SA Promote	不用那麼複雜我錄影給你看
+21:15	Hung Yeh Wu-NO	好 ,,,,,, 
+21:20	張書豪-Ragic SA Promote	[語音訊息]
+21:21	張書豪-Ragic SA Promote	https://www.berrycast.com/conversations/4261a411-68e2-518e-9d03-7788dfc0f72e
+21:22	Hung Yeh Wu-NO	好的
+
+2021/04/14（三）
+21:44	Hung Yeh Wu-NO	進貨單及進貨傳票是夾一起給國稅局嗎
+21:45	Hung Yeh Wu-NO	進貨單及進貨轉帳傳票是和三聯式發票夾在一起付給國稅局嗎
+21:51	張書豪-Ragic SA Promote	對
+21:51	張書豪-Ragic SA Promote	妳忘記我上次叫妳準備的嬤
+21:52	Hung Yeh Wu-NO	我知道你有 LINE
+21:52	Hung Yeh Wu-NO	給我
+21:53	張書豪-Ragic SA Promote	"進貨單  銷貨單
+應收對帳單
+應付對帳單
+帳款統計表
+明細分類帳
+總分類帳
+損益表
+資產負債表
+
+試算表
+
+以上都要準備好交出去"
+21:54	Hung Yeh Wu-NO	一份單據  進貨單+轉帳傳票+三聯式發票
+21:54	Hung Yeh Wu-NO	[照片]
+21:55	Hung Yeh Wu-NO	三張夾一起嗎
+21:55	張書豪-Ragic SA Promote	部隊
+21:55	Hung Yeh Wu-NO	那三聯式發票夾進貨單就可嗎
+21:56	張書豪-Ragic SA Promote	"進貨單+發票
+銷貨單+發票
+應收對帳單 已結
+應付對帳單 已結
+帳款統計表
+傳票全部
+其他費用類發票
+總分類帳 
+明細分類帳
+試算表
+損益表
+資產負債表
+"
+21:56	Hung Yeh Wu-NO	國稅局說 傳票夾單據執具
+21:57	Hung Yeh Wu-NO	銷貨單+發票  二聯式發票嗎
+21:57	張書豪-Ragic SA Promote	"那就銷貨傳票對銷貨單
+進貨單對進貨傳票"
+21:58	Hung Yeh Wu-NO	轉帳傳票對?
+21:58	Hung Yeh Wu-NO	[照片]
+21:59	Hung Yeh Wu-NO	後面的單據是?
+21:59	張書豪-Ragic SA Promote	進貨發票
+22:00	Hung Yeh Wu-NO	好
+22:01	張書豪-Ragic SA Promote	妳....部
+22:01	張書豪-Ragic SA Promote	妳...不會連傳票是甚麼都看不懂?
+22:01	Hung Yeh Wu-NO	我快爆炸嘞
+22:01	張書豪-Ragic SA Promote	不會啊
+22:01	Hung Yeh Wu-NO	希望快結束
+22:01	張書豪-Ragic SA Promote	我感覺漸入佳境
+22:01	張書豪-Ragic SA Promote	妳週四過關 痛苦才要開始
+22:01	Hung Yeh Wu-NO	為何
+22:02	張書豪-Ragic SA Promote	因為你要在哪家公司補正是資料
+22:02	張書豪-Ragic SA Promote	我這幾天教你做法的是會計端所謂外帳
+22:02	Hung Yeh Wu-NO	喔喔
+22:02	張書豪-Ragic SA Promote	"內帳呢?
+妳全部一開始的想法就是內帳"
+22:02	張書豪-Ragic SA Promote	問題是內帳亂七八糟
+22:02	Hung Yeh Wu-NO	嗯嗯
+22:02	張書豪-Ragic SA Promote	你不是要里順嗎?
+22:02	張書豪-Ragic SA Promote	那才是痛苦
+22:03	Hung Yeh Wu-NO	嗯嗯嗯嗯
+22:04	張書豪-Ragic SA Promote	"週四遞交後 我就先不打擾你
+在下一次要我協助處理就另外看情況我在跟妳收費
+你有空就練習學習我之前說過的吧 周六的事情"
+22:04	張書豪-Ragic SA Promote	不適這幾天的急就章
+22:04	Hung Yeh Wu-NO	好
+22:12	Hung Yeh Wu-NO	但是
+22:12	Hung Yeh Wu-NO	新版 國外訂單轉採購 還是不行
+22:13	Hung Yeh Wu-NO	我昨天新增都不行 版 國外訂單轉採購 
+22:13	張書豪-Ragic SA Promote	產品妳有設定供應商嗎
+22:13	張書豪-Ragic SA Promote	請去看看
+22:13	Hung Yeh Wu-NO	有  我週五在試打一張  有問題再截圖
+
+2021/04/15（四）
+08:07	Hung Yeh Wu-NO	進或是要給這份嗎
+08:07	Hung Yeh Wu-NO	[照片]
+08:07	張書豪-Ragic SA Promote	你要給也可以沒有一定
+09:17	Hung Yeh Wu-NO	[照片]
+09:17	Hung Yeh Wu-NO	2019 銷貨單 顯示 帳款月份 2021 04
+09:18	Hung Yeh Wu-NO	會影響拋轉結果嗎
+09:22	張書豪-Ragic SA Promote	不會
+09:23	Hung Yeh Wu-NO	結帳結果不會歸類到 2021 嗎
+09:27	張書豪-Ragic SA Promote	帳款月份是針對你還沒收錢的時候
+09:27	張書豪-Ragic SA Promote	你這筆銷貨單收過錢了沒?
+09:27	張書豪-Ragic SA Promote	收完了沒?
+09:28	Hung Yeh Wu-NO	銷貨都是預收先
+09:28	Hung Yeh Wu-NO	收完
+09:28	張書豪-Ragic SA Promote	收完就不用裡他
+09:28	Hung Yeh Wu-NO	好
+09:29	張書豪-Ragic SA Promote	然後你昨天說訂單不能拋採購的問題
+09:29	張書豪-Ragic SA Promote	依樣是老問題 產品編號跟名稱太亂了
+09:29	張書豪-Ragic SA Promote	編號 英數就好 不能空白
+09:29	張書豪-Ragic SA Promote	名稱太多符號了
+09:30	Hung Yeh Wu-NO	好
+09:30	Hung Yeh Wu-NO	進貨單也顯示  2021 04
+09:31	張書豪-Ragic SA Promote	說清楚 是哪裡
+09:32	Hung Yeh Wu-NO	進貨
+09:33	Hung Yeh Wu-NO	[照片]
+09:33	張書豪-Ragic SA Promote	請你看衝帳單
+09:33	張書豪-Ragic SA Promote	我懷疑你沖帳沒選日期
+09:33	張書豪-Ragic SA Promote	全部選到2021了
+09:36	Hung Yeh Wu-NO	進貨單要打 2019 01 帳款月份嗎
+09:36	Hung Yeh Wu-NO	[照片]
+09:37	Hung Yeh Wu-NO	新增時是顯示 2021/04
+09:37	張書豪-Ragic SA Promote	如果你說的都是這邊
+09:37	張書豪-Ragic SA Promote	那根傳票都沒贏想
+09:38	Hung Yeh Wu-NO	拋轉不會歸類到 2021 04 帳款嗎
+09:38	Hung Yeh Wu-NO	財務結轉匯累積到 2021 04應付款嗎
+09:38	Hung Yeh Wu-NO	會*
+09:39	張書豪-Ragic SA Promote	你一職搞混
+09:39	張書豪-Ragic SA Promote	我解釋很多次
+09:39	張書豪-Ragic SA Promote	進貨單或銷貨單都是立帳 你都是特別選過日期是2019年度的
+09:39	張書豪-Ragic SA Promote	所以這種立帳傳票部會拋錯日期
+09:40	張書豪-Ragic SA Promote	然後應收沖帳 跟應付沖帳 也是你自己選擇時間沖帳的
+09:40	張書豪-Ragic SA Promote	如果你選擇的是2019年度某一天沖帳
+09:40	張書豪-Ragic SA Promote	就會規傳票在2019年度
+09:40	張書豪-Ragic SA Promote	這跟累積到2021有甚麼關係?
+09:40	張書豪-Ragic SA Promote	除非以上你有某個環節錯了
+09:41	Hung Yeh Wu-NO	好的
+21:09	Hung Yeh Wu-NO	進貨 銷貨  傳票轉入  無顯示科目
+21:09	Hung Yeh Wu-NO	[照片]
+21:09	張書豪-Ragic SA Promote	等等讓我遠端連線
+21:09	Hung Yeh Wu-NO	[照片]
+21:09	張書豪-Ragic SA Promote	10點前給我遠端
+21:10	Hung Yeh Wu-NO	現在可以嗎
+21:11	張書豪-Ragic SA Promote	等我一下
+21:17	張書豪-Ragic SA Promote	我現在連線
+21:18	Hung Yeh Wu-NO	729 788 299
+21:20	張書豪-Ragic SA Promote	☎ 通話時間1:28
+
+2021/04/20（二）
+20:38	Hung Yeh Wu-NO	這有問題
+20:38	Hung Yeh Wu-NO	[照片]
+20:40	張書豪-Ragic SA Promote	有問題的科目用明細分類帳查範圍不要笑直接下指令102全部的科目就好
+21:37	Hung Yeh Wu-NO	這樣查嗎
+21:37	Hung Yeh Wu-NO	[照片]
+21:38	張書豪-Ragic SA Promote	對
+21:38	Hung Yeh Wu-NO	但沒有資料
+21:38	張書豪-Ragic SA Promote	把日期期間拉大 從2015年起看
+21:38	Hung Yeh Wu-NO	[照片]
+21:39	Hung Yeh Wu-NO	沒有
+21:39	Hung Yeh Wu-NO	[照片]
+21:40	張書豪-Ragic SA Promote	1102裡很多科目
+21:40	張書豪-Ragic SA Promote	每一個子科目掉出來查吧
+21:43	Hung Yeh Wu-NO	好
+21:43	Hung Yeh Wu-NO	數字不一樣
+21:43	Hung Yeh Wu-NO	[照片]
+21:44	Hung Yeh Wu-NO	我有少做哪個動作嗎
+21:45	Hung Yeh Wu-NO	後面的-數字和前期餘額不一樣 
+21:52	張書豪-Ragic SA Promote	你這個是雅新
+21:52	張書豪-Ragic SA Promote	還是雅新2019
+21:53	Hung Yeh Wu-NO	2019
+21:54	張書豪-Ragic SA Promote	這個是國稅局提的問題
+21:54	張書豪-Ragic SA Promote	還是你自己找到的問題
+21:56	Hung Yeh Wu-NO	國稅局說要明細分類帳，但我忘記付給他，然後我發現銀行存款-4978441
+21:57	Hung Yeh Wu-NO	所以我給你截圖詢問問題
+21:58	Hung Yeh Wu-NO	因為108申報書銀行存款也不是-4978441
+22:08	Hung Yeh Wu-NO	那我現在該怎做
+22:16	張書豪-Ragic SA Promote	明天再給我連縣看
+22:16	張書豪-Ragic SA Promote	我現在沒精神幫你解決了
+22:16	Hung Yeh Wu-NO	明天早上可以嗎？我明天是最後補資料期限了
+22:17	張書豪-Ragic SA Promote	你十點給我抓資料 我連線看
+22:17	張書豪-Ragic SA Promote	我大概知道甚麼問題
+22:17	Hung Yeh Wu-NO	好的。
+
+2021/04/21（三）
+09:13	Hung Yeh Wu-NO	我的筆電突然開不了機
+09:16	張書豪-Ragic SA Promote	會計有備份嗎
+09:16	張書豪-Ragic SA Promote	放在別處
+09:16	張書豪-Ragic SA Promote	筆電打不開先不管
+09:16	張書豪-Ragic SA Promote	可能是沒電
+09:17	張書豪-Ragic SA Promote	我比較在意你今天最後一天的資料
+09:27	Hung Yeh Wu-NO	可以開機了
+09:28	張書豪-Ragic SA Promote	趕快備份存隨身碟
+09:30	Hung Yeh Wu-NO	[照片]
+09:31	Hung Yeh Wu-NO	案信任嗎
+09:31	Hung Yeh Wu-NO	按
+09:32	張書豪-Ragic SA Promote	當然啊
+09:33	Hung Yeh Wu-NO	好
+09:35	張書豪-Ragic SA Promote	你要做的備份不是只有程式裡面的資料備份我要你將整個我給你的軟體全部拷貝下來拷貝到神貼上資料備份也要拷貝一次拷貝在隨身碟上都要做
+09:35	張書豪-Ragic SA Promote	不然你現在電腦壞掉你覺得絕對不可能做任何事情我也幫不了你
+09:35	Hung Yeh Wu-NO	好
+09:38	張書豪-Ragic SA Promote	"至於你昨天的問題我先口述的你再看看你自己能不能理解我們泡轉船票的時候有關銀行科目所有的銀行存款他的科目都是1102的這科目
+基本上你沒有再用
+為什麼因為你所有的銀行都只科目從102000到005006吧"
+09:40	Hung Yeh Wu-NO	1102001-1102008
+09:51	張書豪-Ragic SA Promote	"請你去所有用過1102的科目的傳票
+去改正確的科目"
+09:51	張書豪-Ragic SA Promote	例如1102-000或1102-005 看你用到哪個銀行所對應的科目
+09:51	張書豪-Ragic SA Promote	全部改完 再過帳
+10:11	Hung Yeh Wu-NO	改完已過帳結轉
+10:11	Hung Yeh Wu-NO	[照片]
+10:12	張書豪-Ragic SA Promote	現在備份後 將備份檔壓縮 傳給我
+10:13	Hung Yeh Wu-NO	[檔案]
+10:33	張書豪-Ragic SA Promote	你的銀行存款沒錯
+10:33	張書豪-Ragic SA Promote	都是付錢出去
+10:33	張書豪-Ragic SA Promote	那要問你 收錢哩?
+10:33	張書豪-Ragic SA Promote	你怎麼都沒收錢
+10:34	張書豪-Ragic SA Promote	你全部都沒應收沖帳
+10:34	張書豪-Ragic SA Promote	妳都是應負
+10:34	張書豪-Ragic SA Promote	難怪全部都是付出去的
+10:34	Hung Yeh Wu-NO	我有打四張銷貨單
+10:34	Hung Yeh Wu-NO	我只有四筆銷貨
+10:34	張書豪-Ragic SA Promote	我說過三次
+10:34	張書豪-Ragic SA Promote	銷貨單只是立帳
+10:34	張書豪-Ragic SA Promote	你沒有沖帳
+10:35	張書豪-Ragic SA Promote	你等於2019年完全沒收錢
+10:35	張書豪-Ragic SA Promote	而且不是四筆
+10:35	張書豪-Ragic SA Promote	你只有三筆銷貨
+10:36	Hung Yeh Wu-NO	嗯嗯
+10:36	Hung Yeh Wu-NO	所以我都沒做應收  單據空白
+10:36	Hung Yeh Wu-NO	[照片]
+13:36	Hung Yeh Wu-NO	但我是賠錢，損益顯示+96萬多
+13:36	張書豪-Ragic SA Promote	要看資產負債表
+13:36	張書豪-Ragic SA Promote	合併一起看
+13:36	張書豪-Ragic SA Promote	你再給我一次輩分
+13:37	Hung Yeh Wu-NO	早上的備份可以嗎？
+13:37	Hung Yeh Wu-NO	我再發一個備份好了
+13:39	Hung Yeh Wu-NO	[檔案]
+13:48	張書豪-Ragic SA Promote	我要你做的
+13:48	張書豪-Ragic SA Promote	怎麼這個備份還是早上的
+13:48	張書豪-Ragic SA Promote	我要你現在的
+13:52	Hung Yeh Wu-NO	[檔案]
+14:32	張書豪-Ragic SA Promote	你付款根本還沒付完
+14:32	張書豪-Ragic SA Promote	你108應付帳款還有31萬未結
+14:33	Hung Yeh Wu-NO	嗯嗯
+14:33	張書豪-Ragic SA Promote	[照片]
+14:33	張書豪-Ragic SA Promote	我真的覺得你自己要學會看報表了
+14:33	張書豪-Ragic SA Promote	現在軟體本身都沒問題
+14:33	張書豪-Ragic SA Promote	都是你操作
+14:33	張書豪-Ragic SA Promote	所以你報表都印一印吧
+14:34	張書豪-Ragic SA Promote	國稅局問你 至少你有東西交出去
+14:34	張書豪-Ragic SA Promote	我真的快忍不住要再跟你收費了= ="
+14:34	Hung Yeh Wu-NO	嗯嗯  
+14:35	Hung Yeh Wu-NO	嗯嗯
+14:35	Hung Yeh Wu-NO	我有印報表  只是一時間看不董
+14:35	張書豪-Ragic SA Promote	"我甚至想說 你要不要直接請我陪你去國稅局應答
+我收車馬費 假裝是你朋友陪你作帳的"
+14:35	張書豪-Ragic SA Promote	陪你去回答
+14:37	Hung Yeh Wu-NO	我先去補資料  坦白說  國稅局說他也試著來理解一個不懂會計的人所做的帳簿
+14:37	Hung Yeh Wu-NO	他也是很有耐心指導我
+14:38	張書豪-Ragic SA Promote	那你就真的要多花時間吸收 對你未來很有幫助
+14:38	張書豪-Ragic SA Promote	尤其是看你交易金額不論進出都很大
+14:38	張書豪-Ragic SA Promote	帳真的要做對
+14:38	張書豪-Ragic SA Promote	不然你賠了甚麼錢都不知道
+14:40	Hung Yeh Wu-NO	我明白。因為我不懂會計 所以兩年前我後來就很畏懼和你碰面。  但現在真的是該改變心態
+14:40	Hung Yeh Wu-NO	真的很謝謝你的幫忙
+14:40	張書豪-Ragic SA Promote	"我本人你見過 我就害怕你誤會= =
+我是文字上比較理智沒有情感 因為在教學在數據 藥不能錯"
+14:41	張書豪-Ragic SA Promote	但是我們見面過教過你 至少你知道我教學沒那麼冷
+14:41	張書豪-Ragic SA Promote	"請你問問題之前 可以先試著自己解決問題
+這些經驗才會快"
+14:42	Hung Yeh Wu-NO	對的。 我明白
+
+2021/05/12（三）
+21:19	Hung Yeh Wu-NO	上次提到這個問題是 我要換一台新的電腦嗎 ?  目前這台和軟體系統有不相容問題嗎
+21:19	Hung Yeh Wu-NO	[照片]
+21:23	張書豪-Ragic SA Promote	你的文字敘述跟這個出問題不相關囉你現在是卡在哪裡
+
+2021/06/03（四）
+20:46	Hung Yeh Wu-NO	我換了一台筆電，貿易軟體要如何轉移
+20:47	張書豪-Ragic SA Promote	把你平板的貿易整鬧軟體資料夾拷貝過去
+20:47	張書豪-Ragic SA Promote	我才能幫你挪移
+20:47	Hung Yeh Wu-NO	存在 USB嗎
+20:48	張書豪-Ragic SA Promote	利用隨身碟轉過去
+20:48	Hung Yeh Wu-NO	好
+21:09	Hung Yeh Wu-NO	存在新的桌面
+21:09	Hung Yeh Wu-NO	972 308 670
+21:23	張書豪-Ragic SA Promote	晚一點處理
+21:50	Hung Yeh Wu-NO	好
+22:25	張書豪-Ragic SA Promote	你是拷貝甚麼東西?
+22:25	張書豪-Ragic SA Promote	我要你拷貝資料夾
+22:25	張書豪-Ragic SA Promote	你怎麼紙拷貝了捷徑
+22:26	Hung Yeh Wu-NO	.在桌面
+22:26	張書豪-Ragic SA Promote	桌面個
+22:26	張書豪-Ragic SA Promote	哪個
+22:26	張書豪-Ragic SA Promote	那個只是捷徑
+22:26	張書豪-Ragic SA Promote	我說的是資料夾....
+22:26	Hung Yeh Wu-NO	壓縮檔嗎
+22:27	張書豪-Ragic SA Promote	你把平板打開讓我連線
+22:27	張書豪-Ragic SA Promote	再跟你說
+22:27	Hung Yeh Wu-NO	好
+22:28	Hung Yeh Wu-NO	729788299
+22:30	張書豪-Ragic SA Promote	請你複製20210603這個
+22:33	Hung Yeh Wu-NO	'ˋˊ好
+22:33	Hung Yeh Wu-NO	桌面
+22:38	張書豪-Ragic SA Promote	好了
+22:38	Hung Yeh Wu-NO	非常感謝
+
+2021/07/30（五）
+08:50	Hung Yeh Wu-NO	請問列印採購統計表
+08:51	Hung Yeh Wu-NO	[照片]
+08:51	Hung Yeh Wu-NO	按 查詢 是空白 沒資料
+09:33	張書豪-Ragic SA Promote	倉庫拿掉日期帆桅拿掉
+09:33	張書豪-Ragic SA Promote	查看看
+09:33	Hung Yeh Wu-NO	好的
+09:40	Hung Yeh Wu-NO	[照片]
+09:41	Hung Yeh Wu-NO	可以 查 6206 郵電費所有明細嗎
+09:42	張書豪-Ragic SA Promote	明細分類帳 單獨查詢這個科目 明細打勾
+09:42	張書豪-Ragic SA Promote	列印就可以
+09:44	Hung Yeh Wu-NO	謝謝
+09:47	Hung Yeh Wu-NO	[照片]
+09:47	Hung Yeh Wu-NO	空白
+09:47	張書豪-Ragic SA Promote	請你把年限拿掉
+09:48	Hung Yeh Wu-NO	[照片]
+09:49	Hung Yeh Wu-NO	[照片]
+09:49	張書豪-Ragic SA Promote	給我遠端好了
+09:50	Hung Yeh Wu-NO	972 308 670
+09:51	張書豪-Ragic SA Promote	用哪一套?
+09:51	Hung Yeh Wu-NO	2019
+09:51	張書豪-Ragic SA Promote	我是說你用哪一套遠端程式讓我連的
+09:52	Hung Yeh Wu-NO	ANY DESK
+09:53	張書豪-Ragic SA Promote	請你點接受 另外我等等操作過程我不在解釋 請你注意看
+09:53	張書豪-Ragic SA Promote	若沒看到或在忙
+09:53	張書豪-Ragic SA Promote	我就不在解釋
+09:55	Hung Yeh Wu-NO	接受了
+09:56	張書豪-Ragic SA Promote	我離線了
+09:56	Hung Yeh Wu-NO	感謝
+09:56	張書豪-Ragic SA Promote	以後請多來回檢查
+09:57	Hung Yeh Wu-NO	好的  我會注意
+09:57	張書豪-Ragic SA Promote	6206你用只是父科目
+09:57	Hung Yeh Wu-NO	嗯
+
+2021/07/31（六）
+17:26	Hung Yeh Wu-NO	[照片]
+17:27	Hung Yeh Wu-NO	請問是KEY 進貨折讓單嗎
+17:27	張書豪-Ragic SA Promote	恩
+17:27	Hung Yeh Wu-NO	謝謝
+17:52	Hung Yeh Wu-NO	[照片]
+17:53	Hung Yeh Wu-NO	傳票登錄運費 要沖帳嗎
+18:11	張書豪-Ragic SA Promote	要
+18:11	Hung Yeh Wu-NO	如何沖帳
+18:17	張書豪-Ragic SA Promote	如果按照我的做法你的做法先做船票都是錯的
+18:17	張書豪-Ragic SA Promote	你應該只用零用金支出做
+18:17	張書豪-Ragic SA Promote	就可以直接沖帳
+18:17	Hung Yeh Wu-NO	嗯嗯
+18:17	Hung Yeh Wu-NO	那我都用傳票登錄 就不能沖帳嗎
+18:20	張書豪-Ragic SA Promote	你注意看如果你只有立帳的話那就沒有沖帳如果你就沖帳的話那就沒有藜杖
+18:21	Hung Yeh Wu-NO	我是每一筆 傳票登錄  勢立帳  意思 嗎
+18:21	Hung Yeh Wu-NO	切零用金支出如何沖帳呢
+18:23	Hung Yeh Wu-NO	我 109年的 幾乎是切 傳票登錄 
+18:23	張書豪-Ragic SA Promote	等我回到家再說我大概八點多會到家
+18:24	Hung Yeh Wu-NO	110年可以 切零用金支出。 110年我都還沒登錄費用過
+18:24	Hung Yeh Wu-NO	好的
+20:07	張書豪-Ragic SA Promote	切沖帳 要先有立帳 我看不懂也看步道你怎麼立帳的
+20:14	Hung Yeh Wu-NO	我每一筆費用切 傳票登錄' 
+20:16	Hung Yeh Wu-NO	[照片]
+20:16	Hung Yeh Wu-NO	傳票登錄=立帳嗎
+21:35	Hung Yeh Wu-NO	如何立帳呢
+
+2021/08/01（日）
+16:56	Hung Yeh Wu-NO	該如何立帳呢
+
+2021/08/03（二）
+10:01	張書豪-Ragic SA Promote	你的非營業項目的立帳 直接在進貨單進一個品項較運費 進貨進運費 就可以立帳
+10:01	張書豪-Ragic SA Promote	然後就是標準的沖帳 就可以了
+10:01	張書豪-Ragic SA Promote	這樣是最簡單的方法
+17:33	Hung Yeh Wu-NO	嗯嗯  那我的大些蟻登錄費用傳票 不就都要刪除
+17:33	Hung Yeh Wu-NO	嗯嗯  那我的那些已登錄費用傳票 不就都要刪除
+17:34	Hung Yeh Wu-NO	然後 改用 你建議的進貨方式
+17:34	Hung Yeh Wu-NO	零用金切傳票  如何沖帳呢
+17:41	張書豪-Ragic SA Promote	不用刪
+17:41	Hung Yeh Wu-NO	不用刪  也不用沖帳嗎
+17:42	張書豪-Ragic SA Promote	基本上我沒有看過你做的任何船票有關於這個自己做的船票我不曉得你做這麼正確所以你刪了沒有用
+17:42	張書豪-Ragic SA Promote	至於如何沖帳自己做零用金零用金做完之後去船票轉錄那邊泡轉船票就好
+17:43	張書豪-Ragic SA Promote	這兩個大部分如果看敘述看不懂我在錄影
+17:43	Hung Yeh Wu-NO	我先 想一下
+
+2021/08/24（二）
+14:51	Hung Yeh Wu-NO	請問  新增零用金 - 傳票轉入-ql 5j03tj06qul4
+14:51	Hung Yeh Wu-NO	[照片]
+14:51	Hung Yeh Wu-NO	請問  新增零用金 - 傳票轉入-拋轉傳票
+14:52	張書豪-Ragic SA Promote	你要問的問題我看不懂
+14:52	Hung Yeh Wu-NO	沖帳完成嗎
+14:52	Hung Yeh Wu-NO	  新增零用金 - 傳票轉入-拋轉傳票-沖帳完成
+14:53	張書豪-Ragic SA Promote	零用金不用做所謂的沖帳完成零用金是直接從你的金額裡面拿出去或是拿回來
+14:53	Hung Yeh Wu-NO	嗯嗯
+14:54	Hung Yeh Wu-NO	在此新增零用金支出嗎
+14:54	Hung Yeh Wu-NO	[照片]
+14:58	張書豪-Ragic SA Promote	對啊
+15:02	Hung Yeh Wu-NO	傳票類型  現金支出  對嗎
+15:02	Hung Yeh Wu-NO	[照片]
+15:17	Hung Yeh Wu-NO	運費發票有5% 稅金  運費 900 稅 45   。  但零用金 支出 無法建  兩個費用科目
+15:18	Hung Yeh Wu-NO	零用金管理 新增 費用科目  只有一個欄位可以新增費用
+15:18	Hung Yeh Wu-NO	如何新增兩筆費用科目
+15:22	張書豪-Ragic SA Promote	自己切科目啊
+15:24	Hung Yeh Wu-NO	"上面只有一個欄位   一張零用金支出 如何新增運費及稅金兩筆費用
+"
+15:24	Hung Yeh Wu-NO	[照片]
+15:28	張書豪-Ragic SA Promote	你不會跑轉成傳票你在傳票裡面切嗎
+15:29	Hung Yeh Wu-NO	好的
+
+2021/10/26（二）
+18:36	Hung Yeh Wu-NO	"請問下  做一份110. 8/31 結轉 我可以以下列方式做嗎 ?
+
+1.   1-8 月總銷貨收入 做一張傳票
+2.   1-8 月總進貨成本 做一張傳票
+3.   1-8 月費用支出   做一張傳票
+4.   以上三張傳票做財務過帳集結轉
+5.    產生一份 8/31 資產負載表及損益表
+"
+18:39	張書豪-Ragic SA Promote	可以呀只是很懶惰的做法
+18:41	Hung Yeh Wu-NO	但 如何結轉  我要8/31 當天日期的
+18:41	Hung Yeh Wu-NO	[照片]
+18:42	張書豪-Ragic SA Promote	不用結轉就是這一年一直做到8月31號這樣子而已
+18:42	張書豪-Ragic SA Promote	如果8月31號後面還有在做別的陳票年底再作結算一次結轉的金額就會不一樣
+18:42	Hung Yeh Wu-NO	那可以產生 8/31 資產及損益嗎
+18:46	Hung Yeh Wu-NO	"另一個問題   
+
+出貨前收到貨款  做 傳票登錄
+
+銷貨收入 貸方   借方的 科目是 ?
+"
+18:46	張書豪-Ragic SA Promote	你還是不了解我的意思你結轉就是結轉到年底就算你只有做到8月31號他現在所有的金額就是8月31號而已
+18:46	Hung Yeh Wu-NO	好的
+18:46	張書豪-Ragic SA Promote	這個問題我等一下開軟體修給你看
+18:46	Hung Yeh Wu-NO	謝謝
+19:10	Hung Yeh Wu-NO	出貨前 先收到貨款   傳票正確嗎
+19:10	張書豪-Ragic SA Promote	出貨前如果先收到貨款應該是用訂金要打訂購單泡訂金船票才對
+19:12	Hung Yeh Wu-NO	正確嗎
+19:12	Hung Yeh Wu-NO	[照片]
+19:19	張書豪-Ragic SA Promote	這是你自己打的?
+19:20	Hung Yeh Wu-NO	剛剛打的
+19:20	Hung Yeh Wu-NO	因為你說 要作 訂金   
+19:21	Hung Yeh Wu-NO	我有錯嗎
+19:29	Hung Yeh Wu-NO	損益表  沒顯示 銷貨收入
+19:29	Hung Yeh Wu-NO	[照片]
+19:30	張書豪-Ragic SA Promote	[檔案]
+19:30	張書豪-Ragic SA Promote	請你先看這三張傳票看你看看
+19:32	Hung Yeh Wu-NO	好
+19:42	Hung Yeh Wu-NO	正確嗎
+19:42	Hung Yeh Wu-NO	[照片]
+19:44	Hung Yeh Wu-NO	正確嗎
+19:44	Hung Yeh Wu-NO	[照片]
+19:45	張書豪-Ragic SA Promote	恩
+19:46	Hung Yeh Wu-NO	只要 做 上面 兩張 傳票   就正確嗎
+19:46	Hung Yeh Wu-NO	不用打三張吧
+19:48	Hung Yeh Wu-NO	損益表 沒 營業銷貨收入  怎辦
+19:57	Hung Yeh Wu-NO	如何做
+19:57	Hung Yeh Wu-NO	[照片]
+20:05	張書豪-Ragic SA Promote	你去年年底有結轉嗎
+20:06	張書豪-Ragic SA Promote	你今年每個月都有過帳嗎
+20:06	張書豪-Ragic SA Promote	還有為什麼我要做三張就是因為有訂金收入一定要用應收沖帳你沒有沖帳你怎麼重霄你的訂金
+20:16	Hung Yeh Wu-NO	了解  謝謝
+20:19	Hung Yeh Wu-NO	但為何  損益表  沒 顯示  銷貨收入
+20:20	張書豪-Ragic SA Promote	請你去看看資產負債表有沒有銷貨收入
+20:20	Hung Yeh Wu-NO	好的
+20:23	張書豪-Ragic SA Promote	我覺得你銷貨有收錢有沖帳嗎?
+20:23	張書豪-Ragic SA Promote	還是你都自己打傳票?
+20:24	張書豪-Ragic SA Promote	我再幫你查帳我就要開始收費了拉@@
+20:24	Hung Yeh Wu-NO	我沒沖帳  就打一張銷貨總收入1-8 月  就剛剛結圖 兩張
+20:25	Hung Yeh Wu-NO	打 這一張
+20:25	張書豪-Ragic SA Promote	"請妳自己登入雲太
+用正常的訂單打一張
+正常的銷貨單打一張
+正常的應收沖帳打一張 去拋傳票"
+20:25	張書豪-Ragic SA Promote	妳自己比對你所打的是對還是錯
+20:25	Hung Yeh Wu-NO	這一張
+20:25	Hung Yeh Wu-NO	好的
+20:26	張書豪-Ragic SA Promote	你有過仗嗎
+20:26	Hung Yeh Wu-NO	我想一下
+20:28	Hung Yeh Wu-NO	為何 顯示 年度累計
+20:30	張書豪-Ragic SA Promote	你問的問題很基本
+20:30	張書豪-Ragic SA Promote	損益表的概念就是以年為單位
+20:30	張書豪-Ragic SA Promote	你只做八月 那是你將八月當成整年看待
+20:30	Hung Yeh Wu-NO	好
+
+2025/04/26（六）
+13:37	張書豪-Ragic SA Promote	"https://kentware.com/python_exe/
+我自己開發的小程式
+保證無毒 免費 歡迎自行取用 會不間斷開發好用的小工具"
+13:42	Hung Yeh Wu-NO	[貼圖]
+14:01	張書豪-Ragic SA Promote	有甚麼好想法都可以提出來 我看可以就做一套
