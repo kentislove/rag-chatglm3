@@ -23,3 +23,7 @@ xlrd
 networkx
 tiktoken
 line-bot-sdk
+pdfminer.six
+python-multipart
+
+
