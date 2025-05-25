@@ -267,7 +267,15 @@ def cohere_generate(prompt: str) -> str:
     )
     # NonStreamedChatResponse 使用 .message.content 取回內容
     return response.message.content.strip()
-
+def cohere_generate(prompt: str) -> str:
+    response = co.chat(
+        model="command-r7b-12-2024",
+        message=prompt,
+        max_tokens=512,
+        temperature=0.3
+    )
+    # 非串流模式下，使用 response.text 屬性取回生成內容
+    return response.text.strip()
 
 def summarize_qa(question: str, answer: str) -> str:
     prompt = (
