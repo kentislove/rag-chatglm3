@@ -394,7 +394,13 @@ def ensure_qa():
             retriever=vectorstore.as_retriever(search_kwargs={"k": 3}) # Increased k for more context
         )
 
-def build_multi_turn_prompt(current_question, session_id, lang=DEFAULT_LANG, role="default"):
+def build_multi_turn_prompt(
+    current_question,
+    session_id,
+    lang=DEFAULT_LANG,
+    role="default",
+    style: bool = True,   # 新增 style 參數，預設 True
+):
     history = get_recent_chats(session_id)
     dialog = ""
     for q, a in history:
@@ -408,7 +414,12 @@ def build_multi_turn_prompt(current_question, session_id, lang=DEFAULT_LANG, rol
         return f"{style_prefix}\n{dialog}"
     else:
         return dialog
-
+    if style:
+        style_prefix = STYLE_PROMPT.get(lang, {}) \
+                        .get(role, STYLE_PROMPT[DEFAULT_LANG]["default"])
+        return f"{style_prefix}\n{dialog}"
+    else:
++       return dialog
 def ai_chat_llm_only(
     question,
     username="user",
@@ -439,29 +450,38 @@ def ai_chat_llm_only(
 
     ensure_qa() # Ensure vector store and QA chain are ready
 
-    # Build the prompt including style and history
-    prompt = build_multi_turn_prompt(question, session_id, lang, role)
+     # Build the prompt:
+    # - Gradio/其他平台 (platform!="line") 使用預設風格前綴
+    # - LINE (platform=="line") 不加任何風格前綴
+    prompt = build_multi_turn_prompt(
+        question,
+        session_id,
+        lang,
+        role,
+        style=(platform != "line")   # 這裡判斷是否加前綴
+    )
 
     llm_result = cohere_generate(prompt)
-
-    # Perform RAG query regardless, maybe the LLM can use it
-    # Note: The current RetrievalQA chain is separate from the chat model.
-    # A more advanced setup would integrate retrieval into the chat prompt or use a tool.
-    # For now, we just run it and could potentially use its result.
-    # Let's keep the original logic of just getting the LLM result for the main response.
-    # rag_result = qa.invoke({"query": question})
-    # print(f"RAG Result: {rag_result}") # Log RAG result
 
     summary = summarize_qa(question, llm_result)
 
     # Save chat history and get the chat_id
     chat_id = save_chat(
-        username, question, llm_result, intent, entities, summary,
-        session_id, login_type, ip4=None, platform=platform, line_display_name=line_display_name
+        username,
+        question,
+        llm_result,
+        intent,
+        entities,
+        summary,
+        session_id,
+        login_type,
+        ip4=None,
+        platform=platform,
+        line_display_name=line_display_name
     )
 
-    # Return the LLM result and the chat_id for feedback
-    return llm_result, chat_id, prompt # Also return the prompt for visualization
+    # 回傳 LLM 回答、chat_id 以及實際發給 LLM 的 prompt（可用於除錯/可視化）
+    return llm_result, chat_id, prompt
 
 def faq_chat_only(
     question,
