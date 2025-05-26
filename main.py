@@ -780,18 +780,32 @@ with gr.Blocks(title="AI 多語助理") as demo:
         # Handle file upload
         def handle_upload(files):
             if not files:
-                return "請選擇要上傳的檔案。"
+                return "請選擇要上傳的檔案。", gr.update(choices=get_uploaded_doc_files(), value=[])
             uploaded_count = 0
             for file_obj in files:
                 try:
-                    # Gradio provides a NamedTemporaryFile object
-                    temp_path = file_obj.name
-                    filename = os.path.basename(file_obj.orig_name) # Use original filename
+                    # 支援多種 file_obj 類型
+                    if hasattr(file_obj, "name"):
+                        temp_path = file_obj.name
+                        # 優先使用 orig_name；若不存在，則用臨時檔案名
+                        orig_name = getattr(file_obj, "orig_name", None)
+                        filename = os.path.basename(orig_name or temp_path)
+                    elif isinstance(file_obj, str):
+                        # 直接是路徑字串
+                        temp_path = file_obj
+                        filename = os.path.basename(file_obj)
+                    else:
+                        # 其他情況，轉成字串再取檔名
+                        temp_path = str(file_obj)
+                        filename = os.path.basename(temp_path)
+
                     dest_path = os.path.join(DOCUMENTS_PATH, filename)
                     shutil.copy(temp_path, dest_path)
                     uploaded_count += 1
                 except Exception as e:
-                    print(f"Error uploading file {file_obj.orig_name}: {e}")
+                    # 如果失敗，也要印出 filename 才好除錯
+                    name_for_log = locals().get("filename", str(file_obj))
+                    print(f"Error uploading file {name_for_log}: {e}")
             status_msg = f"成功上傳 {uploaded_count} 個檔案。"
             # After upload, update the file list checkbox
             updated_files = get_uploaded_doc_files()
