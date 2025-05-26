@@ -410,16 +410,13 @@ def build_multi_turn_prompt(
     # Get the style prefix based on language and role
     style_prefix = STYLE_PROMPT.get(lang, {}).get(role, STYLE_PROMPT.get(DEFAULT_LANG, {}).get("default", ""))
 
-    if style_prefix:
-        return f"{style_prefix}\n{dialog}"
-    else:
-        return dialog
+
     if style:
         style_prefix = STYLE_PROMPT.get(lang, {}) \
                         .get(role, STYLE_PROMPT[DEFAULT_LANG]["default"])
         return f"{style_prefix}\n{dialog}"
     else:
-+       return dialog
+        return dialog
 def ai_chat_llm_only(
     question,
     username="user",
